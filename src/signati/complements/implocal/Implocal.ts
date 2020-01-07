@@ -1,2 +1,2 @@
-export default class Implocal {
+export class Implocal {
 }

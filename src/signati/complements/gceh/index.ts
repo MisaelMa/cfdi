@@ -1,4 +1,4 @@
-import Gceh from './Gceh';
+import {Gceh} from './Gceh';
 
 export { Gceh };
 export default Gceh;

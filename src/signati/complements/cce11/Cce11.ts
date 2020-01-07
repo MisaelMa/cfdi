@@ -14,7 +14,7 @@ import {
 } from '../../Interface/Complements/cce11.interface';
 import {XmlAerolineasAttributes} from '../../Interface/Complements/aerolineas.interface';
 
-export default class Cce11 {
+export class Cce11 {
     public cce11: XmlCce11 = {} as XmlCce11;
 
     constructor(attributes: XmlCce11Attributes) {

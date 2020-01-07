@@ -1,3 +1,3 @@
-export default class Detallista {
+export  class Detallista {
 
 }

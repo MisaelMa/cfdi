@@ -1,4 +1,4 @@
-import Donat from './Donat';
+import {Donat} from './Donat';
 
 export { Donat };
 export default Donat;

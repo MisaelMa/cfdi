@@ -1,3 +1,3 @@
-export default class Donat {
+export class Donat {
 
 }

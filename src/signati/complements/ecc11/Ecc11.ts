@@ -1,3 +1,3 @@
-export default class Ecc11 {
+export class Ecc11 {
 
 }

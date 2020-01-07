@@ -1,3 +1,3 @@
-export default class Gceh {
+export  class Gceh {
 
 }

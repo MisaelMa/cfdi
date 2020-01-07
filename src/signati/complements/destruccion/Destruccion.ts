@@ -4,7 +4,7 @@ import {
     XmlVehiculoDestruidoAttributes,
 } from '../../Interface/Complements/destruccion.interface';
 
-export default class Destruccion {
+export class Destruccion {
     private destruccion: XmlDestruccion = {} as XmlDestruccion;
 
     constructor(attributes: XmlDestruccionAttributes) {

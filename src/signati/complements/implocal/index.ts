@@ -1,4 +1,4 @@
-import Implocal from './Implocal';
+import {Implocal} from './Implocal';
 
-export { Implocal };
+export {Implocal};
 export default Implocal;

@@ -1,4 +1,4 @@
-import Detallista from './Detallista';
+import { Detallista } from './Detallista';
 
 export { Detallista };
 export default Detallista;

@@ -1,2 +1,3 @@
-import Ine from './Ine';
-export { Ine };
+import {Ine} from './Ine';
+
+export {Ine};

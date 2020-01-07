@@ -1,4 +1,4 @@
-import Divisas from './Divisas';
+import {Divisas} from './Divisas';
 
 export { Divisas };
 export default Divisas;

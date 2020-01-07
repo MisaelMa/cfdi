@@ -5,14 +5,15 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "jest --config jestconfig.json",
-    "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "prepare": "npm run build",
     "version": "git add -A src",
     "postversion": "git push && git push --tags",
     "build": "tsc",
     "lint": "tslint -p tsconfig.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",

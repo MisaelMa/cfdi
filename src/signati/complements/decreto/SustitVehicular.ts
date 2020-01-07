@@ -3,7 +3,7 @@ import {
   XmlVehicularAttributes, XmlVehiculoUsaEnajPermAlFabAttributes, XmlVehNueEnaFabAlPermAttributes,
 } from '../../Interface/Complements/decreto.interface';
 
-export default class SustitVehicular {
+export class SustitVehicular {
   private sustitVehicular: XmlSustitVehicular = {} as XmlSustitVehicular;
 
   constructor(attributes: XmlVehicularAttributes) {

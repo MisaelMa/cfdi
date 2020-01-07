@@ -1,4 +1,4 @@
-import Decreto from './Decreto';
+import  {Decreto} from './Decreto';
 
 export { Decreto };
 export default Decreto;

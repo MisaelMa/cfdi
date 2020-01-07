@@ -5,7 +5,7 @@ import {
     XmlIneEntidadAttribute,
 } from '../../Interface/Complements/ine.interface';
 
-export default class Ine {
+export class Ine {
     public ine: XmlIne = {} as XmlIne;
 
     constructor(attributes: XmlIneAttribute) {

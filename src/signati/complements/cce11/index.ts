@@ -1,3 +1,3 @@
-import Cce11 from './Cce11';
+import {Cce11} from './Cce11';
 
-export { Cce11 };
+export {Cce11};

@@ -5,7 +5,7 @@ import {
     XmlConsumodecombustibles,
 } from '../../Interface/Complements/consumodecombustibles.interface';
 
-export default class ConsumoDeCombustibles11 {
+export  class ConsumoDeCombustibles11 {
     private CondCom: XmlConsumodecombustibles = {} as XmlConsumodecombustibles;
 
     constructor(attributes: XmlCondComAttributes) {

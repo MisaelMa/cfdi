@@ -1,7 +1,7 @@
 import { XmlIedu, XmlIeduAttribute } from '../../Interface/Complements/iedu.interface';
 import { XmlComplementsConcepts } from '../../Interface/Tags/complements.interface';
 
-export default class Iedu {
+export class Iedu {
   public iued: XmlComplementsConcepts = {} as XmlComplementsConcepts;
 
   constructor(attributes: XmlIeduAttribute) {

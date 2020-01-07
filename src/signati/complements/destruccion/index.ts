@@ -1,4 +1,4 @@
-import Destruccion from './Destruccion';
+import {Destruccion} from './Destruccion';
 
-export { Destruccion };
+export {Destruccion};
 export default Destruccion;
