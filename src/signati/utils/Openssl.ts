@@ -102,7 +102,8 @@ class Openssl {
         try {
             const opensslpms = ['x509', '-inform', 'DER', '-in', `${cerpath}`, '-outform', 'PEM'];
             const pem = await terminal(this.opensslbin, opensslpms);
-            const serialNumber = pki.certificateFromPem(pem).serialNumber.match(/.{1,2}/g)?.map((v) => {
+            // @ts-ignore
+            const serialNumber = pki.certificateFromPem(pem).serialNumber.match(/.{1,2}/g).map((v) => {
                 return String.fromCharCode(parseInt(v, 16));
             })
                 .join('');
