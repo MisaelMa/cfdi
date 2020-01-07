@@ -151,7 +151,7 @@ export class CFDI {
             try {
 
                 const cadena = await this.getCadenaOriginal();
-                console.log('cadena: ' + cadena);
+                // console.log('cadena: ' + cadena);
                 const sello = await this.getSello(cadena, keyfile, password);
                 // console.log(sello);
                 this.xml['cfdi:Comprobante']._attributes.Sello = sello;
