@@ -79,7 +79,7 @@ export interface XmlComprobanteAttributes extends anyKey  {
   FormaPago?: string;
   NoCertificado?: string;
   Certificado?: string;
-  CondicionesDePago?: string;
+  condicionesDePago?: string;
   SubTotal?: string;
   Descuento?: string;
   Moneda?: string;
