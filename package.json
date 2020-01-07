@@ -1,5 +1,5 @@
 {
-  "name": "signati-core",
+  "name": "@signati/signati-core",
   "version": "0.0.1",
   "description": "Core Signati SDK",
   "main": "lib/index.js",
@@ -30,6 +30,7 @@
   "homepage": "https://github.com/Signati/signati-core#readme",
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/node": "^12.7.5",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.1.0",
@@ -37,13 +38,17 @@
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.4"
   },
   "files": [
     "lib/**/*"
   ],
   "dependencies": {
+    "@types/node-forge": "^0.8.7",
     "immutable": "^4.0.0-rc.12",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "node-forge": "^0.9.1"
   }
 }
