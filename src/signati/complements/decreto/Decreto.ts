@@ -6,7 +6,7 @@ import {
 import {RenovVehicular} from './RenovVehicular';
 import {SustitVehicular} from './SustitVehicular';
 
-export  class Decreto {
+export class Decreto {
     private decreto: XmlDecreto = {} as XmlDecreto;
 
     constructor(attributes: XmlDecretoAttributes) {

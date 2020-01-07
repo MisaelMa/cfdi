@@ -4,7 +4,7 @@ import {
     XmlAerolineasOtrosCargosAttributes,
 } from '../../Interface/Complements/aerolineas.interface';
 
-export default class Aerolineas {
+export class Aerolineas {
     private aerolineas: XmlAerolineas = {} as XmlAerolineas;
 
     constructor(attributes: XmlAerolineasAttributes) {

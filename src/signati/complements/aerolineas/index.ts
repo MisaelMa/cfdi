@@ -1,3 +1,3 @@
-import Aerolineas from './Aerolineas';
+import {Aerolineas} from './Aerolineas';
 
 export { Aerolineas };

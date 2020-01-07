@@ -1,4 +1,4 @@
-export * from './aerolineas';
+export * from './aerolineas/Aerolineas';
 // export * from './aieps'; deprecated
 // https://www.sat.gob.mx/consulta/75154/complemento-concepto-para-acreditamiento-del-ieps-
 export * from './cce11';
