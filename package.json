@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "test": "jest --config jestconfig.json",
+    "serve": "node ./lib",
     "preversion": "npm run lint",
     "prepare": "npm run build",
     "version": "git add -A src",

@@ -108,7 +108,7 @@ export class CFDI {
                 const result = js2xml(this.xml, options);
                 fs.writeFileSync(fullPath, result, 'utf8');
                 const stylesheetDir = path.join(path.resolve(__dirname, '../signati'), 'resources/xslt33/', 'cadenaoriginal_3_3.xslt');
-               // console.log(stylesheetDir);
+                // console.log(stylesheetDir);
                 const cadena = await SaxonProc(stylesheetDir, fullPath);
                 fs.unlinkSync(fullPath);
                 resolve(cadena.toString('utf8'));
