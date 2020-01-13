@@ -5,7 +5,7 @@ import {Concepts} from './tags/Concepts';
 import {Impuestos} from './tags/Impuestos';
 import {FileSystem} from './utils/FileSystem';
 
-import {ComlementType, ComprobanteInterface} from './Interface/Tags/comprobante.interface';
+import {ComprobanteInterface} from './Interface/Tags/comprobante.interface';
 import {XmlCdfiInterface, XmlVersion} from './Interface/Tags/xmlCdfi.interface';
 import {XmlConcepto} from './Interface/Tags/concepts.interface';
 
@@ -16,7 +16,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as crypto from 'crypto';
 import {certificate} from './utils/Certificate';
-import {XmlComplements} from './Interface/Tags/complements.interface';
+import {ComlementType, XmlComplements} from './Interface/Tags/complements.interface';
 import {SaxonProc} from './utils/Saxon';
 import {Relacionado} from './tags/Relacionado';
 
@@ -76,7 +76,7 @@ export class CFDI {
             this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
         }
         const complement = await complements.getComplement();
-        this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] = complement.complment;
+        this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] = complement.complement;
     }
 
     public restartcfdi() {

@@ -13,9 +13,17 @@ import {
     XmlCce11ReceptorAttributes, XmlCee11DescEspecificasAttributes,
 } from '../../Interface/Complements/cce11.interface';
 import {XmlAerolineasAttributes} from '../../Interface/Complements/aerolineas.interface';
+import {ComplementsReturn} from '../../Interface';
 
 export class Cce11 {
     public cce11: XmlCce11 = {} as XmlCce11;
+    private xmlns: string = 'http://www.sat.gob.mx/ComercioExterior11';
+    private xmlnskey: string = 'cce11';
+    private schemaLocation: string[] = [
+        'http://www.sat.gob.mx/ComercioExterior11',
+        'http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior11/ComercioExterior11.xsd',
+    ];
+
 
     constructor(attributes: XmlCce11Attributes) {
         this.cce11._attributes = attributes;
@@ -87,10 +95,13 @@ export class Cce11 {
         this.cce11['cce11:Mercancias']['cce11:Mercancia'].push(mercanci);
     }
 
-    public async getComplement(): Promise<{ key: string, complment: XmlCce11 }> {
+    public  getComplement(): ComplementsReturn {
         return {
             key: 'cce11:ComercioExterior',
-            complment: this.cce11,
+            xmlns: this.xmlns,
+            xmlnskey: this.xmlnskey,
+            schemaLocation: this.schemaLocation,
+            complement: this.cce11,
         };
     }
 }

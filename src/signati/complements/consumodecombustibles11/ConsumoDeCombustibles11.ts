@@ -4,9 +4,17 @@ import {
     XmlCondComAttributes, XmlCondComConcepConsumDeCombusAttributes, XmlCondComDeterminadoAttributes,
     XmlConsumodecombustibles,
 } from '../../Interface/Complements/consumodecombustibles.interface';
+import {ComplementsReturn} from '../../Interface';
 
-export  class ConsumoDeCombustibles11 {
+export class ConsumoDeCombustibles11 {
     private CondCom: XmlConsumodecombustibles = {} as XmlConsumodecombustibles;
+    private xmlns: string = 'http://www.sat.gob.mx/ConsumoDeCombustibles11';
+    private xmlnskey: string = 'consumodecombustibles11';
+    private schemaLocation: string[] = [
+        'http://www.sat.gob.mx/ConsumoDeCombustibles11',
+        'http://www.sat.gob.mx/sitio_internet/cfd/ConsumoDeCombustibles/consumodeCombustibles11.xsd',
+    ];
+
 
     constructor(attributes: XmlCondComAttributes) {
         this.CondCom._attributes = attributes;
@@ -34,10 +42,13 @@ export  class ConsumoDeCombustibles11 {
         this.CondCom['consumodecombustibles11:Conceptos']['consumodecombustibles11:ConceptoConsumoDeCombustibles'].push(concept);
     }
 
-    public async getComplement(): Promise<{ key: string, complment: XmlConsumodecombustibles }> {
+    public getComplement(): ComplementsReturn {
         return {
             key: 'consumodecombustibles11:ConsumoDeCombustibles',
-            complment: this.CondCom,
+            xmlns: this.xmlns,
+            xmlnskey: this.xmlnskey,
+            schemaLocation: this.schemaLocation,
+            complement: this.CondCom,
         };
     }
 }

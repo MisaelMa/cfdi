@@ -1,5 +1,12 @@
 import {XmlIedu} from '../Complements/iedu.interface';
 import {XmlIne} from '../Complements/ine.interface';
+import {XmlAerolineas, XmlCce11, XmlConsumodecombustibles, XmlDecreto, XmlDestruccion} from '..';
+import {Aerolineas} from '../../complements/aerolineas';
+import {Cce11} from '../../complements/cce11';
+import {ConsumoDeCombustibles11} from '../../complements/consumodecombustibles11';
+import {Decreto} from '../../complements/decreto';
+import {Destruccion} from '../../complements/destruccion';
+import {Ine} from '../../complements/ine';
 
 export interface anyKey {
     [key: string]: any
@@ -40,9 +47,9 @@ export interface XmlComplements extends anyKey {
     // https://www.sat.gob.mx/consulta/43376/genera-facturas-electronicas-con-informacion-del-servicio-de-monedero-electronico-de-vales-de-despensa
     'valesdedespensa:ValesDeDespensa'?: any;
     // https://www.sat.gob.mx/consulta/41426/genera-facturas-electronicas-con-informacion-del-consumo-de-combustible-con-monedero-electronico
-    'consumodecombustibles11:ConsumoDeCombustibles'?: any;
+    'consumodecombustibles11:ConsumoDeCombustibles'?: XmlConsumodecombustibles;
     // https://www.sat.gob.mx/consulta/99314/genera-facturas-electronicas-para-el-manejo-de-datos-de-aerolineas-de-pasajeros
-    'aerolineas:Aerolineas'?: any;
+    'aerolineas:Aerolineas'?: XmlAerolineas;
     // https://www.sat.gob.mx/consulta/33510/genera-facturas-electronicas-con-el-complemento-de-notarios
     'notariospublicos:NotariosPublicos'?: any;
     // https://www.sat.gob.mx/consulta/45480/genera-facturas-electronicas-con-el-complemento-de-vehiculos-usados
@@ -51,18 +58,18 @@ export interface XmlComplements extends anyKey {
     'servicioparcial:parcialesconstruccion'?: any;
     // tslint:disable-next-line:max-line-length
     // https://www.sat.gob.mx/consulta/05041/si-recibes-un-estimulos-por-la-renovacion-del-parque-vehicular-del-autotransporte-genera-tus-facturas-con-complemento-de-renovacion-y-sustitucion-de-vehiculo
-    'decreto:renovacionysustitucionvehiculos'?: any;
+    'decreto:renovacionysustitucionvehiculos'?: XmlDecreto;
     // sat.gob.mx/consulta/44950/genera-tus-facturas-electronicas-con-el-complemento-de-certificado-de-destruccion
-    'destruccion:certificadodedestruccion'?: any;
+    'destruccion:certificadodedestruccion'?: XmlDestruccion;
     // tslint:disable-next-line:max-line-length
     // https://www.sat.gob.mx/consulta/92945/si-realizas-venta-de-obras-de-arte-plasticas-y-antiguedades-genera-tus-facturas-electronicas-con-este-complemento
     'obrasarte:obrasarteantiguedades'?: any;
     // https://www.sat.gob.mx/consulta/09695/genera-tus-facturas-con-el-complemento-del-ine-version-1.1
-    'ine:INE': XmlIne;
+    'ine:INE'?: XmlIne;
     // https://www.sat.gob.mx/consultas/61165/comprobante-de-comercio-exterior
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/complemento_comercio_exterior.htm
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/ComercioExterior11.pdf
-    'cce11:ComercioExterior'?: any;
+    'cce11:ComercioExterior'?: XmlCce11;
     // https://www.sat.gob.mx/consultas/92764/comprobante-de-recepcion-de-pagos
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/recepcion_de_pagos.htm
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/Pagos10.pdf
@@ -79,4 +86,16 @@ export interface XmlComplementsConcepts extends anyKey {
     // deprecated
     // 'aieps:acreditamientoIEPS'?: any;
     // https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/acreditamiento_ieps/aieps.xml
+}
+
+export declare type ComlementType = Aerolineas | Cce11 | ConsumoDeCombustibles11 | Decreto | Destruccion | Ine ;
+
+export declare type ComplementTypeXml = XmlAerolineas | XmlCce11 | XmlConsumodecombustibles | XmlDecreto | XmlDestruccion | XmlIne;
+
+export interface ComplementsReturn {
+    key: string;
+    xmlns: string;
+    xmlnskey: string;
+    schemaLocation: string[];
+    complement: ComplementTypeXml;
 }

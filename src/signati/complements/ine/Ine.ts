@@ -4,9 +4,16 @@ import {
     XmlIneEntidad,
     XmlIneEntidadAttribute,
 } from '../../Interface/Complements/ine.interface';
+import {ComplementsReturn} from '../../Interface';
 
 export class Ine {
     public ine: XmlIne = {} as XmlIne;
+    private xmlns: string = 'http://www.sat.gob.mx/ine';
+    private xmlnskey: string = 'ine';
+    private schemaLocation: string[] = [
+        'http://www.sat.gob.mx/ine',
+        'http://www.sat.gob.mx/sitio_internet/cfd/ine/ine11.xsd',
+    ];
 
     constructor(attributes: XmlIneAttribute) {
         this.ine._attributes = attributes;
@@ -29,10 +36,13 @@ export class Ine {
         }
     }
 
-    public async getComplement(): Promise<{ key: string, complment: XmlIne }> {
+    public getComplement(): ComplementsReturn {
         return {
             key: 'ine:INE',
-            complment: this.ine,
+            xmlns: this.xmlns,
+            xmlnskey: this.xmlnskey,
+            schemaLocation: this.schemaLocation,
+            complement: this.ine,
         };
     }
 }

@@ -5,8 +5,6 @@ import { XmlImpuestos } from './impuestos.interface';
 import {anyKey, XmlComplements} from './complements.interface';
 import { Ine, Aerolineas, Cce11, ConsumoDeCombustibles11, Decreto, Destruccion } from '../../complements';
 
-export declare type ComlementType = Aerolineas | Cce11 | ConsumoDeCombustibles11 | Decreto | Destruccion | Ine ;
-
 export interface XmlComprobante {
   '_attributes': XmlComprobanteAttributes;
   'cfdi:CfdiRelacionados'?: XmlRelacionados;

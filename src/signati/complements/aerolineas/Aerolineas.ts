@@ -3,9 +3,16 @@ import {
     XmlAerolineasAttributes, XmlAerolineasCargoAttributes, XmlAerolineasOtrosCargos,
     XmlAerolineasOtrosCargosAttributes,
 } from '../../Interface/Complements/aerolineas.interface';
+import {ComplementsReturn} from '../../Interface';
 
 export class Aerolineas {
     private aerolineas: XmlAerolineas = {} as XmlAerolineas;
+    private xmlns: string = 'http://www.sat.gob.mx/aerolineas';
+    private xmlnskey: string = 'aerolineas';
+    private schemaLocation: string[] = [
+        'http://www.sat.gob.mx/aerolineas',
+        'http://www.sat.gob.mx/sitio_internet/cfd/aerolineas/aerolineas.xsd'
+    ];
 
     constructor(attributes: XmlAerolineasAttributes) {
         this.aerolineas._attributes = attributes;
@@ -31,10 +38,13 @@ export class Aerolineas {
         }
     }
 
-    public async getComplement(): Promise<{ key: string, complment: XmlAerolineas }> {
+    public getComplement(): ComplementsReturn {
         return {
             key: 'aerolineas:Aerolineas',
-            complment: this.aerolineas,
+            xmlns: this.xmlns,
+            xmlnskey: this.xmlnskey,
+            schemaLocation: this.schemaLocation,
+            complement: this.aerolineas,
         };
     }
 }
