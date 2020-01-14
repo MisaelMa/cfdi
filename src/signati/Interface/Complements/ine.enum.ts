@@ -94,7 +94,7 @@ export declare enum Ambito {
     Federal = 'Federal'
 }
 
-export declare type TipoProcesoIne = 'Ordinario' | ' Precampaña' | 'Campaña';
+export declare type TipoProcesoIne = 'Ordinario' | 'Precampaña' | 'Campaña';
 
 export declare enum TipoProceso {
     Ordinario = 'Ordinario',

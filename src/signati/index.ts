@@ -88,7 +88,7 @@ export class CFDI {
             this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
         }
         const schemaLocation = schema(locations);
-        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += schemaLocation;
+        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' '+schemaLocation;
     }
 
     public async complemento(complements: ComlementType) {

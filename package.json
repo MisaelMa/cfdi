@@ -1,6 +1,6 @@
 {
   "name": "@signati/core",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Core Signati SDK",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,6 +12,7 @@
     "version": "git add -A src",
     "postversion": "git push && git push --tags",
     "build": "tsc",
+    "publish": "npm publish",
     "lint": "tslint -p tsconfig.json"
   },
   "publishConfig": {
