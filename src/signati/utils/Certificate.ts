@@ -3,7 +3,7 @@ import { openssl } from './Openssl';
 import { Cer } from '../Interface/certificate.interface';
 import { FileSystem } from './FileSystem';
 
-class Certificate {
+export class Certificate {
   private path = '';
   public keyPem = '';
   public cerPem = '';

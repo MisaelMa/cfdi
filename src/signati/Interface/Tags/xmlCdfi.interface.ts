@@ -1,6 +1,6 @@
 import { XmlComprobante } from './comprobante.interface';
 
-export interface XmlCdfiInterface {
+export interface XmlCdfi {
   '_declaration': XmlDeclaration;
   'cfdi:Comprobante': XmlComprobante;
 }
