@@ -1,3 +1,3 @@
-export default class Pago10 {
+export class Pago10 {
 
 }

@@ -15,6 +15,11 @@ import {
 import {XmlAerolineasAttributes} from '../../Interface/Complements/aerolineas.interface';
 import {ComplementsReturn} from '../../Interface';
 
+/*
+*https://www.sat.gob.mx/consultas/61165/comprobante-de-comercio-exterior
+* http://omawww.sat.gob.mx/tramitesyservicios/Paginas/complemento_comercio_exterior.htm
+* http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/ComercioExterior11.pdf
+*/
 export class Cce11 {
     public cce11: XmlCce11 = {} as XmlCce11;
     private xmlns: string = 'http://www.sat.gob.mx/ComercioExterior11';
@@ -95,7 +100,7 @@ export class Cce11 {
         this.cce11['cce11:Mercancias']['cce11:Mercancia'].push(mercanci);
     }
 
-    public  getComplement(): ComplementsReturn {
+    public getComplement(): ComplementsReturn {
         return {
             key: 'cce11:ComercioExterior',
             xmlns: this.xmlns,

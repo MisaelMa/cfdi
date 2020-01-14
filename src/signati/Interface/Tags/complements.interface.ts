@@ -46,9 +46,7 @@ export interface XmlComplements extends anyKey {
     'pagoenespecie:PagoEnEspecie'?: any;
     // https://www.sat.gob.mx/consulta/43376/genera-facturas-electronicas-con-informacion-del-servicio-de-monedero-electronico-de-vales-de-despensa
     'valesdedespensa:ValesDeDespensa'?: any;
-    // https://www.sat.gob.mx/consulta/41426/genera-facturas-electronicas-con-informacion-del-consumo-de-combustible-con-monedero-electronico
     'consumodecombustibles11:ConsumoDeCombustibles'?: XmlConsumodecombustibles;
-    // https://www.sat.gob.mx/consulta/99314/genera-facturas-electronicas-para-el-manejo-de-datos-de-aerolineas-de-pasajeros
     'aerolineas:Aerolineas'?: XmlAerolineas;
     // https://www.sat.gob.mx/consulta/33510/genera-facturas-electronicas-con-el-complemento-de-notarios
     'notariospublicos:NotariosPublicos'?: any;
@@ -56,19 +54,12 @@ export interface XmlComplements extends anyKey {
     'vehiculousado:VehiculoUsado'?: any;
     // https://www.sat.gob.mx/consulta/18158/si-prestas-servicios-parciales-de-construccion,-genera-facturas-electronicas-con-este-complemento
     'servicioparcial:parcialesconstruccion'?: any;
-    // tslint:disable-next-line:max-line-length
-    // https://www.sat.gob.mx/consulta/05041/si-recibes-un-estimulos-por-la-renovacion-del-parque-vehicular-del-autotransporte-genera-tus-facturas-con-complemento-de-renovacion-y-sustitucion-de-vehiculo
     'decreto:renovacionysustitucionvehiculos'?: XmlDecreto;
-    // sat.gob.mx/consulta/44950/genera-tus-facturas-electronicas-con-el-complemento-de-certificado-de-destruccion
     'destruccion:certificadodedestruccion'?: XmlDestruccion;
     // tslint:disable-next-line:max-line-length
     // https://www.sat.gob.mx/consulta/92945/si-realizas-venta-de-obras-de-arte-plasticas-y-antiguedades-genera-tus-facturas-electronicas-con-este-complemento
     'obrasarte:obrasarteantiguedades'?: any;
-    // https://www.sat.gob.mx/consulta/09695/genera-tus-facturas-con-el-complemento-del-ine-version-1.1
     'ine:INE'?: XmlIne;
-    // https://www.sat.gob.mx/consultas/61165/comprobante-de-comercio-exterior
-    // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/complemento_comercio_exterior.htm
-    // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/ComercioExterior11.pdf
     'cce11:ComercioExterior'?: XmlCce11;
     // https://www.sat.gob.mx/consultas/92764/comprobante-de-recepcion-de-pagos
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/recepcion_de_pagos.htm

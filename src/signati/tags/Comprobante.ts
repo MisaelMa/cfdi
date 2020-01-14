@@ -1,4 +1,5 @@
 import { ComprobanteInterface, XmlComprobanteAttributes, XmlnsLinks } from '../Interface/Tags/comprobante.interface';
+import {schema} from '../utils/XmlHelp';
 
 export class Comprobante {
   public comprobante: ComprobanteInterface;
@@ -14,7 +15,7 @@ export class Comprobante {
     // 'xmlns:cfdi': this.comprobante.cfdi,
     // 'xmlns:xsi':  this.comprobante.xsi,
     // 'xmlns:iedu': this.comprobante.iedu,
-    this.attributes['xsi:schemaLocation'] = await this.schemaLocationString(this.comprobante.schemaLocation);
+    this.attributes['xsi:schemaLocation'] = schema(this.comprobante.schemaLocation);
     // 'http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
     this.attributes.Version = this.comprobante.Version;
     this.attributes.Serie = this.comprobante.Serie;
@@ -44,16 +45,4 @@ export class Comprobante {
     }
   }
 
-  public async schemaLocationString(schemalocation: string[]): Promise<string> {
-    let schemaL: string = '';
-    let i = 0;
-    for (const schema of schemalocation) {
-      if (i === 0) {
-        schemaL += schema;
-      }
-      schemaL += ' ' + schema;
-      i++;
-    }
-    return schemaL;
-  }
 }

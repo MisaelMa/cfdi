@@ -1,27 +1,31 @@
+import {TipoProceso, ClaveEntidad, TipoProcesoIne, ClaveEntidadIne, AmbitoIne, TipoComiteIne} from './ine.enum';
+
 export interface XmlIne {
-  _attributes?: XmlIneAttribute;
-  'ine:Entidad'?: XmlIneEntidad;
+    _attributes?: XmlIneAttribute;
+    'ine:Entidad'?: XmlIneEntidad;
 }
 
 export interface XmlIneAttribute {
-  Version: string;
-  TipoProceso: string;
-  TipoComite?: string;
-  IdContabilidad?: string;
+    Version: string;
+    TipoProceso: TipoProcesoIne;
+    TipoComite?: TipoComiteIne;
+    IdContabilidad?: string; /*<xs:totalDigits value="6"/><xs:fractionDigits value="0"/>*/
 }
 
 export interface XmlIneEntidad {
-  _attributes?: XmlIneEntidadAttribute;
-  'ine:Contabilidad'?: XmlIneContabilidad;
+    _attributes?: XmlIneEntidadAttribute;
+    'ine:Contabilidad'?: XmlIneContabilidad;
 }
 
 export interface XmlIneEntidadAttribute {
-  ClaveEntidad: string;
-  Ambito?: string;
+    ClaveEntidad: ClaveEntidadIne;
+    Ambito?: AmbitoIne;
 }
+
 export interface XmlIneContabilidad {
-  _attributes?: XmlIneContabilidadAttribute;
+    _attributes?: XmlIneContabilidadAttribute;
 }
+
 export interface XmlIneContabilidadAttribute {
-  IdContabilidad: string;
+    IdContabilidad: string;
 }

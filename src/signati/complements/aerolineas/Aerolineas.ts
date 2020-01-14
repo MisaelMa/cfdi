@@ -5,6 +5,9 @@ import {
 } from '../../Interface/Complements/aerolineas.interface';
 import {ComplementsReturn} from '../../Interface';
 
+/*
+  * https://www.sat.gob.mx/consulta/99314/genera-facturas-electronicas-para-el-manejo-de-datos-de-aerolineas-de-pasajeros
+*/
 export class Aerolineas {
     private aerolineas: XmlAerolineas = {} as XmlAerolineas;
     private xmlns: string = 'http://www.sat.gob.mx/aerolineas';

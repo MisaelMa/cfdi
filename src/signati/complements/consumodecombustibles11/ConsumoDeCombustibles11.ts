@@ -6,6 +6,9 @@ import {
 } from '../../Interface/Complements/consumodecombustibles.interface';
 import {ComplementsReturn} from '../../Interface';
 
+/*
+*https://www.sat.gob.mx/consulta/41426/genera-facturas-electronicas-con-informacion-del-consumo-de-combustible-con-monedero-electronico
+*/
 export class ConsumoDeCombustibles11 {
     private CondCom: XmlConsumodecombustibles = {} as XmlConsumodecombustibles;
     private xmlns: string = 'http://www.sat.gob.mx/ConsumoDeCombustibles11';

@@ -19,6 +19,7 @@ import {certificate} from './utils/Certificate';
 import {ComlementType, XmlComplements} from './Interface/Tags/complements.interface';
 import {SaxonProc} from './utils/Saxon';
 import {Relacionado} from './tags/Relacionado';
+import {schema} from './utils/XmlHelp';
 
 export class CFDI {
     public xml: XmlCdfiInterface;
@@ -71,11 +72,26 @@ export class CFDI {
         this.xml['cfdi:Comprobante']['cfdi:Impuestos'] = impuesto.impuesto;
     }
 
+    private async addXmlns(key: string, xmlns: string) {
+        this.xml['cfdi:Comprobante']._attributes['xmlns:' + key] = xmlns;
+    }
+
+    private async addSchemaLocation(locations: string[]) {
+
+        if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
+            this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
+        }
+        const schemaLocation = schema(locations);
+        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += schemaLocation;
+    }
+
     async addComplemento(complements: ComlementType) {
         if (!this.xml['cfdi:Comprobante']['cfdi:Complemento']) {
             this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
         }
         const complement = await complements.getComplement();
+        this.addXmlns(complement.xmlnskey, complement.xmlns);
+        this.addSchemaLocation(complement.schemaLocation);
         this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] = complement.complement;
     }
 

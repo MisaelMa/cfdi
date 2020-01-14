@@ -5,6 +5,9 @@ import {
 } from '../../Interface/Complements/destruccion.interface';
 import {ComplementsReturn} from '../../Interface';
 
+/*
+* sat.gob.mx/consulta/44950/genera-tus-facturas-electronicas-con-el-complemento-de-certificado-de-destruccion
+*/
 export class Destruccion {
     private destruccion: XmlDestruccion = {} as XmlDestruccion;
     private xmlns: string = 'http://www.sat.gob.mx/certificadodestruccion';

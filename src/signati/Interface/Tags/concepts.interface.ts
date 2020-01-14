@@ -3,7 +3,7 @@ import {XmlComplementsConcepts} from './complements.interface';
 import Iedu from '../../complements/iedu';
 import {Attributes, ElementCompact} from 'xml-js';
 
-export declare type ComlementConceptType = Iedu;
+export declare type ComplementConceptType = Iedu;
 
 export interface XmlConcepto {
     'cfdi:Concepto': XmlConceptoProperties[];
