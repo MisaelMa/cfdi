@@ -1,12 +1,14 @@
 import {XmlIedu} from '../Complements/iedu.interface';
 import {XmlIne} from '../Complements/ine.interface';
-import {XmlAerolineas, XmlCce11, XmlConsumodecombustibles, XmlDecreto, XmlDestruccion} from '..';
+import {XmlAerolineas, XmlCce11, XmlConceptoProperties, XmlConsumodecombustibles, XmlDecreto, XmlDestruccion} from '..';
+import {XmlPagos10} from '../Complements/pago10.interface';
 import {Aerolineas} from '../../complements/aerolineas';
 import {Cce11} from '../../complements/cce11';
 import {ConsumoDeCombustibles11} from '../../complements/consumodecombustibles11';
 import {Decreto} from '../../complements/decreto';
 import {Destruccion} from '../../complements/destruccion';
 import {Ine} from '../../complements/ine';
+import {Iedu} from '../../complements/iedu';
 
 export interface anyKey {
     [key: string]: any
@@ -56,7 +58,6 @@ export interface XmlComplements extends anyKey {
     'servicioparcial:parcialesconstruccion'?: any;
     'decreto:renovacionysustitucionvehiculos'?: XmlDecreto;
     'destruccion:certificadodedestruccion'?: XmlDestruccion;
-    // tslint:disable-next-line:max-line-length
     // https://www.sat.gob.mx/consulta/92945/si-realizas-venta-de-obras-de-arte-plasticas-y-antiguedades-genera-tus-facturas-electronicas-con-este-complemento
     'obrasarte:obrasarteantiguedades'?: any;
     'ine:INE'?: XmlIne;
@@ -64,7 +65,7 @@ export interface XmlComplements extends anyKey {
     // https://www.sat.gob.mx/consultas/92764/comprobante-de-recepcion-de-pagos
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/recepcion_de_pagos.htm
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/Pagos10.pdf
-    'pago10:Pagos'?: any;
+    'pago10:Pagos'?: XmlPagos10;
     // https://www.sat.gob.mx/consulta/50282/conoce-los-complementos-para-consorcios-en-materia-de-hidrocarburos
     'gceh:GastosHidrocarburos'?: any;
 }
@@ -75,18 +76,31 @@ export interface XmlComplementsConcepts extends anyKey {
     // https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/venta_vehiculos/venta_vehiculos.xml
     'terceros:PorCuentadeTerceros'?: any; // https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/terceros/terceros.xml
     // deprecated
+    //  https://www.sat.gob.mx/consulta/75154/complemento-concepto-para-acreditamiento-del-ieps-
     // 'aieps:acreditamientoIEPS'?: any;
     // https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/acreditamiento_ieps/aieps.xml
 }
 
 export declare type ComlementType = Aerolineas | Cce11 | ConsumoDeCombustibles11 | Decreto | Destruccion | Ine ;
 
-export declare type ComplementTypeXml = XmlAerolineas | XmlCce11 | XmlConsumodecombustibles | XmlDecreto | XmlDestruccion | XmlIne;
+export declare type ComplementTypeXml =
+    XmlAerolineas
+    | XmlCce11
+    | XmlConsumodecombustibles
+    | XmlDecreto
+    | XmlDestruccion
+    | XmlIne
+    | XmlPagos10
+    | XmlIedu;
+export declare type ComlementTypeConcept = Iedu;
 
-export interface ComplementsReturn {
+export interface ComplementsReturn extends ComplementProperties {
+    complement: ComplementTypeXml;
+}
+
+export interface ComplementProperties {
     key: string;
     xmlns: string;
     xmlnskey: string;
     schemaLocation: string[];
-    complement: ComplementTypeXml;
 }

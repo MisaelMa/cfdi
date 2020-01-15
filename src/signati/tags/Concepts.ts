@@ -1,81 +1,74 @@
-import { XmlConceptoAttributes, XmlConceptoProperties } from '../Interface/Tags/concepts.interface';
-import { Impuestos } from './Impuestos';
-import { XmlTranRentAttributesProperties } from '../Interface/Tags/impuestos.interface';
-import { XmlComplementsConcepts } from '../Interface/Tags/complements.interface';
+import {XmlConceptoAttributes, XmlConceptoProperties} from '../Interface/Tags/concepts.interface';
+import {Impuestos} from './Impuestos';
+import {XmlTranRentAttributesProperties} from '../Interface/Tags/impuestos.interface';
+import {
+    ComlementTypeConcept,
+    ComplementProperties,
+    ComplementsReturn,
+    XmlComplementsConcepts
+} from '../Interface/Tags/complements.interface';
 
 export class Concepts {
 
-  public concepto: XmlConceptoProperties = {} as XmlConceptoProperties;
-  private impuesto: Impuestos = new Impuestos();
+    private conceptComplemnets: any = [
+        {
+            key: 'aerolineas:Aerolineas',
+            xmlns: 'http://www.sat.gob.mx/terceros',
+            xmlnskey: 'terceros',
+            schemaLocation: ['http://www.sat.gob.mx/terceros',
+                'http://www.sat.gob.mx/sitio_internet/cfd/terceros/terceros11.xsd'],
+        },
+        {
+            key: 'ventavehiculos:VentaVehiculos',
+            xmlns: 'http://www.sat.gob.mx/ventavehiculos',
+            xmlnskey: 'ventavehiculos',
+            schemaLocation: ['http://www.sat.gob.mx/ventavehiculos',
+                'http://www.sat.gob.mx/sitio_internet/cfd/ventavehiculos/ventavehiculos11.xsd'],
+        },
 
-  /**
-   * @param {Object} concepto
-   * @param {String} concepto.ClaveProdServ
-   * @param {String} concepto.ClaveUnidad
-   * @param {String} concepto.NoIdentificacion
-   * @param {String} concepto.Cantidad
-   * @param {String} concepto.Unidad
-   * @param {String} concepto.Descripcion
-   * @param {String} concepto.ValorUnitario
-   * @param {String} concepto.Importe
-   * @param {String} concepto.Descuento
-   * @param {Object} concepto.Impuestos
-   * @param {Object[]} concepto.Impuestos.Traslados
-   * @param {Object[]} concepto.Impuestos.Retenciones
-   * @param {String} concepto.Impuestos.Traslados.Base
-   * @param {String} concepto.Impuestos.Traslados.Impuesto
-   * @param {String} concepto.Impuestos.Traslados.TipoFactor
-   * @param {String} concepto.Impuestos.Traslados.TasaOCuota
-   * @param {String} concepto.Impuestos.Traslados.Importe
-   * @param {String} concepto.Impuestos.Retenciones.Base
-   * @param {String} concepto.Impuestos.Retenciones.Impuesto
-   * @param {String} concepto.Impuestos.Retenciones.TipoFactor
-   * @param {String} concepto.Impuestos.Retenciones.TasaOCuota
-   * @param {String} concepto.Impuestos.Retenciones.Importe
-   */
-  constructor(concepto: XmlConceptoAttributes) {
-    this.concepto._attributes = concepto;
-  }
+    ];
+    private existComplemnt: boolean = false;
+    private complementProperties: ComplementProperties = {} as ComplementProperties;
+    private concepto: XmlConceptoProperties = {} as XmlConceptoProperties;
+    private impuesto: Impuestos = new Impuestos();
 
-  public async addComplent(data: XmlComplementsConcepts) {
-    if (!this.concepto['cfdi:ComplementoConcepto']) {
-      this.concepto['cfdi:ComplementoConcepto'] = {} as XmlComplementsConcepts;
+
+    constructor(concepto: XmlConceptoAttributes) {
+        this.existComplemnt = false;
+        this.concepto._attributes = concepto;
     }
-    for (const key in data) {
-      if (data.hasOwnProperty.call(data, key)) {
-        this.concepto['cfdi:ComplementoConcepto'][key] = data[key];
-      }
+
+    public async complemento(data: ComlementTypeConcept) {
+        if (!this.concepto['cfdi:ComplementoConcepto']) {
+            this.concepto['cfdi:ComplementoConcepto'] = {} as XmlComplementsConcepts;
+        }
+        this.existComplemnt = true;
+        this.complementProperties.key = data.getComplement().key;
+        this.complementProperties.xmlns = data.getComplement().xmlns;
+        this.complementProperties.xmlnskey = data.getComplement().xmlnskey;
+        this.complementProperties.schemaLocation = data.getComplement().schemaLocation;
+        this.concepto['cfdi:ComplementoConcepto'][data.getComplement().key] = data.getComplement().complement;
     }
-  }
 
-  /**
-   * @param {Object} traslado
-   * @param {String} traslado.Base
-   * @param {String} traslado.Impuesto
-   * @param {String} traslado.TipoFactor
-   * @param {String} traslado.TasaOCuota
-   * @param {String} traslado.Importe
-   */
-  traslado(traslado: XmlTranRentAttributesProperties) {
-    this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(traslado).impuesto; // = traslado;
-    return this;
-  }
+    traslado(traslado: XmlTranRentAttributesProperties) {
+        this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(traslado).impuesto; // = traslado;
+        return this;
+    }
 
-  /**
-   * @param {Object} retencion
-   * @param {String} retencion.Base
-   * @param {String} retencion.Impuesto
-   * @param {String} retencion.TipoFactor
-   * @param {String} retencion.TasaOCuota
-   * @param {String} retencion.Importe
-   */
-  retencion(retencion: XmlTranRentAttributesProperties) {
-    this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(retencion).impuesto; // = traslado;
-    return this;
-  }
+    retencion(retencion: XmlTranRentAttributesProperties) {
+        this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(retencion).impuesto; // = traslado;
+        return this;
+    }
 
-  getConcept(): XmlConceptoProperties {
-    return this.concepto;
-    // pushConcepto(cfdi.jxml, this.concepto);
-  }
+    getConcept(): XmlConceptoProperties {
+        return this.concepto;
+    }
+
+    isComplement(): boolean {
+        return this.existComplemnt;
+    }
+
+    getComplementProperties(): ComplementProperties {
+        return this.complementProperties;
+    }
 }

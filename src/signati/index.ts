@@ -71,6 +71,11 @@ export class CFDI {
     }
 
     public async concepto(concept: Concepts) {
+        if (concept.isComplement()) {
+            const properties = concept.getComplementProperties();
+            this.addXmlns(properties.xmlnskey, properties.xmlns)
+            this.addSchemaLocation(properties.schemaLocation)
+        }
         this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
     }
 
@@ -78,8 +83,8 @@ export class CFDI {
         this.xml['cfdi:Comprobante']['cfdi:Impuestos'] = impuesto.impuesto;
     }
 
-    private async addXmlns(key: string, xmlns: string) {
-        this.xml['cfdi:Comprobante']._attributes['xmlns:' + key] = xmlns;
+    private async addXmlns(xmlnsKey: string, xmlns: string) {
+        this.xml['cfdi:Comprobante']._attributes['xmlns:' + xmlnsKey] = xmlns;
     }
 
     private async addSchemaLocation(locations: string[]) {
@@ -88,7 +93,7 @@ export class CFDI {
             this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
         }
         const schemaLocation = schema(locations);
-        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' '+schemaLocation;
+        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
     }
 
     public async complemento(complements: ComlementType) {
@@ -107,10 +112,6 @@ export class CFDI {
      */
     public async certificar(cerpath: string) {
         try {
-            if (!fs.existsSync(cerpath)) {
-               return new Error('BAD_ROUTE');
-            }
-            console.log(cerpath)
             const cer = await certificate.getCer(cerpath);
             this.xml['cfdi:Comprobante']._attributes.NoCertificado = cer.nocer;
             this.xml['cfdi:Comprobante']._attributes.Certificado = cer.cer;
