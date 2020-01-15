@@ -50,12 +50,12 @@ export class Concepts {
         this.concepto['cfdi:ComplementoConcepto'][data.getComplement().key] = data.getComplement().complement;
     }
 
-    traslado(traslado: XmlTranRentAttributesProperties) {
+    traslado(traslado: XmlTranRentAttributesProperties): Concepts {
         this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(traslado).impuesto; // = traslado;
         return this;
     }
 
-    retencion(retencion: XmlTranRentAttributesProperties) {
+    retencion(retencion: XmlTranRentAttributesProperties): Concepts {
         this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(retencion).impuesto; // = traslado;
         return this;
     }

@@ -1,6 +1,6 @@
 {
   "name": "@signati/core",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Core Signati SDK",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
