@@ -73,7 +73,7 @@ export class CFDI {
     public async concepto(concept: Concepts) {
         if (concept.isComplement()) {
             const properties = concept.getComplementProperties();
-            this.addXmlns(properties.xmlnskey, properties.xmlns)
+            this.addXmlns(properties.xmlnskey, properties.xmlns);
             this.addSchemaLocation(properties.schemaLocation)
         }
         this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());

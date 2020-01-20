@@ -61,7 +61,9 @@ export class Concepts {
     }
 
     getConcept(): XmlConceptoProperties {
-        return this.concepto;
+        const concept = {...this.concepto};
+        this.concepto = {} as XmlConceptoProperties;
+        return concept;
     }
 
     isComplement(): boolean {
