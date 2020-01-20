@@ -186,7 +186,7 @@ export class CFDI {
             try {
                 const options = {compact: true, ignoreComment: true, spaces: 4};
                 const cfdi = await js2xml({...this.xml}, options);
-                // this.restartCfdi();
+                this.restartCfdi();
                 resolve(cfdi);
             } catch (e) {
                 reject({message: e});
