@@ -14,12 +14,11 @@ import {ComprobanteInterface} from './Interface/Tags/comprobante.interface';
 import {XmlCdfi, XmlVersion} from './Interface/Tags/xmlCdfi.interface';
 import {XmlConcepto} from './Interface/Tags/concepts.interface';
 import {ComlementType, XmlComplements} from './Interface/Tags/complements.interface';
-
-import {certificate} from './utils/Certificate';
 import {SaxonProc} from './utils/Saxon';
 import {Relacionado} from './tags/Relacionado';
 import {schema} from './utils/XmlHelp';
 import {js2xml} from 'xml-js';
+import {cer, key} from '@signati/openssl';
 
 export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
@@ -112,9 +111,9 @@ export class CFDI {
      */
     public async certificar(cerpath: string) {
         try {
-            const cer = await certificate.getCer(cerpath);
-            this.xml['cfdi:Comprobante']._attributes.NoCertificado = cer.nocer;
-            this.xml['cfdi:Comprobante']._attributes.Certificado = cer.cer;
+            const certi = cer.getCer(cerpath) //. await certificate.getCer(cerpath);
+            this.xml['cfdi:Comprobante']._attributes.NoCertificado = certi.nocer;
+            this.xml['cfdi:Comprobante']._attributes.Certificado = certi.cer;
             return this;
         } catch (e) {
             return e.message
@@ -159,11 +158,11 @@ export class CFDI {
         return new Promise(async (resolve, reject) => {
             try {
                 // const key = pem.toString('utf8');
-                const key = await certificate.getKey(keyfile, password);
+                const keyPem = await key.getKey(keyfile, password);
                 // console.log(key);
                 const sign = await crypto.createSign('RSA-SHA256');
                 await sign.update(cadenaOriginal);
-                return resolve(sign.sign(key, 'base64'));
+                return resolve(sign.sign(keyPem, 'base64'));
             } catch (e) {
                 reject({message: e});
             }

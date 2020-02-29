@@ -48,11 +48,12 @@
     "lib/**/*"
   ],
   "dependencies": {
+    "@signati/openssl": "0.0.2",
     "@types/node-forge": "^0.8.7",
     "immutable": "^4.0.0-rc.12",
-    "xml-js": "^1.6.11",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
-    "node-forge": "^0.9.1"
+    "node-forge": "^0.9.1",
+    "xml-js": "^1.6.11"
   }
 }
