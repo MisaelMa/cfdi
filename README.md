@@ -3,8 +3,6 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://avatars1.githubusercontent.com/u/52678977?s=400&u=040aa07fa564985892d0fd115a2764579845502d&v=4" width="320" alt="Nest Logo" /></a>
 </p>
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]('')
-
 Signati NestJS
 # Dependeces
   - JDK
@@ -13,22 +11,10 @@ Signati NestJS
   --CentOS, Red Hat: yum install openssl
   --Archlinux: sudo pacman -S openssl
   - Saxon-HE >=9.9.1.6J
-    --Archlinux:  https://aur.archlinux.org/packages/saxon-he
-    --Debian/Ubuntu:
+  --Archlinux:  https://aur.archlinux.org/packages/saxon-he
+  --Debian/Ubuntu:
 
 # Getting started!
-
-
-
-
-### Tech
-
-Signati uses a number of open source projects to work properly:
-
-
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-
-
 
 ### Installation
 
@@ -48,18 +34,40 @@ For production environments...
 $ npm run start:prod
 ```
 
-### Plugins
+### Complements List Soported
 
-Signati is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+Complementos (Información adicional para las Facturas.)
+- [ ] Timbre fiscal digital (TFD).
+- [ ] Estado de cuenta de combustibles de monederos electrónicos.
+- [ ] Donatarias.
+- [ ] Compra venta de divisas.
+- [ ] Otros derechos e impuestos.
+- [ ] Leyendas fiscales.
+- [ ] Persona física integrante de coordinado.
+- [ ] Turista pasajero extranjero.
+- [ ] Spei de tercero a tercero.
+- [ ] Sector de ventas al detalle (Detallista).
+- [ ] CFDI Registro fiscal.
+- [ ] Recibo de pago de nómina.
+- [ ] Pago en especie.
+- [ ] Vales de despensa.
+- [ ] Consumo de combustibles.
+- [ ] Aerolíneas.
+- [ ] Notarios Públicos.
+- [ ] Vehículo usado.
+- [ ] Servicios parciales de construcción.
+- [ ] Renovación y sustitución de vehículos.
+- [ ] Certificado de destrucción
+- [ ] Obras de arte plásticas y antigüedades
+- [x] INE
+- [ ] Comercio Exterior
+- [ ] Recepción de pagos
+- [ ] Hidrocarburos
+Complementos Concepto (Información adicional para los conceptos).
+- [x] Instituciones educativas privadas.
+- [ ] Venta de vehículos.
+- [ ] Terceros.
+- [ ] Acreditamiento del IEPS
 
 
 ### Development
