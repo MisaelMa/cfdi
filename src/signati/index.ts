@@ -14,11 +14,11 @@ import {ComprobanteInterface} from './Interface/Tags/comprobante.interface';
 import {XmlCdfi, XmlVersion} from './Interface/Tags/xmlCdfi.interface';
 import {XmlConcepto} from './Interface/Tags/concepts.interface';
 import {ComlementType, XmlComplements} from './Interface/Tags/complements.interface';
-import {SaxonProc} from './utils/Saxon';
 import {Relacionado} from './tags/Relacionado';
 import {schema} from './utils/XmlHelp';
 import {js2xml} from 'xml-js';
 import {cer, key} from '@signati/openssl';
+import {saxon} from '@signati/saxon';
 
 export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
@@ -143,9 +143,10 @@ export class CFDI {
                 fs.writeFileSync(fullPath, result, 'utf8');
                 const stylesheetDir = path.join(path.resolve(__dirname, '../signati'), 'resources/xslt33/', 'cadenaoriginal_3_3.xslt');
                 // console.log(stylesheetDir);
-                const cadena = await SaxonProc(stylesheetDir, fullPath);
+                const cadena =  saxon(stylesheetDir, fullPath);
+                console.log(cadena)
                 fs.unlinkSync(fullPath);
-                resolve(cadena.toString('utf8'));
+                resolve(cadena);
 
             } catch (e) {
                 reject({message: e});
