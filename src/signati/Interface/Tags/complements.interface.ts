@@ -19,6 +19,8 @@ import { Iedu } from '../../complements/iedu';
 import { Pago10 } from '../../complements/pago10';
 import { XmlRegistrofiscal } from '../Complements/registrofiscal.interface';
 import RegistroFiscal from '../../complements/registrofiscal';
+import { XmlDonat } from '../Complements/donatarias.interface';
+import { Donat } from '../../complements/donat';
 
 export interface anyKey {
     [key: string]: any
@@ -31,7 +33,7 @@ export interface XmlComplements extends anyKey {
     'ecc11:EstadoDeCuentaCombustible'?: any;
     //  https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/donatarias/donatarias.xml
     // https://www.sat.gob.mx/consulta/54115/facturas-electronicas-con-leyendas-fiscalestarias.xml
-    'donat:Donatarias'?: any;
+    'donat:Donatarias'?: XmlDonat;
     // https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/divisas/divisas.xml
     // https://www.sat.gob.mx/consulta/53967/genera-tus-facturas-electronicas-con-el-complemento-para-compraventa-de-divisas
     'divisas:Divisas'?: any;
@@ -51,7 +53,7 @@ export interface XmlComplements extends anyKey {
     // https://www.sat.gob.mx/consulta/76197/complemento-para-factura-electronica
     'detallista:detallista'?: any;
     // https://www.sat.gob.mx/consulta/52697/complemento-concepto-para-factura-electronica
-    'registrofiscal:CFDIRegistroFiscal'?: any;
+    'registrofiscal:CFDIRegistroFiscal'?: XmlRegistrofiscal;
     // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/complemento_nomina.htm
     'nomina12:Nomina'?: any;
     // https://www.sat.gob.mx/consulta/70751/genera-facturas-electronicas-con-el-complemento-por-la-facilidad-de-pago-en-especie
@@ -99,7 +101,8 @@ export declare type ComlementType =
     | Destruccion
     | Ine
     | Pago10
-    | RegistroFiscal;
+    | RegistroFiscal
+    | Donat;
 
 export declare type ComplementTypeXml =
     | XmlAerolineas
@@ -111,6 +114,7 @@ export declare type ComplementTypeXml =
     | XmlPagos10
     | XmlIedu
     | XmlRegistrofiscal
+    | XmlDonat
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

@@ -10,7 +10,7 @@ import {ComplementsReturn} from '../../Interface';
 * https://www.sat.gob.mx/consulta/09695/genera-tus-facturas-con-el-complemento-del-ine-version-1.1
 * */
 export class Ine {
-    public ine: XmlIne = {} as XmlIne;
+    private ine: XmlIne = {} as XmlIne;
     private xmlns: string = 'http://www.sat.gob.mx/ine';
     private xmlnskey: string = 'ine';
     private schemaLocation: string[] = [

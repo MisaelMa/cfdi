@@ -40,7 +40,7 @@ $ npm run start:prod
 Complementos (Información adicional para las Facturas.)
 - [ ] Timbre fiscal digital (TFD).
 - [ ] Estado de cuenta de combustibles de monederos electrónicos.
-- [ ] Donatarias.
+- [x] :pushpin: Donatarias.
 - [ ] Compra venta de divisas.
 - [ ] Otros derechos e impuestos.
 - [ ] Leyendas fiscales.
