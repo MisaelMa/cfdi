@@ -13,13 +13,13 @@ export * from './gceh';
 export * from './iedu';
 export * from './implocal';
 export * from './ine';
+export * from './pago10';
 
 //
 export * from './leyendasFisc';
 export * from './nomina12';
 export * from './notariospublicos';
 export * from './obrasarte';
-export * from './pago10';
 export * from './pagoenespecie';
 export * from './pfic';
 export * from './registrofiscal';
