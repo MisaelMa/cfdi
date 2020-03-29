@@ -1,5 +1,5 @@
 export interface XmlPagos10 {
-    _attributes?: XmlPagos10Attributes;
+    _attributes: XmlPagos10Attributes;
     'pago10:Pago': XmlPago10[];
 }
 

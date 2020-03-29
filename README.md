@@ -14,6 +14,7 @@ Signati NestJS
   --Archlinux:  https://aur.archlinux.org/packages/saxon-he
   --Debian/Ubuntu:
 
+[Documentation](https://signati.github.io/core/#/) 
 # Getting started!
 
 ### Installation
@@ -51,20 +52,20 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Recibo de pago de nómina.
 - [ ] Pago en especie.
 - [ ] Vales de despensa.
-- [ ] Consumo de combustibles.
-- [ ] Aerolíneas.
+- [x] :pushpin: Consumo de combustibles.  versión 1.1 
+- [x] :pushpin: Aerolíneas.
 - [ ] Notarios Públicos.
 - [ ] Vehículo usado.
 - [ ] Servicios parciales de construcción.
-- [ ] Renovación y sustitución de vehículos.
-- [ ] Certificado de destrucción
+- [x] :pushpin: Renovación y sustitución de vehículos.
+- [x] :pushpin: Certificado de destrucción
 - [ ] Obras de arte plásticas y antigüedades
-- [x] INE
-- [ ] Comercio Exterior
-- [ ] Recepción de pagos
+- [x] :pushpin: INE
+- [x] :pushpin: Comercio Exterior  versión 1.1 
+- [x] :pushpin: Recepción de pagos
 - [ ] Hidrocarburos
-Complementos Concepto (Información adicional para los conceptos).
-- [x] Instituciones educativas privadas.
+### Complementos Concepto (Información adicional para los conceptos).
+- [x] :pushpin: Instituciones educativas privadas.
 - [ ] Venta de vehículos.
 - [ ] Terceros.
 - [ ] Acreditamiento del IEPS
