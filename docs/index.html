@@ -13,9 +13,12 @@
   <script>
     window.$docsify = {
       name: '@signati/core',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+      },
       repo: 'https://github.com/Signati/signati-core',
       loadSidebar: true,
-      subMaxLevel: 2,
+      subMaxLevel: 3,
       search: 'auto',
     }
   </script>
@@ -23,6 +26,7 @@
   <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
   <script src="https://unpkg.com/docsify-copy-code@2"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-typescript.min.js"></script>
 </body>
 </html>

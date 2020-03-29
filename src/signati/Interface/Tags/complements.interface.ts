@@ -17,6 +17,8 @@ import { Destruccion } from '../../complements/destruccion';
 import { Ine } from '../../complements/ine';
 import { Iedu } from '../../complements/iedu';
 import { Pago10 } from '../../complements/pago10';
+import { XmlRegistrofiscal } from '../Complements/registrofiscal.interface';
+import RegistroFiscal from '../../complements/registrofiscal';
 
 export interface anyKey {
     [key: string]: any
@@ -96,17 +98,19 @@ export declare type ComlementType =
     | Decreto
     | Destruccion
     | Ine
-    | Pago10;
+    | Pago10
+    | RegistroFiscal;
 
 export declare type ComplementTypeXml =
-    XmlAerolineas
+    | XmlAerolineas
     | XmlCce11
     | XmlConsumodecombustibles
     | XmlDecreto
     | XmlDestruccion
     | XmlIne
     | XmlPagos10
-    | XmlIedu;
+    | XmlIedu
+    | XmlRegistrofiscal
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

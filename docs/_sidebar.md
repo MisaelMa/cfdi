@@ -1,30 +1,19 @@
-* [Getting Started](/)
+- Getting started(/)
 
-* [Examples](examples.md)
+- [Quick start](quickstart.md)
+- [Writing more pages](more-pages.md)
+- [Custom navbar](custom-navbar.md)
+- [Cover page](cover.md)
+
 
 * API
-
     * [Documentation](https://docx.js.org/api/)
-
 * Usage
-
-	* [Document](usage/document.md)
-    * [Sections](usage/sections.md)
-	* [Paragraph](usage/paragraph.md)
-	* [Text](usage/text.md)
-	* [Image](usage/images.md)
-	* [Headers & Footers](usage/headers-and-footers.md)
-	* [Bullet Points](usage/bullet-points.md)
-    * [Numbering](usage/numbering.md)
-    * [Tables](usage/tables.md)
-	* [Tab Stops](usage/tab-stops.md)
-    * [Table of Contents](usage/table-of-contents.md)
-    * [Page Numbers](usage/page-numbers.md)
-	* Styling
-        * [Styling with JS](usage/styling-with-js.md)
-        * [Styling with XML](usage/styling-with-xml.md)
-* Exporting
-
-    * [Packers](usage/packers.md)
-
+-[Emisor](sat/emisor.md)
+-[Receptor](sat/receptor.md)
+-[Relacionado](sat/relacionado.md)
+-[Conceptos](sat/conceptos.md)
+-[Impuestos](sat/impuestos.md)
+-[Complementos](sat/complementos.md)
+  
 * [Contribution Guidelines](contribution-guidelines.md)

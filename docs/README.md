@@ -48,7 +48,7 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Turista pasajero extranjero.
 - [ ] Spei de tercero a tercero.
 - [ ] Sector de ventas al detalle (Detallista).
-- [ ] CFDI Registro fiscal.
+- [x] :pushpin: CFDI Registro fiscal.
 - [ ] Recibo de pago de nómina.
 - [ ] Pago en especie.
 - [ ] Vales de despensa.
