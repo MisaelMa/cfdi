@@ -4,8 +4,9 @@ export const schema = (locations: string[]): string => {
     for (const location of locations) {
         if (i === 0) {
             schemaL += location;
+        } else {
+            schemaL += ' ' + location;
         }
-        schemaL += ' ' + location;
         i++;
     }
     return schemaL;
