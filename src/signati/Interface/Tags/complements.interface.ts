@@ -1,14 +1,22 @@
-import {XmlIedu} from '../Complements/iedu.interface';
-import {XmlIne} from '../Complements/ine.interface';
-import {XmlAerolineas, XmlCce11, XmlConceptoProperties, XmlConsumodecombustibles, XmlDecreto, XmlDestruccion} from '..';
-import {XmlPagos10} from '../Complements/pago10.interface';
-import {Aerolineas} from '../../complements/aerolineas';
-import {Cce11} from '../../complements/cce11';
-import {ConsumoDeCombustibles11} from '../../complements/consumodecombustibles11';
-import {Decreto} from '../../complements/decreto';
-import {Destruccion} from '../../complements/destruccion';
-import {Ine} from '../../complements/ine';
-import {Iedu} from '../../complements/iedu';
+import { XmlIedu } from '../Complements/iedu.interface';
+import { XmlIne } from '../Complements/ine.interface';
+import {
+    XmlAerolineas,
+    XmlCce11,
+    XmlConceptoProperties,
+    XmlConsumodecombustibles,
+    XmlDecreto,
+    XmlDestruccion
+} from '..';
+import { XmlPagos10 } from '../Complements/pago10.interface';
+import { Aerolineas } from '../../complements/aerolineas';
+import { Cce11 } from '../../complements/cce11';
+import { ConsumoDeCombustibles11 } from '../../complements/consumodecombustibles11';
+import { Decreto } from '../../complements/decreto';
+import { Destruccion } from '../../complements/destruccion';
+import { Ine } from '../../complements/ine';
+import { Iedu } from '../../complements/iedu';
+import { Pago10 } from '../../complements/pago10';
 
 export interface anyKey {
     [key: string]: any
@@ -81,7 +89,14 @@ export interface XmlComplementsConcepts extends anyKey {
     // https://github.com/facturacionmoderna/Comprobantes/blob/master/complementos/CFDI/acreditamiento_ieps/aieps.xml
 }
 
-export declare type ComlementType = Aerolineas | Cce11 | ConsumoDeCombustibles11 | Decreto | Destruccion | Ine ;
+export declare type ComlementType =
+    | Aerolineas
+    | Cce11
+    | ConsumoDeCombustibles11
+    | Decreto
+    | Destruccion
+    | Ine
+    | Pago10;
 
 export declare type ComplementTypeXml =
     XmlAerolineas
