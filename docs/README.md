@@ -50,7 +50,7 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Sector de ventas al detalle (Detallista).
 - [x] :pushpin: CFDI Registro fiscal.
 - [ ] Recibo de pago de nómina.
-- [ ] Pago en especie.
+- [x] :pushpin: Pago en especie.
 - [x] :pushpin: Vales de despensa.
 - [x] :pushpin: Consumo de combustibles.  versión 1.1 
 - [x] :pushpin: Aerolíneas.
