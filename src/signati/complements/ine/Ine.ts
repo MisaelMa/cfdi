@@ -1,10 +1,12 @@
+
+import {ComplementsReturn} from '../../types';
 import {
     XmlIne,
-    XmlIneAttribute, XmlIneContabilidadAttribute,
+    XmlIneAttribute,
+    XmlIneContabilidadAttribute,
     XmlIneEntidad,
-    XmlIneEntidadAttribute,
-} from '../../types/Complements/ine/ine.interface';
-import {ComplementsReturn} from '../../types';
+    XmlIneEntidadAttribute
+} from '../../types/Complements/ine/ine.com';
 
 /*
 * https://www.sat.gob.mx/consulta/09695/genera-tus-facturas-con-el-complemento-del-ine-version-1.1

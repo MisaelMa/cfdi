@@ -43,7 +43,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: Donatarias.
 - [ ] Compra venta de divisas.
 - [ ] Otros derechos e impuestos.
-- [ ] Leyendas fiscales.
+- [x] :pushpin: Leyendas fiscales.
 - [ ] Persona física integrante de coordinado.
 - [x] :pushpin: Turista pasajero extranjero.
 - [ ] Spei de tercero a tercero.

@@ -1,4 +1,4 @@
-import LeyendaFisc from './LeyendaFisc';
+import { LeyendaFisc } from './LeyendaFisc';
 
 export { LeyendaFisc };
 export default LeyendaFisc;

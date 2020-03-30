@@ -1,7 +1,7 @@
 import {TipoProceso, ClaveEntidad, TipoProcesoIne, ClaveEntidadIne, AmbitoIne, TipoComiteIne} from './ine.enum';
 
 export interface XmlIne {
-    _attributes?: XmlIneAttribute;
+    _attributes: XmlIneAttribute;
     'ine:Entidad'?: XmlIneEntidad;
 }
 
