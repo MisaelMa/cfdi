@@ -1,4 +1,4 @@
-import PagoEnEspecie from './PagoEnEspecie';
+import { PagoEnEspecie } from './PagoEnEspecie';
 
 export { PagoEnEspecie };
 export default PagoEnEspecie;
