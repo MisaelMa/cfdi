@@ -25,6 +25,8 @@ import { XmlObrasarte } from '../Complements/obrasarte/obrasarte.interface';
 import { ObrasArte } from '../../complements/obrasarte';
 import { XmlValesDeDespensa } from '../Complements/valesdedespensa/valesdedespensa.com';
 import { ValesDeDespensa } from '../../complements/valesdedespensa';
+import { XmlDivisas } from '../Complements/divisas/divisas.com';
+import { Divisas } from '../../complements/divisas';
 
 export interface anyKey {
     [key: string]: any
@@ -109,6 +111,7 @@ export declare type ComlementType =
     | Donat
     | ObrasArte
     | ValesDeDespensa
+    | Divisas
 export declare type ComplementTypeXml =
     | XmlAerolineas
     | XmlCce11
@@ -122,6 +125,7 @@ export declare type ComplementTypeXml =
     | XmlDonat
     | XmlObrasarte
     | XmlValesDeDespensa
+    | XmlDivisas
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

@@ -41,7 +41,7 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Timbre fiscal digital (TFD).
 - [ ] Estado de cuenta de combustibles de monederos electrónicos.
 - [x] :pushpin: Donatarias.
-- [ ] Compra venta de divisas.
+- [x] :pushpin: Compra venta de divisas.
 - [ ] Otros derechos e impuestos.
 - [ ] Leyendas fiscales.
 - [ ] Persona física integrante de coordinado.
