@@ -7,11 +7,11 @@ import { ComplementsReturn } from '../../types';
 
 export class LeyendaFisc {
     private leyendafiscal: XmlLeyendasFiscales = {} as XmlLeyendasFiscales
-    private xmlns: string = 'http://www.sat.gob.mx/ine';
-    private xmlnskey: string = 'ine';
+    private xmlns: string = 'http://www.sat.gob.mx/leyendasFiscales';
+    private xmlnskey: string = 'leyendasFisc';
     private schemaLocation: string[] = [
-        'http://www.sat.gob.mx/ine',
-        'http://www.sat.gob.mx/sitio_internet/cfd/ine/ine11.xsd',
+        'http://www.sat.gob.mx/leyendasFiscales',
+        'http://www.sat.gob.mx/sitio_internet/cfd/leyendasFiscales/leyendasFisc.xsd',
     ];
 
     constructor(data: XmlLeyFisAttributes = {version: '1.0'}) {
@@ -31,7 +31,7 @@ export class LeyendaFisc {
 
     public getComplement(): ComplementsReturn {
         return {
-            key: 'ine:INE',
+            key: 'leyendasFisc:LeyendasFiscales',
             xmlns: this.xmlns,
             xmlnskey: this.xmlnskey,
             schemaLocation: this.schemaLocation,
