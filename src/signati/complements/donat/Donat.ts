@@ -1,5 +1,5 @@
-import { XmlDonat, XmlDonatAttributes } from '../../Interface/Complements/donatarias.interface';
-import { ComplementsReturn } from '../../Interface';
+import { XmlDonat, XmlDonatAttributes } from '../../types/Complements/donatarias.interface';
+import { ComplementsReturn } from '../../types';
 
 export class Donat {
     private donat: XmlDonat = {} as XmlDonat

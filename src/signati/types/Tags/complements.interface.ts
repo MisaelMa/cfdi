@@ -1,5 +1,5 @@
 import { XmlIedu } from '../Complements/iedu.interface';
-import { XmlIne } from '../Complements/ine.interface';
+import { XmlIne } from '../Complements/ine/ine.interface';
 import {
     XmlAerolineas,
     XmlCce11,
@@ -21,6 +21,8 @@ import { XmlRegistrofiscal } from '../Complements/registrofiscal.interface';
 import RegistroFiscal from '../../complements/registrofiscal';
 import { XmlDonat } from '../Complements/donatarias.interface';
 import { Donat } from '../../complements/donat';
+import { XmlObrasarte } from '../Complements/obrasarte/obrasarte.interface';
+import { ObrasArte } from '../../complements/obrasarte';
 
 export interface anyKey {
     [key: string]: any
@@ -102,7 +104,8 @@ export declare type ComlementType =
     | Ine
     | Pago10
     | RegistroFiscal
-    | Donat;
+    | Donat
+    | ObrasArte
 
 export declare type ComplementTypeXml =
     | XmlAerolineas
@@ -115,6 +118,7 @@ export declare type ComplementTypeXml =
     | XmlIedu
     | XmlRegistrofiscal
     | XmlDonat
+    | XmlObrasarte
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

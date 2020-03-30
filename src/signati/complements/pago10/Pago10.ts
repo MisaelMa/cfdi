@@ -4,8 +4,8 @@ import {
     XmlPago10Attributes, XmlPago10Impuesto,
     XmlPagos10,
     XmlPagos10Attributes
-} from '../../Interface/Complements/pago10.interface';
-import { ComplementsReturn, XmlIneAttribute } from '../../Interface';
+} from '../../types/Complements/pago10.interface';
+import { ComplementsReturn, XmlIneAttribute } from '../../types';
 
 export class Pago10 {
     private pago10: XmlPagos10 = {} as XmlPagos10;

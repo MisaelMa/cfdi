@@ -2,7 +2,7 @@ import {
     XmlPago10Impuesto,
     XmlPagoImptoAttributes,
     XmlPagoRetencionAttributes, XmlPagoTranladoAttributes
-} from '../../Interface/Complements/pago10.interface';
+} from '../../types/Complements/pago10.interface';
 
 export class Pago10Impuestos {
     private impuesto: XmlPago10Impuesto = {} as XmlPago10Impuesto

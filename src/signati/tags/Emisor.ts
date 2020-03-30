@@ -5,8 +5,8 @@ import {
   XmlEmisorExpedidoEn,
   XmlEmisorRF,
   XmlEmisorRFAttributes,
-} from '../Interface/Tags/emisor.inteface';
-import { XmlDomiciolioAttributes } from '../Interface/Tags/domiciolio.interface';
+} from '../types/Tags/emisor.inteface';
+import { XmlDomiciolioAttributes } from '../types/Tags/domiciolio.interface';
 
 export class Emisor {
   public emisor: XmlEmisor = {} as XmlEmisor;

@@ -1,5 +1,5 @@
-import {XmlIedu, XmlIeduAttribute} from '../../Interface/Complements/iedu.interface';
-import {ComplementsReturn, XmlComplementsConcepts} from '../../Interface/Tags/complements.interface';
+import {XmlIedu, XmlIeduAttribute} from '../../types/Complements/iedu.interface';
+import {ComplementsReturn, XmlComplementsConcepts} from '../../types/Tags/complements.interface';
 
 export class Iedu {
     private iued: XmlIedu = {} as XmlIedu;

@@ -2,10 +2,10 @@ import {
     XmlDecreto,
     XmlDecretoAttributes, XmlRenovVehicular,
     XmlVehicularAttributes,
-} from '../../Interface/Complements/decreto.interface';
+} from '../../types/Complements/decreto.interface';
 import {RenovVehicular} from './RenovVehicular';
 import {SustitVehicular} from './SustitVehicular';
-import {ComplementsReturn} from '../../Interface';
+import {ComplementsReturn} from '../../types';
 
 /*
 * https://www.sat.gob.mx/consulta/05041/si-recibes-un-estimulos-por-la-renovacion-del-parque-vehicular-del-autotransporte-genera-tus-facturas-con-complemento-de-renovacion-y-sustitucion-de-vehiculo

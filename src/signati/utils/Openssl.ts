@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import {terminal} from './Terminal';
 import {pki} from 'node-forge';
 import {FileSystem} from './FileSystem';
-import {anyKey} from '../Interface/Tags/complements.interface';
+import {anyKey} from '../types/Tags/complements.interface';
 
 interface OptionsSsl {
     keyfile: any;

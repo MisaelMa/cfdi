@@ -2,8 +2,8 @@ import {
     XmlAerolineas,
     XmlAerolineasAttributes, XmlAerolineasCargoAttributes, XmlAerolineasOtrosCargos,
     XmlAerolineasOtrosCargosAttributes,
-} from '../../Interface/Complements/aerolineas.interface';
-import {ComplementsReturn} from '../../Interface';
+} from '../../types/Complements/aerolineas.interface';
+import {ComplementsReturn} from '../../types';
 
 /*
   * https://www.sat.gob.mx/consulta/99314/genera-facturas-electronicas-para-el-manejo-de-datos-de-aerolineas-de-pasajeros

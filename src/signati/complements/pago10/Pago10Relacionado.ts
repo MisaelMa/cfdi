@@ -1,4 +1,4 @@
-import { XmlDoctoRelacionado, XmlDoctoRelAttributes } from '../../Interface/Complements/pago10.interface';
+import { XmlDoctoRelacionado, XmlDoctoRelAttributes } from '../../types/Complements/pago10.interface';
 
 export class Pago10Relacionado {
     private doctoRelacionado: XmlDoctoRelacionado[] = []

@@ -1,7 +1,7 @@
 import {
   XmlSustitVehicular,
   XmlVehicularAttributes, XmlVehiculoUsaEnajPermAlFabAttributes, XmlVehNueEnaFabAlPermAttributes,
-} from '../../Interface/Complements/decreto.interface';
+} from '../../types/Complements/decreto.interface';
 
 export class SustitVehicular {
   private sustitVehicular: XmlSustitVehicular = {} as XmlSustitVehicular;

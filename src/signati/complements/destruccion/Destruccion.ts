@@ -2,8 +2,8 @@ import {
     XmlDestruccion,
     XmlDestruccionAttributes, XmlInfoAduAttributes,
     XmlVehiculoDestruidoAttributes,
-} from '../../Interface/Complements/destruccion.interface';
-import {ComplementsReturn} from '../../Interface';
+} from '../../types/Complements/destruccion.interface';
+import {ComplementsReturn} from '../../types';
 
 /*
 * sat.gob.mx/consulta/44950/genera-tus-facturas-electronicas-con-el-complemento-de-certificado-de-destruccion

@@ -1,12 +1,12 @@
-import {XmlConceptoAttributes, XmlConceptoProperties} from '../Interface/Tags/concepts.interface';
+import {XmlConceptoAttributes, XmlConceptoProperties} from '../types/Tags/concepts.interface';
 import {Impuestos} from './Impuestos';
-import {XmlTranRentAttributesProperties} from '../Interface/Tags/impuestos.interface';
+import {XmlTranRentAttributesProperties} from '../types/Tags/impuestos.interface';
 import {
     ComlementTypeConcept,
     ComplementProperties,
     ComplementsReturn,
     XmlComplementsConcepts
-} from '../Interface/Tags/complements.interface';
+} from '../types/Tags/complements.interface';
 
 export class Concepts {
 

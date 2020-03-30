@@ -1,6 +1,6 @@
-import { XmlReceptor, XmlReceptorAttribute, XmlReceptorDomicilio } from '../Interface/Tags/receptor.inteface';
-import { XmlEmisorAttribute } from '../Interface/Tags/emisor.inteface';
-import { XmlDomiciolioAttributes } from '../Interface/Tags/domiciolio.interface';
+import { XmlReceptor, XmlReceptorAttribute, XmlReceptorDomicilio } from '../types/Tags/receptor.inteface';
+import { XmlEmisorAttribute } from '../types/Tags/emisor.inteface';
+import { XmlDomiciolioAttributes } from '../types/Tags/domiciolio.interface';
 
 export class Receptor {
   public receptor: XmlReceptor =  {} as XmlReceptor;

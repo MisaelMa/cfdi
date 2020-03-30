@@ -1,5 +1,5 @@
-import { XmlRegistrofiscal, XmlRegistrofiscalAttributes } from '../../Interface/Complements/registrofiscal.interface';
-import { ComplementsReturn } from '../../Interface';
+import { XmlRegistrofiscal, XmlRegistrofiscalAttributes } from '../../types/Complements/registrofiscal.interface';
+import { ComplementsReturn } from '../../types';
 
 export default class RegistroFiscal {
     private registrofiscal: XmlRegistrofiscal = {} as XmlRegistrofiscal;

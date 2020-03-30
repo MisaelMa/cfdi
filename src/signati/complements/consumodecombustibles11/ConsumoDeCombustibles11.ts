@@ -3,8 +3,8 @@ import {
     XmlCondCom11Conceptos, XmlCondCom11Determinado,
     XmlCondComAttributes, XmlCondComConcepConsumDeCombusAttributes, XmlCondComDeterminadoAttributes,
     XmlConsumodecombustibles,
-} from '../../Interface/Complements/consumodecombustibles.interface';
-import {ComplementsReturn} from '../../Interface';
+} from '../../types/Complements/consumodecombustibles.interface';
+import {ComplementsReturn} from '../../types';
 
 /*
 *https://www.sat.gob.mx/consulta/41426/genera-facturas-electronicas-con-informacion-del-consumo-de-combustible-con-monedero-electronico

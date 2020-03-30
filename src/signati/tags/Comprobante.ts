@@ -1,4 +1,4 @@
-import { ComprobanteInterface, XmlComprobanteAttributes, XmlnsLinks } from '../Interface/Tags/comprobante.interface';
+import { ComprobanteInterface, XmlComprobanteAttributes, XmlnsLinks } from '../types/Tags/comprobante.interface';
 import {schema} from '../utils/XmlHelp';
 
 export class Comprobante {

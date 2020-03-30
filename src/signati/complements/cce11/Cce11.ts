@@ -11,9 +11,9 @@ import {
     XmlCce11PropietarioAttributes,
     XmlCce11Receptor,
     XmlCce11ReceptorAttributes, XmlCee11DescEspecificasAttributes,
-} from '../../Interface/Complements/cce11.interface';
-import {XmlAerolineasAttributes} from '../../Interface/Complements/aerolineas.interface';
-import {ComplementsReturn} from '../../Interface';
+} from '../../types/Complements/cce11.interface';
+import {XmlAerolineasAttributes} from '../../types/Complements/aerolineas.interface';
+import {ComplementsReturn} from '../../types';
 
 /*
 *https://www.sat.gob.mx/consultas/61165/comprobante-de-comercio-exterior

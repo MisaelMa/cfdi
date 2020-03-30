@@ -4,7 +4,7 @@ import {
   XmlTranRentAttributesProperties,
   XmlRetencionAttributes,
   XmlImpuestos, XmlRetenciones, XmlImpuestosTrasladados,
-} from '../Interface/Tags/impuestos.interface';
+} from '../types/Tags/impuestos.interface';
 
 export class Impuestos {
   public impuesto: XmlImpuestos = {} as XmlImpuestos;

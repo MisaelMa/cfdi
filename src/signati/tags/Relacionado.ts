@@ -2,7 +2,7 @@ import {
   XmlRelacionado,
   XmlRelacionadoAttributes, XmlRelacionados,
   XmlRelacionadosAttributes,
-} from '../Interface/Tags/comprobante.interface';
+} from '../types/Tags/comprobante.interface';
 
 export class Relacionado {
   private relacionada = {} as XmlRelacionados;

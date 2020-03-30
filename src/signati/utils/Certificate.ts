@@ -1,6 +1,6 @@
 import { spawn } from 'child_process';
 import { openssl } from './Openssl';
-import { Cer } from '../Interface/certificate.interface';
+import { Cer } from '../types/certificate.interface';
 import { FileSystem } from './FileSystem';
 
 export class Certificate {

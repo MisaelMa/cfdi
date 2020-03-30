@@ -10,10 +10,10 @@ import {Concepts} from './tags/Concepts';
 import {Impuestos} from './tags/Impuestos';
 import {FileSystem} from './utils/FileSystem';
 
-import {ComprobanteInterface} from './Interface/Tags/comprobante.interface';
-import {XmlCdfi, XmlVersion} from './Interface/Tags/xmlCdfi.interface';
-import {XmlConcepto} from './Interface/Tags/concepts.interface';
-import {ComlementType, XmlComplements} from './Interface/Tags/complements.interface';
+import {ComprobanteInterface} from './types/Tags/comprobante.interface';
+import {XmlCdfi, XmlVersion} from './types/Tags/xmlCdfi.interface';
+import {XmlConcepto} from './types/Tags/concepts.interface';
+import {ComlementType, XmlComplements} from './types/Tags/complements.interface';
 import {Relacionado} from './tags/Relacionado';
 import {schema} from './utils/XmlHelp';
 import {js2xml} from 'xml-js';

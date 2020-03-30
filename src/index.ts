@@ -11,4 +11,4 @@ export * from './signati/tags/Receptor';
 export * from './signati/tags/Concepts';
 export * from './signati/tags/Impuestos';
 export * from './signati/complements/index';
-export * from './signati/Interface/index';
+export * from './signati/types/index';

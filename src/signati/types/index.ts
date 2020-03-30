@@ -14,8 +14,8 @@ export * from './Complements/consumodecombustibles.interface';
 export * from './Complements/decreto.interface';
 export * from './Complements/destruccion.interface';
 export * from './Complements/iedu.interface';
-export * from './Complements/ine.interface';
-export * from './Complements/ine.enum';
+export * from './Complements/ine/ine.interface';
+export * from './Complements/ine/ine.enum';
 export * from './Complements/Nomina.interface';
 
 // certificado
