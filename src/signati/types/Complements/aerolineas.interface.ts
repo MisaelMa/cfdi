@@ -1,5 +1,5 @@
 export interface XmlAerolineas {
-  _attributes?: XmlAerolineasAttributes;
+  _attributes: XmlAerolineasAttributes;
   'aerolineas:OtrosCargos': XmlAerolineasOtrosCargos;
 }
 

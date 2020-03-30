@@ -51,7 +51,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: CFDI Registro fiscal.
 - [ ] Recibo de pago de nómina.
 - [ ] Pago en especie.
-- [ ] Vales de despensa.
+- [x] :pushpin: Vales de despensa.
 - [x] :pushpin: Consumo de combustibles.  versión 1.1 
 - [x] :pushpin: Aerolíneas.
 - [ ] Notarios Públicos.

@@ -1,4 +1,4 @@
-import ValesDeDespensa from './ValesDeDespensa';
+import { ValesDeDespensa } from './ValesDeDespensa';
 
 export { ValesDeDespensa };
 export default ValesDeDespensa;
