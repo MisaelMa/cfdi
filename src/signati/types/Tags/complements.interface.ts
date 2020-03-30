@@ -1,5 +1,4 @@
 import { XmlIedu } from '../Complements/iedu.interface';
-import { XmlIne } from '../Complements/ine/ine.interface';
 import {
     XmlAerolineas,
     XmlCce11,
@@ -21,12 +20,15 @@ import { XmlRegistrofiscal } from '../Complements/registrofiscal.interface';
 import RegistroFiscal from '../../complements/registrofiscal';
 import { XmlDonat } from '../Complements/donatarias.interface';
 import { Donat } from '../../complements/donat';
-import { XmlObrasarte } from '../Complements/obrasarte/obrasarte.interface';
 import { ObrasArte } from '../../complements/obrasarte';
 import { XmlValesDeDespensa } from '../Complements/valesdedespensa/valesdedespensa.com';
 import { ValesDeDespensa } from '../../complements/valesdedespensa';
 import { XmlDivisas } from '../Complements/divisas/divisas.com';
 import { Divisas } from '../../complements/divisas';
+import { XmlIne } from '../Complements/ine/ine.com';
+import { XmlObrasarte } from '../Complements/obrasarte/obrasarte.com';
+import Tpe from '../../complements/tpe';
+import { XmlTpe } from '../Complements/turistaPasajeroExtranjero/tpe.com';
 
 export interface anyKey {
     [key: string]: any
@@ -112,6 +114,7 @@ export declare type ComlementType =
     | ObrasArte
     | ValesDeDespensa
     | Divisas
+    | Tpe
 export declare type ComplementTypeXml =
     | XmlAerolineas
     | XmlCce11
@@ -126,6 +129,7 @@ export declare type ComplementTypeXml =
     | XmlObrasarte
     | XmlValesDeDespensa
     | XmlDivisas
+    | XmlTpe
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

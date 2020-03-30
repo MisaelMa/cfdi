@@ -45,7 +45,7 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Otros derechos e impuestos.
 - [ ] Leyendas fiscales.
 - [ ] Persona física integrante de coordinado.
-- [ ] Turista pasajero extranjero.
+- [x] :pushpin: Turista pasajero extranjero.
 - [ ] Spei de tercero a tercero.
 - [ ] Sector de ventas al detalle (Detallista).
 - [x] :pushpin: CFDI Registro fiscal.
