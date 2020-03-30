@@ -33,6 +33,8 @@ import { XmlLeyendasFiscales } from '../Complements/leyendasFiscales/leyendasFis
 import { LeyendaFisc } from '../../complements/leyendasFisc';
 import { XmlPagoenespecie } from '../Complements/pagoenespecie/pagoenespecie.com';
 import { PagoEnEspecie } from '../../complements/pagoenespecie';
+import { XmlSpei } from '../Complements/spei/spei.com';
+import { Spei } from '../../complements/spei';
 
 export interface anyKey {
     [key: string]: any
@@ -121,6 +123,7 @@ export declare type ComlementType =
     | Tpe
     | LeyendaFisc
     | PagoEnEspecie
+    | Spei
 export declare type ComplementTypeXml =
     | XmlAerolineas
     | XmlCce11
@@ -138,6 +141,7 @@ export declare type ComplementTypeXml =
     | XmlTpe
     | XmlLeyendasFiscales
     | XmlPagoenespecie
+    | XmlSpei
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

@@ -46,7 +46,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: Leyendas fiscales.
 - [ ] Persona física integrante de coordinado.
 - [x] :pushpin: Turista pasajero extranjero.
-- [ ] Spei de tercero a tercero.
+- [x] :pushpin: Spei de tercero a tercero.
 - [ ] Sector de ventas al detalle (Detallista).
 - [x] :pushpin: CFDI Registro fiscal.
 - [ ] Recibo de pago de nómina.
