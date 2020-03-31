@@ -56,7 +56,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: Aerolíneas.
 - [ ] Notarios Públicos.
 - [ ] Vehículo usado.
-- [ ] Servicios parciales de construcción.
+- [x] :pushpin: Servicios parciales de construcción.
 - [x] :pushpin: Renovación y sustitución de vehículos.
 - [x] :pushpin: Certificado de destrucción
 - [x] :pushpin: Obras de arte plásticas y antigüedades
