@@ -55,7 +55,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: Consumo de combustibles.  versión 1.1 
 - [x] :pushpin: Aerolíneas.
 - [ ] Notarios Públicos.
-- [ ] Vehículo usado.
+- [x] :pushpin: Vehículo usado.
 - [x] :pushpin: Servicios parciales de construcción.
 - [x] :pushpin: Renovación y sustitución de vehículos.
 - [x] :pushpin: Certificado de destrucción

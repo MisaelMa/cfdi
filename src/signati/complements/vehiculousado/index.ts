@@ -1,4 +1,4 @@
-import VehiculoUsado from './VehiculoUsado';
+import { VehiculoUsado } from './VehiculoUsado';
 
 export { VehiculoUsado };
 export default VehiculoUsado;
