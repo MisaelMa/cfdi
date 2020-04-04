@@ -44,6 +44,8 @@ import { Gceh, Ieeh } from '../../complements/hidrocarburos';
 import { XmlGceh } from '../Complements/hidrocarburos/gceh/gceh.com';
 import { XmlImplocal } from '../Complements/implocal/implocal.com';
 import { Implocal } from '../../complements/implocal';
+import { XmlPfic } from '../Complements/pfic/pfic.com';
+import { Pfic } from '../../complements/pfic';
 
 export interface anyKey {
     [key: string]: any
@@ -139,6 +141,7 @@ export declare type ComlementType =
     | Ieeh
     | Gceh
     | Implocal
+    | Pfic
 export declare type ComplementTypeXml =
     | XmlAerolineas
     | XmlCce11
@@ -162,6 +165,7 @@ export declare type ComplementTypeXml =
     | XmlIeeh
     | XmlGceh
     | XmlImplocal
+    | XmlPfic
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

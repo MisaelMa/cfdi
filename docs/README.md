@@ -44,7 +44,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: Compra venta de divisas.
 - [x] :pushpin: Otros derechos e impuestos.
 - [x] :pushpin: Leyendas fiscales.
-- [ ] Persona física integrante de coordinado.
+- [x] :pushpin: Persona física integrante de coordinado.
 - [x] :pushpin: Turista pasajero extranjero.
 - [x] :pushpin: Spei de tercero a tercero.
 - [ ] Sector de ventas al detalle (Detallista).

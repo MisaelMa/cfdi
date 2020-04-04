@@ -1,4 +1,4 @@
-import Pfic from './Pfic';
+import { Pfic} from './Pfic';
 
 export { Pfic };
 export default Pfic;
