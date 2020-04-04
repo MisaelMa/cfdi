@@ -42,7 +42,7 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Estado de cuenta de combustibles de monederos electrónicos.
 - [x] :pushpin: Donatarias.
 - [x] :pushpin: Compra venta de divisas.
-- [ ] Otros derechos e impuestos.
+- [x] :pushpin: Otros derechos e impuestos.
 - [x] :pushpin: Leyendas fiscales.
 - [ ] Persona física integrante de coordinado.
 - [x] :pushpin: Turista pasajero extranjero.

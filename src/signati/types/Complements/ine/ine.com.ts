@@ -1,4 +1,4 @@
-import {TipoProceso, ClaveEntidad, TipoProcesoIne, ClaveEntidadIne, AmbitoIne, TipoComiteIne} from './ine.enum';
+import { AmbitoIne, ClaveEntidadIne, TipoComiteIne, TipoProcesoIne } from './ine.enum';
 
 export interface XmlIne {
     _attributes: XmlIneAttribute;

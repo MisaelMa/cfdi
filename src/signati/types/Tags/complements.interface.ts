@@ -42,6 +42,8 @@ import { VehiculoUsado } from '../../complements/vehiculousado';
 import { XmlIeeh } from '../Complements/hidrocarburos/ieeh/ieeh.com';
 import { Gceh, Ieeh } from '../../complements/hidrocarburos';
 import { XmlGceh } from '../Complements/hidrocarburos/gceh/gceh.com';
+import { XmlImplocal } from '../Complements/implocal/implocal.com';
+import { Implocal } from '../../complements/implocal';
 
 export interface anyKey {
     [key: string]: any
@@ -136,6 +138,7 @@ export declare type ComlementType =
     | VehiculoUsado
     | Ieeh
     | Gceh
+    | Implocal
 export declare type ComplementTypeXml =
     | XmlAerolineas
     | XmlCce11
@@ -158,6 +161,7 @@ export declare type ComplementTypeXml =
     | XmlVehiculousado
     | XmlIeeh
     | XmlGceh
+    | XmlImplocal
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {
