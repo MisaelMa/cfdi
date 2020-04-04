@@ -39,7 +39,7 @@ export class Implocal {
 
     public getComplement(): ComplementsReturn {
         return {
-            key: 'iedu:instEducativas',
+            key: 'implocal:ImpuestosLocales',
             xmlns: this.xmlns,
             xmlnskey: this.xmlnskey,
             schemaLocation: this.schemaLocation,
