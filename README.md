@@ -63,9 +63,9 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: INE
 - [x] :pushpin: Comercio Exterior  versión 1.1 
 - [x] :pushpin: Recepción de pagos
-- [ ] Hidrocarburos
-    - IngresosHidrocarburos
-    - GastosHidrocarburos10
+- [x] Hidrocarburos
+    - [x] :pushpin: IngresosHidrocarburos
+    - [x] :pushpin: GastosHidrocarburos10
 ### Complementos Concepto (Información adicional para los conceptos).
 - [x] :pushpin: Instituciones educativas privadas.
 - [ ] Venta de vehículos.

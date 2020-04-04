@@ -36,6 +36,9 @@
     <xsl:include href="ventavehiculos11.xslt"/>
     <xsl:include href="terceros11.xslt"/>
     <xsl:include href="Pagos10.xslt"/>
+    <xsl:include href="gceh.xslt"/>
+    <xsl:include href="ieeh.xslt"/>
+
 
 
     <!-- Aquí iniciamos el procesamiento de la cadena original con su | inicial y el terminador || -->

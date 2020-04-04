@@ -41,7 +41,7 @@ Complementos (Información adicional para las Facturas.)
 - [ ] Timbre fiscal digital (TFD).
 - [ ] Estado de cuenta de combustibles de monederos electrónicos.
 - [x] :pushpin: Donatarias.
-- [ ] Compra venta de divisas.
+- [x] :pushpin: Compra venta de divisas.
 - [ ] Otros derechos e impuestos.
 - [x] :pushpin: Leyendas fiscales.
 - [ ] Persona física integrante de coordinado.
@@ -55,7 +55,7 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: Consumo de combustibles.  versión 1.1 
 - [x] :pushpin: Aerolíneas.
 - [ ] Notarios Públicos.
-- [ ] Vehículo usado.
+- [x] :pushpin: Vehículo usado.
 - [x] :pushpin: Servicios parciales de construcción.
 - [x] :pushpin: Renovación y sustitución de vehículos.
 - [x] :pushpin: Certificado de destrucción
@@ -63,9 +63,9 @@ Complementos (Información adicional para las Facturas.)
 - [x] :pushpin: INE
 - [x] :pushpin: Comercio Exterior  versión 1.1 
 - [x] :pushpin: Recepción de pagos
-- [ ] Hidrocarburos
-    - IngresosHidrocarburos
-    - GastosHidrocarburos10
+- [x] Hidrocarburos
+    - [x] :pushpin: IngresosHidrocarburos
+    - [x] :pushpin: GastosHidrocarburos10
 ### Complementos Concepto (Información adicional para los conceptos).
 - [x] :pushpin: Instituciones educativas privadas.
 - [ ] Venta de vehículos.

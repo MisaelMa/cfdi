@@ -39,6 +39,9 @@ import { XmlServicioparcial } from '../Complements/servicioparcial/servicioparci
 import { ServicioParcial } from '../../complements/servicioparcial';
 import { XmlVehiculousado } from '../Complements/vehiculousado/vehiculousado.com';
 import { VehiculoUsado } from '../../complements/vehiculousado';
+import { XmlIeeh } from '../Complements/hidrocarburos/ieeh/ieeh.com';
+import { Gceh, Ieeh } from '../../complements/hidrocarburos';
+import { XmlGceh } from '../Complements/hidrocarburos/gceh/gceh.com';
 
 export interface anyKey {
     [key: string]: any
@@ -131,6 +134,8 @@ export declare type ComlementType =
     | Spei
     | ServicioParcial
     | VehiculoUsado
+    | Ieeh
+    | Gceh
 export declare type ComplementTypeXml =
     | XmlAerolineas
     | XmlCce11
@@ -151,6 +156,8 @@ export declare type ComplementTypeXml =
     | XmlSpei
     | XmlServicioparcial
     | XmlVehiculousado
+    | XmlIeeh
+    | XmlGceh
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {
