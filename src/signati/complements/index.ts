@@ -9,7 +9,7 @@ export * from './detallista';
 export * from './divisas';
 export * from './donat';
 export * from './ecc11';
-export * from './hidrocarburos/gceh';
+export * from './hidrocarburos';
 export * from './iedu';
 export * from './implocal';
 export * from './ine';
