@@ -38,6 +38,7 @@
     <xsl:include href="Pagos10.xslt"/>
     <xsl:include href="gceh.xslt"/>
     <xsl:include href="ieeh.xslt"/>
+    <xsl:include href="detallista.xslt"/>
 
 
 
