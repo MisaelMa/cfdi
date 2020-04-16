@@ -1,8 +1,12 @@
 import { XmlSpecialServicesType, XmlTextData } from './detallista-common.com';
 
-export interface XmlAllowanceCharge extends XmlSpecialServicesType {
+export interface XmlAllowanceCharge {
+    'detallista:allowanceCharge': XmlMonetaryAmountOrPercentage;
+}
+
+export interface XmlMonetaryAmountOrPercentage extends XmlSpecialServicesType {
     _attributes: XmlAllowChargeAttributes;
-    'detallista:monetaryAmountOrPercentage': XmlMonetaryAmountOrPercentage;
+    'detallista:monetaryAmountOrPercentage': XmlRate;
 }
 
 export interface XmlAllowChargeAttributes {
@@ -22,11 +26,11 @@ export enum SettlementType {
 }
 
 
-export interface XmlMonetaryAmountOrPercentage {
-    'detallista:rate': XmlRate
+export interface XmlRate {
+    'detallista:rate': XmlPercentage
 }
 
-export interface XmlRate {
+export interface XmlPercentage {
     _attributes: XmlRateAttributes
     'detallista:percentage': XmlTextData[]
 }
