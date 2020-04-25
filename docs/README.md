@@ -38,7 +38,7 @@ $ npm run start:prod
 ### Complements List Soported
 
 Complementos (Información adicional para las Facturas.)
-- [ ] Timbre fiscal digital (TFD).
+- [x] :pushpin: Timbre fiscal digital (TFD).
 - [ ] Estado de cuenta de combustibles de monederos electrónicos.
 - [x] :pushpin: Donatarias.
 - [x] :pushpin: Compra venta de divisas.
