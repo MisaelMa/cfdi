@@ -14,6 +14,7 @@ export * from './iedu';
 export * from './implocal';
 export * from './ine';
 export * from './pago10';
+export * from './tfd';
 
 //
 export * from './leyendasFisc';
