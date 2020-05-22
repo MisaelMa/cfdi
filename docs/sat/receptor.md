@@ -1,4 +1,10 @@
 # Receptor
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlReceptorAttribute |Rfc: string; <br> Nombre: string; <br> UsoCFDI: string; | |  Inicializa la clase|
+
+
 ```ts
 import { Receptor } from '@signati/core';
 const receptor = new Receptor({

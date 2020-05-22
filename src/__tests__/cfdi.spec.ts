@@ -1,4 +1,4 @@
-import {CFDI, ComprobanteInterface, Concepts, Emisor, Impuestos, Receptor} from '..';
+import { CFDI, ComprobanteInterface, Concepts, Emisor, Impuestos, Receptor, Relacionado } from '..';
 import * as path from 'path';
 
 describe('Create CFDI', () => {
@@ -37,11 +37,11 @@ describe('Create CFDI', () => {
             };
             await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
             await cfd.setAttributesComprobantes(comprobanteAttribute);
-            /*
+
             const relation = new Relacionado({ TipoRelacion: '01' });
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');
-            await this.cfd.cfdiRelacionados(relation);*/
+            await cfd.relacionados(relation);
 
             const emisor = new Emisor({
                 Rfc: 'TCM970625MB1',
