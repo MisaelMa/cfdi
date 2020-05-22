@@ -5,7 +5,7 @@
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlIneAttribute |  Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string; | |  Inicializa la clase|
-| identidad | ClaveEntidad: ClaveEntidadIne;<br> Ambito?: AmbitoIne; |  uuid: string | | Agregar la Relacion|
+| entidad | XmlIneEntidadAttribute | ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne; | | Agregar la Relacion|
 
 
 ```ts
