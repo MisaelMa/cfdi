@@ -35,16 +35,26 @@ const ine = new Ine({
 
 ```
  ## Complemeto PAGO10
+ PAGO10
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
-| Construtor | XmlPagos10Attributes |   _attributes?: XmlPago10Attributes,<br>'pago10:DoctoRelacionado':XmlDoctoRelacionado[];<br>'pago10:Impuestos': XmlPago10Impuesto[]; | |  Inicializa la clase|
-| relacion  |XmlDoctoRelAttributes | IdDocumento: 'hasd',<br>MonedaDR: 'MMX',<br>MetodoDePagoDR: 'PUE', | | Agregar la Relacion|
+|  | XmlPagos10Attributes |  Version?: string; | |  Inicializa la clase|
+
+PAGO10RELACIONADO
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
-| Construtor | XmlPagos10Attributes |   _attributes?: XmlPago10Attributes,<br>'pago10:DoctoRelacionado':XmlDoctoRelacionado[];<br>'pago10:Impuestos': XmlPago10Impuesto[]; | |  Inicializa la clase|
-| relacion  |XmlDoctoRelAttributes | IdDocumento: 'hasd',<br>MonedaDR: 'MMX',<br>MetodoDePagoDR: 'PUE', | | Agregar la Relacion|
+| Construtor | XmlDoctoRelacionado |    _attributes?: XmlDoctoRelAttributes | |  Inicializa la clase|
+| relacion | XmlDoctoRelAttributes | IdDocumento: string,<br>Serie?: string,<br>Folio?: string,<br>MonedaDR: string,<br>TipoCambioDR?: string,<br>MetodoDePagoDR: string,<br>NumParcialidad?: string,<br>ImpSaldoAnt?: string,<br>ImpPagado?: string,<br>ImpSaldoInsoluto?: string | | Agregar la entidad|
+
+PAGO10IMPUESTOS
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlPagoImptoAttributes |    TotalImpuestosRetenidos?: string;<br>TotalImpuestosTrasladados?: string; | |  Inicializa la clase|
+| traslados | XmlPagoTranladoAttributes | Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
+| retenciones | XmlPagoRetencionAttributes |Impuesto: string;<br>Importe: string; | | Agregar la entidad|
 
 ```ts
 import { pago10 } from '@signati/core';
