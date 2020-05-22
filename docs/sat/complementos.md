@@ -1,6 +1,13 @@
 # COMPLEMENTOS
 
  ## Complemeto INE 
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlIneAttribute |  Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string; | |  Inicializa la clase|
+| identidad | ClaveEntidad: ClaveEntidadIne;<br> Ambito?: AmbitoIne; |  uuid: string | | Agregar la Relacion|
+
+
 ```ts
 import { Ine } from '@signati/core';
 const ine = new Ine({
@@ -11,7 +18,7 @@ const ine = new Ine({
     });
     ine.Entidad({ Ambito: 'Federal', ClaveEntidad: 'ROO' });
     ine.Contabilidad({ IdContabilidad: '9' });
-    this.cfd.complemento(ine);git
+    this.cfd.complemento(ine);
 ```
 
 ```xml
@@ -27,6 +34,12 @@ const ine = new Ine({
 
 ```
  ## Complemeto PAGO10
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlPagos10Attributes |   _attributes?: XmlPago10Attributes,<br>'pago10:DoctoRelacionado':XmlDoctoRelacionado[];<br>'pago10:Impuestos': XmlPago10Impuesto[]; | |  Inicializa la clase|
+| relacion  | IdDocumento: 'hasd',<br>MonedaDR: 'MMX',<br>MetodoDePagoDR: 'PUE',|  uuid: string | | Agregar la Relacion|
+
 
 ```ts
 import { pago10 } from '@signati/core';
