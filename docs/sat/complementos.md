@@ -5,7 +5,7 @@
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlIneAttribute |  Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string; | |  Inicializa la clase|
-| entidad | XmlIneEntidadAttribute | ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne; | | Agregar la Relacion|
+| entidad | XmlIneEntidadAttribute | ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne; | | Agregar la entidad|
 
 
 ```ts
@@ -38,7 +38,7 @@ const ine = new Ine({
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlPagos10Attributes |   _attributes?: XmlPago10Attributes,<br>'pago10:DoctoRelacionado':XmlDoctoRelacionado[];<br>'pago10:Impuestos': XmlPago10Impuesto[]; | |  Inicializa la clase|
-| relacion  | IdDocumento: 'hasd',<br>MonedaDR: 'MMX',<br>MetodoDePagoDR: 'PUE',|  uuid: string | | Agregar la Relacion|
+| relacion  |XmlDoctoRelAttributes | IdDocumento: 'hasd',<br>MonedaDR: 'MMX',<br>MetodoDePagoDR: 'PUE', | | Agregar la Relacion|
 
 
 ```ts
