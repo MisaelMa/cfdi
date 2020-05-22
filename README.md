@@ -3,41 +3,50 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://avatars1.githubusercontent.com/u/52678977?s=400&u=040aa07fa564985892d0fd115a2764579845502d&v=4" width="320" alt="Nest Logo" /></a>
 </p>
 
-Signati NestJS
+
+Install dependencies and devDependencies and start creating xml CFDI 3.3 fast
 # Dependeces
-  - JDK
-  - Openssl
-  --Debian/Ubuntu: sudo apt-get install openssl
-  --CentOS, Red Hat: yum install openssl
-  --Archlinux: sudo pacman -S openssl
-  - Saxon-HE >=9.9.1.6J
-  --Archlinux:  https://aur.archlinux.org/packages/saxon-he
-  --Debian/Ubuntu:
+   JDK
+```sh
+    sudo apt install default-jre
+    sudo apt install default-jdk
+```
+  Openssl
+  ```sh
+    Debian/Ubuntu: sudo apt-get install openssl
+    CentOS, Red Hat: yum install openssl
+    Archlinux: sudo pacman -S openssl
+  ```
+  Saxon-HE >=9.9.1.6J
+  ```sh
 
-[Documentation](https://signati.github.io/core/#/) 
-# Getting started!
+    official: http://saxon.sourceforge.net/
+    Archlinux:  https://aur.archlinux.org/packages/saxon-he
+    
+    Automatic Installation Alternative
 
-### Installation
+    https://github.com/Signati/saxon-he
+    sudo chmod 777 saxon.sh
+    sudo ./saxon.sh
 
-Signati requires [Node.js](https://nodejs.org/) v12+ to run.
+    ███████╗ █████╗ ██╗  ██╗ ██████╗ ███╗   ██╗    ██╗  ██╗███████╗
+    ██╔════╝██╔══██╗╚██╗██╔╝██╔═══██╗████╗  ██║    ██║  ██║██╔════╝
+    ███████╗███████║ ╚███╔╝ ██║   ██║██╔██╗ ██║    ███████║█████╗  
+    ╚════██║██╔══██║ ██╔██╗ ██║   ██║██║╚██╗██║    ██╔══██║██╔══╝  
+    ███████║██║  ██║██╔╝ ██╗╚██████╔╝██║ ╚████║    ██║  ██║███████╗
+    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═╝╚══════╝
+  ```
+# Installation
 
-Install the dependencies and devDependencies and start the server.
+
 
 ```sh
-$ cd signati
-$ npm install
-$ npm run start:dev
+npm i --save @signati/core
 ```
 
-For production environments...
+# Complementos
 
-```sh
-$ npm run start:prod
-```
-
-### Complements List Soported
-
-Complementos (Información adicional para las Facturas.)
+## Información adicional para las Facturas
 - [x] :pushpin: Timbre fiscal digital (TFD).
 - [ ] Estado de cuenta de combustibles de monederos electrónicos.
 - [x] :pushpin: Donatarias.
@@ -66,13 +75,15 @@ Complementos (Información adicional para las Facturas.)
 - [x] Hidrocarburos
     - [x] :pushpin: IngresosHidrocarburos
     - [x] :pushpin: GastosHidrocarburos10
-### Complementos Concepto (Información adicional para los conceptos).
+## Complementos de Concepto
 - [x] :pushpin: Instituciones educativas privadas.
 - [ ] Venta de vehículos.
 - [ ] Terceros.
 - [ ] Acreditamiento del IEPS
 
 
-### Development
+# Development
 
 Want to contribute? Great!
+
+send mail to signatidev@gmail.com 
