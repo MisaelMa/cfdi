@@ -1,10 +1,20 @@
 # Emisor
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlEmisorAttribute |  Rfc?: string; </br>Nombre?: string; </br>RegimenFiscal?: string ! number; | |  Inicializa la clase|
+
 ```ts
-import { Emisor } from '@signati/core';
+import { CFDI, Emisor } from '@signati/core';
+
+const cfd = new CFDI();
 const emisor = new Emisor({
-   Rfc: 'TCM970625MB1',
-   Nombre: 'FACTURACION MODERNA SA DE CV',
+   Rfc: '',
+   Nombre: '',
    RegimenFiscal: 601
 });
 await cfd.emisor(emisor);
+```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Emisor Rfc="" Nombre="" RegimenFiscal="601"/>
 ```
