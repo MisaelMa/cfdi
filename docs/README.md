@@ -168,6 +168,4 @@ Ejemplo:
 https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=5803EB8D-81CD-4557-8719-26632D2FA434&re=XAXX010101000&rr=CARR861127SB0&tt=0000014300.000000&fe=rH8/bw==
 
 El código de barras bidimensional debe ser impreso en un cuadro con lados no menores a 2.75 centímetros.
-<p align="center">
- <img src="/./qr.png" data-origin="./prefijoqr.png" alt="my img">
-</p>
+    ![my img](./qr.png)
