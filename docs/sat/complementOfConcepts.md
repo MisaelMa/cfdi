@@ -1,4 +1,13 @@
 ## Complemento IEDU
+
+IEDU
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor |  XmlIeduAttribute | version: string;<br>nombreAlumno: string;<br>CURP: string;<br>nivelEducativo: string;<br>autRVOE: string; <br>rfcPago: string;  | |  Inicializa la clase|
+
+
+
 ```ts
 import { CFDI, Iedu, Concepts, XmlIeduAttribute } from '@signati/core';
 
