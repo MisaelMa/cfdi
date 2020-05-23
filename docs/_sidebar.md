@@ -1,6 +1,7 @@
 * [Getting Started](/)
 * [Example](/examples.md)
 * Usage
+-[CFDI](sat/cfdi.md)
 -[Emisor](sat/emisor.md)
 -[Receptor](sat/receptor.md)
 -[Relacionado](sat/relacionado.md)
@@ -8,6 +9,7 @@
     * [Complementos concepto](sat/complementOfConcepts.md)
 -[Impuestos](sat/impuestos.md)
 -[Complementos](sat/complementos.md)
+-[Sellar xml CFDI 3.3](sat/sello.md)
 -[Donaciones](donaciones.md)
   
 * [Contribution Guidelines](contribution-guidelines.md)
