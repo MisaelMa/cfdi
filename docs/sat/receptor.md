@@ -6,7 +6,9 @@
 
 
 ```ts
-import { Receptor } from '@signati/core';
+import { CFDI, Receptor } from '@signati/core';
+
+const cfd = new CFDI();
 const receptor = new Receptor({
     Rfc: 'XAXX010101000', 
     Nombre: 'PUBLICO EN GENERAL', 
@@ -14,3 +16,9 @@ const receptor = new Receptor({
 });
 await cfd.receptor(receptor);
 ```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Receptor Rfc="XAXX010101000" Nombre="PUBLICO EN GENERAL" UsoCFDI="G01"/>
+```
+
