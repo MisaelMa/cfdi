@@ -1,5 +1,6 @@
-import { XmlObrasarte, XmlObrasarteAttributes } from '../../types/Complements/obrasarte/obrasarte.interface';
+
 import { ComplementsReturn } from '../../types';
+import { XmlObrasarte, XmlObrasarteAttributes } from '../../types/Complements/obrasarte/obrasarte.com';
 
 export class ObrasArte {
     private obra: XmlObrasarte = {} as XmlObrasarte;

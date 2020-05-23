@@ -107,6 +107,7 @@ describe('Create CFDI', () => {
             await cfd.sellar(key, '12345678a');
             const json = await cfd.getJsonCdfi();
             const xml = await cfd.getXmlCdfi();
+            console.log(xml)
             console.log(json)
             return json;
         }

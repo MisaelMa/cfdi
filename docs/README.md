@@ -89,9 +89,81 @@ npm i --save @signati/core
 - [ ] Terceros.
 - [ ] Acreditamiento del IEPS
 
+# Informacion Oficial
+* Certificados de prueba
+http://omawww.sat.gob.mx/tramitesyservicios/Paginas/certificado_sello_digital.htm
+* Anexo 20
+http://omawww.sat.gob.mx/tramitesyservicios/Paginas/anexo_20_version3-3.htm
+* Catálogo de productos y servicios 
+http://pys.sat.gob.mx/PyS/catPyS.aspx
+* Catálogo de unidades de medida
+http://pys.sat.gob.mx/PyS/catUnidades.aspx
+* Consulta los complementos y complementos concepto de factura
 
-# Development
+https://www.sat.gob.mx/consultas/49522/complementos-y-complementos-concepto-de-factura-
 
-Want to contribute? Great!
+https://www.sat.gob.mx/cs/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1461173971924&ssbinary=true
+# Generar archivos .pem
+Lo primero que se necesita es tener instalada la librería OpenSSL (programa dedicado a la generación y tratado de claves, certificados y keyStore) para poder utilizar los comandos que nos ayudarán a crear las llaves de nuestros sellos digitales.
 
-send mail to signatidev@gmail.com 
+## Linux
+Instalar librería:
+
+Debian/Ubuntu: #sudo apt-get install openssl
+
+CentOS, Red Hat: #yum install openssl
+
+Ejecutar las instrucciones:
+
+Archivo key.pem
+```sh
+openssl pkcs8 -inform DER -in nombrearchivo.key -out nombrearchivo.key.pem -passin pass:contraseña
+```
+archivo cer.pem
+```sh
+openssl x509 -inform DER -outform PEM -in ruta/nombreArchivo.cer -pubkey -out ruta/nombreArchivo.cer.pem
+```
+
+## Windows
+Descargar libreria: http://slproweb.com/products/Win32OpenSSL.html
+
+Deberán descargar la versión según su sistema operativo, e instalar.
+
+Ejecutar desde terminal
+
+Archivo key.pem
+
+```sh
+openssl.exe pkcs8 -inform DER -in ruta/nombreArchivo.key -passin pass:contraseña -out ruta/nombreArchivo.key.pem
+```
+archivo cer.pem
+```sh
+openssl.exe x509 -inform DER -outform PEM -in ruta/nombreArchivo.cer -pubkey -out ruta/nombreArchivo.cer.pem
+```
+
+# Generar QR
+
+ESPECIFICACIÓN TÉCNICA DEL CÓDIGO DE BARRAS BIDIMENSIONAL A INCORPORAR EN LA REPRESENTACIÓN IMPRESA.
+
+Las representaciones impresas de los dos tipos de comprobantes fiscales digitales por Internet deben incluir un código de barras bidimensional conforme al formato de QR Code (Quick Response Code),usando la capacidad de corrección de error con nivel mínimo M, descrito en el estándar ISO/IEC18004, con base en los siguientes lineamientos.
+
+a) Debe contener los siguientes datos en la siguiente secuencia:
+
+    *La URL del acceso al servicio que pueda mostrar los datos de la versión publica del comprobante.
+    *Numero de folio fiscal del comprobante (UUID).
+    *RFC del emisor.
+    *RFC del receptor.
+    *Ocho últimos caracteres del sello digital del emisor del comprobante.
+
+Donde se manejan / caracteres conformados de la siguiente manera:
+![my img](./prefijoqr.png)
+De esta manera se generan los datos validos para realizar una consulta de un CFDI por medio de su expresión impresa.
+
+Ejemplo:
+
+https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=5803EB8D-81CD-4557-8719-26632D2FA434&re=XAXX010101000&rr=CARR861127SB0&tt=0000014300.000000&fe=rH8/bw==
+
+El código de barras bidimensional debe ser impreso en un cuadro con lados no menores a 2.75 centímetros.
+<p align="center">
+ <img src="/./qr.png" data-origin="./prefijoqr.png" alt="my img">
+</p>

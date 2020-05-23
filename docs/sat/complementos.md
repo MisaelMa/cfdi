@@ -1,5 +1,8 @@
 # COMPLEMENTOS
 
+Los Complementos y Complementos Concepto, permiten integrar información adicional de uso regulado por la autoridad para un sector o actividad específica, permitiendo que la información adicional sea protegida por el sello digital de la Factura.
+En Contenidos Relacionados encontrarás el listado de los Complementos y Complementos Concepto
+
  ## Complemeto INE 
 
 INE
