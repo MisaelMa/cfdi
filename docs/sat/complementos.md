@@ -10,8 +10,8 @@ INE
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlIneAttribute |  Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string; | |  Inicializa la clase|
-| Entidad | XmlIneEntidadAttribute | ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne; | | Agregar la entidad|
-| Contabilidad | XmlIneContabilidadAttribute | IdContabilidad: string; | | Agregar la entidad|
+| Entidad | XmlIneEntidadAttribute | ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne; | | |
+| Contabilidad | XmlIneContabilidadAttribute | IdContabilidad: string; | | |
 
 
 ```ts
@@ -45,14 +45,14 @@ const ine = new Ine({
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlPagos10Attributes|    Version?: string; | |  Inicializa la clase|
-| pago  | data: XmlPago10Attributes,<br>relacionado?: XmlDoctoRelacionado[],<br>impuestos?: XmlPago10Impuesto[] |  FechaPago: string;<br>FormaDePagoP: string;<br>MonedaP: string;<br>TipoCambioP?: string;<br>Monto: string;<br>NumOperacion?: string;<br>RfcEmisorCtaOrd?: string;<br>NomBancoOrdExt?: string;<br>CtaOrdenante?: string;<br>RfcEmisorCtaBen?: string;<br>CtaBeneficiario?: string;<br>TipoCadPago?: string;<br>CertPago?: string;<br>CadPago?: string;<br>SelloPago?: string; | |  agrega la entidad|
+| pago  | data: XmlPago10Attributes,<br>relacionado?: XmlDoctoRelacionado[],<br>impuestos?: XmlPago10Impuesto[] |  FechaPago: string;<br>FormaDePagoP: string;<br>MonedaP: string;<br>TipoCambioP?: string;<br>Monto: string;<br>NumOperacion?: string;<br>RfcEmisorCtaOrd?: string;<br>NomBancoOrdExt?: string;<br>CtaOrdenante?: string;<br>RfcEmisorCtaBen?: string;<br>CtaBeneficiario?: string;<br>TipoCadPago?: string;<br>CertPago?: string;<br>CadPago?: string;<br>SelloPago?: string; | |  |
 
 PAGO10-RELACIONADO
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlDoctoRelacionado |    _attributes?: XmlDoctoRelAttributes | |  Inicializa la clase|
-| relacion | XmlDoctoRelAttributes | IdDocumento: string,<br>Serie?: string,<br>Folio?: string,<br>MonedaDR: string,<br>TipoCambioDR?: string,<br>MetodoDePagoDR: string,<br>NumParcialidad?: string,<br>ImpSaldoAnt?: string,<br>ImpPagado?: string,<br>ImpSaldoInsoluto?: string | | Agregar la entidad|
+| relacion | XmlDoctoRelAttributes | IdDocumento: string,<br>Serie?: string,<br>Folio?: string,<br>MonedaDR: string,<br>TipoCambioDR?: string,<br>MetodoDePagoDR: string,<br>NumParcialidad?: string,<br>ImpSaldoAnt?: string,<br>ImpPagado?: string,<br>ImpSaldoInsoluto?: string | | |
 
 PAGO10-IMPUESTOS
 
@@ -60,7 +60,7 @@ PAGO10-IMPUESTOS
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlPagoImptoAttributes |    TotalImpuestosRetenidos?: string;<br>TotalImpuestosTrasladados?: string; | |  Inicializa la clase|
 | traslados | XmlPagoTranladoAttributes | Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
-| retenciones | XmlPagoRetencionAttributes |Impuesto: string;<br>Importe: string; | | Agregar la entidad|
+| retenciones | XmlPagoRetencionAttributes |Impuesto: string;<br>Importe: string; | | |
 
 ```ts
 import { pago10 } from '@signati/core';
@@ -157,8 +157,8 @@ CONCEPTS
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor |  XmlConceptoAttributes |   ClaveProdServ: string;<br>NoIdentificacion: string;<br>Cantidad: number string;<br>ClaveUnidad: string;<br>Unidad: string;<br>Descripcion: string;<br>ValorUnitario: number string;<br>Importe: number string;<br>Descuento: number string;  | |  Inicializa la clase|
-| traslado | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
-| retencion | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
+| traslado | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | |
+| retencion | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | |
 
 
 IEDUOBJECT
@@ -236,11 +236,11 @@ CCE11
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor |  XmlCce11Attributes |  Version: string;<br>MotivoTraslado?: string;<br>TipoOperacion: string;<br>ClaveDePedimento?: string;<br>CertificadoOrigen?: string;<br>NumCertificadoOrigen?: string;<br>NumeroExportadorConfiable?: string;<br>Incoterm?: string;<br>Subdivision?: string;<br>Observaciones?: string;<br>TipoCambioUSD?: string;<br>TotalUSD?: string;  | |  Inicializa la clase|
-| Emisor | XmlCce11EmisorAttributes | Curp?: string; | | Agregar la entidad|
-| Propietario | XmlCce11PropietarioAttributes | NumRegIdTrib: string;<br>ResidenciaFiscal: string;| | Agregar la entidad|
-| Receptor | XmlCce11ReceptorAttributes | NumRegIdTrib?: string; | | Agregar la entidad|
-| Destinatario | XmlCce11DestinatarioAttributes |NumRegIdTrib?: string;<br>Nombre?: string; | | Agregar la entidad|
-| Mercancias | XmlCce11MercanciaAttributes | oIdentificacion: string;<br>FraccionArancelaria?: string;<br>CantidadAduana?: string;<br>UnidadAduana?: string;<br>ValorUnitarioAduana?: string;<br>ValorDolares: string; | | Agregar la entidad|
+| Emisor | XmlCce11EmisorAttributes | Curp?: string; | | |
+| Propietario | XmlCce11PropietarioAttributes | NumRegIdTrib: string;<br>ResidenciaFiscal: string;| | |
+| Receptor | XmlCce11ReceptorAttributes | NumRegIdTrib?: string; | | |
+| Destinatario | XmlCce11DestinatarioAttributes |NumRegIdTrib?: string;<br>Nombre?: string; | | |
+| Mercancias | XmlCce11MercanciaAttributes | oIdentificacion: string;<br>FraccionArancelaria?: string;<br>CantidadAduana?: string;<br>UnidadAduana?: string;<br>ValorUnitarioAduana?: string;<br>ValorDolares: string; | | |
 
 
  ```ts
@@ -316,8 +316,8 @@ const cce11 = new Cce11({ Version: '1.1', TipoOperacion: 'exportacion' });
  | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlAerolineasAttributes |  Version: string;<br>TUA: string; | |  Inicializa la clase|
-| OtrosCargos | XmlAerolineasOtrosCargosAttributes |  TotalCargos: string; | | Agregar la Relacion|
-| Cargo | XmlAerolineasCargoAttributes |  CodigoCargo: string;<br>Importe: string; | | Agregar la Relacion|
+| OtrosCargos | XmlAerolineasOtrosCargosAttributes |  TotalCargos: string; | | |
+| Cargo | XmlAerolineasCargoAttributes |  CodigoCargo: string;<br>Importe: string; | | |
 
  ```ts
 import { areolineas } from '@signati/core';
@@ -349,7 +349,7 @@ COSUMO-DE-COMBUSTIBLES11
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlCondComAttributes |  version: string;<br>tipoOperacion: string;<br>numeroDeCuenta: string;<br>subTotal?: string;<br>total: string; | |  Inicializa la clase|
-| Concepto | XmlCondComConcepConsumDeCombusAttributes |  identificador: string;<br>fecha: string;<br>rfc:string;<br>claveEstacion: string;<br>cantidad: string;<br>nombreCombustible: string;<br>folioOperacion: string;<br>valorUnitario: string;<br>importe: string; | | Agregar la Relacion|
+| Concepto | XmlCondComConcepConsumDeCombusAttributes |  identificador: string;<br>fecha: string;<br>rfc:string;<br>claveEstacion: string;<br>cantidad: string;<br>nombreCombustible: string;<br>folioOperacion: string;<br>valorUnitario: string;<br>importe: string; | | |
 
  ```ts
 import {combustible} from '@signati/core';
@@ -424,16 +424,16 @@ RENOV-VEHICULAR
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlVehicularAttributes |  VehEnaj: string; | |  Inicializa la clase|
-| VehiculosUsados | XmlVehiculosUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumPedIm?: string;<br>Aduana?: string;<br>FechaRegulVeh?: string;<br>Foliofiscal: string; | | Agregar la Relacion|
-| VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes |  Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | Agregar la Relacion|
+| VehiculosUsados | XmlVehiculosUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumPedIm?: string;<br>Aduana?: string;<br>FechaRegulVeh?: string;<br>Foliofiscal: string; | | |
+| VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes |  Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | |
 
 SUSTIT-VEHICULAR
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlVehicularAttributes |  VehEnaj: string; | |  Inicializa la clase|
-| VehiculoUsado | XmlVehiculoUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumFolAvisoint: string;<br>NumPedIm: string;<br>Aduana: string;<br>FechaRegulVeh: string;<br>Foliofiscal: string; | | Agregar la Relacion|
-| VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes | Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | Agregar la Relacion|
+| VehiculoUsado | XmlVehiculoUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumFolAvisoint: string;<br>NumPedIm: string;<br>Aduana: string;<br>FechaRegulVeh: string;<br>Foliofiscal: string; | | |
+| VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes | Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | |
 
 
 ```ts
@@ -505,8 +505,8 @@ DESTRUCCION
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlDestruccionAttributes |  Version: string;<br>Serie: string;<br>NumFolDesVeh: string; | |  Inicializa la clase|
-| InformacionAduanera | XmlInfoAduAttributes |  NumPedImp: string;<br>Fecha: string;<br>Aduana: string; | | Agregar la Relacion|
-| VehiculoDestruido | XmlVehiculoDestruidoAttributes |  Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string; | | Agregar la Relacion|
+| InformacionAduanera | XmlInfoAduAttributes |  NumPedImp: string;<br>Fecha: string;<br>Aduana: string; | | |
+| VehiculoDestruido | XmlVehiculoDestruidoAttributes |  Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string; | | |
 
 
 ```ts
@@ -617,7 +617,7 @@ VALES-DE-DESPENSA
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlValesAttributes |  version: string;<br>tipoOperacion: string;<br>registroPatronal?: string;<br>numeroDeCuenta: string;<br>total: string | |  Inicializa la clase|
-| concepto | XmlValesConceptAttributes | identificador: string;<br>fecha: string;<br>rfc: string;<br>curp: string;<br>nombre: string;<br>numSeguridadSocial?: string;<br>importe: string | | Agregar la Relacion|
+| concepto | XmlValesConceptAttributes | identificador: string;<br>fecha: string;<br>rfc: string;<br>curp: string;<br>nombre: string;<br>numSeguridadSocial?: string;<br>importe: string | | |
 
 ```ts
 import {valesdespensa} from '@signati/core';
@@ -686,7 +686,7 @@ TPE
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlTpeAttributes |  version: string;<br>fechadeTransito: string;<br>tipoTransito: tipoTransito| |  Inicializa la clase|
-| datosTransito | XmlTpeDTransAttributes | Via: Via;<br>TipoId: string;<br>NumeroId: string;<br>Nacionalidad: string;<br>EmpresaTransporte: string;<br>IdTransporte?: string | | Agregar la Relacion|
+| datosTransito | XmlTpeDTransAttributes | Via: Via;<br>TipoId: string;<br>NumeroId: string;<br>Nacionalidad: string;<br>EmpresaTransporte: string;<br>IdTransporte?: string | | |
 
  ```ts
 import {turistas} from '@signati/core';
@@ -720,7 +720,7 @@ LEYENDA-FISC
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlLeyFisAttributes |  version: string;| |  Inicializa la clase|
-| leyenda | XmlLeyendaAttributes | disposicionFiscal?: string<br>norma?: string;<br>textoLeyenda: string; | | Agregar la Relacion|
+| leyenda | XmlLeyendaAttributes | disposicionFiscal?: string<br>norma?: string;<br>textoLeyenda: string; | ||
 
 
  ```ts
@@ -789,8 +789,8 @@ SPEI-TERCERO
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlSpeiTerceroAttributes | FechaOperacion: string;<br>Hora: string;<br>ClaveSPEI: string;<br>sello: string;<br>numeroCertificado: string;| |  Inicializa la clase|
-| ordenante | XmlSpeiOrdenanteAttributes | BancoEmisor: string; | | Agregar la Relacion|
-| beneficiario | XmlSpeiBeneficiarioAttributes | BancoReceptor: string;<br>Concepto: string;<br>IVA?: string;<br>MontoPago: string; | | Agregar la Relacion|
+| ordenante | XmlSpeiOrdenanteAttributes | BancoEmisor: string; | | |
+| beneficiario | XmlSpeiBeneficiarioAttributes | BancoReceptor: string;<br>Concepto: string;<br>IVA?: string;<br>MontoPago: string; | | |
 
   ```ts
 import {spei} from '@signati/core';
@@ -845,7 +845,7 @@ SERVICIO-PARCIAL
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlSerparAttributes | Version: string;<br>NumPerLicoAut: string| |  Inicializa la clase|
-| inmueble | XmlSerparInAttributes | Calle: string;<br>NoExterior?: string;<br>NoInterior?: string;<br>Colonia?: string;<br>Localidad?: string;<br>Referencia?: string;<br>Municipio: string;<br>Estado: string;<br>CodigoPostal: string; | | Agregar la Relacion|
+| inmueble | XmlSerparInAttributes | Calle: string;<br>NoExterior?: string;<br>NoInterior?: string;<br>Colonia?: string;<br>Localidad?: string;<br>Referencia?: string;<br>Municipio: string;<br>Estado: string;<br>CodigoPostal: string; | | |
 
 ```ts
 import {servicios-parciales-de-contruccion} from '@signati/core';
@@ -871,7 +871,7 @@ VEHICULOUSADO
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlVehiculousadoAttributes | Version: string;<br>montoAdquisicion: string;<br>montoEnajenacion: string;<br>claveVehicular: string;<br>marca: string;<br>tipo: string;<br>modelo: string;<br>numeroMotor?: string;<br>numeroSerie?: string;<br>NIV: string;<br>valor: string;| |  Inicializa la clase|
-| informacionAduanera | XmlVIAduaneraAttributes | numero: string;<br>fecha: string;<br>aduana?: string; | | Agregar la Relacion|
+| informacionAduanera | XmlVIAduaneraAttributes | numero: string;<br>fecha: string;<br>aduana?: string; | | |
 
 
  ```ts
@@ -906,7 +906,7 @@ IEEH
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlIeehAttributes | Version: string;<br>NumeroContrato: string;<br>ContraprestacionPagadaOperador: string;<br>Porcentaje: string;| |  Inicializa la clase|
-| docRelacionado | XmlIeehDocRelaAttributes | FolioFiscalVinculado: string;<br>FechaFolioFiscalVinculado: string;<br>Mes: string; | | Agregar la Relacion|
+| docRelacionado | XmlIeehDocRelaAttributes | FolioFiscalVinculado: string;<br>FechaFolioFiscalVinculado: string;<br>Mes: string; | | |
 
 
  ```ts
@@ -947,21 +947,21 @@ EROGACION
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlGcehErogacionAttributes | TipoErogacion: string;<br>MontocuErogacion: string;<br>Porcentaje: string;| |  Inicializa la clase|
-| documentoRelacionado | XmlEroDocRelaAttributes | OrigenErogacion: string;<br>FolioFiscalVinculado?: string;<br>RFCProveedor?: string;<br>MontoTotalIVA: string;<br>MontoRetencionISR?: string;<br>MontoRetencionIVA?: string;<br>MontoRetencionOtrosImpuestos?: string;<br>NumeroPedimentoVinculado?: string;<br>ClavePedimentoVinculado?: string;<br>ClavePagoPedimentoVinculado?: string;<br>MontoIVAPedimento?: string;<br>OtrosImpuestosPagadosPedimento?: string;<br>FechaFolioFiscalVinculado: string;<br>Mes: string;<br>MontoTotalErogaciones: string;| | Agregar la Relacion|
+| documentoRelacionado | XmlEroDocRelaAttributes | OrigenErogacion: string;<br>FolioFiscalVinculado?: string;<br>RFCProveedor?: string;<br>MontoTotalIVA: string;<br>MontoRetencionISR?: string;<br>MontoRetencionIVA?: string;<br>MontoRetencionOtrosImpuestos?: string;<br>NumeroPedimentoVinculado?: string;<br>ClavePedimentoVinculado?: string;<br>ClavePagoPedimentoVinculado?: string;<br>MontoIVAPedimento?: string;<br>OtrosImpuestosPagadosPedimento?: string;<br>FechaFolioFiscalVinculado: string;<br>Mes: string;<br>MontoTotalErogaciones: string;| | |
 
 ACTIVIDADES
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlEroActAttributes | ActividadRelacionada?: string;| |  Inicializa la clase|
-| subActividad | XmlEroSubActAttributes | SubActividadRelacionada?: string;| | Agregar la Relacion|
+| subActividad | XmlEroSubActAttributes | SubActividadRelacionada?: string;| | |
 
 CENTRO-COSTOS
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlEroCenCostAttributes | Campo?: string;| |  Inicializa la clase|
-| yacimiento | XmlEroCenCostYacAttributes | Yacimiento?: string;| | Agregar la Relacion|
+| yacimiento | XmlEroCenCostYacAttributes | Yacimiento?: string;| | |
 
 
 
@@ -1083,8 +1083,8 @@ IMPLOCAL
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlImplocalAttributes | version: string;<br>TotaldeRetenciones: string;<br>TotaldeTraslados: string;| |  Inicializa la clase|
-| retenciones | XmlRetLocalAttributes | ImpLocRetenido: string;<br>TasadeRetencion: string;<br>Importe: string;| | Agregar la Relacion|
-| traslados | XmlTrasLocalAttributes | ImpLocTrasladado: string;<br>TasadeTraslado: string;<br>Importe: string;| | Agregar la Relacion|
+| retenciones | XmlRetLocalAttributes | ImpLocRetenido: string;<br>TasadeRetencion: string;<br>Importe: string;| | |
+| traslados | XmlTrasLocalAttributes | ImpLocTrasladado: string;<br>TasadeTraslado: string;<br>Importe: string;| | |
 
 
  ```ts
