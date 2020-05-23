@@ -3,6 +3,10 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://avatars1.githubusercontent.com/u/52678977?s=400&u=040aa07fa564985892d0fd115a2764579845502d&v=4" width="320" alt="Nest Logo" /></a>
 </p>
 
+<p align="center">
+    Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema de compatibilidad de las versiones 2.0.
+</p>
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick" />
 <input type="hidden" name="hosted_button_id" value="LYAK7CBWDNVMY" />
