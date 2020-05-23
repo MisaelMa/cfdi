@@ -160,7 +160,12 @@ a) Debe contener los siguientes datos en la siguiente secuencia:
     *Ocho últimos caracteres del sello digital del emisor del comprobante.
 
 Donde se manejan / caracteres conformados de la siguiente manera:
-![my img](./prefijoqr.png)
+
+
+<p align="center">
+ <img src="https://signati.github.io/core/prefijoqr.png" alt="my img">
+</p>
+
 De esta manera se generan los datos validos para realizar una consulta de un CFDI por medio de su expresión impresa.
 
 Ejemplo:
@@ -169,5 +174,5 @@ https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=5803EB8D-81CD
 
 El código de barras bidimensional debe ser impreso en un cuadro con lados no menores a 2.75 centímetros.
 <p align="center">
- <img src="/./qr.png" data-origin="./prefijoqr.png" alt="my img">
+ <img src="https://signati.github.io/core/qr.png" alt="my img">
 </p>
