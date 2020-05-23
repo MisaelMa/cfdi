@@ -1,6 +1,14 @@
-# List of Plugins
+# COMPLEMENTOS
 
  ## Complemeto INE 
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlIneAttribute |  Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string; | |  Inicializa la clase|
+| Entidad | XmlIneEntidadAttribute | ClaveEntidad: ClaveEntidadIne;<br>Ambito?: AmbitoIne; | | Agregar la entidad|
+| Contabilidad | XmlIneContabilidadAttribute | IdContabilidad: string; | | Agregar la entidad|
+
+
 ```ts
 import { Ine } from '@signati/core';
 const ine = new Ine({
@@ -11,7 +19,7 @@ const ine = new Ine({
     });
     ine.Entidad({ Ambito: 'Federal', ClaveEntidad: 'ROO' });
     ine.Contabilidad({ IdContabilidad: '9' });
-    this.cfd.complemento(ine);git
+    this.cfd.complemento(ine);
 ```
 
 ```xml
@@ -27,6 +35,26 @@ const ine = new Ine({
 
 ```
  ## Complemeto PAGO10
+ PAGO10
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+|  | XmlPagos10Attributes |  Version?: string; | |  Inicializa la clase|
+
+PAGO10RELACIONADO
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlDoctoRelacionado |    _attributes?: XmlDoctoRelAttributes | |  Inicializa la clase|
+| relacion | XmlDoctoRelAttributes | IdDocumento: string,<br>Serie?: string,<br>Folio?: string,<br>MonedaDR: string,<br>TipoCambioDR?: string,<br>MetodoDePagoDR: string,<br>NumParcialidad?: string,<br>ImpSaldoAnt?: string,<br>ImpPagado?: string,<br>ImpSaldoInsoluto?: string | | Agregar la entidad|
+
+PAGO10IMPUESTOS
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlPagoImptoAttributes |    TotalImpuestosRetenidos?: string;<br>TotalImpuestosTrasladados?: string; | |  Inicializa la clase|
+| traslados | XmlPagoTranladoAttributes | Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
+| retenciones | XmlPagoRetencionAttributes |Impuesto: string;<br>Importe: string; | | Agregar la entidad|
 
 ```ts
 import { pago10 } from '@signati/core';
