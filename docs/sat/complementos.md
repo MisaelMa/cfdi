@@ -39,7 +39,8 @@ const ine = new Ine({
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
-|  | XmlPagos10Attributes |  Version?: string; | |  Inicializa la clase|
+| Construtor | XmlPagos10Attributes|    Version?: string; | |  Inicializa la clase|
+| pago  | data: XmlPago10Attributes,<br>relacionado?: XmlDoctoRelacionado[],<br>impuestos?: XmlPago10Impuesto[] |  FechaPago: string;<br>FormaDePagoP: string;<br>MonedaP: string;<br>TipoCambioP?: string;<br>Monto: string;<br>NumOperacion?: string;<br>RfcEmisorCtaOrd?: string;<br>NomBancoOrdExt?: string;<br>CtaOrdenante?: string;<br>RfcEmisorCtaBen?: string;<br>CtaBeneficiario?: string;<br>TipoCadPago?: string;<br>CertPago?: string;<br>CadPago?: string;<br>SelloPago?: string; | |  agrega la entidad|
 
 PAGO10RELACIONADO
 
@@ -145,6 +146,29 @@ const pago = new Pago10({
 
 ```
  ## Complemento IEDU
+
+CONCEPTS
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor |  XmlConceptoAttributes |   ClaveProdServ: string;<br>NoIdentificacion: string;<br>Cantidad: number string;<br>ClaveUnidad: string;<br>Unidad: string;<br>Descripcion: string;<br>ValorUnitario: number string;<br>Importe: number string;<br>Descuento: number string;  | |  Inicializa la clase|
+| traslado | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
+| retencion | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | Agregar la entidad|
+
+
+IEDUOBJECT
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor |  XmlIeduAttribute |  version: string;<br>nombreAlumno: string;<br>CURP: string;<br>nivelEducativo: string;<br>autRVOE: string;<br>rfcPago: string;  | |  Inicializa la clase|
+
+IEDU
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor |  XmlIeduAttribute | version: string;<br>nombreAlumno: string;<br>CURP: string;<br>nivelEducativo: string;<br>autRVOE: string;rfcPago: string;  | |  Inicializa la clase|
+
+
 ```ts
 import { iedu } from '@signati/core';
 const concepto = new Concepts({
@@ -201,6 +225,19 @@ const concepto = new Concepts({
 </cfdi:ComplementoConcepto>
 ```
  ## Complemento CCE11
+
+CCE11
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor |  XmlCce11Attributes |  Version: string;<br>MotivoTraslado?: string;<br>TipoOperacion: string;<br>ClaveDePedimento?: string;<br>CertificadoOrigen?: string;<br>NumCertificadoOrigen?: string;<br>NumeroExportadorConfiable?: string;<br>Incoterm?: string;<br>Subdivision?: string;<br>Observaciones?: string;<br>TipoCambioUSD?: string;<br>TotalUSD?: string;  | |  Inicializa la clase|
+| Emisor | XmlCce11EmisorAttributes | Curp?: string; | | Agregar la entidad|
+| Propietario | XmlCce11PropietarioAttributes | NumRegIdTrib: string;<br>ResidenciaFiscal: string;| | Agregar la entidad|
+| Receptor | XmlCce11ReceptorAttributes | NumRegIdTrib?: string; | | Agregar la entidad|
+| Destinatario | XmlCce11DestinatarioAttributes |NumRegIdTrib?: string;<br>Nombre?: string; | | Agregar la entidad|
+| Mercancias | XmlCce11MercanciaAttributes | oIdentificacion: string;<br>FraccionArancelaria?: string;<br>CantidadAduana?: string;<br>UnidadAduana?: string;<br>ValorUnitarioAduana?: string;<br>ValorDolares: string; | | Agregar la entidad|
+
+
  ```ts
 import { cce11 } from '@signati/core';
 const cce11 = new Cce11({ Version: '1.1', TipoOperacion: 'exportacion' });
@@ -269,6 +306,14 @@ const cce11 = new Cce11({ Version: '1.1', TipoOperacion: 'exportacion' });
 ```
  ## Complemento AEROLINEAS
 
+ AEROLINEAS
+
+ | Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlAerolineasAttributes |  Version: string;<br>TUA: string; | |  Inicializa la clase|
+| OtrosCargos | XmlAerolineasOtrosCargosAttributes |  TotalCargos: string; | | Agregar la Relacion|
+| Cargo | XmlAerolineasCargoAttributes |  CodigoCargo: string;<br>Importe: string; | | Agregar la Relacion|
+
  ```ts
 import { areolineas } from '@signati/core';
 const aerolineas = new Aerolineas({ Version: '1.0', TUA: 'asas' });
@@ -293,6 +338,13 @@ const aerolineas = new Aerolineas({ Version: '1.0', TUA: 'asas' });
 </cfdi:Complemento>
 ```
 ## Complemento COMBUSTIBLE
+
+COSUMODECOMBUSTIBLES11
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlCondComAttributes |  version: string;<br>tipoOperacion: string;<br>numeroDeCuenta: string;<br>subTotal?: string;<br>total: string; | |  Inicializa la clase|
+| Concepto | XmlCondComConcepConsumDeCombusAttributes |  identificador: string;<br>fecha: string;<br>rfc:string;<br>claveEstacion: string;<br>cantidad: string;<br>nombreCombustible: string;<br>folioOperacion: string;<br>valorUnitario: string;<br>importe: string; | | Agregar la Relacion|
 
  ```ts
 import {combustible} from '@signati/core';
@@ -355,6 +407,30 @@ onst combustible = new ConsumoDeCombustibles11({
 </cfdi:Complemento>
 ``` 
   ## Complemento DECRETO
+
+DECRETO
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlDecretoAttributes |  Version: string;<br>TipoDeDecreto: string; | |  Inicializa la clase|
+
+RENOVVEHICULAR
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlVehicularAttributes |  VehEnaj: string; | |  Inicializa la clase|
+| VehiculosUsados | XmlVehiculosUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumPedIm?: string;<br>Aduana?: string;<br>FechaRegulVeh?: string;<br>Foliofiscal: string; | | Agregar la Relacion|
+| VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes |  Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | Agregar la Relacion|
+
+SUSTITVEHICULAR
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlVehicularAttributes |  VehEnaj: string; | |  Inicializa la clase|
+| VehiculoUsado | XmlVehiculoUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumFolAvisoint: string;<br>NumPedIm: string;<br>Aduana: string;<br>FechaRegulVeh: string;<br>Foliofiscal: string; | | Agregar la Relacion|
+| VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes | Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | Agregar la Relacion|
+
+
 ```ts
 import {decreto} from '@signati/core';
 const decreto = new Decreto({ Version: '1.0', TipoDeDecreto: '01' });
