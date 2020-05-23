@@ -20,18 +20,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Signati/signati-core.git"
+    "url": "git+https://github.com/Signati/core.git"
   },
   "keywords": [
-    "Signati",
-    "CoreSignatiSDK"
+    "CFDI 3.3.",
+    "Factura Electronica",
+    "Factura Electronica Mexico",
+    "Sellar Xml",
+    "SAT",
+    "Buzon tributario",
+    "cfdiv33",
+    "cfdi",
+    "sat",
+    "3.3",
+    "factura",
+    "mexico",
+    "pdf"
   ],
-  "author": "Signati",
+  "author": "Signati [AMIR MISAEL MARIN COH]",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Signati/signati-core/issues"
   },
-  "homepage": "https://github.com/Signati/signati-core#readme",
+  "homepage": "https://signati.github.io/core/",
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "@types/node": "^12.7.5",
