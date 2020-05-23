@@ -2,6 +2,8 @@
 
  ## Complemeto INE 
 
+INE
+
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlIneAttribute |  Version: string;<br>TipoProceso: TipoProcesoIne;<br>TipoComite?: TipoComiteIne;<br>IdContabilidad?: string; | |  Inicializa la clase|
@@ -42,14 +44,14 @@ const ine = new Ine({
 | Construtor | XmlPagos10Attributes|    Version?: string; | |  Inicializa la clase|
 | pago  | data: XmlPago10Attributes,<br>relacionado?: XmlDoctoRelacionado[],<br>impuestos?: XmlPago10Impuesto[] |  FechaPago: string;<br>FormaDePagoP: string;<br>MonedaP: string;<br>TipoCambioP?: string;<br>Monto: string;<br>NumOperacion?: string;<br>RfcEmisorCtaOrd?: string;<br>NomBancoOrdExt?: string;<br>CtaOrdenante?: string;<br>RfcEmisorCtaBen?: string;<br>CtaBeneficiario?: string;<br>TipoCadPago?: string;<br>CertPago?: string;<br>CadPago?: string;<br>SelloPago?: string; | |  agrega la entidad|
 
-PAGO10RELACIONADO
+PAGO10-RELACIONADO
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlDoctoRelacionado |    _attributes?: XmlDoctoRelAttributes | |  Inicializa la clase|
 | relacion | XmlDoctoRelAttributes | IdDocumento: string,<br>Serie?: string,<br>Folio?: string,<br>MonedaDR: string,<br>TipoCambioDR?: string,<br>MetodoDePagoDR: string,<br>NumParcialidad?: string,<br>ImpSaldoAnt?: string,<br>ImpPagado?: string,<br>ImpSaldoInsoluto?: string | | Agregar la entidad|
 
-PAGO10IMPUESTOS
+PAGO10-IMPUESTOS
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
@@ -339,7 +341,7 @@ const aerolineas = new Aerolineas({ Version: '1.0', TUA: 'asas' });
 ```
 ## Complemento COMBUSTIBLE
 
-COSUMODECOMBUSTIBLES11
+COSUMO-DE-COMBUSTIBLES11
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
@@ -414,7 +416,7 @@ DECRETO
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlDecretoAttributes |  Version: string;<br>TipoDeDecreto: string; | |  Inicializa la clase|
 
-RENOVVEHICULAR
+RENOV-VEHICULAR
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
@@ -422,7 +424,7 @@ RENOVVEHICULAR
 | VehiculosUsados | XmlVehiculosUsaEnajPermAlFabAttributes |  PrecioVehUsado: string;<br>TipoVeh: string;<br>Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo?: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string;<br>NumPedIm?: string;<br>Aduana?: string;<br>FechaRegulVeh?: string;<br>Foliofiscal: string; | | Agregar la Relacion|
 | VehiculoNuvoSem | XmlVehNueEnaFabAlPermAttributes |  Año: string;<br>Modelo?: string;<br>NumPlacas: string;<br>RFC?: string; | | Agregar la Relacion|
 
-SUSTITVEHICULAR
+SUSTIT-VEHICULAR
 
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
@@ -494,6 +496,16 @@ const decreto = new Decreto({ Version: '1.0', TipoDeDecreto: '01' });
 </cfdi:Complemento>
 ```
  ## Complemento DESTRUCCION
+
+DESTRUCCION
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlDestruccionAttributes |  Version: string;<br>Serie: string;<br>NumFolDesVeh: string; | |  Inicializa la clase|
+| InformacionAduanera | XmlInfoAduAttributes |  NumPedImp: string;<br>Fecha: string;<br>Aduana: string; | | Agregar la Relacion|
+| VehiculoDestruido | XmlVehiculoDestruidoAttributes |  Marca: string;<br>TipooClase: string;<br>Año: string;<br>Modelo: string;<br>NIV?: string;<br>NumSerie?: string;<br>NumPlacas: string;<br>NumMotor?: string;<br>NumFolTarjCir: string; | | Agregar la Relacion|
+
+
 ```ts
 import {destruccion} from '@signati/core';
 const destruccion = new Destruccion({ Version: '1.0', NumFolDesVeh: '0221', Serie: '012' });
@@ -520,7 +532,14 @@ const destruccion = new Destruccion({ Version: '1.0', NumFolDesVeh: '0221', Seri
  </destruccion:certificadodedestruccion>
 </cfdi:Complemento
 ```
- ## Complemento REGISTROFISCAL
+ ## Complemento REGISTRO-FISCAL
+
+REGISTRO-FISCAL
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlRegistrofiscalAttributes |     Version: string;<br>Folio: string; | |  Inicializa la clase|
+
  ```ts
 import {registrofiscal} from '@signati/core';
  const registroFiscal = new RegistroFiscal({
@@ -537,6 +556,13 @@ import {registrofiscal} from '@signati/core';
 </cfdi:Complemento>
 ```
  ## Complemento DONATARIAS
+
+DONAT
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlDonatAttributes | version: string;<br>noAutorizacion: string;<br>fechaAutorizacion: string;<br>leyenda: string; | |  Inicializa la clase|
+
  ```ts
 import {donatarias} from '@signati/core';
 const donat = new Donat({
@@ -554,7 +580,14 @@ const donat = new Donat({
  <donat:Donatarias version="1.1" fechaAutorizacion="122231" leyenda="12312" noAutorizacion="weqweq"/>
 </cfdi:Complemento>
 ```
-## Complemento OBRASARTE
+## Complemento OBRAS-ARTE
+
+OBRAS-ARTE
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlObrasarteAttributes | Version: string;<br>TipoBien: TiposDeBien;<br>OtrosTipoBien?: string;<br>TituloAdquirido: TituloAdquirido;<br>OtrosTituloAdquirido?: string;<br>Subtotal?: string;<br>IVA?: string;<br>FechaAdquisicion: string;<br>CaracterísticasDeObraoPieza: CaracteristicaObraPieza; | |  Inicializa la clase|
+
 ```ts
 import {obrasarte} from '@signati/core';
 const arte = new ObrasArte({
@@ -574,7 +607,15 @@ const arte = new ObrasArte({
 </cfdi:Complemento>
 
 ```
- ## Complemento VALESDESPENSA
+ ## Complemento VALES-DESPENSA
+
+VALES-DE-DESPENSA
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlValesAttributes |  version: string;<br>tipoOperacion: string;<br>registroPatronal?: string;<br>numeroDeCuenta: string;<br>total: string | |  Inicializa la clase|
+| concepto | XmlValesConceptAttributes | identificador: string;<br>fecha: string;<br>rfc: string;<br>curp: string;<br>nombre: string;<br>numSeguridadSocial?: string;<br>importe: string | | Agregar la Relacion|
+
 ```ts
 import {valesdespensa} from '@signati/core';
 const vale = new ValesDeDespensa({
@@ -614,6 +655,14 @@ const vale = new ValesDeDespensa({
 </cfdi:Complemento>
 ```
  ## Complemento DIVISAS
+
+DIVISAS
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlDivisasAttributes |  version: string;<br>tipoOperacion: tipoOperacion; | |  Inicializa la clase|
+
+
  ```ts
 import {divisas} from '@signati/core';
 const divisas = new Divisas({ version: '1.0', tipoOperacion: tipoOperacion.compra });
@@ -628,6 +677,14 @@ const divisas = new Divisas({ version: '1.0', tipoOperacion: tipoOperacion.compr
 </cfdi:Complemento>
 ```
  ## Complemento TURISTAS
+
+TPE
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlTpeAttributes |  version: string;<br>fechadeTransito: string;<br>tipoTransito: tipoTransito| |  Inicializa la clase|
+| datosTransito | XmlTpeDTransAttributes | Via: Via;<br>TipoId: string;<br>NumeroId: string;<br>Nacionalidad: string;<br>EmpresaTransporte: string;<br>IdTransporte?: string | | Agregar la Relacion|
+
  ```ts
 import {turistas} from '@signati/core';
 const turista = new Tpe({
@@ -653,7 +710,16 @@ const turista = new Tpe({
  </tpe:TuristaPasajeroExtranjero>
 </cfdi:Complemento>
 ```
- ## Complemento LEYENDAFISCAL
+ ## Complemento LEYENDA-FISCAL
+
+LEYENDA-FISC
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlLeyFisAttributes |  version: string;| |  Inicializa la clase|
+| leyenda | XmlLeyendaAttributes | disposicionFiscal?: string<br>norma?: string;<br>textoLeyenda: string; | | Agregar la Relacion|
+
+
  ```ts
 import {leyendafiscal} from '@signati/core';
 const leyenda = new LeyendaFisc();
@@ -679,7 +745,14 @@ const leyenda = new LeyendaFisc();
  </leyendasFisc:LeyendasFiscales>
 </cfdi:Complemento>
 ```
- ## Complemento PAGOESPECIE
+ ## Complemento PAGO-ESPECIE
+
+PAGO-EN-ESPECIE
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlPagoenespecieAttributes | Version: string;<br>CvePIC: string;<br>FolioSolDon: string;<br>PzaArtNombre: string;<br>PzaArtTecn: string;<br>PzaArtAProd: string;<br>PzaArtDim: string;| |  Inicializa la clase|
+
  ```ts
 import {pagoespecie} from '@signati/core';
 const especie = new PagoEnEspecie({
@@ -701,6 +774,21 @@ const especie = new PagoEnEspecie({
 </cfdi:Complemento>
 ```
  ## Complemento SPEI
+
+SPEI
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+|  | XmlSpei | 'spei:SPEI_Tercero': XmlSpeiTercero[]| |  Inicializa la clase|
+
+SPEI-TERCERO
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlSpeiTerceroAttributes | FechaOperacion: string;<br>Hora: string;<br>ClaveSPEI: string;<br>sello: string;<br>numeroCertificado: string;| |  Inicializa la clase|
+| ordenante | XmlSpeiOrdenanteAttributes | BancoEmisor: string; | | Agregar la Relacion|
+| beneficiario | XmlSpeiBeneficiarioAttributes | BancoReceptor: string;<br>Concepto: string;<br>IVA?: string;<br>MontoPago: string; | | Agregar la Relacion|
+
   ```ts
 import {spei} from '@signati/core';
 const spei = new Spei();
@@ -748,6 +836,14 @@ const spei = new Spei();
 </cfdi:Complemento>
 ```
 ## Complemento SERVICIOS-PARCIALES-DE-CONTRUCCION
+
+SERVICIO-PARCIAL
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlSerparAttributes | Version: string;<br>NumPerLicoAut: string| |  Inicializa la clase|
+| inmueble | XmlSerparInAttributes | Calle: string;<br>NoExterior?: string;<br>NoInterior?: string;<br>Colonia?: string;<br>Localidad?: string;<br>Referencia?: string;<br>Municipio: string;<br>Estado: string;<br>CodigoPostal: string; | | Agregar la Relacion|
+
 ```ts
 import {servicios-parciales-de-contruccion} from '@signati/core';
 
@@ -766,6 +862,15 @@ const constr = new ServicioParcial({ Version: '1.0', NumPerLicoAut: '3' });
 
 ```
  ## Complemento VEHICULO-USADO
+
+VEHICULOUSADO
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlVehiculousadoAttributes | Version: string;<br>montoAdquisicion: string;<br>montoEnajenacion: string;<br>claveVehicular: string;<br>marca: string;<br>tipo: string;<br>modelo: string;<br>numeroMotor?: string;<br>numeroSerie?: string;<br>NIV: string;<br>valor: string;| |  Inicializa la clase|
+| informacionAduanera | XmlVIAduaneraAttributes | numero: string;<br>fecha: string;<br>aduana?: string; | | Agregar la Relacion|
+
+
  ```ts
 import {vehiculo-usado} from '@signati/core';
 const vehiculo = new VehiculoUsado({
@@ -792,6 +897,15 @@ const vehiculo = new VehiculoUsado({
 </cfdi:Complemento>
 ```
  ## Complemento INGRESOS-HIDROCARBUROS
+
+IEEH
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlIeehAttributes | Version: string;<br>NumeroContrato: string;<br>ContraprestacionPagadaOperador: string;<br>Porcentaje: string;| |  Inicializa la clase|
+| docRelacionado | XmlIeehDocRelaAttributes | FolioFiscalVinculado: string;<br>FechaFolioFiscalVinculado: string;<br>Mes: string; | | Agregar la Relacion|
+
+
  ```ts
 import {ingresos-hidrocarburos} from '@signati/core';
 const ingreso = new Ieeh({
@@ -818,6 +932,36 @@ const ingreso = new Ieeh({
 
 ```
 ## Complemento GASTOS-HIDROCARBUROS
+
+GCEH
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlGcehAttributes | Version: string;<br>NumeroContrato: string;<br>AreaContractual?: string;| |  Inicializa la clase|
+
+EROGACION
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlGcehErogacionAttributes | TipoErogacion: string;<br>MontocuErogacion: string;<br>Porcentaje: string;| |  Inicializa la clase|
+| documentoRelacionado | XmlEroDocRelaAttributes | OrigenErogacion: string;<br>FolioFiscalVinculado?: string;<br>RFCProveedor?: string;<br>MontoTotalIVA: string;<br>MontoRetencionISR?: string;<br>MontoRetencionIVA?: string;<br>MontoRetencionOtrosImpuestos?: string;<br>NumeroPedimentoVinculado?: string;<br>ClavePedimentoVinculado?: string;<br>ClavePagoPedimentoVinculado?: string;<br>MontoIVAPedimento?: string;<br>OtrosImpuestosPagadosPedimento?: string;<br>FechaFolioFiscalVinculado: string;<br>Mes: string;<br>MontoTotalErogaciones: string;| | Agregar la Relacion|
+
+ACTIVIDADES
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlEroActAttributes | ActividadRelacionada?: string;| |  Inicializa la clase|
+| subActividad | XmlEroSubActAttributes | SubActividadRelacionada?: string;| | Agregar la Relacion|
+
+CENTRO-COSTOS
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlEroCenCostAttributes | Campo?: string;| |  Inicializa la clase|
+| yacimiento | XmlEroCenCostYacAttributes | Yacimiento?: string;| | Agregar la Relacion|
+
+
+
  ```ts
 import {gastos-hidrocarburos} from '@signati/core';
 const gasto = new Gceh({
@@ -929,6 +1073,17 @@ const gasto = new Gceh({
 
 ```
 ## Complemento IMPLOCAL
+
+IMPLOCAL
+
+
+| Function  | Type | properties | Enum | Descripcion |
+| :---: |:---:| :---:|  :---:|  :---:|
+| Construtor | XmlImplocalAttributes | version: string;<br>TotaldeRetenciones: string;<br>TotaldeTraslados: string;| |  Inicializa la clase|
+| retenciones | XmlRetLocalAttributes | ImpLocRetenido: string;<br>TasadeRetencion: string;<br>Importe: string;| | Agregar la Relacion|
+| traslados | XmlTrasLocalAttributes | ImpLocTrasladado: string;<br>TasadeTraslado: string;<br>Importe: string;| | Agregar la Relacion|
+
+
  ```ts
 import {implocal} from '@signati/core';
 
