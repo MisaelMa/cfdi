@@ -2,8 +2,8 @@
 | Function  | Type | properties | Enum | Descripcion |
 | :---: |:---:| :---:|  :---:|  :---:|
 | Construtor | XmlConceptoAttributes | ClaveProdServ: string; <br>NoIdentificacion: string;  <br>Cantidad: number/string; <br>ClaveUnidad: string; <br>Unidad: string; <br> Descripcion: string; <br>ValorUnitario: number/string; <br>Importe: number/string; <br>Descuento: number /string;  <br> | |  Inicializa la clase|
-| traslado | XmlTranRentAttributesProperties |  Base?: string;</br>Impuesto: string;</br>TipoFactor: string; </br>TasaOCuota: string;</br> Importe: string; | |  Inicializa la clase|
-| retencion | XmlTranRentAttributesProperties |  Base?: string;</br>Impuesto: string;</br>TipoFactor: string; </br>TasaOCuota: string;</br> Importe: string; | |  Inicializa la clase|
+| traslado | XmlTranRentAttributesProperties |  Base?: string;</br>Impuesto: string;</br>TipoFactor: string; </br>TasaOCuota: string;</br> Importe: string; | |  |
+| retencion | XmlTranRentAttributesProperties |  Base?: string;</br>Impuesto: string;</br>TipoFactor: string; </br>TasaOCuota: string;</br> Importe: string; | | |
 | complemento | ComlementTypeConcept |  Iedu | |  |
 
 
