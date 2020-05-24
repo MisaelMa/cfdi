@@ -5,7 +5,7 @@
 
 <a href="https://signati.github.io/core">Documentacion</a>
 <p align="center">
-    Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema de compatibilidad de las versiones 2.0.
+    Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema de compatibilidad de las versiones 2.0 del xml de complementos.
 </p>
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
