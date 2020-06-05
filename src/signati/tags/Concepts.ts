@@ -63,7 +63,7 @@ export class Concepts {
     getConcept(): XmlConceptoProperties {
         const concept = {...this.concepto};
         this.concepto = {} as XmlConceptoProperties;
-        console.log(this.concepto)
+        // console.log(this.concepto)
         return concept;
     }
 

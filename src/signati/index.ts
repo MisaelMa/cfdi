@@ -23,9 +23,11 @@ import {saxon} from '@signati/saxon';
 export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
     private debug: boolean = false;
-    private deve: boolean = false;
+    private dev: boolean = false;
 
-    constructor() {
+    constructor(options = {debug: false, dev: false}) {
+        this.debug = options.debug
+        this.dev = options.dev
         this.restartCfdi();
     }
 
@@ -116,6 +118,12 @@ export class CFDI {
             this.xml['cfdi:Comprobante']._attributes.Certificado = certi.cer;
             return this;
         } catch (e) {
+            if (this.dev) {
+                console.log({
+                    method: 'certificar',
+                    error: e
+                })
+            }
             return e.message
         }
     }
@@ -126,10 +134,19 @@ export class CFDI {
      */
     public async sellar(keyfile: string, password: string) {
         try {
+            console.log('sellar')
             const cadena = await this.getCadenaOriginal();
+            console.log('caenda', cadena)
             const sello = await this.getSello(cadena, keyfile, password);
+            console.log('sello', sello)
             this.xml['cfdi:Comprobante']._attributes.Sello = sello;
         } catch (e) {
+            if (this.dev) {
+                console.log({
+                    method: 'getCadenaOriginal',
+                    error: e
+                })
+            }
             return e.messageundefined
         }
     }
@@ -143,12 +160,17 @@ export class CFDI {
                 fs.writeFileSync(fullPath, result, 'utf8');
                 const stylesheetDir = path.join(path.resolve(__dirname, '../signati'), 'resources/xslt33/', 'cadenaoriginal_3_3.xslt');
                 // console.log(stylesheetDir);
-                const cadena =  saxon(stylesheetDir, fullPath);
-                console.log(cadena)
+                const cadena = saxon(stylesheetDir, fullPath);
                 fs.unlinkSync(fullPath);
                 resolve(cadena);
 
             } catch (e) {
+                if (this.dev) {
+                    console.log({
+                        method: 'getCadenaOriginal',
+                        error: e
+                    })
+                }
                 reject({message: e});
             }
         });
@@ -165,6 +187,12 @@ export class CFDI {
                 await sign.update(cadenaOriginal);
                 return resolve(sign.sign(keyPem, 'base64'));
             } catch (e) {
+                if (this.dev) {
+                    console.log({
+                        method: 'getSello',
+                        error: e
+                    })
+                }
                 reject({message: e});
             }
         });
