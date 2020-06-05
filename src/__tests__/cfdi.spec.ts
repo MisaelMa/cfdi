@@ -10,14 +10,6 @@ describe('Create CFDI', () => {
             const key = '/home/misael/Documents/misproyectos/signati/signati/src/storage/certificados/CSD_Pruebas_CFDI_TCM970625MB1.key';
             const cer = '/home/misael/Documents/misproyectos/signati/signati/src/storage/certificados/CSD_Pruebas_CFDI_TCM970625MB1.cer';
             const comprobanteAttribute: ComprobanteInterface = {
-                xmlns: {
-                    xsi: 'http://www.w3.org/2001/XMLSchema-instance',
-                    cfdi: 'http://www.sat.gob.mx/cfd/3',
-                },
-                schemaLocation: [
-                    'http://www.sat.gob.mx/cfd/3',
-                    'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
-                ],
                 Version: '3.3',
                 Serie: 'E',
                 Folio: 'ACACUN-27',

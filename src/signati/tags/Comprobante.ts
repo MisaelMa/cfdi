@@ -10,12 +10,12 @@ export class Comprobante {
   }
 
   public async getComprobante(): Promise<XmlComprobanteAttributes> {
-    await this.xmlns(this.comprobante.xmlns);
+    //await this.xmlns(this.comprobante.xmlns);
 
     // 'xmlns:cfdi': this.comprobante.cfdi,
     // 'xmlns:xsi':  this.comprobante.xsi,
     // 'xmlns:iedu': this.comprobante.iedu,
-    this.attributes['xsi:schemaLocation'] = schema(this.comprobante.schemaLocation);
+    //this.attributes['xsi:schemaLocation'] = schema(this.comprobante.schemaLocation);
     // 'http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
     this.attributes.Version = this.comprobante.Version;
     this.attributes.Serie = this.comprobante.Serie;

@@ -88,8 +88,8 @@ export interface XmlComprobanteAttributes extends anyKey {
 }
 
 export interface ComprobanteInterface {
-    xmlns: XmlnsLinks;
-    schemaLocation: string[];
+    xmlns?: XmlnsLinks;
+    schemaLocation?: string[];
     Version: string;
     Serie: string;
     Folio: string;

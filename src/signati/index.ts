@@ -48,6 +48,7 @@ export class CFDI {
                 } as XmlConcepto,
             },
         };
+
     }
 
     public async setAttributesXml(attribute: XmlVersion = {version: '1.0', encoding: 'utf-8'}) {
@@ -57,6 +58,13 @@ export class CFDI {
     public async setAttributesComprobantes(attribute: ComprobanteInterface) {
         const comprobante = new Comprobante(attribute);
         this.xml['cfdi:Comprobante']._attributes = await comprobante.getComprobante();
+        this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+        this.addXmlns('cfdi', 'http://www.sat.gob.mx/cfd/3')
+
+        this.addSchemaLocation([
+            'http://www.sat.gob.mx/cfd/3',
+            'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+        ])
     }
 
     public async relacionados(relationCfdi: Relacionado) {
