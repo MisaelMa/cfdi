@@ -56,8 +56,6 @@ export class CFDI {
     }
 
     public async setAttributesComprobantes(attribute: ComprobanteInterface) {
-        const comprobante = new Comprobante(attribute);
-        this.xml['cfdi:Comprobante']._attributes = await comprobante.getComprobante();
         this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
         this.addXmlns('cfdi', 'http://www.sat.gob.mx/cfd/3')
 
@@ -65,6 +63,13 @@ export class CFDI {
             'http://www.sat.gob.mx/cfd/3',
             'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
         ])
+
+        const comprobante = new Comprobante(attribute);
+        this.xml['cfdi:Comprobante']._attributes = {
+            ...this.xml['cfdi:Comprobante']._attributes,
+            ...await comprobante.getComprobante()
+        };
+
     }
 
     public async relacionados(relationCfdi: Relacionado) {
