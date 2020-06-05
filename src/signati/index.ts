@@ -134,11 +134,11 @@ export class CFDI {
      */
     public async sellar(keyfile: string, password: string) {
         try {
-            console.log('sellar')
+            //console.log('sellar')
             const cadena = await this.getCadenaOriginal();
-            console.log('caenda', cadena)
+            //console.log('caenda', cadena)
             const sello = await this.getSello(cadena, keyfile, password);
-            console.log('sello', sello)
+            //console.log('sello', sello)
             this.xml['cfdi:Comprobante']._attributes.Sello = sello;
         } catch (e) {
             if (this.dev) {
