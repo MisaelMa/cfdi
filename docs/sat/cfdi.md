@@ -10,3 +10,4 @@
 | impuesto | Impuestos |  class | | |
 | certificar | |  cerpath: string | | |
 | sellar | |  keyfile: string,<br>password: string | | |
+| getXmlCdfi ||||Obtiene el xml |

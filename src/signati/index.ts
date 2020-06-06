@@ -235,4 +235,15 @@ export class CFDI {
         });
 
     }
+
+    public async saveFile(file: string, pathSave: string, name: string): Promise<boolean> {
+        try {
+            const fullPath = `${pathSave}${name}.xml`;
+            fs.writeFileSync(fullPath, new Buffer(file, 'base64'), 'utf8');
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
 }
