@@ -45,7 +45,11 @@
     "pagos",
     "ine"
   ],
-  "author": "Signati [AMIR MISAEL MARIN COH]",
+  "author": {
+    "name": "signati, Amir Misael Marin Coh",
+    "email": "signatidev@gmail.com, amisael.amir.misae@gmail.com",
+    "url": ""
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Signati/signati-core/issues"
