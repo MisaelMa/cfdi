@@ -1,4 +1,4 @@
-import {CFDI, ComprobanteInterface, Concepts, Emisor, Impuestos, Receptor, Relacionado} from '..';
+import {CFDI, Comprobante, Concepts, Emisor, Impuestos, Receptor, Relacionado} from '..';
 import * as path from 'path';
 
 describe('Create CFDI', () => {
@@ -6,11 +6,10 @@ describe('Create CFDI', () => {
     test('Return this CFDI XML', async () => {
 
         const useCFDI = async () => {
-            const cfd = new CFDI();
+
             const key = '/home/misael/Documents/misproyectos/signati/signati/src/storage/certificados/CSD_Pruebas_CFDI_TCM970625MB1.key';
             const cer = '/home/misael/Documents/misproyectos/signati/signati/src/storage/certificados/CSD_Pruebas_CFDI_TCM970625MB1.cer';
-            const comprobanteAttribute: ComprobanteInterface = {
-                Version: '3.3',
+            const comprobanteAttribute: Comprobante = {
                 Serie: 'E',
                 Folio: 'ACACUN-27',
                 Fecha: '2014-07-08T12:16:50',
@@ -23,12 +22,12 @@ describe('Create CFDI', () => {
                 Descuento: '645.92',
                 Moneda: 'MXN',
                 Total: '17207.35',
-                TipoDeComprobante: 'ingreso',
+                TipoDeComprobante: 'I',
                 MetodoPago: 'En efectivo',
                 LugarExpedicion: 'México',
             };
+            const cfd = new CFDI(comprobanteAttribute);
             await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
-            await cfd.setAttributesComprobantes(comprobanteAttribute);
 
             const relation = new Relacionado({TipoRelacion: '01'});
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');

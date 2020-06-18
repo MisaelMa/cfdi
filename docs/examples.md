@@ -1,7 +1,7 @@
 # Estructura General CFDI 3.3
 ```ts
 import { CFDI, 
-         ComprobanteInterface, 
+         Comprobante, 
          Concepts, 
          Emisor, 
          Impuestos, 
@@ -13,7 +13,7 @@ import { CFDI,
   const key = 'CSD_Pruebas_CFDI_TCM970625MB1.key';
   const cer = 'CSD_Pruebas_CFDI_TCM970625MB1.cer';
  
-  const comprobanteAttribute: ComprobanteInterface = {
+  const comprobanteAttribute: Comprobante = {
                 Version: '3.3',
                 Serie: '',
                 Folio: '',

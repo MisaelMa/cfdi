@@ -3,14 +3,13 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as crypto from 'crypto';
 
-import {Comprobante} from './tags/Comprobante';
 import {Emisor} from './tags/Emisor';
 import {Receptor} from './tags/Receptor';
 import {Concepts} from './tags/Concepts';
 import {Impuestos} from './tags/Impuestos';
 import {FileSystem} from './utils/FileSystem';
 
-import {ComprobanteInterface} from './types/Tags/comprobante.interface';
+import {Comprobante, XmlComprobanteAttributes} from './types/Tags/comprobante.interface';
 import {XmlCdfi, XmlVersion} from './types/Tags/xmlCdfi.interface';
 import {XmlConcepto} from './types/Tags/concepts.interface';
 import {ComlementType, XmlComplements} from './types/Tags/complements.interface';
@@ -24,11 +23,26 @@ export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
     private debug: boolean = false;
     private dev: boolean = false;
+    private version: string = '3.3';
 
-    constructor(options = {debug: false, dev: false}) {
+    constructor(attribute: Comprobante, options = {debug: false, dev: false}) {
         this.debug = options.debug
         this.dev = options.dev
         this.restartCfdi();
+
+        this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+        this.addXmlns('cfdi', 'http://www.sat.gob.mx/cfd/3')
+
+        this.addSchemaLocation([
+            'http://www.sat.gob.mx/cfd/3',
+            'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+        ])
+
+        this.xml['cfdi:Comprobante']._attributes = {
+            ...this.xml['cfdi:Comprobante']._attributes,
+            ...{Version: this.version},
+            ...attribute
+        };
     }
 
     private restartCfdi() {
@@ -40,7 +54,7 @@ export class CFDI {
                 }
             },
             'cfdi:Comprobante': {
-                '_attributes': {},
+                '_attributes': {} as XmlComprobanteAttributes,
                 'cfdi:Emisor': {},
                 'cfdi:Receptor': {},
                 'cfdi:Conceptos': {
@@ -55,19 +69,12 @@ export class CFDI {
         this.xml._declaration._attributes = attribute;
     }
 
-    public async setAttributesComprobantes(attribute: ComprobanteInterface) {
-        this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
-        this.addXmlns('cfdi', 'http://www.sat.gob.mx/cfd/3')
-
-        this.addSchemaLocation([
-            'http://www.sat.gob.mx/cfd/3',
-            'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
-        ])
-
-        const comprobante = new Comprobante(attribute);
+    /**@Deprecated**/
+    public setAttributesComprobantes(attribute: Comprobante) {
         this.xml['cfdi:Comprobante']._attributes = {
             ...this.xml['cfdi:Comprobante']._attributes,
-            ...await comprobante.getComprobante()
+            ...{Version: this.version},
+            ...attribute
         };
 
     }

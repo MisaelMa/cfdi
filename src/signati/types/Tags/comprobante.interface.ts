@@ -32,7 +32,7 @@ export interface XmlRelacionadoAttributes {
     UUID: string;
 }
 
-export interface XmlComprobanteAttributes extends anyKey {
+export interface XmlComprobanteAttributes extends Comprobante, anyKey {
     'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
     'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
     /*########XmlComplementsConcepts#########3*/
@@ -67,30 +67,14 @@ export interface XmlComprobanteAttributes extends anyKey {
     'xmlns:ventavehiculos'?: string; // http://www.sat.gob.mx/ventavehiculos
     'xmlns:terceros'?: string; // http://www.sat.gob.mx/terceros
     'xmlns:aieps'?: string; // http://www.sat.gob.mx/acreditamiento
-
     'xsi:schemaLocation'?: string;
-    Version?: string;
-    Serie?: string;
-    Folio?: string;
-    Fecha?: string;
-    Sello?: string;
-    FormaPago?: string;
-    NoCertificado?: string;
-    Certificado?: string;
-    condicionesDePago?: string;
-    SubTotal?: string;
-    Descuento?: string;
-    Moneda?: string;
-    Total?: string;
-    TipoDeComprobante?: string;
-    MetodoPago?: string;
-    LugarExpedicion?: string;
+
 }
 
-export interface ComprobanteInterface {
+export interface Comprobante {
     xmlns?: XmlnsLinks;
     schemaLocation?: string[];
-    Version: string;
+    Version?: string;
     Serie: string;
     Folio: string;
     Fecha: string;
@@ -103,7 +87,7 @@ export interface ComprobanteInterface {
     Descuento: string;
     Moneda: string;
     Total: string;
-    TipoDeComprobante: string;
+    TipoDeComprobante: TipoComprobante | TypeComprobante;
     MetodoPago: string;
     LugarExpedicion: string;
 }
@@ -146,9 +130,12 @@ export interface XmlnsLinks extends anyKey {
 }
 
 export enum TipoComprobante {
-    I = 'Ingreso',
-    E = 'Egreso',
-    T = 'Traslado',
-    P = 'Pago',
-    N = 'Nómina'
+    INGRESO = 'I',
+    EGRESO = 'E',
+    TRASLADO = 'T',
+    PAGO = 'P',
+    NOMINA = 'N'
 }
+
+export type TypeComprobante = 'I' | 'E' | 'T' | 'P' | 'N';
+
