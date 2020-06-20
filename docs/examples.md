@@ -8,38 +8,37 @@ import { CFDI,
          Receptor, 
          Relacionado }  from '@signati/core';
 
-  const cfd = new CFDI();
+
 
   const key = 'CSD_Pruebas_CFDI_TCM970625MB1.key';
   const cer = 'CSD_Pruebas_CFDI_TCM970625MB1.cer';
  
-  const comprobanteAttribute: Comprobante = {
-                Version: '3.3',
-                Serie: '',
-                Folio: '',
-                Fecha: '',
-                Sello: '',
-                FormaPago: '',
-                NoCertificado: '',
-                Certificado: '',
-                condicionesDePago: '',
-                SubTotal: '',
-                Descuento: '',
-                Moneda: '',
-                Total: '',
-                TipoDeComprobante: '',
-                MetodoPago: '',
-                LugarExpedicion: '',
-            };
+       const comprobanteAttribute: Comprobante = {
+                 Serie: 'E',
+                 Folio: 'ACACUN-27',
+                 Fecha: '2014-07-08T12:16:50',
+                 Sello: '',
+                 FormaPago: 'Pago en una sola exhibición',
+                 NoCertificado: '',
+                 Certificado: '',
+                 condicionesDePago: 'Contado',
+                 SubTotal: '16148.04',
+                 Descuento: '645.92',
+                 Moneda: 'MXN',
+                 Total: '17207.35',
+                 TipoDeComprobante: 'I',
+                 MetodoPago: 'En efectivo',
+                 LugarExpedicion: 'México',
+             };
+             const cfd = new CFDI(comprobanteAttribute);
   await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
-  await cfd.setAttributesComprobantes(comprobanteAttribute);
             
   const relation = new Relacionado({ TipoRelacion: '01' });
         relation.addRelation('');
   await cfd.relacionados(relation);
   
   const emisor = new Emisor({
-                     Rfc: '',
+                     Rfc: '',const cfd = new CFDI();
                      Nombre: '',
                      RegimenFiscal: 601
                  });
