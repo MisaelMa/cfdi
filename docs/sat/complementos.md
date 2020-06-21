@@ -148,88 +148,8 @@ const pago = new Pago10({
     </pago10:Pago>
   </pago10:Pagos>
 </cfdi:Complemento>
-
 ```
- ## Complemento IEDU
-
-CONCEPTS
-
-| Function  | Type | properties | Enum | Descripcion |
-| :---: |:---:| :---:|  :---:|  :---:|
-| Construtor |  XmlConceptoAttributes |   ClaveProdServ: string;<br>NoIdentificacion: string;<br>Cantidad: number string;<br>ClaveUnidad: string;<br>Unidad: string;<br>Descripcion: string;<br>ValorUnitario: number string;<br>Importe: number string;<br>Descuento: number string;  | |  Inicializa la clase|
-| traslado | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | |
-| retencion | XmlTranRentAttributesProperties | Base?: string;<br>Impuesto: string;<br>TipoFactor: string;<br>TasaOCuota: string;<br>Importe: string; | | |
-
-
-IEDUOBJECT
-
-| Function  | Type | properties | Enum | Descripcion |
-| :---: |:---:| :---:|  :---:|  :---:|
-| Construtor |  XmlIeduAttribute |  version: string;<br>nombreAlumno: string;<br>CURP: string;<br>nivelEducativo: string;<br>autRVOE: string;<br>rfcPago: string;  | |  Inicializa la clase|
-
-IEDU
-
-| Function  | Type | properties | Enum | Descripcion |
-| :---: |:---:| :---:|  :---:|  :---:|
-| Construtor |  XmlIeduAttribute | version: string;<br>nombreAlumno: string;<br>CURP: string;<br>nivelEducativo: string;<br>autRVOE: string;rfcPago: string;  | |  Inicializa la clase|
-
-
-```ts
-import { iedu } from '@signati/core';
-const concepto = new Concepts({
-      ClaveProdServ: '001',
-      NoIdentificacion: '1212',
-      Cantidad: '2',
-      ClaveUnidad: 'pieza',
-      Unidad: 'Pieza',
-      Descripcion: 'audifonos',
-      ValorUnitario: 1000,
-      Importe: 2000,
-      Descuento: 0,
-    });
-    concepto.traslado({
-      Base: '369.83',
-      Impuesto: '002',
-      TipoFactor: 'Tasa',
-      TasaOCuota: '0.16',
-      Importe: '59.17',
-    });
-    concepto.traslado({
-      Base: '369.8aaaa3',
-      Impuesto: '002',
-      TipoFactor: 'Tasa',
-      TasaOCuota: '0.16',
-      Importe: '59.17',
-    });
-
-    concepto.retencion({
-      Base: '369.83',
-      Impuesto: '002',
-      TipoFactor: 'Tasa',
-      TasaOCuota: '0.16',
-      Importe: '59.17',
-    });
-    const ieduObject: XmlIeduAttribute = {
-      version: '1.0',
-      autRVOE: 'REVOEC',
-      CURP: 'asdasd',
-      nivelEducativo: 'eew',
-      nombreAlumno: 'tr',
-      rfcPago: 'fd',
-    };
-    const iedu = new Iedu(ieduObject);
-    concepto.complemento(iedu);
-
-    await this.cfd.concepto(concepto);
-```
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<cfdi:ComplementoConcepto>
-   <iedu:instEducativas version="1.0" autRVOE="REVOEC" CURP="asdasd" nivelEducativo="eew" nombreAlumno="tr"     rfcPago="fd"/>
-</cfdi:ComplementoConcepto>
-```
- ## Complemento CCE11
+## Complemento CCE11
 
 CCE11
 

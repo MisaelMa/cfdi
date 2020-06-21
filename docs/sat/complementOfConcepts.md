@@ -13,8 +13,6 @@ import { CFDI, Iedu, Concepts, XmlIeduAttribute } from '@signati/core';
 
 const cfd = new CFDI();
 const concepto = new Concepts({ ...});
-    concepto.traslado({ ...});
-    concepto.retencion({ ...});
     const ieduObject: XmlIeduAttribute = {
       version: '1.0',
       autRVOE: '201587PRIM',
