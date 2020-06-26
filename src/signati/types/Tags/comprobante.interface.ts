@@ -4,6 +4,7 @@ import {XmlConcepto} from './concepts.interface';
 import {XmlImpuestos} from './impuestos.interface';
 import {anyKey, XmlComplements} from './complements.interface';
 import {Ine, Aerolineas, Cce11, ConsumoDeCombustibles11, Decreto, Destruccion} from '../../complements';
+import {TipoComprobante, TypeComprobante} from "../Catalogs/TipoComprobante";
 
 export interface XmlComprobante {
     '_attributes': XmlComprobanteAttributes;
@@ -129,13 +130,5 @@ export interface XmlnsLinks extends anyKey {
     aieps?: string; // http://www.sat.gob.mx/acreditamiento
 }
 
-export enum TipoComprobante {
-    INGRESO = 'I',
-    EGRESO = 'E',
-    TRASLADO = 'T',
-    PAGO = 'P',
-    NOMINA = 'N'
-}
 
-export type TypeComprobante = 'I' | 'E' | 'T' | 'P' | 'N';
 
