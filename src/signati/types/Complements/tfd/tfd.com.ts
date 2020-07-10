@@ -10,4 +10,5 @@ export interface XmlTfdAttributes {
     Leyenda?: string;
     SelloCFD: string;
     NoCertificadoSAT: string
+    SelloSAT?: string
 }
