@@ -1,4 +1,4 @@
-import { XmlIedu } from '../Complements/iedu.interface';
+import {XmlIedu} from '../Complements/iedu.interface';
 import {
     XmlAerolineas,
     XmlCce11,
@@ -7,50 +7,50 @@ import {
     XmlDecreto,
     XmlDestruccion
 } from '..';
-import { XmlPagos10 } from '../Complements/pago10.interface';
-import { Aerolineas } from '../../complements/aerolineas';
-import { Cce11 } from '../../complements/cce11';
-import { ConsumoDeCombustibles11 } from '../../complements/consumodecombustibles11';
-import { Decreto } from '../../complements/decreto';
-import { Destruccion } from '../../complements/destruccion';
-import { Ine } from '../../complements/ine';
-import { Iedu } from '../../complements/iedu';
-import { Pago10 } from '../../complements/pago10';
-import { XmlRegistrofiscal } from '../Complements/registrofiscal.interface';
+import {XmlPagos10} from '../Complements/pago10.interface';
+import {Aerolineas} from '../../complements/aerolineas';
+import {Cce11} from '../../complements/cce11';
+import {ConsumoDeCombustibles11} from '../../complements/consumodecombustibles11';
+import {Decreto} from '../../complements/decreto';
+import {Destruccion} from '../../complements/destruccion';
+import {Ine} from '../../complements/ine';
+import {Iedu} from '../../complements/iedu';
+import {Pago10} from '../../complements/pago10';
+import {XmlRegistrofiscal} from '../Complements/registrofiscal.interface';
 import RegistroFiscal from '../../complements/registrofiscal';
-import { XmlDonat } from '../Complements/donatarias.interface';
-import { Donat } from '../../complements/donat';
-import { ObrasArte } from '../../complements/obrasarte';
-import { XmlValesDeDespensa } from '../Complements/valesdedespensa/valesdedespensa.com';
-import { ValesDeDespensa } from '../../complements/valesdedespensa';
-import { XmlDivisas } from '../Complements/divisas/divisas.com';
-import { Divisas } from '../../complements/divisas';
-import { XmlIne } from '../Complements/ine/ine.com';
-import { XmlObrasarte } from '../Complements/obrasarte/obrasarte.com';
+import {XmlDonat} from '../Complements/donatarias.interface';
+import {Donat} from '../../complements/donat';
+import {ObrasArte} from '../../complements/obrasarte';
+import {XmlValesDeDespensa} from '../Complements/valesdedespensa/valesdedespensa.com';
+import {ValesDeDespensa} from '../../complements/valesdedespensa';
+import {XmlDivisas} from '../Complements/divisas/divisas.com';
+import {Divisas} from '../../complements/divisas';
+import {XmlIne} from '../Complements/ine/ine.com';
+import {XmlObrasarte} from '../Complements/obrasarte/obrasarte.com';
 import Tpe from '../../complements/tpe';
-import { XmlTpe } from '../Complements/turistaPasajeroExtranjero/tpe.com';
-import { XmlLeyendasFiscales } from '../Complements/leyendasFiscales/leyendasFiscales.com';
-import { LeyendaFisc } from '../../complements/leyendasFisc';
-import { XmlPagoenespecie } from '../Complements/pagoenespecie/pagoenespecie.com';
-import { PagoEnEspecie } from '../../complements/pagoenespecie';
-import { XmlSpei } from '../Complements/spei/spei.com';
-import { Spei } from '../../complements/spei';
-import { XmlServicioparcial } from '../Complements/servicioparcial/servicioparcial.com';
-import { ServicioParcial } from '../../complements/servicioparcial';
-import { XmlVehiculousado } from '../Complements/vehiculousado/vehiculousado.com';
-import { VehiculoUsado } from '../../complements/vehiculousado';
-import { XmlIeeh } from '../Complements/hidrocarburos/ieeh/ieeh.com';
-import { Gceh, Ieeh } from '../../complements/hidrocarburos';
-import { XmlGceh } from '../Complements/hidrocarburos/gceh/gceh.com';
-import { XmlImplocal } from '../Complements/implocal/implocal.com';
-import { Implocal } from '../../complements/implocal';
-import { XmlPfic } from '../Complements/pfic/pfic.com';
-import { Pfic } from '../../complements/pfic';
-import { XmlTfd } from '../Complements/tfd/tfd.com';
-import { Tfd } from '../../complements/tfd/tfd';
+import {XmlTpe} from '../Complements/turistaPasajeroExtranjero/tpe.com';
+import {XmlLeyendasFiscales} from '../Complements/leyendasFiscales/leyendasFiscales.com';
+import {LeyendaFisc} from '../../complements/leyendasFisc';
+import {XmlPagoenespecie} from '../Complements/pagoenespecie/pagoenespecie.com';
+import {PagoEnEspecie} from '../../complements/pagoenespecie';
+import {XmlSpei} from '../Complements/spei/spei.com';
+import {Spei} from '../../complements/spei';
+import {XmlServicioparcial} from '../Complements/servicioparcial/servicioparcial.com';
+import {ServicioParcial} from '../../complements/servicioparcial';
+import {XmlVehiculousado} from '../Complements/vehiculousado/vehiculousado.com';
+import {VehiculoUsado} from '../../complements/vehiculousado';
+import {XmlIeeh} from '../Complements/hidrocarburos/ieeh/ieeh.com';
+import {Gceh, Ieeh} from '../../complements/hidrocarburos';
+import {XmlGceh} from '../Complements/hidrocarburos/gceh/gceh.com';
+import {XmlImplocal} from '../Complements/implocal/implocal.com';
+import {Implocal} from '../../complements/implocal';
+import {XmlPfic} from '../Complements/pfic/pfic.com';
+import {Pfic} from '../../complements/pfic';
+import {XmlTfd} from '../Complements/tfd/tfd.com';
+import {Tfd} from '../../complements/tfd/tfd';
 
 export interface anyKey {
-    [key: string]: any
+    [key: string ]: any
 }
 
 export interface XmlComplements extends anyKey {
@@ -108,6 +108,7 @@ export interface XmlComplements extends anyKey {
     // https://www.sat.gob.mx/consulta/50282/conoce-los-complementos-para-consorcios-en-materia-de-hidrocarburos
     'gceh:GastosHidrocarburos'?: any;
     'ieeh:IngresosHidrocarburos'?: any;
+    'tfd:TimbreFiscalDigital'?: XmlTfd
 }
 
 export interface XmlComplementsConcepts extends anyKey {

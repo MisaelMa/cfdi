@@ -124,7 +124,7 @@ export class CFDI {
         const complement = await complements.getComplement();
         this.addXmlns(complement.xmlnskey, complement.xmlns);
         this.addSchemaLocation(complement.schemaLocation);
-        this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] = complement.complement;
+        this.xml['cfdi:Comprobante']!['cfdi:Complemento'][complement.key] = complement.complement;
     }
 
 
