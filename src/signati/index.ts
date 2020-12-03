@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as crypto from 'crypto';
-
 import {Emisor} from './tags/Emisor';
 import {Receptor} from './tags/Receptor';
 import {Concepts} from './tags/Concepts';
@@ -25,9 +24,8 @@ export class CFDI {
     private dev: boolean = false;
     private version: string = '3.3';
 
-    constructor(attribute: Comprobante, options = {debug: false, dev: false}) {
+    constructor(attribute: Comprobante, options = {debug: false}) {
         this.debug = options.debug
-        this.dev = options.dev
         this.restartCfdi();
 
         this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
@@ -138,7 +136,7 @@ export class CFDI {
             this.xml['cfdi:Comprobante']._attributes.Certificado = certi.cer;
             return this;
         } catch (e) {
-            if (this.dev) {
+            if (this.debug) {
                 console.log({
                     method: 'certificar',
                     error: e
@@ -161,7 +159,7 @@ export class CFDI {
             //console.log('sello', sello)
             this.xml['cfdi:Comprobante']._attributes.Sello = sello;
         } catch (e) {
-            if (this.dev) {
+            if (this.debug) {
                 console.log({
                     method: 'getCadenaOriginal',
                     error: e
@@ -179,13 +177,22 @@ export class CFDI {
                 const result = js2xml(this.xml, options);
                 fs.writeFileSync(fullPath, result, 'utf8');
                 const stylesheetDir = path.join(path.resolve(__dirname, '../signati'), 'resources/xslt33/', 'cadenaoriginal_3_3.xslt');
-                // console.log(stylesheetDir);
+                if (this.debug) {
+                    console.log(stylesheetDir);
+                }
                 const cadena = saxon(stylesheetDir, fullPath);
+
+                if (this.debug) {
+                    /*
+                    * ||3.3|E|ACACUN-27|2014-07-08T12:16:50|Pago en una sola exhibición|20001000000300022815|16148.04|645.92|MXN|17207.35|I|En efectivo|México|01|asdasd-3234-asdasd-2332-asdas|asdasd-3234-asdasd-2332-asdas|TCM970625MB1|FACTURACION MODERNA SA DE CV|601|XAXX010101000|PUBLICO EN GENERAL|G01|001|1212|2|pieza|Pieza|audifonos|1000|2000|00.0|369.83|002|Tasa|0.16|59.17|369.8aaaa3|002|Tasa|0.16|59.17|369.83|002|Tasa|0.16|59.17|002|59.17|1000|002|Tasa|0.16|59.17||
+                    * */
+                    console.log('cadena original =>', cadena)
+                }
                 fs.unlinkSync(fullPath);
                 resolve(cadena);
 
             } catch (e) {
-                if (this.dev) {
+                if (this.debug) {
                     console.log({
                         method: 'getCadenaOriginal',
                         error: e
@@ -207,7 +214,7 @@ export class CFDI {
                 await sign.update(cadenaOriginal);
                 return resolve(sign.sign(keyPem, 'base64'));
             } catch (e) {
-                if (this.dev) {
+                if (this.debug) {
                     console.log({
                         method: 'getSello',
                         error: e
