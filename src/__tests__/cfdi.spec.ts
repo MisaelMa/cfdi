@@ -7,8 +7,10 @@ describe('Create CFDI', () => {
 
         const useCFDI = async () => {
 
-            const key = '/home/misael/Documents/misproyectos/signati/signati/src/storage/certificados/CSD_Pruebas_CFDI_TCM970625MB1.key';
-            const cer = '/home/misael/Documents/misproyectos/signati/signati/src/storage/certificados/CSD_Pruebas_CFDI_TCM970625MB1.cer';
+            const pathCer = path.join(path.resolve(__dirname, '../signati'), 'certificados');
+            console.log(pathCer)
+            const key = pathCer + '/LAN7008173R5.key';
+            const cer = pathCer + '/LAN7008173R5.cer';
             const comprobanteAttribute: Comprobante = {
                 Serie: 'E',
                 Folio: 'ACACUN-27',
@@ -26,7 +28,7 @@ describe('Create CFDI', () => {
                 MetodoPago: 'En efectivo',
                 LugarExpedicion: 'México',
             };
-            const cfd = new CFDI(comprobanteAttribute);
+            const cfd = new CFDI(comprobanteAttribute, {debug: true});
             await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
 
             const relation = new Relacionado({TipoRelacion: '01'});
