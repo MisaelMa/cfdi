@@ -46,15 +46,27 @@
     "ine"
   ],
   "author": {
-    "name": "signati, Amir Misael Marin Coh",
+    "name": "signati, Amir Misael Marin Coh,",
     "email": "signatidev@gmail.com, amisael.amir.misae@gmail.com",
     "url": ""
   },
+  "contributors": [
+    {
+      "name": "Amir Misael Marin Coh",
+      "email": "amisael.amir.misae@gmail.com",
+      "url": "https://misael.signati.app/"
+    },
+    {
+      "name": "Jose Alberto Marin Coh",
+      "email": "",
+      "url": ""
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Signati/signati-core/issues"
   },
-  "homepage": "https://signati.github.io/core/",
+  "homepage": "https://docs.signati.app/",
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "@types/node": "^12.7.5",
