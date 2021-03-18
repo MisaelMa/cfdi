@@ -1,22 +1,22 @@
-import * as path from 'path';
+import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as os from 'os';
-import * as crypto from 'crypto';
-import {Emisor} from './tags/Emisor';
-import {Receptor} from './tags/Receptor';
+import * as path from 'path';
 import {Concepts} from './tags/Concepts';
+import {Emisor} from './tags/Emisor';
 import {Impuestos} from './tags/Impuestos';
+import {Receptor} from './tags/Receptor';
 import {FileSystem} from './utils/FileSystem';
 
-import {Comprobante, XmlComprobanteAttributes} from './types/Tags/comprobante.interface';
-import {XmlCdfi, XmlVersion} from './types/Tags/xmlCdfi.interface';
-import {XmlConcepto} from './types/Tags/concepts.interface';
-import {ComlementType, XmlComplements} from './types/Tags/complements.interface';
-import {Relacionado} from './tags/Relacionado';
-import {schema} from './utils/XmlHelp';
-import {js2xml} from 'xml-js';
 import {cer, key} from '@signati/openssl';
-import {saxon} from '@signati/saxon';
+import {saxon, Transform} from '@signati/saxon';
+import {js2xml} from 'xml-js';
+import {Relacionado} from './tags/Relacionado';
+import {ComlementType, XmlComplements} from './types/Tags/complements.interface';
+import {Comprobante, XmlComprobanteAttributes} from './types/Tags/comprobante.interface';
+import {XmlConcepto} from './types/Tags/concepts.interface';
+import {XmlCdfi, XmlVersion} from './types/Tags/xmlCdfi.interface';
+import {schema} from './utils/XmlHelp';
 
 export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
@@ -41,26 +41,6 @@ export class CFDI {
             ...{Version: this.version},
             ...attribute
         };
-    }
-
-    private restartCfdi() {
-        this.xml = {
-            '_declaration': {
-                _attributes: {
-                    version: '1.0',
-                    encoding: 'utf-8'
-                }
-            },
-            'cfdi:Comprobante': {
-                '_attributes': {} as XmlComprobanteAttributes,
-                'cfdi:Emisor': {},
-                'cfdi:Receptor': {},
-                'cfdi:Conceptos': {
-                    'cfdi:Concepto': [],
-                } as XmlConcepto,
-            },
-        };
-
     }
 
     public async setAttributesXml(attribute: XmlVersion = {version: '1.0', encoding: 'utf-8'}) {
@@ -102,19 +82,6 @@ export class CFDI {
         this.xml['cfdi:Comprobante']['cfdi:Impuestos'] = impuesto.impuesto;
     }
 
-    private async addXmlns(xmlnsKey: string, xmlns: string) {
-        this.xml['cfdi:Comprobante']._attributes['xmlns:' + xmlnsKey] = xmlns;
-    }
-
-    private async addSchemaLocation(locations: string[]) {
-
-        if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
-            this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
-        }
-        const schemaLocation = schema(locations);
-        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
-    }
-
     public async complemento(complements: ComlementType) {
         if (!this.xml['cfdi:Comprobante']['cfdi:Complemento']) {
             this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
@@ -131,7 +98,7 @@ export class CFDI {
      */
     public async certificar(cerpath: string) {
         try {
-            const certi = cer.getCer(cerpath) //. await certificate.getCer(cerpath);
+            const certi = cer.getCer(cerpath) // . await certificate.getCer(cerpath);
             this.xml['cfdi:Comprobante']._attributes.NoCertificado = certi.nocer;
             this.xml['cfdi:Comprobante']._attributes.Certificado = certi.cer;
             return this;
@@ -152,11 +119,11 @@ export class CFDI {
      */
     public async sellar(keyfile: string, password: string) {
         try {
-            //console.log('sellar')
+            // console.log('sellar')
             const cadena = await this.getCadenaOriginal();
-            //console.log('caenda', cadena)
+            // console.log('caenda', cadena)
             const sello = await this.getSello(cadena, keyfile, password);
-            //console.log('sello', sello)
+            // console.log('sello', sello)
             this.xml['cfdi:Comprobante']._attributes.Sello = sello;
         } catch (e) {
             if (this.debug) {
@@ -167,6 +134,74 @@ export class CFDI {
             }
             return e.messageundefined
         }
+    }
+
+    public async getJsonCdfi(): Promise<XmlCdfi> {
+        return await new Promise(async (resolve, reject) => {
+            try {
+                resolve(this.xml);
+            } catch (e) {
+                reject({message: e});
+            }
+        });
+
+    }
+
+    public async getXmlCdfi(): Promise<string> {
+        return await new Promise(async (resolve, reject) => {
+            try {
+                const options = {compact: true, ignoreComment: true, spaces: 4};
+                const cfdi = await js2xml({...this.xml}, options);
+                this.restartCfdi();
+                resolve(cfdi);
+            } catch (e) {
+                reject({message: e});
+            }
+        });
+
+    }
+
+    public async saveFile(file: string, pathSave: string, name: string): Promise<boolean> {
+        try {
+            const fullPath = `${pathSave}${name}.xml`;
+            fs.writeFileSync(fullPath, new Buffer(file, 'base64'), 'utf8');
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    private restartCfdi() {
+        this.xml = {
+            '_declaration': {
+                _attributes: {
+                    version: '1.0',
+                    encoding: 'utf-8'
+                }
+            },
+            'cfdi:Comprobante': {
+                '_attributes': {} as XmlComprobanteAttributes,
+                'cfdi:Emisor': {},
+                'cfdi:Receptor': {},
+                'cfdi:Conceptos': {
+                    'cfdi:Concepto': [],
+                } as XmlConcepto,
+            },
+        };
+
+    }
+
+    private async addXmlns(xmlnsKey: string, xmlns: string) {
+        this.xml['cfdi:Comprobante']._attributes['xmlns:' + xmlnsKey] = xmlns;
+    }
+
+    private async addSchemaLocation(locations: string[]) {
+
+        if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
+            this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
+        }
+        const schemaLocation = schema(locations);
+        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
     }
 
     private async getCadenaOriginal(): Promise<string> {
@@ -180,7 +215,9 @@ export class CFDI {
                 if (this.debug) {
                     console.log(stylesheetDir);
                 }
-                const cadena = saxon(stylesheetDir, fullPath);
+                const transform = new Transform();
+                const cadena  = transform.s(fullPath).xsl(stylesheetDir).warnings('silent').run();
+                // const cadena = saxon(stylesheetDir, fullPath);
 
                 if (this.debug) {
                     /*
@@ -223,41 +260,6 @@ export class CFDI {
                 reject({message: e});
             }
         });
-    }
-
-    public async getJsonCdfi(): Promise<XmlCdfi> {
-        return await new Promise(async (resolve, reject) => {
-            try {
-                resolve(this.xml);
-            } catch (e) {
-                reject({message: e});
-            }
-        });
-
-    }
-
-    public async getXmlCdfi(): Promise<string> {
-        return await new Promise(async (resolve, reject) => {
-            try {
-                const options = {compact: true, ignoreComment: true, spaces: 4};
-                const cfdi = await js2xml({...this.xml}, options);
-                this.restartCfdi();
-                resolve(cfdi);
-            } catch (e) {
-                reject({message: e});
-            }
-        });
-
-    }
-
-    public async saveFile(file: string, pathSave: string, name: string): Promise<boolean> {
-        try {
-            const fullPath = `${pathSave}${name}.xml`;
-            fs.writeFileSync(fullPath, new Buffer(file, 'base64'), 'utf8');
-            return true;
-        } catch (e) {
-            return false;
-        }
     }
 
 }
