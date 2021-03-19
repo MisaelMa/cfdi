@@ -1,6 +1,6 @@
 {
   "name": "@signati/core",
-  "version": "3.3.8",
+  "version": "3.3.9",
   "description": "Crea el XML, Firmar Y Sella comprobantes fiscales digitales en Mexico (CFDI)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,7 +12,6 @@
     "version": "git add -A src",
     "postversion": "git push && git push --tags",
     "build": "tsc",
-    "publish": "npm publish",
     "lint": "tslint -p tsconfig.json"
   },
   "publishConfig": {

@@ -1,9 +1,10 @@
 # Signati
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://avatars1.githubusercontent.com/u/52678977?s=400&u=040aa07fa564985892d0fd115a2764579845502d&v=4" width="320" alt="Nest Logo" /></a>
+  <a href="https://docs.signati.app/" target="blank">
+  <img src="https://avatars1.githubusercontent.com/u/52678977?s=400&u=040aa07fa564985892d0fd115a2764579845502d&v=4" width="320" alt="Nest Logo" /></a>
 </p>
 
-<a href="https://signati.github.io/core">Documentacion</a>
+<a href="https://docs.signati.app/">Documentacion</a>
 <p align="center">
     Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema de compatibilidad de las versiones 2.0 del xml de complementos.
 </p>
@@ -17,7 +18,8 @@
 
 
 
-Install dependencies and devDependencies and start creating xml CFDI 3.3 fast
+Instala las dependencias and devDependencies y comienza a  crear xml CFDI 3.3.
+Para Windows Lea la <a href="https://docs.signati.app/">Documentacion</a>
 # Dependeces
    JDK
 ```sh
