@@ -6,7 +6,7 @@ export class FileSystem {
    *
    * @param action
    */
-  static manageDirectoryTemp(action: string) {
+  public static manageDirectoryTemp(action: string) {
     const dir = './tmp';
     if (!fs.existsSync(dir)) {
       if (action === 'create') {
@@ -23,7 +23,7 @@ export class FileSystem {
    *
    * @param path
    */
-  static deleteFolderRecursive(path: string) {
+  public static deleteFolderRecursive(path: string) {
     if (fs.existsSync(path)) {
       fs.readdirSync(path).forEach((file, index) => {
         const curPath = path + '/' + file;
@@ -41,7 +41,7 @@ export class FileSystem {
    *
    * @returns {string}
    */
-  static generateNameTemp() {
+  public static generateNameTemp() {
     const fileNameTemp = Date.now();
     return fileNameTemp.toString();
   }
@@ -51,7 +51,7 @@ export class FileSystem {
    * @param file
    * @returns {*}
    */
-  static readFileSync(file: string) {
+  public static readFileSync(file: string) {
     return fs.readFileSync(file, 'utf8');
   }
 }

@@ -249,7 +249,7 @@ export class CFDI {
                 // console.log(key);
                 const sign = await crypto.createSign('RSA-SHA256');
                 await sign.update(cadenaOriginal);
-                return resolve(sign.sign(keyPem, 'base64'));
+                return resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
             } catch (e) {
                 if (this.debug) {
                     console.log({

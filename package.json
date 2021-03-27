@@ -1,6 +1,6 @@
 {
   "name": "@signati/core",
-  "version": "3.3.9",
+  "version": "3.3.10",
   "description": "Crea el XML, Firmar Y Sella comprobantes fiscales digitales en Mexico (CFDI)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,10 +8,8 @@
     "test": "jest --config jestconfig.json",
     "serve": "node ./lib",
     "preversion": "npm run lint",
-    "prepare": "npm run build",
     "version": "git add -A src",
     "postversion": "git push && git push --tags",
-    "build": "tsc",
     "lint": "tslint -p tsconfig.json"
   },
   "publishConfig": {
@@ -69,6 +67,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "@types/node": "^12.7.5",
+    "@types/node-forge": "^0.8.7",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.1.0",
@@ -82,10 +81,8 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "@signati/openssl": "0.0.2",
+    "@signati/openssl": "^0.0.5",
     "@signati/saxon": "^0.0.4",
-    "@types/node-forge": "^0.8.7",
-    "immutable": "^4.0.0-rc.12",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "node-forge": "^0.10.0",

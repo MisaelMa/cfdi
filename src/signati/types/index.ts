@@ -1,4 +1,4 @@
-//Tags
+// Tags
 export * from './Tags/complements.interface';
 export * from './Tags/comprobante.interface';
 export * from './Tags/concepts.interface';
