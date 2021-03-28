@@ -1,4 +1,13 @@
-import {CFDI, Comprobante, Concepts, Emisor, Impuestos, Receptor, Relacionado} from '..';
+import {
+    CFDI,
+    Comprobante,
+    Concepts,
+    Emisor,
+    FormaPagoList,
+    Impuestos,
+    Receptor,
+    Relacionado,
+} from '..';
 import * as path from 'path';
 
 describe('Create CFDI', () => {
@@ -6,7 +15,6 @@ describe('Create CFDI', () => {
     test('Return this CFDI XML', async () => {
 
         const useCFDI = async () => {
-
             const pathCer = path.join(path.resolve(__dirname, '../signati'), 'certificados');
             console.log(pathCer)
             const key = pathCer + '/LAN7008173R5.key';

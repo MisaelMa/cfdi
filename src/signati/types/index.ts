@@ -17,6 +17,8 @@ export * from './Complements/iedu.interface';
 export * from './Complements/ine/ine.com';
 export * from './Complements/ine/ine.enum';
 export * from './Complements/Nomina.interface';
+export * from './Catalogs';
+
 
 // certificado
 export * from './certificate.interface';

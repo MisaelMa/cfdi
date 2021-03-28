@@ -5,6 +5,7 @@ import {XmlImpuestos} from './impuestos.interface';
 import {anyKey, XmlComplements} from './complements.interface';
 import {Ine, Aerolineas, Cce11, ConsumoDeCombustibles11, Decreto, Destruccion} from '../../complements';
 import {TipoComprobante, TypeComprobante} from "../Catalogs/TipoComprobante";
+import {FormaPago, FormaPagoType, MetodoPago, MetodoPagoType} from "../Catalogs";
 
 export interface XmlComprobante {
     '_attributes': XmlComprobanteAttributes;
@@ -80,7 +81,7 @@ export interface Comprobante {
     Folio: string;
     Fecha: string;
     Sello: string;
-    FormaPago: string;
+    FormaPago: FormaPago | FormaPagoType;
     NoCertificado: string;
     Certificado: string;
     condicionesDePago?: string;
@@ -89,7 +90,7 @@ export interface Comprobante {
     Moneda: string;
     Total: string;
     TipoDeComprobante: TipoComprobante | TypeComprobante;
-    MetodoPago: string;
+    MetodoPago: MetodoPago | MetodoPagoType;
     LugarExpedicion: string;
 }
 
