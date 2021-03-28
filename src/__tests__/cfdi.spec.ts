@@ -1,3 +1,4 @@
+import * as path from 'path';
 import {
     CFDI,
     Comprobante,
@@ -8,7 +9,6 @@ import {
     Receptor,
     Relacionado,
 } from '..';
-import * as path from 'path';
 
 describe('Create CFDI', () => {
 
@@ -24,7 +24,7 @@ describe('Create CFDI', () => {
                 Folio: 'ACACUN-27',
                 Fecha: '2014-07-08T12:16:50',
                 Sello: '',
-                FormaPago: 'Pago en una sola exhibición',
+                FormaPago: '01',
                 NoCertificado: '',
                 Certificado: '',
                 condicionesDePago: 'Contado',
@@ -33,7 +33,7 @@ describe('Create CFDI', () => {
                 Moneda: 'MXN',
                 Total: '17207.35',
                 TipoDeComprobante: 'I',
-                MetodoPago: 'En efectivo',
+                MetodoPago: 'PUE',
                 LugarExpedicion: 'México',
             };
             const cfd = new CFDI(comprobanteAttribute, {debug: true});
