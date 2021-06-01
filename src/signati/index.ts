@@ -34,7 +34,7 @@ export class CFDI {
         this.addSchemaLocation([
             'http://www.sat.gob.mx/cfd/3',
             'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
-        ])
+        ]);
 
         this.xml['cfdi:Comprobante']._attributes = {
             ...this.xml['cfdi:Comprobante']._attributes,

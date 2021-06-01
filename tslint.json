@@ -2,6 +2,7 @@
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
     "indent": [true, "spaces", 4],
+    "interface-name": [false, "never-prefix"],
     "quotemark": [true, "single"]
   }
 }
