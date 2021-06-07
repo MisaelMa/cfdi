@@ -1,7 +1,6 @@
-import {XmlImpuestos} from './impuestos.interface';
-import {XmlComplementsConcepts} from './complements.interface';
-import Iedu from '../../complements/iedu';
 import {Attributes, ElementCompact} from 'xml-js';
+import {XmlComplementsConcepts} from './complements.interface';
+import {XmlImpuestos} from './impuestos.interface';
 
 export interface XmlConcepto {
     'cfdi:Concepto': XmlConceptoProperties[];
