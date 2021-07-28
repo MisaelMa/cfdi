@@ -9,6 +9,7 @@
     "serve": "node ./lib",
     "preversion": "npm run lint",
     "version": "git add -A src",
+    "build": "tsc",
     "postversion": "git push && git push --tags",
     "lint": "tslint -p tsconfig.json"
   },

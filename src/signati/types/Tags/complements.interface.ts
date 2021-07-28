@@ -48,6 +48,7 @@ import {XmlPfic} from '../Complements/pfic/pfic.com';
 import {Pfic} from '../../complements/pfic';
 import {XmlTfd} from '../Complements/tfd/tfd.com';
 import {Tfd} from '../../complements/tfd/tfd';
+import {XmlCartaPorte} from "../Complements/cartaporte.interface";
 
 export interface anyKey {
     [key: string ]: any
@@ -171,6 +172,7 @@ export declare type ComplementTypeXml =
     | XmlImplocal
     | XmlPfic
     | XmlTfd
+    | XmlCartaPorte
 export declare type ComlementTypeConcept = Iedu;
 
 export interface ComplementsReturn extends ComplementProperties {

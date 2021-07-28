@@ -55,7 +55,7 @@ export interface CPFTOperadores {
     'cartaporte:Operador': CPFTOperador[];
 }
 
-export interface CPFTOperador extends Attributes {
+export interface CPFTOperador {
     _attributes?: CPFTOperadorAttribute;
     'cartaporte:Domicilio': CPDomicilio[]
 }

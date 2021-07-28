@@ -1,3 +1,3 @@
-import {CartaPorte} from './Iedu';
+import {CartaPorte} from './CartaPorte';
 export { CartaPorte };
 export default CartaPorte;
