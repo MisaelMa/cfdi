@@ -1,0 +1,1 @@
+export type TagComprobante = 'cfdi:Comprobante'

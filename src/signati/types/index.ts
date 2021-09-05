@@ -18,6 +18,7 @@ export * from './Complements/ine/ine.com';
 export * from './Complements/ine/ine.enum';
 export * from './Complements/Nomina.interface';
 export * from './Catalogs';
+export * from './Tags/tags.structure'
 
 
 // certificado
