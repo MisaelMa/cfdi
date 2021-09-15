@@ -13,21 +13,37 @@ import {saxon, Transform} from '@signati/saxon';
 import {js2xml} from 'xml-js';
 import {Relacionado} from './tags/Relacionado';
 import {ComlementType, XmlComplements} from './types/Tags/complements.interface';
-import {Comprobante, XmlComprobanteAttributes} from './types/Tags/comprobante.interface';
+import {Comprobante, XmlComprobante, XmlComprobanteAttributes} from './types/Tags/comprobante.interface';
 import {XmlConcepto} from './types/Tags/concepts.interface';
 import {XmlCdfi, XmlVersion} from './types/Tags/xmlCdfi.interface';
+import {Structure} from './utils/structure';
 import {schema} from './utils/XmlHelp';
+import {TagComprobante} from "./types";
+
+interface Options {
+    debug: boolean;
+    compact?: boolean;
+    customTags?: any;
+}
 
 export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
     private debug: boolean = false;
     private dev: boolean = false;
     private version: string = '3.3';
+    private tags: Structure;
+    private tc: TagComprobante = 'cfdi:Comprobante';
 
-    constructor(attribute: Comprobante, options = {debug: false}) {
+    constructor(attribute: Comprobante, options: Options = {
+        debug: false,
+        compact: false,
+        customTags: {}
+    }) {
+        this.tags = new Structure(options.customTags)
+        this.tc = this.tags.tagXml<TagComprobante>('cfdi:Comprobante')
         this.debug = options.debug
-        this.restartCfdi();
 
+        this.restartCfdi();
         this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
         this.addXmlns('cfdi', 'http://www.sat.gob.mx/cfd/3')
 
@@ -35,9 +51,8 @@ export class CFDI {
             'http://www.sat.gob.mx/cfd/3',
             'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
         ]);
-
-        this.xml['cfdi:Comprobante']._attributes = {
-            ...this.xml['cfdi:Comprobante']._attributes,
+        this.xml[this.tc]._attributes = {
+            ...this.xml[this.tc]._attributes,
             ...{Version: this.version},
             ...attribute
         };
@@ -49,8 +64,8 @@ export class CFDI {
 
     /**@Deprecated**/
     public setAttributesComprobantes(attribute: Comprobante) {
-        this.xml['cfdi:Comprobante']._attributes = {
-            ...this.xml['cfdi:Comprobante']._attributes,
+        this.xml[this.tc]._attributes = {
+            ...this.xml[this.tc]._attributes,
             ...{Version: this.version},
             ...attribute
         };
@@ -58,15 +73,15 @@ export class CFDI {
     }
 
     public async relacionados(relationCfdi: Relacionado) {
-        this.xml['cfdi:Comprobante'] = Object.assign({['cfdi:CfdiRelacionados']: relationCfdi.getRelation()}, this.xml['cfdi:Comprobante']);
+        this.xml[this.tc] = Object.assign({['cfdi:CfdiRelacionados']: relationCfdi.getRelation()}, this.xml[this.tc]);
     }
 
     public async emisor(emisor: Emisor) {
-        this.xml['cfdi:Comprobante']['cfdi:Emisor'] = emisor.emisor;
+        this.xml[this.tc]['cfdi:Emisor'] = emisor.emisor;
     }
 
     public async receptor(receptor: Receptor) {
-        this.xml['cfdi:Comprobante']['cfdi:Receptor'] = receptor.receptor;
+        this.xml[this.tc]['cfdi:Receptor'] = receptor.receptor;
     }
 
     public async concepto(concept: Concepts) {
@@ -75,21 +90,32 @@ export class CFDI {
             this.addXmlns(properties.xmlnskey, properties.xmlns);
             this.addSchemaLocation(properties.schemaLocation)
         }
-        this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
+        if (this.tags.isActive) {
+            // @ts-ignore
+            if (!this.xml[this.tc]['cfdi:Concepto']) {
+                // @ts-ignore
+                this.xml[this.tc]['cfdi:Concepto'] = []
+            }
+            // @ts-ignore
+            this.xml[this.tc]['cfdi:Concepto'].push(concept.getConcept());
+        } else {
+            this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
+        }
     }
 
     public async impuesto(impuesto: Impuestos) {
-        this.xml['cfdi:Comprobante']['cfdi:Impuestos'] = impuesto.impuesto;
+        this.xml[this.tc]['cfdi:Impuestos'] = impuesto.impuesto;
     }
 
     public async complemento(complements: ComlementType) {
-        if (!this.xml['cfdi:Comprobante']['cfdi:Complemento']) {
-            this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
+        if (!this.xml[this.tc]['cfdi:Complemento']) {
+            this.xml[this.tc]['cfdi:Complemento'] = {} as XmlComplements;
         }
         const complement = await complements.getComplement();
         this.addXmlns(complement.xmlnskey, complement.xmlns);
         this.addSchemaLocation(complement.schemaLocation);
-        this.xml['cfdi:Comprobante']!['cfdi:Complemento'][complement.key] = complement.complement;
+        // @ts-ignore
+        this.xml[this.tc]!['cfdi:Complemento'][complement.key] = complement.complement;
     }
 
 
@@ -99,8 +125,8 @@ export class CFDI {
     public async certificar(cerpath: string) {
         try {
             const certi = cer.getCer(cerpath) // . await certificate.getCer(cerpath);
-            this.xml['cfdi:Comprobante']._attributes.NoCertificado = certi.nocer;
-            this.xml['cfdi:Comprobante']._attributes.Certificado = certi.cer;
+            this.xml[this.tc]._attributes.NoCertificado = certi.nocer;
+            this.xml[this.tc]._attributes.Certificado = certi.cer;
             return this;
         } catch (e) {
             if (this.debug) {
@@ -124,7 +150,7 @@ export class CFDI {
             // console.log('caenda', cadena)
             const sello = await this.getSello(cadena, keyfile, password);
             // console.log('sello', sello)
-            this.xml['cfdi:Comprobante']._attributes.Sello = sello;
+            this.xml[this.tc]._attributes.Sello = sello;
         } catch (e) {
             if (this.debug) {
                 console.log({
@@ -179,29 +205,35 @@ export class CFDI {
                     encoding: 'utf-8'
                 }
             },
-            'cfdi:Comprobante': {
-                '_attributes': {} as XmlComprobanteAttributes,
-                'cfdi:Emisor': {},
-                'cfdi:Receptor': {},
-                'cfdi:Conceptos': {
-                    'cfdi:Concepto': [],
-                } as XmlConcepto,
-            },
-        };
+        } as XmlCdfi;
+        this.xml[this.tc] = {
+            '_attributes': {} as XmlComprobanteAttributes,
+            'cfdi:Emisor': {},
+            'cfdi:Receptor': {},
+        } as XmlComprobante;
+
+        if (this.tags.isActive) {
+            // @ts-ignore
+            this.xml[this.tc]['cfdi:Concepto'] = [];
+        } else {
+            this.xml[this.tc]['cfdi:Conceptos'] = {
+                'cfdi:Concepto': [],
+            } as XmlConcepto
+        }
 
     }
 
     private async addXmlns(xmlnsKey: string, xmlns: string) {
-        this.xml['cfdi:Comprobante']._attributes['xmlns:' + xmlnsKey] = xmlns;
+        this.xml[this.tc]._attributes['xmlns:' + xmlnsKey] = xmlns;
     }
 
     private async addSchemaLocation(locations: string[]) {
 
-        if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
-            this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
+        if (!this.xml[this.tc]._attributes['xsi:schemaLocation']) {
+            this.xml[this.tc]._attributes['xsi:schemaLocation'] = '';
         }
         const schemaLocation = schema(locations);
-        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
+        this.xml[this.tc]._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
     }
 
     private async getCadenaOriginal(): Promise<string> {
@@ -216,7 +248,7 @@ export class CFDI {
                     console.log(stylesheetDir);
                 }
                 const transform = new Transform();
-                const cadena  = transform.s(fullPath).xsl(stylesheetDir).warnings('silent').run();
+                const cadena = transform.s(fullPath).xsl(stylesheetDir).warnings('silent').run();
                 // const cadena = saxon(stylesheetDir, fullPath);
 
                 if (this.debug) {

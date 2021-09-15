@@ -6,8 +6,8 @@ const app: express.Application = express();
 app.get('/', async (req, res) => {
 
 
-    const pathCer = path.join(path.resolve(__dirname, '..','src','signati'), 'certificados');
-    console.log(pathCer)
+    const pathCer = path.join(path.resolve(__dirname, '..', 'src', 'signati'), 'certificados');
+    // console.log(pathCer)
     const key = pathCer + '/LAN7008173R5.key';
     const cer = pathCer + '/LAN7008173R5.cer';
     const comprobanteAttribute: Comprobante = {
@@ -27,7 +27,10 @@ app.get('/', async (req, res) => {
         MetodoPago: 'PUE',
         LugarExpedicion: 'México',
     };
-    const cfd = new CFDI(comprobanteAttribute, {debug: true});
+    const custom = {
+        'cfdi:Comprobante': 'comprobante'
+    }
+    const cfd = new CFDI(comprobanteAttribute, {debug: true, customTags:custom});
     await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
 
     const relation = new Relacionado({TipoRelacion: '01'});
@@ -95,8 +98,8 @@ app.get('/', async (req, res) => {
     });
     await cfd.impuesto(impuesto);
 
-    await cfd.certificar(cer);
-    await cfd.sellar(key, '12345678a');
+    // await cfd.certificar(cer);
+    // await cfd.sellar(key, '12345678a');
     const json = await cfd.getJsonCdfi();
     const xml = await cfd.getXmlCdfi();
     // console.log(xml)
@@ -105,11 +108,13 @@ app.get('/', async (req, res) => {
 
     // const download = Buffer.from(await Receip.getBase64(), 'base64');
     // res.contentType('application/pdf');
-    res.set('Content-Type', 'text/xml');
-    res.send(xml);
 
-    // res.send(XmlToJson(xml))
-    // res.send(data);
+    if (req.params.xml) {
+        res.set('Content-Type', 'text/xml');
+        res.send(xml);
+    } else {
+        res.send(json);
+    }
 });
 app.listen(1500, () => {
     console.log('App is listening on port 1500!');

@@ -16,7 +16,8 @@ export * from './Complements/destruccion.interface';
 export * from './Complements/iedu.interface';
 export * from './Complements/ine/ine.com';
 export * from './Complements/ine/ine.enum';
-export * from './Complements/Nomina.interface';
+export * from './Complements/Nomina12.interface';
+export * from './Complements/detallista';
 export * from './Catalogs';
 export * from './Tags/tags.structure'
 
