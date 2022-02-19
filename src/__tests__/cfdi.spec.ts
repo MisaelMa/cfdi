@@ -16,19 +16,20 @@ describe('Create CFDI', () => {
 
         const useCFDI = async () => {
             const pathCer = path.join(path.resolve(__dirname, '../signati'), 'certificados');
-            const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '3.3', 'cadenaoriginal_3_3.xslt');
+            // const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '3.3', 'cadenaoriginal-3.3.xslt');
+            const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '4.0', 'cadenaoriginal.xslt');
             console.log(styleSheet, pathCer)
             const key = pathCer + '/LAN7008173R5.key';
             const cer = pathCer + '/LAN7008173R5.cer';
             const comprobanteAttribute: Comprobante = {
-                xmlns: {
-                    xsi: 'http://www.w3.org/2001/XMLSchema-instance',
-                    cfdi: 'http://www.sat.gob.mx/cfd/3',
-                },
-                schemaLocation: [
-                    'http://www.sat.gob.mx/cfd/3',
-                    'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
-                ],
+                // xmlns: {
+                //     xsi: 'http://www.w3.org/2001/XMLSchema-instance',
+                //     cfdi: 'http://www.sat.gob.mx/cfd/3',
+                // },
+                // schemaLocation: [
+                //     'http://www.sat.gob.mx/cfd/3',
+                //     'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+                // ],
                 Serie: 'E',
                 Folio: 'ACACUN-27',
                 Fecha: '2014-07-08T12:16:50',

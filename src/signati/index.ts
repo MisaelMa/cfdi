@@ -24,7 +24,7 @@ export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
     private debug: boolean = false;
     private dev: boolean = false;
-    private version: string = '3.3';
+    private version: string = '4.0';
     private tags: Structure;
     private tc: TagComprobante = 'cfdi:Comprobante';
     private XMLSchema = 'http://www.w3.org/2001/XMLSchema-instance';
