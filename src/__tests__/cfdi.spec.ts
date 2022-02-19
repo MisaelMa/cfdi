@@ -16,10 +16,19 @@ describe('Create CFDI', () => {
 
         const useCFDI = async () => {
             const pathCer = path.join(path.resolve(__dirname, '../signati'), 'certificados');
-            console.log(pathCer)
+            const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '3.3', 'cadenaoriginal_3_3.xslt');
+            console.log(styleSheet, pathCer)
             const key = pathCer + '/LAN7008173R5.key';
             const cer = pathCer + '/LAN7008173R5.cer';
             const comprobanteAttribute: Comprobante = {
+                xmlns: {
+                    xsi: 'http://www.w3.org/2001/XMLSchema-instance',
+                    cfdi: 'http://www.sat.gob.mx/cfd/3',
+                },
+                schemaLocation: [
+                    'http://www.sat.gob.mx/cfd/3',
+                    'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+                ],
                 Serie: 'E',
                 Folio: 'ACACUN-27',
                 Fecha: '2014-07-08T12:16:50',
@@ -36,10 +45,13 @@ describe('Create CFDI', () => {
                 MetodoPago: 'PUE',
                 LugarExpedicion: 'México',
             };
-            const cfd = new CFDI(comprobanteAttribute, {debug: true});
-            await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
+            const cfd = new CFDI(comprobanteAttribute, {
+                xslt: styleSheet,
+                debug: false
+            });
+            await cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
-            const relation = new Relacionado({TipoRelacion: '01'});
+            const relation = new Relacionado({ TipoRelacion: '01' });
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');
             await cfd.relacionados(relation);
@@ -51,7 +63,7 @@ describe('Create CFDI', () => {
             });
             await cfd.emisor(emisor);
 
-            const receptor = new Receptor({Rfc: 'XAXX010101000', Nombre: 'PUBLICO EN GENERAL', UsoCFDI: 'G01'});
+            const receptor = new Receptor({ Rfc: 'XAXX010101000', Nombre: 'PUBLICO EN GENERAL', UsoCFDI: 'G01' });
             await cfd.receptor(receptor);
 
             const concepto = new Concepts({
@@ -89,7 +101,7 @@ describe('Create CFDI', () => {
             });
 
             await cfd.concepto(concepto);
-            const impuesto: Impuestos = new Impuestos({TotalImpuestosRetenidos: '1000'});
+            const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '1000' });
             impuesto.traslados({
                 Impuesto: '002',
                 TipoFactor: 'Tasa',
