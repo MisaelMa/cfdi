@@ -82,12 +82,12 @@ export class Concepts {
         return this;
     }
 
-    traslado(traslado: XmlTranRentAttributesProperties & { Base: string; }): Concepts {
+    traslado(traslado: XmlTranRentAttributesProperties & { Base: string | number; }): Concepts {
         this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(traslado).impuesto; // = traslado;
         return this;
     }
 
-    retencion(retencion: XmlTranRentAttributesProperties & { Base: string; }): Concepts {
+    retencion(retencion: XmlTranRentAttributesProperties & { Base: string | number; TasaOCuota: string | number; Importe: string | number }): Concepts {
         this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(retencion).impuesto; // = traslado;
         return this;
     }
