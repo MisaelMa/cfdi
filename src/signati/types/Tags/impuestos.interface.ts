@@ -29,6 +29,6 @@ export interface XmlTranRentAttributesProperties {
   Base?: string;
   Impuesto: string;
   TipoFactor: string;
-  TasaOCuota: string;
+  TasaOCuota?: string;
   Importe: string;
 }

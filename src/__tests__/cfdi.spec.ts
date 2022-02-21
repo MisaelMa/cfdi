@@ -6,6 +6,7 @@ import {
     Emisor,
     FormaPagoList,
     Impuestos,
+    ObjetoImpEnum,
     Receptor,
     Relacionado,
 } from '..';
@@ -16,9 +17,7 @@ describe('Create CFDI', () => {
 
         const useCFDI = async () => {
             const pathCer = path.join(path.resolve(__dirname, '../signati'), 'certificados');
-            // const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '3.3', 'cadenaoriginal-3.3.xslt');
             const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '4.0', 'cadenaoriginal.xslt');
-            console.log(styleSheet, pathCer)
             const key = pathCer + '/LAN7008173R5.key';
             const cer = pathCer + '/LAN7008173R5.cer';
             const comprobanteAttribute: Comprobante = {
@@ -64,7 +63,14 @@ describe('Create CFDI', () => {
             });
             await cfd.emisor(emisor);
 
-            const receptor = new Receptor({ Rfc: 'XAXX010101000', Nombre: 'PUBLICO EN GENERAL', UsoCFDI: 'G01' });
+            const receptor = new Receptor({
+                Rfc: 'XAXX010101000',
+                Nombre: 'PUBLICO EN GENERAL',
+                UsoCFDI: 'G01',
+                DomicilioFiscalReceptor: '112',
+                RegimenFiscalReceptor: '22'
+            });
+
             await cfd.receptor(receptor);
 
             const concepto = new Concepts({
@@ -77,7 +83,19 @@ describe('Create CFDI', () => {
                 ValorUnitario: '1000',
                 Importe: '2000',
                 Descuento: '00.0',
+                ObjetoImp: '01'
             });
+            concepto.predial("000121231")
+            concepto.aduana("21  47  3807  8003832")
+            concepto.parte({
+                ClaveProdServ: "51241200",
+                NoIdentificacion: 'IM020',
+                Cantidad: 1,
+                Unidad: "PIEZA",
+                Descripcion: "25311FM00114 CREMA FUNGICIDA 35ML (ACIDO UNDECILENICO, ARBOL DEL TE VEHICULO EMOLIENTE)",
+                ValorUnitario: "172.50",
+                Importe: "172.50"
+            })
             concepto.traslado({
                 Base: '369.83',
                 Impuesto: '002',
@@ -101,6 +119,7 @@ describe('Create CFDI', () => {
                 Importe: '59.17',
             });
 
+            await cfd.concepto(concepto);
             await cfd.concepto(concepto);
             const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '1000' });
             impuesto.traslados({

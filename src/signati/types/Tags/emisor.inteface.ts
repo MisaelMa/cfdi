@@ -8,9 +8,10 @@ export interface XmlEmisor {
 }
 
 export interface XmlEmisorAttribute {
-  Rfc?: string;
-  Nombre?: string;
-  RegimenFiscal?: string | number;
+  Rfc: string;
+  Nombre: string;
+  RegimenFiscal: string | number;
+  FacAtrAdquirente?: string | number;
 }
 
 export interface XmlEmisorDomicilioF {

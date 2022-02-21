@@ -1,6 +1,6 @@
-import {XmlConceptoAttributes, XmlConceptoProperties} from '../types/Tags/concepts.interface';
-import {Impuestos} from './Impuestos';
-import {XmlTranRentAttributesProperties} from '../types/Tags/impuestos.interface';
+import { XmlConceptoAttributes, XmlConceptoProperties, XmlConceptoTercerosAttributes, XmlConceptParteAttributes } from '../types/Tags/concepts.interface';
+import { Impuestos } from './Impuestos';
+import { XmlTranRentAttributesProperties } from '../types/Tags/impuestos.interface';
 import {
     ComlementTypeConcept,
     ComplementProperties,
@@ -50,18 +50,50 @@ export class Concepts {
         this.concepto['cfdi:ComplementoConcepto'][data.getComplement().key] = data.getComplement().complement;
     }
 
-    traslado(traslado: XmlTranRentAttributesProperties): Concepts {
+    terceros(cuenta: XmlConceptoTercerosAttributes): Concepts {
+        this.concepto['cfdi:ACuentaTerceros'] = {
+            _attributes: cuenta
+        }
+        return this;
+    }
+
+    predial(cuenta: number | string): Concepts {
+        this.concepto['cfdi:CuentaPredial'] = {
+            _attributes: {
+                Numero: cuenta
+            }
+        }
+        return this;
+    }
+
+    parte(parte: XmlConceptParteAttributes): Concepts {
+        this.concepto['cfdi:Parte'] = {
+            _attributes: parte
+        }
+        return this;
+    }
+
+    aduana(pedimento: number | string): Concepts {
+        this.concepto['cfdi:InformacionAduanera'] = {
+            _attributes: {
+                NumeroPedimento: pedimento
+            }
+        }
+        return this;
+    }
+
+    traslado(traslado: XmlTranRentAttributesProperties & { Base: string; }): Concepts {
         this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(traslado).impuesto; // = traslado;
         return this;
     }
 
-    retencion(retencion: XmlTranRentAttributesProperties): Concepts {
+    retencion(retencion: XmlTranRentAttributesProperties & { Base: string; }): Concepts {
         this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(retencion).impuesto; // = traslado;
         return this;
     }
 
     getConcept(): XmlConceptoProperties {
-        const concept = {...this.concepto};
+        const concept = { ...this.concepto };
         this.concepto = {} as XmlConceptoProperties;
         // console.log(this.concepto)
         return concept;

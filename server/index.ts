@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as path from 'path';
-import {CFDI, Comprobante, Concepts, Emisor, Impuestos, Receptor, Relacionado} from '../src';
+import { CFDI, Comprobante, Concepts, Emisor, Impuestos, ObjetoImpEnum, Receptor, Relacionado } from '../src';
 // Create a new express app instance
 const app: express.Application = express();
 app.get('/', async (req, res) => {
@@ -30,10 +30,15 @@ app.get('/', async (req, res) => {
     const custom = {
         'cfdi:Comprobante': 'comprobante'
     }
-    const cfd = new CFDI(comprobanteAttribute, {debug: true, customTags:custom});
-    await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
+    const cfd = new CFDI(comprobanteAttribute, { debug: true, customTags: custom });
+    await cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
-    const relation = new Relacionado({TipoRelacion: '01'});
+    cfd.informacionGlobal({
+        Periodicidad: '1',
+        Meses: '1',
+        Año: '2'
+    })
+    const relation = new Relacionado({ TipoRelacion: '01' });
     relation.addRelation('asdasd-3234-asdasd-2332-asdas');
     relation.addRelation('asdasd-3234-asdasd-2332-asdas');
     await cfd.relacionados(relation);
@@ -41,11 +46,18 @@ app.get('/', async (req, res) => {
     const emisor = new Emisor({
         Rfc: 'TCM970625MB1',
         Nombre: 'FACTURACION MODERNA SA DE CV',
-        RegimenFiscal: 601
+        RegimenFiscal: 601,
+        FacAtrAdquirente: 'asdasd'
     });
     await cfd.emisor(emisor);
 
-    const receptor = new Receptor({Rfc: 'XAXX010101000', Nombre: 'PUBLICO EN GENERAL', UsoCFDI: 'G01'});
+    const receptor = new Receptor({
+        Rfc: 'XAXX010101000',
+        Nombre: 'PUBLICO EN GENERAL',
+        UsoCFDI: 'G01',
+        DomicilioFiscalReceptor: '112',
+        RegimenFiscalReceptor: '22'
+    });
     await cfd.receptor(receptor);
 
     const concepto = new Concepts({
@@ -58,7 +70,19 @@ app.get('/', async (req, res) => {
         ValorUnitario: '1000',
         Importe: '2000',
         Descuento: '00.0',
+        ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto
     });
+    concepto.predial("000121231")
+    concepto.aduana("21  47  3807  8003832")
+    concepto.parte({
+        ClaveProdServ: "51241200",
+        NoIdentificacion: 'IM020',
+        Cantidad: 1,
+        Unidad: "PIEZA",
+        Descripcion: "25311FM00114 CREMA FUNGICIDA 35ML (ACIDO UNDECILENICO, ARBOL DEL TE VEHICULO EMOLIENTE)",
+        ValorUnitario: "172.50",
+        Importe: "172.50"
+    })
     concepto.traslado({
         Base: '369.83',
         Impuesto: '002',
@@ -83,7 +107,27 @@ app.get('/', async (req, res) => {
     });
 
     await cfd.concepto(concepto);
-    const impuesto: Impuestos = new Impuestos({TotalImpuestosRetenidos: '1000'});
+
+    const concepto2 = new Concepts({
+        ClaveProdServ: '001',
+        NoIdentificacion: '1212',
+        Cantidad: '2',
+        ClaveUnidad: 'pieza',
+        Unidad: 'Pieza',
+        Descripcion: 'audifonos',
+        ValorUnitario: '1000',
+        Importe: '2000',
+        Descuento: '00.0',
+        ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto
+    });
+    concepto2.terceros({
+        RfcACuentaTerceros: "JUFA7608212V6",
+        NombreACuentaTerceros: "ADRIANA JUAREZ FERNANDEZ",
+        RegimenFiscalACuentaTerceros: "601",
+        DomicilioFiscalACuentaTerceros: "29133",
+    })
+    await cfd.concepto(concepto2);
+    const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '1000' });
     impuesto.traslados({
         Impuesto: '002',
         TipoFactor: 'Tasa',
@@ -108,8 +152,7 @@ app.get('/', async (req, res) => {
 
     // const download = Buffer.from(await Receip.getBase64(), 'base64');
     // res.contentType('application/pdf');
-
-    if (req.params.xml) {
+    if (req.query.xml) {
         res.set('Content-Type', 'text/xml');
         res.send(xml);
     } else {

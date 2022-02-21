@@ -91,6 +91,15 @@ export class CFDI {
 
     }
 
+    public async informacionGlobal(payload: { Periodicidad: string, Meses: string, Año: string }) {
+        this.xml[this.tc] = Object.assign({
+            ['cfdi:InformacionGlobal']: {
+                _attributes: payload
+            }
+        }, this.xml[this.tc]);
+    }
+
+
     public async relacionados(relationCfdi: Relacionado) {
         this.xml[this.tc] = Object.assign({ ['cfdi:CfdiRelacionados']: relationCfdi.getRelation() }, this.xml[this.tc]);
     }
@@ -111,12 +120,14 @@ export class CFDI {
         }
         if (this.tags.isActive) {
             // @ts-ignore
-            if (!this.xml[this.tc]['cfdi:Concepto']) {
+            if (!this.xml[this.tc]['cfdi:Conceptos']) {
                 // @ts-ignore
-                this.xml[this.tc]['cfdi:Concepto'] = []
+                this.xml[this.tc]['cfdi:Conceptos'] = {
+                    ['cfdi:Concepto']: []
+                }
             }
             // @ts-ignore
-            this.xml[this.tc]['cfdi:Concepto'].push(concept.getConcept());
+            this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
         } else {
             this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
         }
