@@ -30,7 +30,7 @@ app.get('/', async (req, res) => {
     const custom = {
         'cfdi:Comprobante': 'comprobante'
     }
-    const cfd = new CFDI(comprobanteAttribute, { debug: true, customTags: custom });
+    const cfd = new CFDI(comprobanteAttribute, { debug: true });
     await cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
     cfd.informacionGlobal({
