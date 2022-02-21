@@ -9,6 +9,10 @@ export interface XmlReceptorAttribute {
   Rfc: string;
   Nombre: string;
   UsoCFDI: string;
+  DomicilioFiscalReceptor: string;
+  ResidenciaFiscal?: string;
+  NumRegIdTrib?: string;
+  RegimenFiscalReceptor: string;
 }
 
 export interface XmlReceptorDomicilio {

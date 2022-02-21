@@ -3,6 +3,8 @@
   "rules": {
     "indent": [true, "spaces", 4],
     "interface-name": [false, "never-prefix"],
-    "quotemark": [true, "single"]
+    "quotemark": [true, "single"],
+    "object-literal-sort-keys": false,
+    "jsdoc-format": false
   }
 }

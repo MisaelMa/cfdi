@@ -6,6 +6,7 @@ import {
     Emisor,
     FormaPagoList,
     Impuestos,
+    ObjetoImpEnum,
     Receptor,
     Relacionado,
 } from '..';
@@ -16,10 +17,18 @@ describe('Create CFDI', () => {
 
         const useCFDI = async () => {
             const pathCer = path.join(path.resolve(__dirname, '../signati'), 'certificados');
-            console.log(pathCer)
+            const styleSheet = path.join(path.resolve(__dirname, '..', '../', '../'), 'resources', '4.0', 'cadenaoriginal.xslt');
             const key = pathCer + '/LAN7008173R5.key';
             const cer = pathCer + '/LAN7008173R5.cer';
             const comprobanteAttribute: Comprobante = {
+                // xmlns: {
+                //     xsi: 'http://www.w3.org/2001/XMLSchema-instance',
+                //     cfdi: 'http://www.sat.gob.mx/cfd/3',
+                // },
+                // schemaLocation: [
+                //     'http://www.sat.gob.mx/cfd/3',
+                //     'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
+                // ],
                 Serie: 'E',
                 Folio: 'ACACUN-27',
                 Fecha: '2014-07-08T12:16:50',
@@ -36,10 +45,13 @@ describe('Create CFDI', () => {
                 MetodoPago: 'PUE',
                 LugarExpedicion: 'México',
             };
-            const cfd = new CFDI(comprobanteAttribute, {debug: true});
-            await cfd.setAttributesXml({version: '1.0', encoding: 'utf-8'});
+            const cfd = new CFDI(comprobanteAttribute, {
+                xslt: styleSheet,
+                debug: false
+            });
+            await cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
-            const relation = new Relacionado({TipoRelacion: '01'});
+            const relation = new Relacionado({ TipoRelacion: '01' });
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');
             relation.addRelation('asdasd-3234-asdasd-2332-asdas');
             await cfd.relacionados(relation);
@@ -51,7 +63,14 @@ describe('Create CFDI', () => {
             });
             await cfd.emisor(emisor);
 
-            const receptor = new Receptor({Rfc: 'XAXX010101000', Nombre: 'PUBLICO EN GENERAL', UsoCFDI: 'G01'});
+            const receptor = new Receptor({
+                Rfc: 'XAXX010101000',
+                Nombre: 'PUBLICO EN GENERAL',
+                UsoCFDI: 'G01',
+                DomicilioFiscalReceptor: '112',
+                RegimenFiscalReceptor: '22'
+            });
+
             await cfd.receptor(receptor);
 
             const concepto = new Concepts({
@@ -64,7 +83,19 @@ describe('Create CFDI', () => {
                 ValorUnitario: '1000',
                 Importe: '2000',
                 Descuento: '00.0',
+                ObjetoImp: '01'
             });
+            concepto.predial("000121231")
+            concepto.aduana("21  47  3807  8003832")
+            concepto.parte({
+                ClaveProdServ: "51241200",
+                NoIdentificacion: 'IM020',
+                Cantidad: 1,
+                Unidad: "PIEZA",
+                Descripcion: "25311FM00114 CREMA FUNGICIDA 35ML (ACIDO UNDECILENICO, ARBOL DEL TE VEHICULO EMOLIENTE)",
+                ValorUnitario: "172.50",
+                Importe: "172.50"
+            })
             concepto.traslado({
                 Base: '369.83',
                 Impuesto: '002',
@@ -89,8 +120,10 @@ describe('Create CFDI', () => {
             });
 
             await cfd.concepto(concepto);
-            const impuesto: Impuestos = new Impuestos({TotalImpuestosRetenidos: '1000'});
+            await cfd.concepto(concepto);
+            const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '1000' });
             impuesto.traslados({
+                Base: 1,
                 Impuesto: '002',
                 TipoFactor: 'Tasa',
                 TasaOCuota: '0.16',
@@ -98,8 +131,6 @@ describe('Create CFDI', () => {
             });
             impuesto.retenciones({
                 Impuesto: '002',
-                TipoFactor: 'Tasa',
-                TasaOCuota: '0.16',
                 Importe: '59.17',
             });
             await cfd.impuesto(impuesto);

@@ -29,7 +29,7 @@ export class Impuestos {
    * @param {String} traslado.TasaOCuota
    * @param {String} traslado.Importe// = traslado;
    */
-  traslados(traslado: XmlTranRentAttributesProperties) {
+  traslados(traslado: XmlTranRentAttributesProperties & { Base: string | number }) {
     if (this.impuesto['cfdi:Traslados']) {
     } else {// = traslado;
       this.impuesto['cfdi:Traslados'] = {
@@ -46,7 +46,8 @@ export class Impuestos {
 
   }
 
-  retenciones(retencion: XmlTranRentAttributesProperties) {
+  retenciones(retencion: Omit<XmlTranRentAttributesProperties, "Base" | "TipoFactor" | "TasaOCuota">) {
+
     if (this.impuesto['cfdi:Retenciones']) {
 
     } else {

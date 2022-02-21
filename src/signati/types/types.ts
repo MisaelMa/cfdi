@@ -1,3 +1,10 @@
+export interface Options {
+    debug: boolean;
+    compact?: boolean;
+    customTags?: any;
+    xslt?: string, //@  Extensible Stylesheet Language Transformation 
+}
+
 export enum InvoiceType {
     INGRESO = 'I',
     EGRESO = 'E',

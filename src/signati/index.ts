@@ -2,71 +2,114 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import {Concepts} from './tags/Concepts';
-import {Emisor} from './tags/Emisor';
-import {Impuestos} from './tags/Impuestos';
-import {Receptor} from './tags/Receptor';
-import {FileSystem} from './utils/FileSystem';
+import { Concepts } from './tags/Concepts';
+import { Emisor } from './tags/Emisor';
+import { Impuestos } from './tags/Impuestos';
+import { Receptor } from './tags/Receptor';
+import { FileSystem } from './utils/FileSystem';
 
-import {cer, key} from '@signati/openssl';
-import {saxon, Transform} from '@signati/saxon';
-import {js2xml} from 'xml-js';
-import {Relacionado} from './tags/Relacionado';
-import {ComlementType, XmlComplements} from './types/Tags/complements.interface';
-import {Comprobante, XmlComprobanteAttributes} from './types/Tags/comprobante.interface';
-import {XmlConcepto} from './types/Tags/concepts.interface';
-import {XmlCdfi, XmlVersion} from './types/Tags/xmlCdfi.interface';
-import {schema} from './utils/XmlHelp';
-
+import { cer, key } from '@signati/openssl';
+import { saxon, Transform } from '@signati/saxon';
+import { js2xml } from 'xml-js';
+import { Relacionado } from './tags/Relacionado';
+import { ComlementType, XmlComplements } from './types/Tags/complements.interface';
+import { Comprobante, XmlComprobante, XmlComprobanteAttributes, XmlnsLinks } from './types/Tags/comprobante.interface';
+import { XmlConcepto } from './types/Tags/concepts.interface';
+import { XmlCdfi, XmlVersion } from './types/Tags/xmlCdfi.interface';
+import { Structure } from './utils/structure';
+import { schema } from './utils/XmlHelp';
+import { TagComprobante } from "./types";
+import { Options } from './types/types';
 export class CFDI {
     private xml: XmlCdfi = {} as XmlCdfi;
     private debug: boolean = false;
     private dev: boolean = false;
-    private version: string = '3.3';
-
-    constructor(attribute: Comprobante, options = {debug: false}) {
-        this.debug = options.debug
+    private version: string = '4.0';
+    private tags: Structure;
+    private tc: TagComprobante = 'cfdi:Comprobante';
+    private XMLSchema = 'http://www.w3.org/2001/XMLSchema-instance';
+    private cfd = 'http://www.sat.gob.mx/cfd/4';
+    private locations = [
+        'http://www.sat.gob.mx/cfd/4',
+        'http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
+    ];
+    private xslt: string | null = null;
+    constructor(attribute: Comprobante, options: Options) {
+        const { debug = false, compact = false, xslt, customTags = {} } = options
+        xslt && (this.xslt = xslt);
+        this.tags = new Structure(customTags)
+        this.tc = this.tags.tagXml<TagComprobante>('cfdi:Comprobante')
+        this.debug = debug
         this.restartCfdi();
-
-        this.addXmlns('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
-        this.addXmlns('cfdi', 'http://www.sat.gob.mx/cfd/3')
-
-        this.addSchemaLocation([
-            'http://www.sat.gob.mx/cfd/3',
-            'http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd',
-        ]);
-
-        this.xml['cfdi:Comprobante']._attributes = {
-            ...this.xml['cfdi:Comprobante']._attributes,
-            ...{Version: this.version},
+        this.xmlns(attribute.xmlns || { xsi: this.XMLSchema, cfdi: this.cfd })
+        this.addSchemaLocation(attribute.schemaLocation || this.locations);
+        attribute.xmlns && delete attribute.xmlns
+        attribute.schemaLocation && delete attribute.schemaLocation
+        this.xml[this.tc]._attributes = {
+            ...this.xml[this.tc]._attributes,
+            ...{ Version: this.version },
             ...attribute
         };
     }
 
-    public async setAttributesXml(attribute: XmlVersion = {version: '1.0', encoding: 'utf-8'}) {
+    private xmlns(xmlns: XmlnsLinks) {
+        if (!xmlns.xsi) {
+            this.addXmlns('xsi', this.XMLSchema)
+        }
+        if (!xmlns.cfdi) {
+            this.addXmlns('cfdi', this.cfd)
+        }
+
+        for (const xmln in xmlns) {
+            this.addXmlns(xmln, xmlns[xmln])
+        }
+    }
+    private addXmlns(xmlnsKey: string, xmlns: string) {
+        this.xml[this.tc]._attributes['xmlns:' + xmlnsKey] = xmlns;
+    }
+
+    private addSchemaLocation(locations: string[]) {
+
+        if (!this.xml[this.tc]._attributes['xsi:schemaLocation']) {
+            this.xml[this.tc]._attributes['xsi:schemaLocation'] = '';
+        }
+        const schemaLocation = schema(locations);
+        this.xml[this.tc]._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
+    }
+
+    public async setAttributesXml(attribute: XmlVersion = { version: '1.0', encoding: 'utf-8' }) {
         this.xml._declaration._attributes = attribute;
     }
 
     /**@Deprecated**/
     public setAttributesComprobantes(attribute: Comprobante) {
-        this.xml['cfdi:Comprobante']._attributes = {
-            ...this.xml['cfdi:Comprobante']._attributes,
-            ...{Version: this.version},
+        this.xml[this.tc]._attributes = {
+            ...this.xml[this.tc]._attributes,
+            ...{ Version: this.version },
             ...attribute
         };
 
     }
 
+    public async informacionGlobal(payload: { Periodicidad: string, Meses: string, Año: string }) {
+        this.xml[this.tc] = Object.assign({
+            ['cfdi:InformacionGlobal']: {
+                _attributes: payload
+            }
+        }, this.xml[this.tc]);
+    }
+
+
     public async relacionados(relationCfdi: Relacionado) {
-        this.xml['cfdi:Comprobante'] = Object.assign({['cfdi:CfdiRelacionados']: relationCfdi.getRelation()}, this.xml['cfdi:Comprobante']);
+        this.xml[this.tc] = Object.assign({ ['cfdi:CfdiRelacionados']: relationCfdi.getRelation() }, this.xml[this.tc]);
     }
 
     public async emisor(emisor: Emisor) {
-        this.xml['cfdi:Comprobante']['cfdi:Emisor'] = emisor.emisor;
+        this.xml[this.tc]['cfdi:Emisor'] = emisor.emisor;
     }
 
     public async receptor(receptor: Receptor) {
-        this.xml['cfdi:Comprobante']['cfdi:Receptor'] = receptor.receptor;
+        this.xml[this.tc]['cfdi:Receptor'] = receptor.receptor;
     }
 
     public async concepto(concept: Concepts) {
@@ -75,21 +118,34 @@ export class CFDI {
             this.addXmlns(properties.xmlnskey, properties.xmlns);
             this.addSchemaLocation(properties.schemaLocation)
         }
-        this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
+        if (this.tags.isActive) {
+            // @ts-ignore
+            if (!this.xml[this.tc]['cfdi:Conceptos']) {
+                // @ts-ignore
+                this.xml[this.tc]['cfdi:Conceptos'] = {
+                    ['cfdi:Concepto']: []
+                }
+            }
+            // @ts-ignore
+            this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
+        } else {
+            this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(concept.getConcept());
+        }
     }
 
     public async impuesto(impuesto: Impuestos) {
-        this.xml['cfdi:Comprobante']['cfdi:Impuestos'] = impuesto.impuesto;
+        this.xml[this.tc]['cfdi:Impuestos'] = impuesto.impuesto;
     }
 
     public async complemento(complements: ComlementType) {
-        if (!this.xml['cfdi:Comprobante']['cfdi:Complemento']) {
-            this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
+        if (!this.xml[this.tc]['cfdi:Complemento']) {
+            this.xml[this.tc]['cfdi:Complemento'] = {} as XmlComplements;
         }
         const complement = await complements.getComplement();
         this.addXmlns(complement.xmlnskey, complement.xmlns);
         this.addSchemaLocation(complement.schemaLocation);
-        this.xml['cfdi:Comprobante']!['cfdi:Complemento'][complement.key] = complement.complement;
+        // @ts-ignore
+        this.xml[this.tc]!['cfdi:Complemento'][complement.key] = complement.complement;
     }
 
 
@@ -99,8 +155,8 @@ export class CFDI {
     public async certificar(cerpath: string) {
         try {
             const certi = cer.getCer(cerpath) // . await certificate.getCer(cerpath);
-            this.xml['cfdi:Comprobante']._attributes.NoCertificado = certi.nocer;
-            this.xml['cfdi:Comprobante']._attributes.Certificado = certi.cer;
+            this.xml[this.tc]._attributes.NoCertificado = certi.nocer;
+            this.xml[this.tc]._attributes.Certificado = certi.cer;
             return this;
         } catch (e) {
             if (this.debug) {
@@ -118,22 +174,10 @@ export class CFDI {
      * @param {String} password
      */
     public async sellar(keyfile: string, password: string) {
-        try {
-            // console.log('sellar')
-            const cadena = await this.getCadenaOriginal();
-            // console.log('caenda', cadena)
-            const sello = await this.getSello(cadena, keyfile, password);
-            // console.log('sello', sello)
-            this.xml['cfdi:Comprobante']._attributes.Sello = sello;
-        } catch (e) {
-            if (this.debug) {
-                console.log({
-                    method: 'getCadenaOriginal',
-                    error: e
-                })
-            }
-            return e.messageundefined
-        }
+        const cadena = await this.getCadenaOriginal();
+        const sello = await this.getSello(cadena, keyfile, password);
+        this.xml[this.tc]._attributes.Sello = sello;
+
     }
 
     public async getJsonCdfi(): Promise<XmlCdfi> {
@@ -141,7 +185,7 @@ export class CFDI {
             try {
                 resolve(this.xml);
             } catch (e) {
-                reject({message: e});
+                reject({ message: e });
             }
         });
 
@@ -150,12 +194,12 @@ export class CFDI {
     public async getXmlCdfi(): Promise<string> {
         return await new Promise(async (resolve, reject) => {
             try {
-                const options = {compact: true, ignoreComment: true, spaces: 4};
-                const cfdi = await js2xml({...this.xml}, options);
+                const options = { compact: true, ignoreComment: true, spaces: 4 };
+                const cfdi = await js2xml({ ...this.xml }, options);
                 this.restartCfdi();
                 resolve(cfdi);
             } catch (e) {
-                reject({message: e});
+                reject({ message: e });
             }
         });
 
@@ -179,50 +223,42 @@ export class CFDI {
                     encoding: 'utf-8'
                 }
             },
-            'cfdi:Comprobante': {
-                '_attributes': {} as XmlComprobanteAttributes,
-                'cfdi:Emisor': {},
-                'cfdi:Receptor': {},
-                'cfdi:Conceptos': {
-                    'cfdi:Concepto': [],
-                } as XmlConcepto,
-            },
-        };
+        } as XmlCdfi;
+        this.xml[this.tc] = {
+            '_attributes': {} as XmlComprobanteAttributes,
+            'cfdi:Emisor': {},
+            'cfdi:Receptor': {},
+        } as XmlComprobante;
 
-    }
-
-    private async addXmlns(xmlnsKey: string, xmlns: string) {
-        this.xml['cfdi:Comprobante']._attributes['xmlns:' + xmlnsKey] = xmlns;
-    }
-
-    private async addSchemaLocation(locations: string[]) {
-
-        if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
-            this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
+        if (this.tags.isActive) {
+            // @ts-ignore
+            this.xml[this.tc]['cfdi:Concepto'] = [];
+        } else {
+            this.xml[this.tc]['cfdi:Conceptos'] = {
+                'cfdi:Concepto': [],
+            } as XmlConcepto
         }
-        const schemaLocation = schema(locations);
-        this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += ' ' + schemaLocation;
+
     }
 
     private async getCadenaOriginal(): Promise<string> {
+        if (!this.xslt) {
+            throw new Error('¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation')
+        }
         return new Promise(async (resolve, reject) => {
             try {
                 const fullPath = path.join(os.tmpdir(), `${FileSystem.generateNameTemp()}.xml`);
-                const options = {compact: true, ignoreComment: true, spaces: 4};
+                const options = { compact: true, ignoreComment: true, spaces: 4 };
                 const result = js2xml(this.xml, options);
                 fs.writeFileSync(fullPath, result, 'utf8');
-                const stylesheetDir = path.join(path.resolve(__dirname, '../signati'), 'resources/xslt33/', 'cadenaoriginal_3_3.xslt');
-                if (this.debug) {
-                    console.log(stylesheetDir);
-                }
                 const transform = new Transform();
-                const cadena  = transform.s(fullPath).xsl(stylesheetDir).warnings('silent').run();
-                // const cadena = saxon(stylesheetDir, fullPath);
+                const cadena = transform.s(fullPath).xsl(String(this.xslt)).warnings('silent').run();
 
                 if (this.debug) {
                     /*
                     * ||3.3|E|ACACUN-27|2014-07-08T12:16:50|Pago en una sola exhibición|20001000000300022815|16148.04|645.92|MXN|17207.35|I|En efectivo|México|01|asdasd-3234-asdasd-2332-asdas|asdasd-3234-asdasd-2332-asdas|TCM970625MB1|FACTURACION MODERNA SA DE CV|601|XAXX010101000|PUBLICO EN GENERAL|G01|001|1212|2|pieza|Pieza|audifonos|1000|2000|00.0|369.83|002|Tasa|0.16|59.17|369.8aaaa3|002|Tasa|0.16|59.17|369.83|002|Tasa|0.16|59.17|002|59.17|1000|002|Tasa|0.16|59.17||
                     * */
+                    console.log(this.xslt);
                     console.log('cadena original =>', cadena)
                 }
                 fs.unlinkSync(fullPath);
@@ -235,7 +271,7 @@ export class CFDI {
                         error: e
                     })
                 }
-                reject({message: e});
+                reject({ method: 'getCadenaOriginal', message: e });
             }
         });
 
@@ -257,7 +293,7 @@ export class CFDI {
                         error: e
                     })
                 }
-                reject({message: e});
+                reject({ message: e });
             }
         });
     }
