@@ -265,12 +265,10 @@ export class CFDI {
                 resolve(cadena);
 
             } catch (e) {
-                if (this.debug) {
-                    console.log({
-                        method: 'getCadenaOriginal',
-                        error: e
-                    })
-                }
+                console.log({
+                    method: 'getCadenaOriginal',
+                    error: e
+                })
                 reject({ method: 'getCadenaOriginal', message: e });
             }
         });
