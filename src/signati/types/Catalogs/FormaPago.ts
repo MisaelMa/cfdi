@@ -44,24 +44,45 @@ export type FormaPagoType = '01' | '02' |
     '99'
 
 export const FormaPagoList = [
-    {value: '01', label: 'Efectivo'},
-    {value: '02', label: 'Cheque nominativo'},
-    {value: '03', label: 'Transferencia electrónica de fondos'},
-    {value: '04', label: 'Tarjeta de crédito'},
-    {value: '05', label: 'Monedero electrónico'},
-    {value: '06', label: 'Dinero electrónico'},
-    {value: '08', label: 'Vales de despensa'},
-    {value: '12', label: 'Dación en pago'},
-    {value: '13', label: 'Pago por subrogación'},
-    {value: '14', label: 'Pago por consignación'},
-    {value: '15', label: 'Condonación'},
-    {value: '17', label: 'Compensación'},
-    {value: '23', label: 'Novación'},
-    {value: '24', label: 'Confusión'},
-    {value: '25', label: 'Remisión de deuda'},
-    {value: '26', label: 'Prescripción o caducidad'},
-    {value: '27', label: 'A satisfacción del acreedor'},
-    {value: '28', label: 'Tarjeta de débito'},
-    {value: '29', label: 'Tarjeta de servicios'},
-    {value: '99', label: 'Por definir'}
+    { value: '01', label: 'Efectivo' },
+    { value: '02', label: 'Cheque nominativo' },
+    { value: '03', label: 'Transferencia electrónica de fondos' },
+    { value: '04', label: 'Tarjeta de crédito' },
+    { value: '05', label: 'Monedero electrónico' },
+    { value: '06', label: 'Dinero electrónico' },
+    { value: '08', label: 'Vales de despensa' },
+    { value: '12', label: 'Dación en pago' },
+    { value: '13', label: 'Pago por subrogación' },
+    { value: '14', label: 'Pago por consignación' },
+    { value: '15', label: 'Condonación' },
+    { value: '17', label: 'Compensación' },
+    { value: '23', label: 'Novación' },
+    { value: '24', label: 'Confusión' },
+    { value: '25', label: 'Remisión de deuda' },
+    { value: '26', label: 'Prescripción o caducidad' },
+    { value: '27', label: 'A satisfacción del acreedor' },
+    { value: '28', label: 'Tarjeta de débito' },
+    { value: '29', label: 'Tarjeta de servicios' },
+    { value: '99', label: 'Por definir' }
 ];
+
+export enum ExportacionEnum {
+    NoAplica = '01',
+    Definitiva = '02',
+    Temporal = '03'
+}
+export type ExportacionType = '01' | '02' | '03'
+export const exportacion = [
+    {
+        value: '01',
+        descripcion: 'No aplica'
+    },
+    {
+        value: '02',
+        descripcion: 'Definitiva'
+    },
+    {
+        value: '03',
+        descripcion: 'Temporal'
+    }
+]

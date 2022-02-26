@@ -1,11 +1,11 @@
-import {XmlEmisor} from './emisor.inteface';
-import {XmlReceptor} from './receptor.inteface';
-import {XmlConcepto} from './concepts.interface';
-import {XmlImpuestos} from './impuestos.interface';
-import {anyKey, XmlComplements} from './complements.interface';
-import {Ine, Aerolineas, Cce11, ConsumoDeCombustibles11, Decreto, Destruccion} from '../../complements';
-import {TipoComprobante, TypeComprobante} from "../Catalogs/TipoComprobante";
-import {FormaPago, FormaPagoType, MetodoPago, MetodoPagoType} from "../Catalogs";
+import { XmlEmisor } from './emisor.inteface';
+import { XmlReceptor } from './receptor.inteface';
+import { XmlConcepto } from './concepts.interface';
+import { XmlImpuestos } from './impuestos.interface';
+import { anyKey, XmlComplements } from './complements.interface';
+import { Ine, Aerolineas, Cce11, ConsumoDeCombustibles11, Decreto, Destruccion } from '../../complements';
+import { TipoComprobante, TypeComprobante } from "../Catalogs/TipoComprobante";
+import { ExportacionEnum, ExportacionType, FormaPago, FormaPagoType, MetodoPago, MetodoPagoType } from "../Catalogs";
 
 export interface XmlComprobante {
     '_attributes': XmlComprobanteAttributes;
@@ -77,21 +77,24 @@ export interface Comprobante {
     xmlns?: XmlnsLinks;
     schemaLocation?: string[];
     Version?: string;
-    Serie: string;
-    Folio: string;
+    Serie?: string;
+    Folio?: string;
     Fecha: string;
-    Sello: string;
-    FormaPago: FormaPago | FormaPagoType;
+    FormaPago?: FormaPago | FormaPagoType;
     NoCertificado: string;
-    Certificado: string;
     condicionesDePago?: string;
     SubTotal: string;
-    Descuento: string;
+    Descuento?: string;
     Moneda: string;
+    TipoCambio?: string;
     Total: string;
     TipoDeComprobante: TipoComprobante | TypeComprobante;
-    MetodoPago: MetodoPago | MetodoPagoType;
+    Exportacion: ExportacionEnum | ExportacionType | string;
+    MetodoPago?: MetodoPago | MetodoPagoType;
     LugarExpedicion: string;
+    Confirmacion?: string;
+    Certificado?: string;
+    Sello?: string;
 }
 
 export interface XmlnsLinks extends anyKey {

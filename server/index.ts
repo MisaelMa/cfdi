@@ -5,6 +5,7 @@ import { CFDI, Comprobante, Concepts, Emisor, Impuestos, ObjetoImpEnum, Receptor
 const app: express.Application = express();
 app.get('/', async (req, res) => {
 
+    const styleSheet = path.join(path.resolve(__dirname, '..', '../'), 'resources', '4.0', 'cadenaoriginal.xslt');
 
     const pathCer = path.join(path.resolve(__dirname, '..', 'src', 'signati'), 'certificados');
     // console.log(pathCer)
@@ -30,7 +31,10 @@ app.get('/', async (req, res) => {
     const custom = {
         'cfdi:Comprobante': 'comprobante'
     }
-    const cfd = new CFDI(comprobanteAttribute, { debug: true });
+    const cfd = new CFDI(comprobanteAttribute, {
+        debug: true,
+        xslt: styleSheet
+    });
     await cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
     cfd.informacionGlobal({
@@ -141,8 +145,8 @@ app.get('/', async (req, res) => {
     });
     await cfd.impuesto(impuesto);
 
-    // await cfd.certificar(cer);
-    // await cfd.sellar(key, '12345678a');
+    await cfd.certificar(cer);
+    await cfd.sellar(key, '12345678a');
     const json = await cfd.getJsonCdfi();
     const xml = await cfd.getXmlCdfi();
     // console.log(xml)

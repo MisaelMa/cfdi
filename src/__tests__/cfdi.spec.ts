@@ -121,6 +121,7 @@ describe('Create CFDI', () => {
 
             await cfd.concepto(concepto);
             await cfd.concepto(concepto);
+
             const impuesto: Impuestos = new Impuestos({ TotalImpuestosRetenidos: '1000' });
             impuesto.traslados({
                 Base: 1,

@@ -34,7 +34,7 @@ export class CFDI {
         'http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
     ];
     private xslt: string | null = null;
-    constructor(attribute: Comprobante, options: Options) {
+    constructor(attribute: Comprobante, options: Options = { debug: false }) {
         const { debug = false, compact = false, xslt, customTags = {} } = options
         xslt && (this.xslt = xslt);
         this.tags = new Structure(customTags)
@@ -165,7 +165,7 @@ export class CFDI {
                     error: e
                 })
             }
-            return e.message
+            return e
         }
     }
 
@@ -265,12 +265,10 @@ export class CFDI {
                 resolve(cadena);
 
             } catch (e) {
-                if (this.debug) {
-                    console.log({
-                        method: 'getCadenaOriginal',
-                        error: e
-                    })
-                }
+                console.log({
+                    method: 'getCadenaOriginal',
+                    error: e
+                })
                 reject({ method: 'getCadenaOriginal', message: e });
             }
         });
