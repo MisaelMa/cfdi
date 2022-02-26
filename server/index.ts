@@ -27,6 +27,7 @@ app.get('/', async (req, res) => {
         TipoDeComprobante: 'I',
         MetodoPago: 'PUE',
         LugarExpedicion: 'México',
+        Exportacion: '01'
     };
     const custom = {
         'cfdi:Comprobante': 'comprobante'

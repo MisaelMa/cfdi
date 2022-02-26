@@ -44,6 +44,7 @@ describe('Create CFDI', () => {
                 TipoDeComprobante: 'I',
                 MetodoPago: 'PUE',
                 LugarExpedicion: 'México',
+                Exportacion: '01'
             };
             const cfd = new CFDI(comprobanteAttribute, {
                 xslt: styleSheet,
