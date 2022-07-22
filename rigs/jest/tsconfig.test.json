@@ -1,0 +1,14 @@
+{
+  "extends": "./node_modules/@recreando/typescript-settings/profiles/default/tsconfig-base.json",
+  "compilerOptions": {
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "paths": {
+      "@cfdi/xml/*": [
+        "../../packages/cfdi/xml/src/*"
+      ],
+    },
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  },
+  "exclude": ["node_modules", "**/node_modules"]
+}
