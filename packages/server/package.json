@@ -1,0 +1,53 @@
+{
+  "name": "@recreando/server",
+  "version": "0.0.1",
+  "scripts": {
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "build": "tsc",
+    "postversion": "git push && git push --tags",
+    "start": "nodemon ./src/index.ts",
+    "storybook": "heft start --storybook",
+    "test": "jest --coverage --runInBand --colors",
+    "test:ci": "jest --ci --reporters=default --reporters=github-actions --coverage --colors",
+    "lint": "rushx lint:css && rushx lint:code",
+    "lint:code": "tsc --noEmit && eslint src",
+    "lint:css": "stylelint ./src/**/*.style* --config ./node_modules/@recreando/eslint-settings/stylelint.json --allow-empty-input"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "@cfdi/xml": "workspace:*",
+    "node-forge": "^1.0.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-config": "^2.6.0",
+    "@rushstack/heft-jest-plugin": "^0.3.1",
+    "@rushstack/heft": "^0.45.1",
+    "@recreando/eslint-settings": "workspace:*",
+    "@recreando/jest": "workspace:*",
+    "@recreando/typescript-settings": "workspace:*",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/dom": "^8.13.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.29",
+    "@testing-library/react": "^13.2.0",
+    "@types/testing-library__jest-dom": "^5.9.1",
+    "eslint": "^8.13.0",
+    "jest": "^28.1.2",
+    "@types/react-dom": "^18.0.3",
+    "@types/react": "^18.0.8",
+    "@types/styled-components": "^5.1.25",
+    "react-is": "^18.1.0",
+    "stylelint": "^13.13.1",
+    "@types/express": "^4.17.3",
+    "@types/express-serve-static-core": "^4.17.29",
+    "@types/node-forge": "^0.8.7",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.6.2",
+    "ts-jest": "^28.0.3",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.7.4"
+  }
+}

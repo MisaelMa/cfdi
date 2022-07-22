@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+
+  "compilerOptions": {
+    "outDir": "../../../../../dist",
+    "rootDir": "../../../../../src",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "baseUrl": "../../../../..",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "inlineSources": true,
+    "isolatedModules": true,
+    "lib": ["dom", "dom.Iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "noEmitOnError": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ESNext",
+    "types": [],
+    "paths": {
+      "@cfdi/xml": [
+        "./node_modules/@cfdi/xml/src/index"
+      ],
+      "@cfdi/xml/*": [
+        "./node_modules/@cfdi/xml/src/*"
+      ],
+
+    }
+  },
+  "include": [
+    "../../../../../src/**/*.ts",
+    "../../../../../src/**/*.tsx",
+    "../../../../../src/*.d.ts",
+    "../../../../../src/**/*.json",
+    "../../../../../node_modules/@recreando/**/src/**/*.ts",
+    "../../../../../node_modules/@recreando/**/src/**/*.tsx",
+    "../../../../../node_modules/@recreando/**/src/**/*.d.ts",
+    "../../../../../node_modules/@recreando/**/src/**/*.json",
+    "../../../../../node_modules/@cfdi/**/src/**/*.ts",
+    "../../../../../node_modules/@cfdi/**/src/**/*.d.ts",
+    "../../../../../node_modules/@cfdi/**/src/**/*.json",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/__mocks__/*.ts*",
+    "**/*.spec.ts*"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "declaration-no-important": true,
+    "indentation": [ 2, {
+      "baseIndentLevel": 2
+    }],
+    "order/order": [
+      "custom-properties",
+      "declarations",
+      "rules",
+      "at-rules"
+    ],
+    "property-no-vendor-prefix": [ true, {
+      "ignoreProperties": [
+        "box-orient",
+        "line-clamp"
+      ]
+    }],
+    "value-no-vendor-prefix": [ true, {
+      "ignoreValues": [
+        "box"
+      ]
+    }]
+  }
+}

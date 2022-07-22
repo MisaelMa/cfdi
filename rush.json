@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.70.0",
+  "pnpmVersion": "6.7.1",
+  "pnpmOptions": {
+    "strictPeerDependencies": false,
+    "useWorkspaces": true
+  },
+  "projectFolderMaxDepth": 3,
+  "nodeSupportedVersionRange": ">=16.14.2",
+  "approvedPackagesPolicy": {
+    "reviewCategories": [
+      "production",
+      "libraries"
+    ],
+    "ignoredNpmScopes": [
+      "@types"
+    ]
+  },
+  "gitPolicy": {},
+  "repository": {},
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "variants": [],
+  "telemetryEnabled": false,
+  "projects": [
+    {
+      "packageName": "@recreando/typescript-settings",
+      "projectFolder": "rigs/typescript",
+      "reviewCategory": "libraries",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@recreando/jest",
+      "projectFolder": "rigs/jest",
+      "reviewCategory": "libraries",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@recreando/eslint-settings",
+      "projectFolder": "rigs/eslint",
+      "reviewCategory": "libraries",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@cfdi/xml",
+      "projectFolder": "packages/cfdi/xml",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@recreando/server",
+      "projectFolder": "packages/server",
+      "reviewCategory": "libraries",
+      "shouldPublish": false
+    }
+  ]
+}
