@@ -1,11 +1,11 @@
 import {
+  ComplementsReturn,
   XmlAerolineas,
   XmlAerolineasAttributes,
   XmlAerolineasCargoAttributes,
   XmlAerolineasOtrosCargos,
   XmlAerolineasOtrosCargosAttributes,
-} from '@cfdi/xml/src/types/Complements/aerolineas.interface';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../types';
 
 /*
  * https://www.sat.gob.mx/consulta/99314/genera-facturas-electronicas-para-el-manejo-de-datos-de-aerolineas-de-pasajeros

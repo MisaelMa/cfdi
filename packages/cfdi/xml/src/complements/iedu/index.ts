@@ -1,4 +1,4 @@
-import { Iedu } from '@cfdi/xml/src/complements/iedu/Iedu';
+import { Iedu } from './Iedu';
 
 export { Iedu };
 export default Iedu;

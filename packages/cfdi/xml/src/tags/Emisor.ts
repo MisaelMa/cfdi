@@ -1,12 +1,12 @@
 import {
+  XmlDomiciolioAttributes,
   XmlEmisor,
   XmlEmisorAttribute,
   XmlEmisorDomicilioF,
   XmlEmisorExpedidoEn,
   XmlEmisorRF,
   XmlEmisorRFAttributes,
-} from '@cfdi/xml/src/types/Tags/emisor.inteface';
-import { XmlDomiciolioAttributes } from '@cfdi/xml/src/types/Tags/domiciolio.interface';
+} from '../types';
 
 /**
  *

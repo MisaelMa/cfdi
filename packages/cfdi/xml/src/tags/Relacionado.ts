@@ -1,7 +1,4 @@
-import {
-  XmlRelacionados,
-  XmlRelacionadosAttributes,
-} from '@cfdi/xml/src/types/Tags/comprobante.interface';
+import { XmlRelacionados, XmlRelacionadosAttributes } from '../types';
 
 /**
  *

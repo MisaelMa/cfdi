@@ -6,7 +6,7 @@ import {
   XmlImpuestos,
   XmlRetenciones,
   XmlImpuestosTrasladados,
-} from '@cfdi/xml/src/types/Tags/impuestos.interface';
+} from '../types';
 
 /**
  *

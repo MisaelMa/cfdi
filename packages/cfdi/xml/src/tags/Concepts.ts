@@ -3,15 +3,13 @@ import {
   XmlConceptoProperties,
   XmlConceptoTercerosAttributes,
   XmlConceptParteAttributes,
-} from '@cfdi/xml/src/types/Tags/concepts.interface';
-import { XmlTranRentAttributesProperties } from '@cfdi/xml/src/types/Tags/impuestos.interface';
-import {
+  XmlTranRentAttributesProperties,
   ComlementTypeConcept,
   ComplementProperties,
   XmlComplementsConcepts,
-} from '@cfdi/xml/src/types/Tags/complements.interface';
+} from '../types';
 
-import { Impuestos } from '@cfdi/xml/src/tags/Impuestos';
+import { Impuestos } from './Impuestos';
 
 /**
  *
@@ -69,13 +67,13 @@ export class Concepts {
       this.concepto['cfdi:ComplementoConcepto'] = {} as XmlComplementsConcepts;
     }
     this.existComplemnt = true;
-    this.complementProperties.key = data.getComplement().key;
-    this.complementProperties.xmlns = data.getComplement().xmlns;
-    this.complementProperties.xmlnskey = data.getComplement().xmlnskey;
-    this.complementProperties.schemaLocation =
-      data.getComplement().schemaLocation;
-    this.concepto['cfdi:ComplementoConcepto'][data.getComplement().key] =
-      data.getComplement().complement;
+    const { complement, key, schemaLocation, xmlns, xmlnskey } =
+      data.getComplement();
+    this.complementProperties.key = key;
+    this.complementProperties.xmlns = xmlns;
+    this.complementProperties.xmlnskey = xmlnskey;
+    this.complementProperties.schemaLocation = schemaLocation;
+    this.concepto['cfdi:ComplementoConcepto'][key] = complement;
   }
 
   /**

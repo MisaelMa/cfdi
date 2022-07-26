@@ -10,5 +10,11 @@
     "sourceMap": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "paths": {
+      "@complements":[
+        "./src/complements/*",
+        "./src/complements/index"
+      ]
+    }
   }
 }

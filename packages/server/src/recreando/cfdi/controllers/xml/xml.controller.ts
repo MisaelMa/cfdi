@@ -1,4 +1,5 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Res, Req } from '@nestjs/common';
+import { Request, Response } from 'express';
 import {
   CFDI,
   Comprobante,
@@ -16,8 +17,13 @@ import {
 export class XmlController {
   /**
    *index
+   *
+   * @param req
+   * Request
+   * @param res
+   * Response
    */
-  async index() {
+  async index(@Req() req: Request, @Res() res: Response) {
     // const styleSheet = path.join(
     //   path.resolve(__dirname, '..', '../'),
     //   'resources',
@@ -181,7 +187,6 @@ export class XmlController {
 
     // const download = Buffer.from(await Receip.getBase64(), 'base64');
     // res.contentType('application/pdf');
-    // @ts-ignore
     if (req.query.xml) {
       res.set('Content-Type', 'text/xml');
       // console.log(xml)

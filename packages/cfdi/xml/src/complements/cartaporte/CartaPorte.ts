@@ -1,8 +1,5 @@
-import {
-  XmlCartaPorte,
-  XmlCartaPorteAttribute,
-} from '../../types/Complements/cartaporte.interface';
-import { ComplementsReturn } from '../../types/Tags/complements.interface';
+import { XmlCartaPorte, XmlCartaPorteAttribute } from '../../types/complements';
+import { ComplementsReturn } from '../../types/tags';
 
 /**
  *

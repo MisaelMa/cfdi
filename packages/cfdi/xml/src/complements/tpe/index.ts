@@ -1,4 +1,4 @@
-import Tpe from '@cfdi/xml/src/complements/tpe/Tpe';
+import Tpe from './Tpe';
 
 export { Tpe };
 export default Tpe;

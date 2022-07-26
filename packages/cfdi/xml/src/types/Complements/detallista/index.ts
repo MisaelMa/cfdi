@@ -1,6 +1,0 @@
-export * from '@cfdi/xml/src/types/Complements/detallista/allowanceCharge.com'
-export * from '@cfdi/xml/src/types/Complements/detallista/currency.com'
-export * from '@cfdi/xml/src/types/Complements/detallista/detallista.com'
-export * from '@cfdi/xml/src/types/Complements/detallista/detallista-common.com'
-export * from '@cfdi/xml/src/types/Complements/detallista/lineItem.com'
-export * from '@cfdi/xml/src/types/Complements/detallista/paymentTerms.com'

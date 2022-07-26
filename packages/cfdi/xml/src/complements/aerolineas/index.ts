@@ -1,3 +1,3 @@
-import { Aerolineas } from '@cfdi/xml/src/complements/aerolineas/Aerolineas';
+import { Aerolineas } from './Aerolineas';
 
 export { Aerolineas };
