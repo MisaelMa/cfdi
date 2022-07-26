@@ -1,8 +1,8 @@
+import { ComplementsReturn } from '../../types';
 import {
   XmlPfic,
   XmlPficAttributes,
-} from '@cfdi/xml/src/types/Complements/pfic/pfic.com';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../types/complements/pfic/pfic.com';
 
 /**
  *

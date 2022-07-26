@@ -1,4 +1,4 @@
-import { Detallista } from '@cfdi/xml/src/complements/detallista/Detallista';
+import { Detallista } from './Detallista';
 
 export { Detallista };
 export default Detallista;

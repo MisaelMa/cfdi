@@ -1,4 +1,4 @@
-import RegistroFiscal from '@cfdi/xml/src/complements/registrofiscal/RegistroFiscal';
+import RegistroFiscal from './RegistroFiscal';
 
 export { RegistroFiscal };
 export default RegistroFiscal;

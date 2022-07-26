@@ -1,4 +1,4 @@
-import { Implocal } from '@cfdi/xml/src/complements/implocal/Implocal';
+import { Implocal } from './Implocal';
 
 export { Implocal };
 export default Implocal;

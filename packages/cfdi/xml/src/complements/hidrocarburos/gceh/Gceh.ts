@@ -1,10 +1,10 @@
+import { ComplementsReturn } from '../../../types';
 import {
   XmlGceh,
   XmlGcehAttributes,
-} from '@cfdi/xml/src/types/Complements/hidrocarburos/gceh/gceh.com';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../../types/complements/hidrocarburos/gceh/gceh.com';
 
-import { Erogacion } from '@cfdi/xml/src/complements/hidrocarburos/gceh/Erogacion.gceh';
+import { Erogacion } from './Erogacion.gceh';
 
 /**
  *

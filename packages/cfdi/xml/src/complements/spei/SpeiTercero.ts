@@ -3,7 +3,7 @@ import {
   XmlSpeiOrdenanteAttributes,
   XmlSpeiTercero,
   XmlSpeiTerceroAttributes,
-} from '@cfdi/xml/src/types/Complements/spei/spei.com';
+} from '../../types/complements/spei/spei.com';
 
 /**
  *

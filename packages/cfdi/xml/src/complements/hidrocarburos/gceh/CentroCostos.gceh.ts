@@ -4,7 +4,7 @@ import {
   XmlEroCenCostYacAttributes,
   XmlEroCenCostYaciPoAttributes,
   XmlEroCenCostYaciPozos,
-} from '@cfdi/xml/src/types/Complements/hidrocarburos/gceh/gceh.com';
+} from '../../../types/complements/hidrocarburos/gceh/gceh.com';
 
 /**
  *
@@ -39,7 +39,7 @@ export class CentroCostos {
 
     const pozosY: XmlEroCenCostYaciPozos[] = [];
 
-    pozos.forEach(pozo => {
+    pozos.forEach((pozo) => {
       pozosY.push({
         _attributes: pozo,
       });

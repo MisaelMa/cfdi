@@ -1,4 +1,4 @@
-import { Controller, Res, Req } from '@nestjs/common';
+import { Controller, Res, Req, Get } from '@nestjs/common';
 import { Request, Response } from 'express';
 import {
   CFDI,
@@ -23,6 +23,7 @@ export class XmlController {
    * @param res
    * Response
    */
+  @Get('/')
   async index(@Req() req: Request, @Res() res: Response) {
     // const styleSheet = path.join(
     //   path.resolve(__dirname, '..', '../'),

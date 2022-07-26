@@ -1,4 +1,4 @@
-import { Donat } from '@cfdi/xml/src/complements/donat/Donat';
+import { Donat } from './Donat';
 
 export { Donat };
 export default Donat;

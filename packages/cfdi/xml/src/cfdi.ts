@@ -10,19 +10,19 @@ import { js2xml } from 'xml-js';
 import {
   ComlementType,
   XmlComplements,
-} from './types/Tags/complements.interface';
-import { XmlCdfi, XmlVersion } from './types/Tags/xmlCdfi.interface';
+} from './types/tags/complements.interface';
+import { XmlCdfi, XmlVersion } from './types/tags/xmlCdfi.interface';
 import { Structure } from './utils/structure';
 import { schema } from './utils/XmlHelp';
 import { TagComprobante } from './types';
 import { Options } from './types/types';
-import { XmlConcepto } from './types/Tags/concepts.interface';
+import { XmlConcepto } from './types/tags/concepts.interface';
 import {
   Comprobante,
   XmlComprobante,
   XmlComprobanteAttributes,
   XmlnsLinks,
-} from './types/Tags/comprobante.interface';
+} from './types/tags/comprobante.interface';
 import { Relacionado } from './tags/Relacionado';
 import { FileSystem } from './utils/FileSystem';
 import { Receptor } from './tags/Receptor';

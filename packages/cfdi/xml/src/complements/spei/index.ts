@@ -1,5 +1,5 @@
-import { Spei } from '@cfdi/xml/src/complements/spei/Spei';
-import { SpeiTercero } from '@cfdi/xml/src/complements/spei/SpeiTercero';
+import { SpeiTercero } from './SpeiTercero';
+import { Spei } from './Spei';
 
 export { Spei };
 export { SpeiTercero };

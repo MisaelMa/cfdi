@@ -1,4 +1,4 @@
-import { ServicioParcial } from '@cfdi/xml/src/complements/servicioparcial/ServicioParcial';
+import { ServicioParcial } from './ServicioParcial';
 
 export { ServicioParcial };
 export default ServicioParcial;

@@ -1,7 +1,7 @@
 import {
   XmlDoctoRelacionado,
   XmlDoctoRelAttributes,
-} from '@cfdi/xml/src/types/Complements/pago10.interface';
+} from '../../types/complements/pago10.interface';
 
 /**
  *

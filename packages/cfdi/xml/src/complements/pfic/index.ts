@@ -1,4 +1,4 @@
-import { Pfic } from '@cfdi/xml/src/complements/pfic/Pfic';
+import { Pfic } from './Pfic';
 
 export { Pfic };
 export default Pfic;

@@ -2,8 +2,8 @@ import {
   XmlTpe,
   XmlTpeAttributes,
   XmlTpeDTransAttributes,
-} from '@cfdi/xml/src/types/Complements/turistaPasajeroExtranjero/tpe.com';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../types/complements/turistaPasajeroExtranjero/tpe.com';
+import { ComplementsReturn } from '../../types';
 
 /**
  *

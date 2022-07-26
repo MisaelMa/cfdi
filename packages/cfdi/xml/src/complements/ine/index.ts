@@ -1,3 +1,3 @@
-import { Ine } from '@cfdi/xml/src/complements/ine/Ine';
+import { Ine } from './Ine';
 
 export { Ine };

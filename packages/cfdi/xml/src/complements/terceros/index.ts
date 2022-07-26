@@ -1,4 +1,4 @@
-import Terceros from '@cfdi/xml/src/complements/terceros/Terceros';
+import Terceros from './Terceros';
 
 export { Terceros };
 export default Terceros;

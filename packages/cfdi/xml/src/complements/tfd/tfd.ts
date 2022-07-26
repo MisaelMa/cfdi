@@ -1,5 +1,5 @@
-import { XmlTfd, XmlTfdAttributes } from '@cfdi/xml/src/types/Complements/tfd/tfd.com';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+import { ComplementsReturn } from '../../types';
+import { XmlTfd, XmlTfdAttributes } from '../../types/complements/tfd/tfd.com';
 
 /**
  *

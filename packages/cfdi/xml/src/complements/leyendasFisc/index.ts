@@ -1,4 +1,4 @@
-import { LeyendaFisc } from '@cfdi/xml/src/complements/leyendasFisc/LeyendaFisc';
+import { LeyendaFisc } from './LeyendaFisc';
 
 export { LeyendaFisc };
 export default LeyendaFisc;

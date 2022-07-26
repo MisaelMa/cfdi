@@ -1,4 +1,4 @@
-import NotariosPublicos from '@cfdi/xml/src/complements/notariospublicos/NotariosPublicos';
+import NotariosPublicos from './NotariosPublicos';
 
 export { NotariosPublicos };
 export default NotariosPublicos;

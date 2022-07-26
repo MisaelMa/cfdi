@@ -1,7 +1,7 @@
-import { Actividades } from '@cfdi/xml/src/complements/hidrocarburos/gceh/Actividades.gceh';
-import { CentroCostos } from '@cfdi/xml/src/complements/hidrocarburos/gceh/CentroCostos.gceh';
-import { Erogacion } from '@cfdi/xml/src/complements/hidrocarburos/gceh/Erogacion.gceh';
-import { Gceh } from '@cfdi/xml/src/complements/hidrocarburos/gceh/Gceh';
+import { Actividades } from './Actividades.gceh';
+import { CentroCostos } from './CentroCostos.gceh';
+import { Erogacion } from './Erogacion.gceh';
+import { Gceh } from './Gceh';
 
 export { Erogacion };
 export { Actividades };

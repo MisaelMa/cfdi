@@ -1,4 +1,4 @@
-import { PagoEnEspecie } from '@cfdi/xml/src/complements/pagoenespecie/PagoEnEspecie';
+import { PagoEnEspecie } from './PagoEnEspecie';
 
 export { PagoEnEspecie };
 export default PagoEnEspecie;

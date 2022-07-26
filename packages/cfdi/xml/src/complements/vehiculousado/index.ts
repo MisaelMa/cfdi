@@ -1,4 +1,4 @@
-import { VehiculoUsado } from '@cfdi/xml/src/complements/vehiculousado/VehiculoUsado';
+import { VehiculoUsado } from './VehiculoUsado';
 
 export { VehiculoUsado };
 export default VehiculoUsado;

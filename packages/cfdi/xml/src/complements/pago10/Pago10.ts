@@ -5,8 +5,8 @@ import {
   XmlPago10Impuesto,
   XmlPagos10,
   XmlPagos10Attributes,
-} from '@cfdi/xml/src/types/Complements/pago10.interface';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../types/complements/pago10.interface';
+import { ComplementsReturn } from '../../types';
 
 /**
  *

@@ -1,10 +1,10 @@
+import { ComplementsReturn } from '../../types';
 import {
   XmlImplocal,
   XmlImplocalAttributes,
   XmlRetLocalAttributes,
   XmlTrasLocalAttributes,
-} from '@cfdi/xml/src/types/Complements/implocal/implocal.com';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../types/complements';
 
 /**
  *

@@ -2,10 +2,10 @@ import {
   XmlEroDocRelaAttributes,
   XmlGcehErogacion,
   XmlGcehErogacionAttributes,
-} from '@cfdi/xml/src/types/Complements/hidrocarburos/gceh/gceh.com';
+} from '../../../types/complements/hidrocarburos/gceh/gceh.com';
 
-import { Actividades } from '@cfdi/xml/src/complements/hidrocarburos/gceh/Actividades.gceh';
-import { CentroCostos } from '@cfdi/xml/src/complements/hidrocarburos/gceh/CentroCostos.gceh';
+import { Actividades } from './Actividades.gceh';
+import { CentroCostos } from './CentroCostos.gceh';
 
 /**
  *

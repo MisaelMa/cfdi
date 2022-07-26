@@ -1,4 +1,5 @@
 // ComercioExterior11
+import { ComplementsReturn } from '../../types';
 import {
   XmlCce11,
   XmlCce11Attributes,
@@ -13,8 +14,7 @@ import {
   XmlCce11Receptor,
   XmlCce11ReceptorAttributes,
   XmlCee11DescEspecificasAttributes,
-} from '@cfdi/xml/src/types/Complements/cce11.interface';
-import { ComplementsReturn } from '@cfdi/xml/src/types';
+} from '../../types/complements/cce11.interface';
 
 /*
  *https://www.sat.gob.mx/consultas/61165/comprobante-de-comercio-exterior
@@ -155,7 +155,7 @@ export class Cce11 {
       if (!mercanci['cce11:DescripcionesEspecificas']) {
         mercanci['cce11:DescripcionesEspecificas'] = [];
       }
-      especificacion.forEach(espe => {
+      especificacion.forEach((espe) => {
         mercanci['cce11:DescripcionesEspecificas']?.push({ _attributes: espe });
       });
       // for (const espe of especificacion) {

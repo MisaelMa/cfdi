@@ -1,4 +1,4 @@
-import { Divisas } from '@cfdi/xml/src/complements/divisas/Divisas';
+import { Divisas } from './Divisas';
 
 export { Divisas };
 export default Divisas;

@@ -1,4 +1,4 @@
-import { Destruccion } from '@cfdi/xml/src/complements/destruccion/Destruccion';
+import { Destruccion } from './Destruccion';
 
 export { Destruccion };
 export default Destruccion;

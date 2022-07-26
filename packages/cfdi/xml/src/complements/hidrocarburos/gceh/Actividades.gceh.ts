@@ -4,7 +4,7 @@ import {
   XmlEroSubActAttributes,
   XmlEroSubActTaAttributes,
   XmlEroSubActTareas,
-} from '@cfdi/xml/src/types/Complements/hidrocarburos/gceh/gceh.com';
+} from '../../../types/complements/hidrocarburos/gceh/gceh.com';
 
 /**
  *Actividades
@@ -39,7 +39,7 @@ export class Actividades {
     }
     const tasks: XmlEroSubActTareas[] = [];
 
-    tareas.forEach(task => {
+    tareas.forEach((task) => {
       tasks.push({
         _attributes: task,
       });
