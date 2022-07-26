@@ -2,8 +2,8 @@ import {
   XmlIeeh,
   XmlIeehAttributes,
   XmlIeehDocRelaAttributes,
-} from '../../../types/Complements/hidrocarburos/ieeh/ieeh.com';
-import { ComplementsReturn } from '../../../types';
+} from '@cfdi/xml/src/types/Complements/hidrocarburos/ieeh/ieeh.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

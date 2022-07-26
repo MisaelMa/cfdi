@@ -3,7 +3,7 @@ import {
   XmlPagoImptoAttributes,
   XmlPagoRetencionAttributes,
   XmlPagoTranladoAttributes,
-} from '../../types/Complements/pago10.interface';
+} from '@cfdi/xml/src/types/Complements/pago10.interface';
 
 /**
  *

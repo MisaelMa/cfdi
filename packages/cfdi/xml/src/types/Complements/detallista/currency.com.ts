@@ -1,4 +1,4 @@
-import { XmlTextData } from './detallista-common.com';
+import { XmlTextData } from '@cfdi/xml/src/types/Complements/detallista/detallista-common.com';
 
 export interface XmlCurrency {
   _attributes: XmlCurrencyAttributes;

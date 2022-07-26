@@ -3,8 +3,8 @@ import {
   XmlImplocalAttributes,
   XmlRetLocalAttributes,
   XmlTrasLocalAttributes,
-} from '../../types/Complements/implocal/implocal.com';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/implocal/implocal.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

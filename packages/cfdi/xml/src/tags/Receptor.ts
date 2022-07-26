@@ -2,8 +2,8 @@ import {
   XmlReceptor,
   XmlReceptorAttribute,
   XmlReceptorDomicilio,
-} from '../types/Tags/receptor.inteface';
-import { XmlDomiciolioAttributes } from '../types/Tags/domiciolio.interface';
+} from '@cfdi/xml/src/types/Tags/receptor.inteface';
+import { XmlDomiciolioAttributes } from '@cfdi/xml/src/types/Tags/domiciolio.interface';
 
 /**
  *

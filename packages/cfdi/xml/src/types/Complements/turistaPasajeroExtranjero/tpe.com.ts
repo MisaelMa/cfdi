@@ -1,4 +1,4 @@
-import { tipoTransito, Via } from "./tpe.enum";
+import { tipoTransito, Via } from "@cfdi/xml/src/types/Complements/turistaPasajeroExtranjero/tpe.enum";
 
 export interface XmlTpe {
     _attributes: XmlTpeAttributes;

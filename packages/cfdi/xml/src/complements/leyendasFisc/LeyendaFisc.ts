@@ -2,8 +2,8 @@ import {
   XmlLeyendaAttributes,
   XmlLeyendasFiscales,
   XmlLeyFisAttributes,
-} from '../../types/Complements/leyendasFiscales/leyendasFiscales.com';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/leyendasFiscales/leyendasFiscales.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

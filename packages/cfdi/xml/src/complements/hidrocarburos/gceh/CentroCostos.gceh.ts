@@ -4,7 +4,7 @@ import {
   XmlEroCenCostYacAttributes,
   XmlEroCenCostYaciPoAttributes,
   XmlEroCenCostYaciPozos,
-} from '../../../types/Complements/hidrocarburos/gceh/gceh.com';
+} from '@cfdi/xml/src/types/Complements/hidrocarburos/gceh/gceh.com';
 
 /**
  *

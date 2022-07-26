@@ -1,4 +1,4 @@
-import { XmlSpecialServicesType, XmlTextData } from './detallista-common.com';
+import { XmlSpecialServicesType, XmlTextData } from '@cfdi/xml/src/types/Complements/detallista/detallista-common.com';
 
 export interface XmlAllowanceCharge {
   'detallista:allowanceCharge': XmlMonetaryAmountOrPercentage;

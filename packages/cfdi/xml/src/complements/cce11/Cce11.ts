@@ -13,8 +13,8 @@ import {
   XmlCce11Receptor,
   XmlCce11ReceptorAttributes,
   XmlCee11DescEspecificasAttributes,
-} from '../../types/Complements/cce11.interface';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/cce11.interface';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /*
  *https://www.sat.gob.mx/consultas/61165/comprobante-de-comercio-exterior

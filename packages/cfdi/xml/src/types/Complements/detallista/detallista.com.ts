@@ -11,11 +11,11 @@ import {
   XmlSpecialInstruction,
   XmlTotalAllowanceCharge,
   XmlTotalAmount,
-} from './detallista-common.com';
-import { XmlCurrency } from './currency.com';
-import { XmlPaymentTerms } from './paymentTerms.com';
-import { XmlAllowanceCharge } from './allowanceCharge.com';
-import { XmlLineItem } from './lineItem.com';
+} from '@cfdi/xml/src/types/Complements/detallista/detallista-common.com';
+import { XmlCurrency } from '@cfdi/xml/src/types/Complements/detallista/currency.com';
+import { XmlPaymentTerms } from '@cfdi/xml/src/types/Complements/detallista/paymentTerms.com';
+import { XmlAllowanceCharge } from '@cfdi/xml/src/types/Complements/detallista/allowanceCharge.com';
+import { XmlLineItem } from '@cfdi/xml/src/types/Complements/detallista/lineItem.com';
 
 export interface XmlDetaAttributes {
   type: string;

@@ -1,4 +1,4 @@
-import { TipoComprobante, TypeComprobante } from '../Catalogs/TipoComprobante';
+import { TipoComprobante, TypeComprobante } from '@cfdi/xml/src/types/Catalogs/TipoComprobante';
 import {
   ExportacionEnum,
   ExportacionType,
@@ -6,13 +6,13 @@ import {
   FormaPagoType,
   MetodoPago,
   MetodoPagoType,
-} from '../Catalogs';
+} from '@cfdi/xml/src/types/Catalogs';
 
-import { XmlEmisor } from './emisor.inteface';
-import { XmlReceptor } from './receptor.inteface';
-import { XmlConcepto } from './concepts.interface';
-import { XmlImpuestos } from './impuestos.interface';
-import { AnyKey, XmlComplements } from './complements.interface';
+import { XmlEmisor } from '@cfdi/xml/src/types/Tags/emisor.inteface';
+import { XmlReceptor } from '@cfdi/xml/src/types/Tags/receptor.inteface';
+import { XmlConcepto } from '@cfdi/xml/src/types/Tags/concepts.interface';
+import { XmlImpuestos } from '@cfdi/xml/src/types/Tags/impuestos.interface';
+import { AnyKey, XmlComplements } from '@cfdi/xml/src/types/Tags/complements.interface';
 
 export interface XmlComprobante {
   _attributes: XmlComprobanteAttributes;

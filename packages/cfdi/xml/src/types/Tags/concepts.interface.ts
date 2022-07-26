@@ -1,6 +1,6 @@
 import { Attributes, ElementCompact } from 'xml-js';
-import { XmlComplementsConcepts } from './complements.interface';
-import { XmlImpuestos } from './impuestos.interface';
+import { XmlComplementsConcepts } from '@cfdi/xml/src/types/Tags/complements.interface';
+import { XmlImpuestos } from '@cfdi/xml/src/types/Tags/impuestos.interface';
 
 export interface XmlConcepto {
     'cfdi:Concepto': XmlConceptoProperties[];

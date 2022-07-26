@@ -1,10 +1,10 @@
-import { XmlAllowanceCharge } from './allowanceCharge.com';
+import { XmlAllowanceCharge } from '@cfdi/xml/src/types/Complements/detallista/allowanceCharge.com';
 import {
   XmlAdditionalInformation,
   XmlAmount,
   XmlCustoms,
   XmlTextData,
-} from './detallista-common.com';
+} from '@cfdi/xml/src/types/Complements/detallista/detallista-common.com';
 
 export interface XmlLineItem
   extends XmlAllowanceCharge,

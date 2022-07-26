@@ -2,8 +2,8 @@ import {
   XmlSerparAttributes,
   XmlSerparInAttributes,
   XmlServicioparcial,
-} from '../../types/Complements/servicioparcial/servicioparcial.com';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/servicioparcial/servicioparcial.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

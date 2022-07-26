@@ -1,8 +1,8 @@
 import {
   XmlRegistrofiscal,
   XmlRegistrofiscalAttributes,
-} from '../../types/Complements/registrofiscal.interface';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/registrofiscal.interface';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

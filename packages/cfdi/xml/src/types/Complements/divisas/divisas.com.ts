@@ -1,4 +1,4 @@
-import { tipoOperacion } from './divisas.enum';
+import { tipoOperacion } from '@cfdi/xml/src/types/Complements/divisas/divisas.enum';
 
 export interface XmlDivisas {
     _attributes: XmlDivisasAttributes

@@ -1,9 +1,9 @@
-import { ComplementsReturn } from '../../types';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 import {
   XmlVehiculousado,
   XmlVehiculousadoAttributes,
   XmlVIAduaneraAttributes,
-} from '../../types/Complements/vehiculousado/vehiculousado.com';
+} from '@cfdi/xml/src/types/Complements/vehiculousado/vehiculousado.com';
 
 /**
  *

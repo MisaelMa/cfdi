@@ -1,8 +1,8 @@
-import { ComplementsReturn } from '../../types';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 import {
   XmlObrasarte,
   XmlObrasarteAttributes,
-} from '../../types/Complements/obrasarte/obrasarte.com';
+} from '@cfdi/xml/src/types/Complements/obrasarte/obrasarte.com';
 
 /**
  *

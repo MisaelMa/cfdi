@@ -1,8 +1,8 @@
 import {
   XmlDivisas,
   XmlDivisasAttributes,
-} from '../../types/Complements/divisas/divisas.com';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/divisas/divisas.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

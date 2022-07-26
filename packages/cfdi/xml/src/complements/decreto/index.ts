@@ -1,6 +1,6 @@
-import { Decreto } from './Decreto';
-import { RenovVehicular } from './RenovVehicular';
-import { SustitVehicular } from './SustitVehicular';
+import { Decreto } from '@cfdi/xml/src/complements/decreto/Decreto';
+import { RenovVehicular } from '@cfdi/xml/src/complements/decreto/RenovVehicular';
+import { SustitVehicular } from '@cfdi/xml/src/complements/decreto/SustitVehicular';
 
 export { RenovVehicular };
 export { SustitVehicular };

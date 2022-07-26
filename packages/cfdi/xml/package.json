@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/xml",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Crea el XML, Firmar Y Sella comprobantes fiscales digitales en Mexico (CFDI)",
   "homepage": "https://recreando.dev",
   "license": "MIT",
@@ -30,7 +30,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -63,14 +62,9 @@
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
-    "@size-limit/preset-small-lib": "^7.0.8",
-    "husky": "^8.0.1",
-    "size-limit": "^7.0.8",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.7.4",
     "@rushstack/eslint-config": "^2.6.0",
     "@rushstack/heft": "^0.45.1",
+    "@size-limit/preset-small-lib": "^7.0.8",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@types/deep-freeze": "^0.1.2",
@@ -80,7 +74,12 @@
     "chalk": "^4.0.0",
     "chokidar": "^3.5.2",
     "eslint": "^8.13.0",
-    "jest": "^28.1.2"
+    "husky": "^8.0.1",
+    "jest": "^28.1.2",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
   },
   "keywords": [
     "CFDI 3.3.",

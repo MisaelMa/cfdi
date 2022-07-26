@@ -3,7 +3,7 @@ import {
   XmlVehicularAttributes,
   XmlVehiculosUsaEnajPermAlFabAttributes,
   XmlVehNueEnaFabAlPermAttributes,
-} from '../../types/Complements/decreto.interface';
+} from '@cfdi/xml/src/types/Complements/decreto.interface';
 
 /**
  *

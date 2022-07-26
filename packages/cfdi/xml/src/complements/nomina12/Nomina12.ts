@@ -1,4 +1,4 @@
-import { XmlIne, XmlIneAttribute } from '../../types';
+import { XmlIne, XmlIneAttribute } from '@cfdi/xml/src/types';
 
 /**
  *

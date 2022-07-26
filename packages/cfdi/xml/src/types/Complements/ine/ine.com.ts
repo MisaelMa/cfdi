@@ -1,4 +1,4 @@
-import { AmbitoIne, ClaveEntidadIne, TipoComiteIne, TipoProcesoIne } from './ine.enum';
+import { AmbitoIne, ClaveEntidadIne, TipoComiteIne, TipoProcesoIne } from '@cfdi/xml/src/types/Complements/ine/ine.enum';
 
 export interface XmlIne {
     _attributes: XmlIneAttribute;

@@ -1,4 +1,4 @@
-import { CaracteristicaObraPieza, TiposDeBien, TituloAdquirido } from './obrasarte.enum';
+import { CaracteristicaObraPieza, TiposDeBien, TituloAdquirido } from '@cfdi/xml/src/types/Complements/obrasarte/obrasarte.enum';
 
 export interface XmlObrasarte {
     _attributes: XmlObrasarteAttributes;

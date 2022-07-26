@@ -1,8 +1,8 @@
 import {
   XmlIedu,
   XmlIeduAttribute,
-} from '../../types/Complements/iedu.interface';
-import { ComplementsReturn } from '../../types/Tags/complements.interface';
+} from '@cfdi/xml/src/types/Complements/iedu.interface';
+import { ComplementsReturn } from '@cfdi/xml/src/types/Tags/complements.interface';
 
 /**
  *

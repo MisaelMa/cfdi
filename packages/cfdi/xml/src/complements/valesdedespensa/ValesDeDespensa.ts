@@ -2,8 +2,8 @@ import {
   XmlValesAttributes,
   XmlValesConceptAttributes,
   XmlValesDeDespensa,
-} from '../../types/Complements/valesdedespensa/valesdedespensa.com';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/valesdedespensa/valesdedespensa.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

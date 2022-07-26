@@ -1,53 +1,53 @@
-import { XmlIedu } from '../Complements/iedu.interface';
+import { XmlIedu } from '@cfdi/xml/src/types/Complements/iedu.interface';
 import {
   XmlAerolineas,
   XmlCce11,
   XmlConsumodecombustibles,
   XmlDecreto,
   XmlDestruccion,
-} from '..';
-import { XmlPagos10 } from '../Complements/pago10.interface';
-import { Aerolineas } from '../../complements/aerolineas';
-import { Cce11 } from '../../complements/cce11';
-import { ConsumoDeCombustibles11 } from '../../complements/consumodecombustibles11';
-import { Decreto } from '../../complements/decreto';
-import { Destruccion } from '../../complements/destruccion';
-import { Ine } from '../../complements/ine';
-import { Iedu } from '../../complements/iedu';
-import { Pago10 } from '../../complements/pago10';
-import { XmlRegistrofiscal } from '../Complements/registrofiscal.interface';
-import { XmlDonat } from '../Complements/donatarias.interface';
-import { Donat } from '../../complements/donat';
-import { ObrasArte } from '../../complements/obrasarte';
-import { XmlValesDeDespensa } from '../Complements/valesdedespensa/valesdedespensa.com';
-import { ValesDeDespensa } from '../../complements/valesdedespensa';
-import { XmlDivisas } from '../Complements/divisas/divisas.com';
-import { Divisas } from '../../complements/divisas';
-import { XmlIne } from '../Complements/ine/ine.com';
-import { XmlObrasarte } from '../Complements/obrasarte/obrasarte.com';
-import { XmlTpe } from '../Complements/turistaPasajeroExtranjero/tpe.com';
-import { XmlLeyendasFiscales } from '../Complements/leyendasFiscales/leyendasFiscales.com';
-import { LeyendaFisc } from '../../complements/leyendasFisc';
-import { XmlPagoenespecie } from '../Complements/pagoenespecie/pagoenespecie.com';
-import { PagoEnEspecie } from '../../complements/pagoenespecie';
-import { XmlSpei } from '../Complements/spei/spei.com';
-import { Spei } from '../../complements/spei';
-import { XmlServicioparcial } from '../Complements/servicioparcial/servicioparcial.com';
-import { ServicioParcial } from '../../complements/servicioparcial';
-import { XmlVehiculousado } from '../Complements/vehiculousado/vehiculousado.com';
-import { VehiculoUsado } from '../../complements/vehiculousado';
-import { XmlIeeh } from '../Complements/hidrocarburos/ieeh/ieeh.com';
-import { Gceh, Ieeh } from '../../complements/hidrocarburos';
-import { XmlGceh } from '../Complements/hidrocarburos/gceh/gceh.com';
-import { XmlImplocal } from '../Complements/implocal/implocal.com';
-import { Implocal } from '../../complements/implocal';
-import { XmlPfic } from '../Complements/pfic/pfic.com';
-import { Pfic } from '../../complements/pfic';
-import { XmlTfd } from '../Complements/tfd/tfd.com';
-import { Tfd } from '../../complements/tfd/tfd';
-import { XmlCartaPorte } from '../Complements/cartaporte.interface';
-import RegistroFiscal from '../../complements/registrofiscal/RegistroFiscal';
-import Tpe from '../../complements/tpe/Tpe';
+} from '@cfdi/xml/src/types';
+import { XmlPagos10 } from '@cfdi/xml/src/types/Complements/pago10.interface';
+import { Aerolineas } from '@cfdi/xml/src/complements/aerolineas';
+import { Cce11 } from '@cfdi/xml/src/complements/cce11';
+import { ConsumoDeCombustibles11 } from '@cfdi/xml/src/complements/consumodecombustibles11';
+import { Decreto } from '@cfdi/xml/src/complements/decreto';
+import { Destruccion } from '@cfdi/xml/src/complements/destruccion';
+import { Ine } from '@cfdi/xml/src/complements/ine';
+import { Iedu } from '@cfdi/xml/src/complements/iedu';
+import { Pago10 } from '@cfdi/xml/src/complements/pago10';
+import { XmlRegistrofiscal } from '@cfdi/xml/src/types/Complements/registrofiscal.interface';
+import { XmlDonat } from '@cfdi/xml/src/types/Complements/donatarias.interface';
+import { Donat } from '@cfdi/xml/src/complements/donat';
+import { ObrasArte } from '@cfdi/xml/src/complements/obrasarte';
+import { XmlValesDeDespensa } from '@cfdi/xml/src/types/Complements/valesdedespensa/valesdedespensa.com';
+import { ValesDeDespensa } from '@cfdi/xml/src/complements/valesdedespensa';
+import { XmlDivisas } from '@cfdi/xml/src/types/Complements/divisas/divisas.com';
+import { Divisas } from '@cfdi/xml/src/complements/divisas';
+import { XmlIne } from '@cfdi/xml/src/types/Complements/ine/ine.com';
+import { XmlObrasarte } from '@cfdi/xml/src/types/Complements/obrasarte/obrasarte.com';
+import { XmlTpe } from '@cfdi/xml/src/types/Complements/turistaPasajeroExtranjero/tpe.com';
+import { XmlLeyendasFiscales } from '@cfdi/xml/src/types/Complements/leyendasFiscales/leyendasFiscales.com';
+import { LeyendaFisc } from '@cfdi/xml/src/complements/leyendasFisc';
+import { XmlPagoenespecie } from '@cfdi/xml/src/types/Complements/pagoenespecie/pagoenespecie.com';
+import { PagoEnEspecie } from '@cfdi/xml/src/complements/pagoenespecie';
+import { XmlSpei } from '@cfdi/xml/src/types/Complements/spei/spei.com';
+import { Spei } from '@cfdi/xml/src/complements/spei';
+import { XmlServicioparcial } from '@cfdi/xml/src/types/Complements/servicioparcial/servicioparcial.com';
+import { ServicioParcial } from '@cfdi/xml/src/complements/servicioparcial';
+import { XmlVehiculousado } from '@cfdi/xml/src/types/Complements/vehiculousado/vehiculousado.com';
+import { VehiculoUsado } from '@cfdi/xml/src/complements/vehiculousado';
+import { XmlIeeh } from '@cfdi/xml/src/types/Complements/hidrocarburos/ieeh/ieeh.com';
+import { Gceh, Ieeh } from '@cfdi/xml/src/complements/hidrocarburos';
+import { XmlGceh } from '@cfdi/xml/src/types/Complements/hidrocarburos/gceh/gceh.com';
+import { XmlImplocal } from '@cfdi/xml/src/types/Complements/implocal/implocal.com';
+import { Implocal } from '@cfdi/xml/src/complements/implocal';
+import { XmlPfic } from '@cfdi/xml/src/types/Complements/pfic/pfic.com';
+import { Pfic } from '@cfdi/xml/src/complements/pfic';
+import { XmlTfd } from '@cfdi/xml/src/types/Complements/tfd/tfd.com';
+import { Tfd } from '@cfdi/xml/src/complements/tfd/tfd';
+import { XmlCartaPorte } from '@cfdi/xml/src/types/Complements/cartaporte.interface';
+import RegistroFiscal from '@cfdi/xml/src/complements/registrofiscal/RegistroFiscal';
+import Tpe from '@cfdi/xml/src/complements/tpe/Tpe';
 
 export interface AnyKey {
   [key: string]: any;

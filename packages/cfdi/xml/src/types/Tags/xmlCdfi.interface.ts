@@ -1,4 +1,4 @@
-import { XmlComprobante } from './comprobante.interface';
+import { XmlComprobante } from '@cfdi/xml/src/types/Tags/comprobante.interface';
 
 export interface XmlCdfi {
   _declaration: XmlDeclaration;

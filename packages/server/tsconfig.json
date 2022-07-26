@@ -4,6 +4,8 @@
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "module": "CommonJS",
     "allowJs": false,
+    "emitDecoratorMetadata": true,
+    "strictBindCallApply": false,
 
   },
   "exclude": ["node_modules"],

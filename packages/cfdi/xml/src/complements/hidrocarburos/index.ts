@@ -1,5 +1,5 @@
-import { Gceh } from './gceh';
-import { Ieeh } from './ieeh/Ieeh';
+import { Gceh } from '@cfdi/xml/src/complements/hidrocarburos/gceh';
+import { Ieeh } from '@cfdi/xml/src/complements/hidrocarburos/ieeh/Ieeh';
 
 export { Ieeh };
 export { Gceh };

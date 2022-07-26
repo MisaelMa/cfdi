@@ -1,8 +1,8 @@
 import {
   XmlDonat,
   XmlDonatAttributes,
-} from '../../types/Complements/donatarias.interface';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/donatarias.interface';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

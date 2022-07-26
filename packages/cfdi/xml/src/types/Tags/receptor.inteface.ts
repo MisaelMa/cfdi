@@ -1,4 +1,4 @@
-import { XmlDomiciolioAttributes } from './domiciolio.interface';
+import { XmlDomiciolioAttributes } from '@cfdi/xml/src/types/Tags/domiciolio.interface';
 
 export interface XmlReceptor {
   _attributes?: XmlReceptorAttribute;

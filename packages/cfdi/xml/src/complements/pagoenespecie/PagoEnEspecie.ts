@@ -1,8 +1,8 @@
 import {
   XmlPagoenespecie,
   XmlPagoenespecieAttributes,
-} from '../../types/Complements/pagoenespecie/pagoenespecie.com';
-import { ComplementsReturn } from '../../types';
+} from '@cfdi/xml/src/types/Complements/pagoenespecie/pagoenespecie.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
 /**
  *

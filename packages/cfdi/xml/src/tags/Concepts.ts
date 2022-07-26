@@ -3,15 +3,15 @@ import {
   XmlConceptoProperties,
   XmlConceptoTercerosAttributes,
   XmlConceptParteAttributes,
-} from '../types/Tags/concepts.interface';
-import { XmlTranRentAttributesProperties } from '../types/Tags/impuestos.interface';
+} from '@cfdi/xml/src/types/Tags/concepts.interface';
+import { XmlTranRentAttributesProperties } from '@cfdi/xml/src/types/Tags/impuestos.interface';
 import {
   ComlementTypeConcept,
   ComplementProperties,
   XmlComplementsConcepts,
-} from '../types/Tags/complements.interface';
+} from '@cfdi/xml/src/types/Tags/complements.interface';
 
-import { Impuestos } from './Impuestos';
+import { Impuestos } from '@cfdi/xml/src/tags/Impuestos';
 
 /**
  *

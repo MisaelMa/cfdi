@@ -7,28 +7,28 @@ import { cer, key } from '@signati/openssl';
 import { Transform } from '@signati/saxon';
 import { js2xml } from 'xml-js';
 
-import { Concepts } from './tags/Concepts';
-import { Emisor } from './tags/Emisor';
-import { Impuestos } from './tags/Impuestos';
-import { Receptor } from './tags/Receptor';
-import { FileSystem } from './utils/FileSystem';
-import { Relacionado } from './tags/Relacionado';
+import { Concepts } from '@cfdi/xml/src/tags/Concepts';
+import { Emisor } from '@cfdi/xml/src/tags/Emisor';
+import { Impuestos } from '@cfdi/xml/src/tags/Impuestos';
+import { Receptor } from '@cfdi/xml/src/tags/Receptor';
+import { FileSystem } from '@cfdi/xml/src/utils/FileSystem';
+import { Relacionado } from '@cfdi/xml/src/tags/Relacionado';
 import {
   ComlementType,
   XmlComplements,
-} from './types/Tags/complements.interface';
+} from '@cfdi/xml/src/types/Tags/complements.interface';
 import {
   Comprobante,
   XmlComprobante,
   XmlComprobanteAttributes,
   XmlnsLinks,
-} from './types/Tags/comprobante.interface';
-import { XmlConcepto } from './types/Tags/concepts.interface';
-import { XmlCdfi, XmlVersion } from './types/Tags/xmlCdfi.interface';
-import { Structure } from './utils/structure';
-import { schema } from './utils/XmlHelp';
-import { TagComprobante } from './types';
-import { Options } from './types/types';
+} from '@cfdi/xml/src/types/Tags/comprobante.interface';
+import { XmlConcepto } from '@cfdi/xml/src/types/Tags/concepts.interface';
+import { XmlCdfi, XmlVersion } from '@cfdi/xml/src/types/Tags/xmlCdfi.interface';
+import { Structure } from '@cfdi/xml/src/utils/structure';
+import { schema } from '@cfdi/xml/src/utils/XmlHelp';
+import { TagComprobante } from '@cfdi/xml/src/types';
+import { Options } from '@cfdi/xml/src/types/types';
 
 /**
  *
@@ -77,7 +77,7 @@ export class CFDI {
       delete attribute.xmlns;
     }
     attribute.schemaLocation && delete attribute.schemaLocation;
-    this.xml[this.tc]._attributes = {
+    this.xml['cfdi:Comprobante']._attributes = {
       ...this.xml[this.tc]._attributes,
       ...{ Version: this.version },
       ...attribute,

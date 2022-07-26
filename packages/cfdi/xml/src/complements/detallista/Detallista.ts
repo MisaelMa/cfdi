@@ -1,4 +1,4 @@
-import { XmlDetaAttributes, XmlDetallista } from '../../types';
+import { XmlDetaAttributes, XmlDetallista } from '@cfdi/xml/src/types';
 
 /**
  *

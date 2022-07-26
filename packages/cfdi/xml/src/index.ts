@@ -1,14 +1,8 @@
-/* import {Map} from 'immutable'
-const invoice = Map<string, number>();
-const newInvoice = invoice.set('x', 1);
-export const Greeter = (name: string) => `Hello ${name}`;
-*/
-
-export * from './cfdi';
-export * from './tags/Relacionado';
-export * from './tags/Emisor';
-export * from './tags/Receptor';
-export * from './tags/Concepts';
-export * from './tags/Impuestos';
-export * from './complements';
-export * from './types';
+export * from '@cfdi/xml/src/cfdi';
+export * from '@cfdi/xml/src/tags/Relacionado';
+export * from '@cfdi/xml/src/tags/Emisor';
+export * from '@cfdi/xml/src/tags/Receptor';
+export * from '@cfdi/xml/src/tags/Concepts';
+export * from '@cfdi/xml/src/tags/Impuestos';
+export * from '@cfdi/xml/src/complements';
+export * from '@cfdi/xml/src/types';

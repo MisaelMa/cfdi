@@ -1,7 +1,7 @@
-import { XmlSpei } from '../../types/Complements/spei/spei.com';
-import { ComplementsReturn } from '../../types';
+import { XmlSpei } from '@cfdi/xml/src/types/Complements/spei/spei.com';
+import { ComplementsReturn } from '@cfdi/xml/src/types';
 
-import { SpeiTercero } from './SpeiTercero';
+import { SpeiTercero } from '@cfdi/xml/src/complements/spei/SpeiTercero';
 
 /**
  *
