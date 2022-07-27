@@ -1,334 +1,558 @@
-import {commandSync} from 'execa';
-import {getOsComandBin} from '../utils'
-import * as execa from "execa";
-import {CliShare} from "./cliShare";
+import { commandSync } from 'execa';
+import * as execa from 'execa';
 
+import { getOsComandBin } from '../utils';
+
+import { CliShare } from './cliShare';
+
+/**
+ *
+ */
 class X509 extends CliShare {
-    public commandline = '';
-    public commandlineArray: string[] = [];
-    public command = 'x509';
-    public opensslBin = '';
+  public commandline = '';
 
-    constructor() {
-        super();
-        this.opensslBin = getOsComandBin();
-        this.commandline = this.opensslBin + ' '+ this.command;
-    }
+  public commandlineArray: string[] = [];
 
-    public help() {
+  public command = 'x509';
 
-    }
+  public opensslBin = '';
 
-    public digest() {
-        this.commandline += ` -digest`;
-        this.commandlineArray.push(`-digest`);
-        return this;
-    }
+  /**
+   *constructor
+   */
+  constructor() {
+    super();
+    this.opensslBin = getOsComandBin();
+    this.commandline = `${this.opensslBin} ${this.command}`;
+  }
 
-    public rand(file: any) {
-        this.commandline += ` -rand ${file}`;
-        this.commandlineArray.push(`-rand ${file}`);
-        return this;
-    }
+  /**
+   *help
+   */
+  public help(): X509 {
+    return this;
+  }
 
-    public writerand(file: any) {
-        this.commandline += ` -writerand ${file}`;
-        this.commandlineArray.push(`-writerand ${file}`);
-        return this;
-    }
+  /**
+   *digest
+   */
+  public digest(): X509 {
+    this.commandline += ` -digest`;
+    this.commandlineArray.push(`-digest`);
+    return this;
+  }
 
-    public engine(id: string | number) {
-        this.commandline += ` -engine ${id}`;
-        this.commandlineArray.push(`-engine ${id}`);
-        return this;
-    }
+  /**
+   *rand
+   *
+   * @param file
+   * file
+   */
+  public rand(file: string): X509 {
+    this.commandline += ` -rand ${file}`;
+    this.commandlineArray.push(`-rand ${file}`);
+    return this;
+  }
 
-    public preserve_dates() {
-        // todo validate if use options days
-        this.commandline += ` -preserve_dates`;
-        this.commandlineArray.push(`-preserve_dates`);
-        return this;
-    }
+  /**
+   *writerand
+   *
+   * @param file
+   * file
+   */
+  public writerand(file: string): X509 {
+    this.commandline += ` -writerand ${file}`;
+    this.commandlineArray.push(`-writerand ${file}`);
+    return this;
+  }
 
-    public text() {
-        this.commandline += ` -text`;
-        this.commandlineArray.push(`-text`);
-        return this;
-    }
+  /**
+   *engine
+   *
+   * @param id
+   * id
+   */
+  public engine(id: string | number): X509 {
+    this.commandline += ` -engine ${id}`;
+    this.commandlineArray.push(`-engine ${id}`);
+    return this;
+  }
 
-    public ext(extensions: string) {
-        this.commandline += ` -ext  ${extensions}`;
-        this.commandlineArray.push(`-ext  ${extensions}`);
-        return this;
-    }
+  /**
+   *preserve_dates
+   */
+  public preserve_dates(): X509 {
+    // todo validate if use options days
+    this.commandline += ` -preserve_dates`;
+    this.commandlineArray.push(`-preserve_dates`);
+    return this;
+  }
 
-    public certopt(option: string) {
-        this.commandline += ` -certopt  ${option}`;
-        this.commandlineArray.push(`-certopt  ${option}`);
-        return this;
-    }
+  /**
+   *text
+   */
+  public text(): X509 {
+    this.commandline += ` -text`;
+    this.commandlineArray.push(`-text`);
+    return this;
+  }
 
-    public noout() {
-        this.commandline += ` -noout`;
-        this.commandlineArray.push(`-noout`);
-        return this;
-    }
+  /**
+   *ext
+   *
+   * @param extensions
+   * extensions
+   */
+  public ext(extensions: string): X509 {
+    this.commandline += ` -ext  ${extensions}`;
+    this.commandlineArray.push(`-ext  ${extensions}`);
+    return this;
+  }
 
-    public pubkey() {
-        this.commandline += ` -pubkey`;
-        this.commandlineArray.push(`-pubkey`);
-        return this;
-    }
+  /**
+   *certopt
+   *
+   * @param option
+   * option
+   */
+  public certopt(option: string): X509 {
+    this.commandline += ` -certopt  ${option}`;
+    this.commandlineArray.push(`-certopt  ${option}`);
+    return this;
+  }
 
-    public modulus() {
-        this.commandline += ` -modulus`;
-        this.commandlineArray.push(`-modulus`);
-        return this;
-    }
+  /**
+   *noout
+   */
+  public noout(): X509 {
+    this.commandline += ` -noout`;
+    this.commandlineArray.push(`-noout`);
+    return this;
+  }
 
+  /**
+   *pubkey
+   */
+  public pubkey(): X509 {
+    this.commandline += ` -pubkey`;
+    this.commandlineArray.push(`-pubkey`);
+    return this;
+  }
 
-    public serial() {
-        this.commandline += ` -serial`;
-        this.commandlineArray.push(`-serial`);
-        return this;
-    }
+  /**
+   *modulus
+   */
+  public modulus(): X509 {
+    this.commandline += ` -modulus`;
+    this.commandlineArray.push(`-modulus`);
+    return this;
+  }
 
-    public subject_hash() {
-        this.commandline += ` -subject_hash`;
-        this.commandlineArray.push(`-subject_hash`);
-        return this;
-    }
+  /**
+   *serial
+   */
+  public serial(): X509 {
+    this.commandline += ` -serial`;
+    this.commandlineArray.push(`-serial`);
+    return this;
+  }
 
-    public issuer_hash() {
-        this.commandline += ` -issuer_hash`;
-        this.commandlineArray.push(`-issuer_hash`);
-        return this;
-    }
+  /**
+   *subject_hash
+   */
+  public subject_hash(): X509 {
+    this.commandline += ` -subject_hash`;
+    this.commandlineArray.push(`-subject_hash`);
+    return this;
+  }
 
-    public ocspid() {
-        this.commandline += ` -ocspid`;
-        this.commandlineArray.push(`-ocspid`);
-        return this;
-    }
+  /**
+   *issuer_hash
+   */
+  public issuer_hash(): X509 {
+    this.commandline += ` -issuer_hash`;
+    this.commandlineArray.push(`-issuer_hash`);
+    return this;
+  }
 
-    public hash() {
-        this.commandline += ` -hash`;
-        this.commandlineArray.push(`-hash`);
-        return this;
-    }
+  /**
+   *ocspid
+   */
+  public ocspid(): X509 {
+    this.commandline += ` -ocspid`;
+    this.commandlineArray.push(`-ocspid`);
+    return this;
+  }
 
-    public subject_hash_old() {
-        this.commandline += ` -subject_hash_old`;
-        this.commandlineArray.push(`-subject_hash_old`);
-        return this;
-    }
+  /**
+   *hash
+   */
+  public hash(): X509 {
+    this.commandline += ` -hash`;
+    this.commandlineArray.push(`-hash`);
+    return this;
+  }
 
-    public issuer_hash_old() {
-        this.commandline += ` -issuer_hash_old`;
-        this.commandlineArray.push(`-issuer_hash_old`);
-        return this;
-    }
+  /**
+   *subject_hash_old
+   */
+  public subject_hash_old(): X509 {
+    this.commandline += ` -subject_hash_old`;
+    this.commandlineArray.push(`-subject_hash_old`);
+    return this;
+  }
 
-    public subject() {
-        this.commandline += ` -subject`;
-        this.commandlineArray.push(`-subject`);
-        return this;
-    }
+  /**
+   *issuer_hash_old
+   */
+  public issuer_hash_old(): X509 {
+    this.commandline += ` -issuer_hash_old`;
+    this.commandlineArray.push(`-issuer_hash_old`);
+    return this;
+  }
 
-    public issuer() {
-        this.commandline += ` -issuer`;
-        this.commandlineArray.push(`-issuer`);
-        return this;
-    }
+  /**
+   *subject
+   */
+  public subject(): X509 {
+    this.commandline += ` -subject`;
+    this.commandlineArray.push(`-subject`);
+    return this;
+  }
 
-    public nameopt(option: any) {
-        this.commandline += ` -nameopt ${option}`;
-        this.commandlineArray.push(`-nameopt ${option}`);
-        return this;
-    }
+  /**
+   *issuer
+   */
+  public issuer(): X509 {
+    this.commandline += ` -issuer`;
+    this.commandlineArray.push(`-issuer`);
+    return this;
+  }
 
-    public email() {
-        this.commandline += ` -email`;
-        this.commandlineArray.push(`-email`);
-        return this;
-    }
+  /**
+   *nameopt
+   *
+   * @param option
+   */
+  public nameopt(option: string): X509 {
+    this.commandline += ` -nameopt ${option}`;
+    this.commandlineArray.push(`-nameopt ${option}`);
+    return this;
+  }
 
-    public ocsp_uri() {
-        this.commandline += ` -ocsp_uri`;
-        this.commandlineArray.push(`-ocsp_uri`);
-        return this;
-    }
+  /**
+   *email
+   */
+  public email(): X509 {
+    this.commandline += ` -email`;
+    this.commandlineArray.push(`-email`);
+    return this;
+  }
 
-    public startdate() {
-        this.commandline += ` -startdate`;
-        this.commandlineArray.push(`-startdate`);
-        return this;
-    }
+  /**
+   *ocsp_uri
+   */
+  public ocsp_uri(): X509 {
+    this.commandline += ` -ocsp_uri`;
+    this.commandlineArray.push(`-ocsp_uri`);
+    return this;
+  }
 
-    public enddate() {
-        this.commandline += ` -enddate`;
-        this.commandlineArray.push(`-enddate`);
-        return this;
-    }
+  /**
+   *startdate
+   */
+  public startdate(): X509 {
+    this.commandline += ` -startdate`;
+    this.commandlineArray.push(`-startdate`);
+    return this;
+  }
 
-    public dates() {
-        this.commandline += ` -dates`;
-        this.commandlineArray.push(`-dates`);
-        return this;
-    }
+  /**
+   *enddate
+   */
+  public enddate(): X509 {
+    this.commandline += ` -enddate`;
+    this.commandlineArray.push(`-enddate`);
+    return this;
+  }
 
-    public checkend(num: string | number) {
-        this.commandline += ` -checkend ${num}`;
-        this.commandlineArray.push(`-checkend ${num}`);
-        return this;
-    }
+  /**
+   *dates
+   */
+  public dates(): X509 {
+    this.commandline += ` -dates`;
+    this.commandlineArray.push(`-dates`);
+    return this;
+  }
 
-    public fingerprint() {
-        this.commandline += ` -fingerprint`;
-        this.commandlineArray.push(`-fingerprint`);
-        return this;
-    }
+  /**
+   *checkend
+   *
+   * @param num
+   * num
+   */
+  public checkend(num: string | number): X509 {
+    this.commandline += ` -checkend ${num}`;
+    this.commandlineArray.push(`-checkend ${num}`);
+    return this;
+  }
 
-    public C() {
-        this.commandline += ` -C`;
-        this.commandlineArray.push(`-C`);
-        return this;
-    }
+  /**
+   *fingerprint
+   */
+  public fingerprint(): X509 {
+    this.commandline += ` -fingerprint`;
+    this.commandlineArray.push(`-fingerprint`);
+    return this;
+  }
 
-    public trustout() {
-        this.commandline += ` -trustout`;
-        this.commandlineArray.push(`-trustout`);
-        return this;
-    }
+  /**
+   * C
+   */
+  public C(): X509 {
+    this.commandline += ` -C`;
+    this.commandlineArray.push(`-C`);
+    return this;
+  }
 
+  /**
+   *trustout
+   */
+  public trustout(): X509 {
+    this.commandline += ` -trustout`;
+    this.commandlineArray.push(`-trustout`);
+    return this;
+  }
 
-    public setalias(arg: string) {
-        this.commandline += ` -setalias ${arg}`;
-        this.commandlineArray.push(`-setalias ${arg}`);
-        return this;
-    }
+  /**
+   *setalias
+   *
+   * @param arg
+   * arg
+   */
+  public setalias(arg: string): X509 {
+    this.commandline += ` -setalias ${arg}`;
+    this.commandlineArray.push(`-setalias ${arg}`);
+    return this;
+  }
 
+  /**
+   *alias
+   */
+  public alias(): X509 {
+    this.commandline += ` -alias`;
+    this.commandlineArray.push(`-alias`);
+    return this;
+  }
 
-    public alias() {
-        this.commandline += ` -alias`;
-        this.commandlineArray.push(`-alias`);
-        return this;
-    }
+  /**
+   *clrtrust
+   */
+  public clrtrust(): X509 {
+    this.commandline += ` -clrtrust`;
+    this.commandlineArray.push(`-clrtrust`);
+    return this;
+  }
 
-    public clrtrust() {
-        this.commandline += ` -clrtrust`;
-        this.commandlineArray.push(`-clrtrust`);
-        return this;
-    }
+  /**
+   *clrreject
+   */
+  public clrreject(): X509 {
+    this.commandline += ` -clrreject`;
+    this.commandlineArray.push(`-clrreject`);
+    return this;
+  }
 
-    public clrreject() {
-        this.commandline += ` -clrreject`;
-        this.commandlineArray.push(`-clrreject`);
-        return this;
-    }
+  /**
+   *addtrust
+   *
+   * @param arg
+   * arg
+   */
+  public addtrust(arg: string): X509 {
+    this.commandline += ` -addtrust ${arg}`;
+    this.commandlineArray.push(`-addtrust ${arg}`);
+    return this;
+  }
 
-    public addtrust(arg: string) {
-        this.commandline += ` -addtrust ${arg}`;
-        this.commandlineArray.push(`-addtrust ${arg}`);
-        return this;
-    }
+  /**
+   *addreject
+   *
+   * @param arg
+   * arg
+   */
+  public addreject(arg: string): X509 {
+    this.commandline += ` -addreject ${arg}`;
+    this.commandlineArray.push(`-addreject ${arg}`);
+    return this;
+  }
 
-    public addreject(arg: string) {
-        this.commandline += ` -addreject ${arg}`;
-        this.commandlineArray.push(`-addreject ${arg}`);
-        return this;
-    }
+  /**
+   *purpose
+   */
+  public purpose(): X509 {
+    this.commandline += ` -purpose`;
+    this.commandlineArray.push(`-purpose`);
+    return this;
+  }
 
-    public purpose() {
-        this.commandline += ` -purpose`;
-        this.commandlineArray.push(`-purpose`);
-        return this;
-    }
+  /**
+   *sigopt
+   *
+   * @param arg
+   * arg
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public sigopt(arg: string): X509 {
+    // todo
+    return this;
+  }
 
-    public sigopt(arg: string) {
-        // todo
-        return this;
-    }
+  /**
+   *clrext
+   */
+  public clrext(): X509 {
+    this.commandline += ` -clrext`;
+    this.commandlineArray.push(`-clrext`);
+    return this;
+  }
 
-    public clrext() {
-        this.commandline += ` -clrext`;
-        this.commandlineArray.push(`-clrext`);
-        return this;
-    }
+  /**
+   *keyform
+   *
+   * @param options
+   * options
+   */
+  public keyform(options: 'DER' | 'PEM' | 'ENGINE'): X509 {
+    this.commandline += ` -keyform ${options}`;
+    this.commandlineArray.push(`-keyform ${options}`);
+    return this;
+  }
 
-    public keyform(options: 'DER' | 'PEM' | 'ENGINE') {
-        this.commandline += ` -keyform ${options}`;
-        this.commandlineArray.push(`-keyform ${options}`);
-        return this;
-    }
+  /**
+   *days
+   *
+   * @param arg
+   * arg
+   */
+  public days(arg: string): X509 {
+    this.commandline += ` -days ${arg}`;
+    this.commandlineArray.push(`-days ${arg}`);
+    return this;
+  }
 
-    public days(arg: string) {
-        this.commandline += ` -days ${arg}`;
-        this.commandlineArray.push(`-days ${arg}`);
-        return this;
-    }
+  /**
+   *x509toreq
+   */
+  public x509toreq(): X509 {
+    this.commandline += ` -x509toreq`;
+    this.commandlineArray.push(`-x509toreq`);
+    return this;
+  }
 
-    public x509toreq() {
-        this.commandline += ` -x509toreq`;
-        this.commandlineArray.push(`-x509toreq`);
-        return this;
-    }
+  /**
+   *req
+   */
+  public req(): X509 {
+    this.commandline += ` -req`;
+    this.commandlineArray.push(`-req`);
+    return this;
+  }
 
-    public req() {
-        this.commandline += ` -req`;
-        this.commandlineArray.push(`-req`);
-        return this;
-    }
+  /**
+   *set_serial
+   *
+   * @param n
+   * n
+   */
+  public set_serial(n: string): X509 {
+    this.commandline += ` -set_serial ${n}`;
+    this.commandlineArray.push(`-set_serial ${n}`);
+    return this;
+  }
 
-    public set_serial(n: string) {
-        this.commandline += ` -set_serial ${n}`;
-        this.commandlineArray.push(`-set_serial ${n}`);
-        return this;
-    }
+  /**
+   *CA
+   *
+   * @param filename
+   * filename
+   */
+  public CA(filename: string): X509 {
+    this.commandline += ` -CA ${filename}`;
+    this.commandlineArray.push(`-CA ${filename}`);
+    return this;
+  }
 
-    public CA(filename: string) {
-        this.commandline += ` -CA ${filename}`;
-        this.commandlineArray.push(`-CA ${filename}`);
-        return this;
-    }
+  /**
+   *CAkey
+   *
+   * @param filename
+   * filename
+   */
+  public CAkey(filename: string): X509 {
+    this.commandline += ` -CAkey ${filename}`;
+    this.commandlineArray.push(`-CAkey ${filename}`);
+    return this;
+  }
 
+  /**
+   *
+   * CAserial
+   *
+   * @param filename
+   * filename
+   */
+  public CAserial(filename: string): X509 {
+    this.commandline += ` -CAserial ${filename}`;
+    this.commandlineArray.push(`-CAserial ${filename}`);
+    return this;
+  }
 
-    public CAkey(filename: string) {
-        this.commandline += ` -CAkey ${filename}`;
-        this.commandlineArray.push(`-CAkey ${filename}`);
-        return this;
-    }
+  /**
+   *CAcreateserial
+   */
+  public CAcreateserial(): X509 {
+    this.commandline += ` -CAcreateserial`;
+    this.commandlineArray.push(`-CAcreateserial`);
+    return this;
+  }
 
-    public CAserial(filename: string) {
-        this.commandline += ` -CAserial ${filename}`;
-        this.commandlineArray.push(`-CAserial ${filename}`);
-        return this;
-    }
+  /**
+   *extfile
+   *
+   * @param filename
+   * filename
+   */
+  public extfile(filename: string): X509 {
+    this.commandline += ` -extfile ${filename}`;
+    this.commandlineArray.push(`-extfile ${filename}`);
+    return this;
+  }
 
-    public CAcreateserial() {
-        this.commandline += ` -CAcreateserial`;
-        this.commandlineArray.push(`-CAcreateserial`);
-        return this;
-    }
+  /**
+   *extensions
+   *
+   * @param section
+   * section
+   */
+  public extensions(section: string): X509 {
+    this.commandline += ` -extensions ${section}`;
+    this.commandlineArray.push(`-extensions ${section}`);
+    return this;
+  }
 
-    public extfile(filename: string) {
-        this.commandline += ` -extfile ${filename}`;
-        this.commandlineArray.push(`-extfile ${filename}`);
-        return this;
-    }
-
-    public extensions(section: string) {
-        this.commandline += ` -extensions ${section}`;
-        this.commandlineArray.push(`-extensions ${section}`);
-        return this;
-    }
-
-    public force_pubkey(key: string) {
-        this.commandline += ` -force_pubkey ${key}`;
-        this.commandlineArray.push(`-force_pubkey ${key}`);
-        return this;
-    }
-
+  /**
+   *force_pubkey
+   *
+   * @param key
+   * key
+   * @param key
+   */
+  public force_pubkey(key: string): X509 {
+    this.commandline += ` -force_pubkey ${key}`;
+    this.commandlineArray.push(`-force_pubkey ${key}`);
+    return this;
+  }
 }
 
 export const x509 = new X509();

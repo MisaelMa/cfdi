@@ -1,13 +1,9 @@
-import * as fs from 'fs';
-import * as moment from 'moment';
-import {pki} from 'node-forge';
-import * as os from 'os';
-import {AnyKey, OptionsSsl} from '../interface/certificate.interface';
-
-
+/**
+ *
+ */
 class Openssl {
-    public opensslbin: string = 'openssl';
-        /*
+  public opensslbin = 'openssl';
+  /*
 
 
 

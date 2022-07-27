@@ -54,6 +54,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@clir/openssl",
+      "projectFolder": "packages/cli/openssl",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@recreando/server",
       "projectFolder": "packages/server",
       "reviewCategory": "libraries",

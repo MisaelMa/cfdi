@@ -1,46 +1,77 @@
-import {commandSync} from 'execa';
-import {getOsComandBin} from '../utils';
-import {CliShare} from './cliShare';
+import { getOsComandBin } from '../utils';
+
+import { CliShare } from './cliShare';
+
+/**
+ *
+ */
 class Pkcs8 extends CliShare {
-    public commandline = '';
-    public commandlineArray: string[] = [];
-    public command = 'pkcs8';
-    public opensslBin = '';
+  public commandline = '';
 
-    constructor() {
-        super();
-        this.opensslBin = getOsComandBin();
-        this.commandline = this.opensslBin + ' '+ this.command;
-    }
+  public commandlineArray: string[] = [];
 
-    public topk8() {
-        this.commandline += ` -topk8`;
-        this.commandlineArray.push(`-topk8`);
-        return this;
-    }
+  public command = 'pkcs8';
 
-    public traditional() {
-        this.commandline += ` -traditional`;
-        this.commandlineArray.push(`-traditional`);
-        return this;
-    }
+  public opensslBin = '';
 
-    public iter(count: number) {
-        this.commandline += ` -iter ${count}`;
-        this.commandlineArray.push(`-iter ${count}`);
-        return this;
-    }
+  /**
+   *constructor
+   */
+  constructor() {
+    super();
+    this.opensslBin = getOsComandBin();
+    this.commandline = `${this.opensslBin} ${this.command}`;
+  }
 
-    public nocrypt() {
-        this.commandline += ` -nocrypt`;
-        this.commandlineArray.push(`-nocrypt`);
-        return this;
-    }
+  /**
+   *topk8
+   */
+  public topk8(): Pkcs8 {
+    this.commandline += ` -topk8`;
+    this.commandlineArray.push(`-topk8`);
+    return this;
+  }
 
-    public rand(file: string) {
-        this.commandline += ` -rand ${file}`;
-        this.commandlineArray.push(`-rand ${file}`);
-        return this;
-    }
+  /**
+   *traditional
+   */
+  public traditional(): Pkcs8 {
+    this.commandline += ` -traditional`;
+    this.commandlineArray.push(`-traditional`);
+    return this;
+  }
+
+  /**
+   *iter
+   *
+   * @param count
+   * count
+   */
+  public iter(count: number): Pkcs8 {
+    this.commandline += ` -iter ${count}`;
+    this.commandlineArray.push(`-iter ${count}`);
+    return this;
+  }
+
+  /**
+   *nocrypt
+   */
+  public nocrypt(): Pkcs8 {
+    this.commandline += ` -nocrypt`;
+    this.commandlineArray.push(`-nocrypt`);
+    return this;
+  }
+
+  /**
+   *rand
+   *
+   * @param file
+   * file
+   */
+  public rand(file: string): Pkcs8 {
+    this.commandline += ` -rand ${file}`;
+    this.commandlineArray.push(`-rand ${file}`);
+    return this;
+  }
 }
-export const pkcs8 = new Pkcs8()
+export const pkcs8 = new Pkcs8();

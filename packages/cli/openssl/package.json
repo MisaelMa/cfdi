@@ -1,9 +1,10 @@
 {
+  "name": "@clir/openssl",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/pdf.esm.js",
+  "module": "dist/openssl.esm.js",
   "files": [
     "dist",
     "src"
@@ -32,15 +33,14 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "pdf",
   "author": "MisaelMa",
   "size-limit": [
     {
-      "path": "dist/pdf.cjs.production.min.js",
+      "path": "dist/openssl.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/pdf.esm.js",
+      "path": "dist/openssl.esm.js",
       "limit": "10 KB"
     }
   ],

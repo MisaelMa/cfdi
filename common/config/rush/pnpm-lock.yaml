@@ -62,6 +62,61 @@ importers:
       tslib: 2.4.0
       typescript: 4.7.4
 
+  ../../packages/cli/openssl:
+    specifiers:
+      '@recreando/eslint-settings': workspace:*
+      '@recreando/jest': workspace:*
+      '@recreando/typescript-settings': workspace:*
+      '@rushstack/eslint-config': ^2.6.0
+      '@rushstack/heft': ^0.45.1
+      '@size-limit/preset-small-lib': ^7.0.8
+      '@testing-library/dom': ^8.13.0
+      '@testing-library/jest-dom': ^5.16.1
+      '@types/deep-freeze': ^0.1.2
+      '@types/jest': ^27.4.1
+      '@types/node': ^17.0.29
+      '@types/node-forge': ^0.8.7
+      '@types/testing-library__jest-dom': ^5.9.1
+      chalk: ^4.0.0
+      chokidar: ^3.5.2
+      eslint: ^8.13.0
+      execa: ^4.1.0
+      husky: ^8.0.1
+      jest: ^28.1.2
+      moment: ^2.29.1
+      node-forge: ^0.10.0
+      size-limit: ^7.0.8
+      tsdx: ^0.14.1
+      tslib: ^2.4.0
+      typescript: ^4.7.4
+    dependencies:
+      execa: 4.1.0
+      moment: 2.29.4
+      node-forge: 0.10.0
+    devDependencies:
+      '@recreando/eslint-settings': link:../../../rigs/eslint
+      '@recreando/jest': link:../../../rigs/jest
+      '@recreando/typescript-settings': link:../../../rigs/typescript
+      '@rushstack/eslint-config': 2.6.2_eslint@8.20.0+typescript@4.7.4
+      '@rushstack/heft': 0.45.14
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      '@testing-library/dom': 8.16.0
+      '@testing-library/jest-dom': 5.16.4
+      '@types/deep-freeze': 0.1.2
+      '@types/jest': 27.5.2
+      '@types/node': 17.0.45
+      '@types/node-forge': 0.8.7
+      '@types/testing-library__jest-dom': 5.14.5
+      chalk: 4.1.2
+      chokidar: 3.5.3
+      eslint: 8.20.0
+      husky: 8.0.1
+      jest: 28.1.3_@types+node@17.0.45
+      size-limit: 7.0.8
+      tsdx: 0.14.1_@types+node@17.0.45
+      tslib: 2.4.0
+      typescript: 4.7.4
+
   ../../packages/server:
     specifiers:
       '@cfdi/xml': workspace:*
@@ -12787,6 +12842,11 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+
+  /node-forge/0.10.0:
+    resolution: {integrity: sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA==}
+    engines: {node: '>= 6.0.0'}
+    dev: false
 
   /node-forge/0.9.2:
     resolution: {integrity: sha512-naKSScof4Wn+aoHU6HBsifh92Zeicm1GDQKd1vp3Y/kOi8ub0DozCa9KpvYNCXslFHYRmLNiqRopGdTGwNLpNw==}

@@ -203,6 +203,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "execa",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "express",
       "allowedCategories": [ "libraries", "production" ]
     },
