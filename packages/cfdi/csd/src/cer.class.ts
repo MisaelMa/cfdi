@@ -2,7 +2,7 @@ import moment = require('moment');
 import { pki } from 'node-forge';
 import { AnyKey } from '../interface/certificate.interface';
 import { readFileSync } from '../utils';
-import { x509 } from './x509';
+import { x509 } from '@clir/openssl';
 
 class Cer {
   public async generaCerPem(filePathCer: string, outputpath: string) {

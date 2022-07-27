@@ -15,6 +15,10 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "@clir/openssl",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@graphql-codegen/cli",
       "allowedCategories": [ "libraries" ]
     },
@@ -81,6 +85,10 @@
     {
       "name": "@rushstack/heft-jest-plugin",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "@signati/core",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@signati/openssl",
@@ -203,6 +211,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "exact-math",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "execa",
       "allowedCategories": [ "libraries" ]
     },
@@ -228,6 +240,10 @@
     },
     {
       "name": "identity-obj-proxy",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "immutable",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -283,8 +299,16 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "pdfmake",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "prettier",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "qrcode",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "react",
@@ -312,6 +336,10 @@
     },
     {
       "name": "rxjs",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "save-file",
       "allowedCategories": [ "libraries" ]
     },
     {

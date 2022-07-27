@@ -122,7 +122,7 @@ export class CliShare {
       const cp = this.commandline;
       this.commandline = `${this.opensslBin} ${this.command}`;
       return cp;
-    } catch (e: any) {
+    } catch (e) {
       throw new Error('cli');
     }
   }

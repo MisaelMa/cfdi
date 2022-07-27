@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { pkcs8 } from '../../../cli/openssl/src/openssl/pkcs8';
+import { pkcs8 } from '../../../clir/openssl/src/openssl/pkcs8';
 
 class Key {
 

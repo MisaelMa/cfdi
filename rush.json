@@ -54,8 +54,36 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/csd",
+      "projectFolder": "packages/cfdi/csd",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/pdf",
+      "projectFolder": "packages/cfdi/pdf",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/utils",
+      "projectFolder": "packages/cfdi/utils",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@clir/openssl",
-      "projectFolder": "packages/cli/openssl",
+      "projectFolder": "packages/clir/openssl",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@clir/saxon-he",
+      "projectFolder": "packages/clir/saxon-he",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
       "shouldPublish": true
