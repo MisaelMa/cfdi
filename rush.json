@@ -49,6 +49,7 @@
     {
       "packageName": "@cfdi/xml",
       "projectFolder": "packages/cfdi/xml",
+      "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },

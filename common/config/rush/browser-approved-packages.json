@@ -35,6 +35,30 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/cli",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/common",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/core",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/platform-express",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/schematics",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/testing",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@recreando/eslint-settings",
       "allowedCategories": [ "libraries", "production" ]
     },
@@ -275,7 +299,23 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "reflect-metadata",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "rimraf",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "rxjs",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "size-limit",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "source-map-support",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -303,6 +343,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "supertest",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "ts-jest",
       "allowedCategories": [ "libraries", "production" ]
     },
@@ -313,6 +357,10 @@
     {
       "name": "ts-node",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "tsconfig-paths",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "tsconfig-paths-webpack-plugin",
