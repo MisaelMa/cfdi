@@ -44,12 +44,23 @@
       "limit": "10 KB"
     }
   ],
+  "dependencies": {
+    "@signati/core": "^3.3.8",
+    "immutable": "^4.0.0-rc.12",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "pdfmake": "^0.1.65",
+    "qrcode": "^1.4.4",
+    "save-file": "^2.3.1",
+    "xml-js": "^1.6.11"
+  },
   "devDependencies": {
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^2.6.0",
     "@rushstack/heft": "^0.45.1",
+    "@types/pdfmake": "^0.1.13",
     "@size-limit/preset-small-lib": "^7.0.8",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.1",

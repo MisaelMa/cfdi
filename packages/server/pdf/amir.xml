@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Serie="B"
+                  Folio="NTTCUN-5" Fecha="2018-08-06T14:51:03" Sello="Gd+ICsJUEIxdb+5ZXN8fk8jJhkKo4O8AX2fLp6x2Tmo2k7s+/3ubJJGHDzgGKtaTvkkJhdkzChrTa8S05FvJObAZsHMGMUQRl+jcQAS2PVjnsTh47GKsJZZiXlYeaC4RyOiOdL8pUtkjr1bUagODNq0JSsXdlAcBxJV8hF1xDF0Nev6s8b8nBAOJyikQVVRFEUG+dMHFdOb3eY9/QcHoSudYNlorYGv1jqPyTHGoJGhKE+arDvNP7JZttqUupxuBWcYL7ZnL7vNVw5papm74UqaVC4UKMWZvYUT1NgkUVC2TtwqQDxNse9HzwO1fxwj+Y0Iwqj1hmNxFhJQis6UhmQ==" FormaPago="01" NoCertificado="00001000000406991947" Certificado="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" SubTotal="198.27" Descuento="0.00" Moneda="MXN" Total="229.99" TipoDeComprobante="I" MetodoPago="PUE" LugarExpedicion="77533">
+  <cfdi:Emisor Rfc="GUCE910701NHA" Nombre="MARIA EUGENIA GUZMAN CARRASCO" RegimenFiscal="612"/>
+  <cfdi:Receptor Rfc="SOPM790517HY5" Nombre="MOYRA LIZETTE SORDO PIÑA" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="14111514" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Libreta de Tareas de Primaria" ValorUnitario="107.76" Importe="107.76" Descuento="0.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="107.76" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="17.2416"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="53102705" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Forro College Amarillo Primaria" ValorUnitario="30.17" Importe="30.17" Descuento="0.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="30.17" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4.8272"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="53102705" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Forro College Azul Primaria" ValorUnitario="30.17" Importe="30.17" Descuento="0.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="30.17" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4.8272"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="53102705" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Forro College Rojo Primaria" ValorUnitario="30.17" Importe="30.17" Descuento="0.00">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="30.17" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4.8272"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="31.72">
+    <cfdi:Traslados>
+      <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="31.72"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="0DC18746-99B2-11E8-BEED-8140D0CA48BB" FechaTimbrado="2018-08-06T14:51:04" RfcProvCertif="FMO1007168C6" SelloCFD="Gd+ICsJUEIxdb+5ZXN8fk8jJhkKo4O8AX2fLp6x2Tmo2k7s+/3ubJJGHDzgGKtaTvkkJhdkzChrTa8S05FvJObAZsHMGMUQRl+jcQAS2PVjnsTh47GKsJZZiXlYeaC4RyOiOdL8pUtkjr1bUagODNq0JSsXdlAcBxJV8hF1xDF0Nev6s8b8nBAOJyikQVVRFEUG+dMHFdOb3eY9/QcHoSudYNlorYGv1jqPyTHGoJGhKE+arDvNP7JZttqUupxuBWcYL7ZnL7vNVw5papm74UqaVC4UKMWZvYUT1NgkUVC2TtwqQDxNse9HzwO1fxwj+Y0Iwqj1hmNxFhJQis6UhmQ==" NoCertificadoSAT="00001000000401477845" SelloSAT="BYVrcMqQpzCJD7t9kS/EBeuAj8FmGKN82didMtzSGyv5+C3noEpvQqYQn8uPCeAvLcFxS5U/3uEsjgT6A31R7jcsrvD8EvTyvPuf15eFa/m70DOZvHWz0R0S/leeYf3UEhMJR7pMrV89VG4/b4nZXXtSsnYS8xl9XFJVKlfBhG54wEWbnqlvJEQ1gopv88kFdBK1ZASal4+IcQcPQ49XFt/XlPR91mlLYfQLE4q8tWQYa/c+i6C2HPkFSDxQfgvWkvE7bsjhDLjgWNoaBt9Xe8BiPVyz4xsh/zwXalyZF9lALDCoUEtxmrycNl4D67b74Hwg9CdiaWPY2iK5K5jzwA=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>
