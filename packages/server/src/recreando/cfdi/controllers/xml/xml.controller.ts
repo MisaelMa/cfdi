@@ -1,15 +1,6 @@
 import { Controller, Res, Req, Get } from '@nestjs/common';
 import { Request, Response } from 'express';
-import {
-  CFDI,
-  Comprobante,
-  Concepts,
-  Emisor,
-  Impuestos,
-  ObjetoImpEnum,
-  Receptor,
-  Relacionado,
-} from '@cfdi/xml';
+import { CFDI, Comprobante, Concepts, Emisor, Impuestos, ObjetoImpEnum, Receptor, Relacionado } from '@cfdi/xml';
 /**
  *
  */
@@ -113,8 +104,7 @@ export class XmlController {
       NoIdentificacion: 'IM020',
       Cantidad: 1,
       Unidad: 'PIEZA',
-      Descripcion:
-        '25311FM00114 CREMA FUNGICIDA 35ML (ACIDO UNDECILENICO, ARBOL DEL TE VEHICULO EMOLIENTE)',
+      Descripcion: '25311FM00114 CREMA FUNGICIDA 35ML (ACIDO UNDECILENICO, ARBOL DEL TE VEHICULO EMOLIENTE)',
       ValorUnitario: '172.50',
       Importe: '172.50',
     });

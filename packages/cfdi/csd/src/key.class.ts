@@ -1,27 +1,57 @@
 import * as fs from 'fs';
-import { pkcs8 } from '../../../clir/openssl/src/openssl/pkcs8';
 
+import { pkcs8 } from '@clir/openssl';
+
+/**
+ *
+ */
 class Key {
-
-  public async getKey(keyfile: string, password: string): Promise<{ privateKeyPem: string, privatekey: string }> {
+  /**
+   *getKey
+   *
+   * @param keyfile
+   * string
+   * @param password
+   * string
+   */
+  public async getKey(
+    keyfile: string,
+    password: string
+  ): Promise<{ privateKeyPem: string; privatekey: string }> {
     try {
       // const keyPem = commandSync(`${getOsComandBin()} pkcs8 -inform DER -in ${keyfile} -outform PEM -passin pass:${password}`).stdout;
-      const keyPem = pkcs8.inform('DER').in(keyfile).outform('PEM').passin('pass:' + password).run();
+      const keyPem = pkcs8
+        .inform('DER')
+        .in(keyfile)
+        .outform('PEM')
+        .passin(`pass:${password}`)
+        .run();
       const privateKey = {
         privateKeyPem: keyPem,
-        privatekey: keyPem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '')
-      }
-      return privateKey
+        privatekey: keyPem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, ''),
+      };
+      return privateKey;
     } catch (e) {
-      return e.message
+      return e.message;
     }
   }
 
+  /**
+   *generaKeyPem
+   *
+   * @param filePathKey
+   * @param outputpath
+   */
   public async generaKeyPem(filePathKey: string, outputpath: string) {
     return 1;
   }
 
-  public async getKeyPem(keyfile: string, title: boolean = false) {
+  /**
+   *
+   * @param keyfile
+   * @param title
+   */
+  public async getKeyPem(keyfile: string, title = false) {
     try {
       const pem = await fs.readFileSync(keyfile);
       // tslint:disable-next-line:no-shadowed-variable
@@ -37,4 +67,4 @@ class Key {
   }
 }
 
-export const key = new Key()
+export const key = new Key();
