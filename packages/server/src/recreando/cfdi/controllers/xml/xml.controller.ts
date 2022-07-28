@@ -1,6 +1,7 @@
 import { Controller, Res, Req, Get } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CFDI, Comprobante, Concepts, Emisor, Impuestos, ObjetoImpEnum, Receptor, Relacionado } from '@cfdi/xml';
+import { sum } from '@cfdi/utils';
 /**
  *
  */

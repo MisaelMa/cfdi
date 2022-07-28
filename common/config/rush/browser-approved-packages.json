@@ -11,6 +11,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/utils",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/xml",
       "allowedCategories": [ "libraries", "production" ]
     },
