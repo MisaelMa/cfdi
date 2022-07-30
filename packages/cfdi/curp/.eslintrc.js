@@ -13,7 +13,6 @@ module.exports = {
     "import/no-cycle": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
     "@typescript-eslint/no-unused-expressions": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-argument":"off",
     "@typescript-eslint/await-thenable": "off",

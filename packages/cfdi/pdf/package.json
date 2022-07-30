@@ -47,7 +47,7 @@
   "dependencies": {
     "@signati/core": "^3.3.8",
     "immutable": "^4.0.0-rc.12",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.27",
     "pdfmake": "^0.1.65",
     "qrcode": "^1.4.4",
@@ -65,7 +65,7 @@
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@types/deep-freeze": "^0.1.2",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.0",
     "@types/node": "^17.0.29",
     "@types/testing-library__jest-dom": "^5.9.1",
     "chalk": "^4.0.0",

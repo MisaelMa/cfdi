@@ -14,25 +14,27 @@ class Key {
    * @param password
    * string
    */
-  public async getKey(
+  public getKey(
     keyfile: string,
     password: string
-  ): Promise<{ privateKeyPem: string; privatekey: string }> {
+  ): { privateKeyPem: string; privatekey: string } {
+    const cli = pkcs8
+      .inform('DER')
+      .in(keyfile)
+      .outform('PEM')
+      .passin(`pass:${password}`);
     try {
       // const keyPem = commandSync(`${getOsComandBin()} pkcs8 -inform DER -in ${keyfile} -outform PEM -passin pass:${password}`).stdout;
-      const keyPem = pkcs8
-        .inform('DER')
-        .in(keyfile)
-        .outform('PEM')
-        .passin(`pass:${password}`)
-        .run();
+
+      const keyPem = cli.run();
       const privateKey = {
         privateKeyPem: keyPem,
         privatekey: keyPem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, ''),
       };
       return privateKey;
     } catch (e) {
-      return e.message;
+      const keyPem = cli.cli();
+      throw new Error(keyPem);
     }
   }
 
@@ -40,18 +42,23 @@ class Key {
    *generaKeyPem
    *
    * @param filePathKey
+   * string
    * @param outputpath
+   * outputpath
    */
-  public async generaKeyPem(filePathKey: string, outputpath: string) {
-    return 1;
+  public generaKeyPem(filePathKey: string, outputpath: string): string {
+    return filePathKey + outputpath;
   }
 
   /**
+   *getKeyPem
    *
    * @param keyfile
+   * string
    * @param title
+   * bolean
    */
-  public async getKeyPem(keyfile: string, title = false) {
+  public async getKeyPem(keyfile: string, title = false): Promise<string> {
     try {
       const pem = await fs.readFileSync(keyfile);
       // tslint:disable-next-line:no-shadowed-variable
@@ -62,7 +69,7 @@ class Key {
       }
       return key;
     } catch (e) {
-      return e.message;
+      throw new Error('getKeyPem');
     }
   }
 }

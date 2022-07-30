@@ -1,6 +1,3 @@
-import { commandSync } from 'execa';
-import * as execa from 'execa';
-
 import { getOsComandBin } from '../utils';
 
 import { CliShare } from './cliShare';
@@ -9,9 +6,7 @@ import { CliShare } from './cliShare';
  *
  */
 class X509 extends CliShare {
-  public commandline = '';
-
-  public commandlineArray: string[] = [];
+  public commandline: string[] = [];
 
   public command = 'x509';
 
@@ -23,7 +18,8 @@ class X509 extends CliShare {
   constructor() {
     super();
     this.opensslBin = getOsComandBin();
-    this.commandline = `${this.opensslBin} ${this.command}`;
+    this.commandline.push(this.opensslBin);
+    this.commandline.push(this.command);
   }
 
   /**
@@ -37,8 +33,7 @@ class X509 extends CliShare {
    *digest
    */
   public digest(): X509 {
-    this.commandline += ` -digest`;
-    this.commandlineArray.push(`-digest`);
+    this.commandline.push(`-digest`);
     return this;
   }
 
@@ -49,8 +44,7 @@ class X509 extends CliShare {
    * file
    */
   public rand(file: string): X509 {
-    this.commandline += ` -rand ${file}`;
-    this.commandlineArray.push(`-rand ${file}`);
+    this.commandline.push(`-rand ${file}`);
     return this;
   }
 
@@ -61,8 +55,7 @@ class X509 extends CliShare {
    * file
    */
   public writerand(file: string): X509 {
-    this.commandline += ` -writerand ${file}`;
-    this.commandlineArray.push(`-writerand ${file}`);
+    this.commandline.push(`-writerand ${file}`);
     return this;
   }
 
@@ -73,8 +66,7 @@ class X509 extends CliShare {
    * id
    */
   public engine(id: string | number): X509 {
-    this.commandline += ` -engine ${id}`;
-    this.commandlineArray.push(`-engine ${id}`);
+    this.commandline.push(`-engine ${id}`);
     return this;
   }
 
@@ -83,8 +75,7 @@ class X509 extends CliShare {
    */
   public preserve_dates(): X509 {
     // todo validate if use options days
-    this.commandline += ` -preserve_dates`;
-    this.commandlineArray.push(`-preserve_dates`);
+    this.commandline.push(`-preserve_dates`);
     return this;
   }
 
@@ -92,8 +83,7 @@ class X509 extends CliShare {
    *text
    */
   public text(): X509 {
-    this.commandline += ` -text`;
-    this.commandlineArray.push(`-text`);
+    this.commandline.push(`-text`);
     return this;
   }
 
@@ -104,8 +94,7 @@ class X509 extends CliShare {
    * extensions
    */
   public ext(extensions: string): X509 {
-    this.commandline += ` -ext  ${extensions}`;
-    this.commandlineArray.push(`-ext  ${extensions}`);
+    this.commandline.push(`-ext  ${extensions}`);
     return this;
   }
 
@@ -116,8 +105,7 @@ class X509 extends CliShare {
    * option
    */
   public certopt(option: string): X509 {
-    this.commandline += ` -certopt  ${option}`;
-    this.commandlineArray.push(`-certopt  ${option}`);
+    this.commandline.push(`-certopt  ${option}`);
     return this;
   }
 
@@ -125,8 +113,7 @@ class X509 extends CliShare {
    *noout
    */
   public noout(): X509 {
-    this.commandline += ` -noout`;
-    this.commandlineArray.push(`-noout`);
+    this.commandline.push(`-noout`);
     return this;
   }
 
@@ -134,8 +121,7 @@ class X509 extends CliShare {
    *pubkey
    */
   public pubkey(): X509 {
-    this.commandline += ` -pubkey`;
-    this.commandlineArray.push(`-pubkey`);
+    this.commandline.push(`-pubkey`);
     return this;
   }
 
@@ -143,8 +129,7 @@ class X509 extends CliShare {
    *modulus
    */
   public modulus(): X509 {
-    this.commandline += ` -modulus`;
-    this.commandlineArray.push(`-modulus`);
+    this.commandline.push(`-modulus`);
     return this;
   }
 
@@ -152,8 +137,7 @@ class X509 extends CliShare {
    *serial
    */
   public serial(): X509 {
-    this.commandline += ` -serial`;
-    this.commandlineArray.push(`-serial`);
+    this.commandline.push(`-serial`);
     return this;
   }
 
@@ -161,8 +145,7 @@ class X509 extends CliShare {
    *subject_hash
    */
   public subject_hash(): X509 {
-    this.commandline += ` -subject_hash`;
-    this.commandlineArray.push(`-subject_hash`);
+    this.commandline.push(`-subject_hash`);
     return this;
   }
 
@@ -170,8 +153,7 @@ class X509 extends CliShare {
    *issuer_hash
    */
   public issuer_hash(): X509 {
-    this.commandline += ` -issuer_hash`;
-    this.commandlineArray.push(`-issuer_hash`);
+    this.commandline.push(`-issuer_hash`);
     return this;
   }
 
@@ -179,8 +161,7 @@ class X509 extends CliShare {
    *ocspid
    */
   public ocspid(): X509 {
-    this.commandline += ` -ocspid`;
-    this.commandlineArray.push(`-ocspid`);
+    this.commandline.push(`-ocspid`);
     return this;
   }
 
@@ -188,8 +169,7 @@ class X509 extends CliShare {
    *hash
    */
   public hash(): X509 {
-    this.commandline += ` -hash`;
-    this.commandlineArray.push(`-hash`);
+    this.commandline.push(`-hash`);
     return this;
   }
 
@@ -197,8 +177,7 @@ class X509 extends CliShare {
    *subject_hash_old
    */
   public subject_hash_old(): X509 {
-    this.commandline += ` -subject_hash_old`;
-    this.commandlineArray.push(`-subject_hash_old`);
+    this.commandline.push(`-subject_hash_old`);
     return this;
   }
 
@@ -206,8 +185,7 @@ class X509 extends CliShare {
    *issuer_hash_old
    */
   public issuer_hash_old(): X509 {
-    this.commandline += ` -issuer_hash_old`;
-    this.commandlineArray.push(`-issuer_hash_old`);
+    this.commandline.push(`-issuer_hash_old`);
     return this;
   }
 
@@ -215,8 +193,7 @@ class X509 extends CliShare {
    *subject
    */
   public subject(): X509 {
-    this.commandline += ` -subject`;
-    this.commandlineArray.push(`-subject`);
+    this.commandline.push(`-subject`);
     return this;
   }
 
@@ -224,8 +201,7 @@ class X509 extends CliShare {
    *issuer
    */
   public issuer(): X509 {
-    this.commandline += ` -issuer`;
-    this.commandlineArray.push(`-issuer`);
+    this.commandline.push(`-issuer`);
     return this;
   }
 
@@ -235,8 +211,7 @@ class X509 extends CliShare {
    * @param option
    */
   public nameopt(option: string): X509 {
-    this.commandline += ` -nameopt ${option}`;
-    this.commandlineArray.push(`-nameopt ${option}`);
+    this.commandline.push(`-nameopt ${option}`);
     return this;
   }
 
@@ -244,8 +219,7 @@ class X509 extends CliShare {
    *email
    */
   public email(): X509 {
-    this.commandline += ` -email`;
-    this.commandlineArray.push(`-email`);
+    this.commandline.push(`-email`);
     return this;
   }
 
@@ -253,8 +227,7 @@ class X509 extends CliShare {
    *ocsp_uri
    */
   public ocsp_uri(): X509 {
-    this.commandline += ` -ocsp_uri`;
-    this.commandlineArray.push(`-ocsp_uri`);
+    this.commandline.push(`-ocsp_uri`);
     return this;
   }
 
@@ -262,8 +235,7 @@ class X509 extends CliShare {
    *startdate
    */
   public startdate(): X509 {
-    this.commandline += ` -startdate`;
-    this.commandlineArray.push(`-startdate`);
+    this.commandline.push(`-startdate`);
     return this;
   }
 
@@ -271,8 +243,7 @@ class X509 extends CliShare {
    *enddate
    */
   public enddate(): X509 {
-    this.commandline += ` -enddate`;
-    this.commandlineArray.push(`-enddate`);
+    this.commandline.push(`-enddate`);
     return this;
   }
 
@@ -280,8 +251,7 @@ class X509 extends CliShare {
    *dates
    */
   public dates(): X509 {
-    this.commandline += ` -dates`;
-    this.commandlineArray.push(`-dates`);
+    this.commandline.push(`-dates`);
     return this;
   }
 
@@ -292,8 +262,7 @@ class X509 extends CliShare {
    * num
    */
   public checkend(num: string | number): X509 {
-    this.commandline += ` -checkend ${num}`;
-    this.commandlineArray.push(`-checkend ${num}`);
+    this.commandline.push(`-checkend ${num}`);
     return this;
   }
 
@@ -301,8 +270,7 @@ class X509 extends CliShare {
    *fingerprint
    */
   public fingerprint(): X509 {
-    this.commandline += ` -fingerprint`;
-    this.commandlineArray.push(`-fingerprint`);
+    this.commandline.push(`-fingerprint`);
     return this;
   }
 
@@ -310,8 +278,7 @@ class X509 extends CliShare {
    * C
    */
   public C(): X509 {
-    this.commandline += ` -C`;
-    this.commandlineArray.push(`-C`);
+    this.commandline.push(`-C`);
     return this;
   }
 
@@ -319,8 +286,7 @@ class X509 extends CliShare {
    *trustout
    */
   public trustout(): X509 {
-    this.commandline += ` -trustout`;
-    this.commandlineArray.push(`-trustout`);
+    this.commandline.push(`-trustout`);
     return this;
   }
 
@@ -331,8 +297,7 @@ class X509 extends CliShare {
    * arg
    */
   public setalias(arg: string): X509 {
-    this.commandline += ` -setalias ${arg}`;
-    this.commandlineArray.push(`-setalias ${arg}`);
+    this.commandline.push(`-setalias ${arg}`);
     return this;
   }
 
@@ -340,8 +305,7 @@ class X509 extends CliShare {
    *alias
    */
   public alias(): X509 {
-    this.commandline += ` -alias`;
-    this.commandlineArray.push(`-alias`);
+    this.commandline.push(`-alias`);
     return this;
   }
 
@@ -349,8 +313,7 @@ class X509 extends CliShare {
    *clrtrust
    */
   public clrtrust(): X509 {
-    this.commandline += ` -clrtrust`;
-    this.commandlineArray.push(`-clrtrust`);
+    this.commandline.push(`-clrtrust`);
     return this;
   }
 
@@ -358,8 +321,7 @@ class X509 extends CliShare {
    *clrreject
    */
   public clrreject(): X509 {
-    this.commandline += ` -clrreject`;
-    this.commandlineArray.push(`-clrreject`);
+    this.commandline.push(`-clrreject`);
     return this;
   }
 
@@ -370,8 +332,7 @@ class X509 extends CliShare {
    * arg
    */
   public addtrust(arg: string): X509 {
-    this.commandline += ` -addtrust ${arg}`;
-    this.commandlineArray.push(`-addtrust ${arg}`);
+    this.commandline.push(`-addtrust ${arg}`);
     return this;
   }
 
@@ -382,8 +343,7 @@ class X509 extends CliShare {
    * arg
    */
   public addreject(arg: string): X509 {
-    this.commandline += ` -addreject ${arg}`;
-    this.commandlineArray.push(`-addreject ${arg}`);
+    this.commandline.push(`-addreject ${arg}`);
     return this;
   }
 
@@ -391,8 +351,7 @@ class X509 extends CliShare {
    *purpose
    */
   public purpose(): X509 {
-    this.commandline += ` -purpose`;
-    this.commandlineArray.push(`-purpose`);
+    this.commandline.push(`-purpose`);
     return this;
   }
 
@@ -402,8 +361,7 @@ class X509 extends CliShare {
    * @param arg
    * arg
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public sigopt(arg: string): X509 {
+  public sigopt(): X509 {
     // todo
     return this;
   }
@@ -412,8 +370,7 @@ class X509 extends CliShare {
    *clrext
    */
   public clrext(): X509 {
-    this.commandline += ` -clrext`;
-    this.commandlineArray.push(`-clrext`);
+    this.commandline.push(`-clrext`);
     return this;
   }
 
@@ -424,8 +381,7 @@ class X509 extends CliShare {
    * options
    */
   public keyform(options: 'DER' | 'PEM' | 'ENGINE'): X509 {
-    this.commandline += ` -keyform ${options}`;
-    this.commandlineArray.push(`-keyform ${options}`);
+    this.commandline.push(`-keyform ${options}`);
     return this;
   }
 
@@ -436,8 +392,7 @@ class X509 extends CliShare {
    * arg
    */
   public days(arg: string): X509 {
-    this.commandline += ` -days ${arg}`;
-    this.commandlineArray.push(`-days ${arg}`);
+    this.commandline.push(`-days ${arg}`);
     return this;
   }
 
@@ -445,8 +400,7 @@ class X509 extends CliShare {
    *x509toreq
    */
   public x509toreq(): X509 {
-    this.commandline += ` -x509toreq`;
-    this.commandlineArray.push(`-x509toreq`);
+    this.commandline.push(`-x509toreq`);
     return this;
   }
 
@@ -454,8 +408,7 @@ class X509 extends CliShare {
    *req
    */
   public req(): X509 {
-    this.commandline += ` -req`;
-    this.commandlineArray.push(`-req`);
+    this.commandline.push(`-req`);
     return this;
   }
 
@@ -466,8 +419,7 @@ class X509 extends CliShare {
    * n
    */
   public set_serial(n: string): X509 {
-    this.commandline += ` -set_serial ${n}`;
-    this.commandlineArray.push(`-set_serial ${n}`);
+    this.commandline.push(`-set_serial ${n}`);
     return this;
   }
 
@@ -478,8 +430,7 @@ class X509 extends CliShare {
    * filename
    */
   public CA(filename: string): X509 {
-    this.commandline += ` -CA ${filename}`;
-    this.commandlineArray.push(`-CA ${filename}`);
+    this.commandline.push(`-CA ${filename}`);
     return this;
   }
 
@@ -490,8 +441,7 @@ class X509 extends CliShare {
    * filename
    */
   public CAkey(filename: string): X509 {
-    this.commandline += ` -CAkey ${filename}`;
-    this.commandlineArray.push(`-CAkey ${filename}`);
+    this.commandline.push(`-CAkey ${filename}`);
     return this;
   }
 
@@ -503,8 +453,7 @@ class X509 extends CliShare {
    * filename
    */
   public CAserial(filename: string): X509 {
-    this.commandline += ` -CAserial ${filename}`;
-    this.commandlineArray.push(`-CAserial ${filename}`);
+    this.commandline.push(`-CAserial ${filename}`);
     return this;
   }
 
@@ -512,8 +461,7 @@ class X509 extends CliShare {
    *CAcreateserial
    */
   public CAcreateserial(): X509 {
-    this.commandline += ` -CAcreateserial`;
-    this.commandlineArray.push(`-CAcreateserial`);
+    this.commandline.push(`-CAcreateserial`);
     return this;
   }
 
@@ -524,8 +472,7 @@ class X509 extends CliShare {
    * filename
    */
   public extfile(filename: string): X509 {
-    this.commandline += ` -extfile ${filename}`;
-    this.commandlineArray.push(`-extfile ${filename}`);
+    this.commandline.push(`-extfile ${filename}`);
     return this;
   }
 
@@ -536,8 +483,7 @@ class X509 extends CliShare {
    * section
    */
   public extensions(section: string): X509 {
-    this.commandline += ` -extensions ${section}`;
-    this.commandlineArray.push(`-extensions ${section}`);
+    this.commandline.push(`-extensions ${section}`);
     return this;
   }
 
@@ -549,8 +495,7 @@ class X509 extends CliShare {
    * @param key
    */
   public force_pubkey(key: string): X509 {
-    this.commandline += ` -force_pubkey ${key}`;
-    this.commandlineArray.push(`-force_pubkey ${key}`);
+    this.commandline.push(`-force_pubkey ${key}`);
     return this;
   }
 }

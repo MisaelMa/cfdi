@@ -217,7 +217,6 @@ module.exports = {
         'react/no-multi-comp': 'off',
         'react/function-component-definition': 'off',
         'react/require-default-props': 'off',
-        '@next/next/no-head-element': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/unbound-method': 'off',

@@ -7,9 +7,7 @@ import { getOsComandBin } from '../utils';
  * CliShare
  */
 export class CliShare {
-  public commandline = '';
-
-  public commandlineArray: string[] = [];
+  public commandline: string[] = [];
 
   public command = '';
 
@@ -20,7 +18,7 @@ export class CliShare {
    */
   constructor() {
     this.opensslBin = getOsComandBin();
-    this.commandline = this.opensslBin;
+    this.commandline.push(this.opensslBin);
   }
 
   /**
@@ -30,9 +28,8 @@ export class CliShare {
    * options
    * 'DER' | 'PEM'
    */
-  public inform(options: 'DER' | 'PEM'): CliShare {
-    this.commandline += ` -inform ${options}`;
-    this.commandlineArray.push(`-inform ${options}`);
+  public inform(options: 'DER' | 'PEM'): this {
+    this.commandline.push(`-inform ${options}`);
     return this;
   }
 
@@ -42,9 +39,8 @@ export class CliShare {
    * @param options
    * options
    */
-  public outform(options: 'DER' | 'PEM'): CliShare {
-    this.commandline += ` -outform  ${options}`;
-    this.commandlineArray.push(`-outform ${options}`);
+  public outform(options: 'DER' | 'PEM'): this {
+    this.commandline.push(`-outform ${options}`);
     return this;
   }
 
@@ -54,9 +50,8 @@ export class CliShare {
    * @param filename
    * filename
    */
-  public in(filename: string): CliShare {
-    this.commandline += ` -in  ${filename}`;
-    this.commandlineArray.push(`-in ${filename}`);
+  public in(filename: string): this {
+    this.commandline.push(`-in ${filename}`);
     return this;
   }
 
@@ -67,9 +62,8 @@ export class CliShare {
    * @param arg
    * arg
    */
-  public passin(arg: string): CliShare {
-    this.commandline += ` -passin ${arg}`;
-    this.commandlineArray.push(`-passin ${arg}`);
+  public passin(arg: string): this {
+    this.commandline.push(`-passin ${arg}`);
     return this;
   }
 
@@ -79,9 +73,8 @@ export class CliShare {
    * @param arg
    * arg
    */
-  public passout(arg: string): CliShare {
-    this.commandline += ` -passout ${arg}`;
-    this.commandlineArray.push(`-passout ${arg}`);
+  public passout(arg: string): this {
+    this.commandline.push(`-passout ${arg}`);
     return this;
   }
 
@@ -91,9 +84,8 @@ export class CliShare {
    * @param filename
    * filename
    */
-  public out(filename: string): CliShare {
-    this.commandline += ` -out ${filename}`;
-    this.commandlineArray.push(`-out ${filename}`);
+  public out(filename: string): this {
+    this.commandline.push(`-out ${filename}`);
     return this;
   }
 
@@ -105,10 +97,10 @@ export class CliShare {
    */
   public run(options?: execa.SyncOptions): string {
     try {
-      const cli = this.commandline;
-      this.commandline = `${this.opensslBin} ${this.command}`;
-      const saxonProc = commandSync(cli, options).stdout;
-      return saxonProc;
+      const cli = this.commandline.join(' ');
+      this.commandline = [this.commandline[0], this.commandline[1]];
+      const openssl = commandSync(cli, options).stdout;
+      return openssl;
     } catch (e) {
       throw new Error('run');
     }
@@ -117,26 +109,13 @@ export class CliShare {
   /**
    *cli
    */
-  public cli(): string | Error {
+  public cli(): string {
     try {
-      const cp = this.commandline;
-      this.commandline = `${this.opensslBin} ${this.command}`;
-      return cp;
+      const cli = this.commandline.join(' ');
+      this.commandline = [this.commandline[0], this.commandline[1]];
+      return cli;
     } catch (e) {
       throw new Error('cli');
-    }
-  }
-
-  /**
-   *cliArray
-   */
-  public cliArray(): string[] {
-    try {
-      const cp = [...this.commandlineArray];
-      this.commandlineArray = [];
-      return cp;
-    } catch (e) {
-      throw new Error('cliArray');
     }
   }
 }

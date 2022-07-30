@@ -1,80 +1,145 @@
-import {platform} from "os";
-import {CliShare} from "./cliShare";
+import { platform } from 'os';
 
+import { CliShare } from './cliShare';
+
+/**
+ *
+ */
 export class Query extends CliShare {
-    public commandline = '';
-    public commandlineArray: string[] = [];
-    public saxonBin: string = '';
+  public commandline = '';
 
-    constructor() {
-        super();
-        this.saxonBin = this.getOS();
-        this.commandline = this.saxonBin
-    }
+  public commandlineArray: string[] = [];
 
-    public backup(options: 'on' | 'off') {
-        this.commandline += ` -a:${options}`;
-        this.commandlineArray.push(`-a:${options}`);
-        return this;
-    }
+  public saxonBin = '';
 
-    public config(filenames: any) {
-        this.commandline += ` -config:${filenames}`;
-        this.commandlineArray.push(`-config:${filenames}`);
-        return this;
-    }
+  /**
+   *constructor
+   */
+  constructor() {
+    super();
+    this.saxonBin = this.getOS();
+    this.commandline = this.saxonBin;
+  }
 
-    public mr(classname: any) {
-        this.commandline += ` -mr:${classname}`;
-        this.commandlineArray.push(`-mr:${classname}`);
-        return this;
-    }
+  /**
+   *backup
+   *
+   * @param options
+   * 'on' | 'off
+   */
+  public backup(options: 'on' | 'off'): Query {
+    this.commandline += ` -a:${options}`;
+    this.commandlineArray.push(`-a:${options}`);
+    return this;
+  }
 
-    public projection(options: 'on' | 'off') {
-        this.commandline += ` -projection:${options}`;
-        this.commandlineArray.push(`-projection:${options}`);
-        return this;
-    }
+  /**
+   *config
+   *
+   * @param filenames
+   * string
+   */
+  public config(filenames: string): Query {
+    this.commandline += ` -config:${filenames}`;
+    this.commandlineArray.push(`-config:${filenames}`);
+    return this;
+  }
 
-    public q(queryfile: any) {
-        this.commandline += ` -q:${queryfile}`;
-        this.commandlineArray.push(`-q:${queryfile}`);
-        return this;
-    }
+  /**
+   *mr
+   *
+   * @param classname
+   * string
+   */
+  public mr(classname: string): Query {
+    this.commandline += ` -mr:${classname}`;
+    this.commandlineArray.push(`-mr:${classname}`);
+    return this;
+  }
 
-    public qs(querystring: any) {
-        this.commandline += ` -qs:${querystring}`;
-        this.commandlineArray.push(`-qs:${querystring}`);
-        return this;
-    }
+  /**
+   *projection
+   *
+   * @param options
+   * 'on' | 'off'
+   */
+  public projection(options: 'on' | 'off'): Query {
+    this.commandline += ` -projection:${options}`;
+    this.commandlineArray.push(`-projection:${options}`);
+    return this;
+  }
 
-    public stream(options: 'on' | 'off') {
-        this.commandline += ` -stream:${options}`;
-        this.commandlineArray.push(`-stream:${options}`);
-        return this;
-    }
+  /**
+   *queryfile
+   *
+   * @param queryfile
+   * q
+   */
+  public q(queryfile: string): Query {
+    this.commandline += ` -q:${queryfile}`;
+    this.commandlineArray.push(`-q:${queryfile}`);
+    return this;
+  }
 
-    public update(options: 'on' | 'off' | 'discard') {
-        this.commandline += ` -update:${options}`;
-        this.commandlineArray.push(`-update:${options}`);
-        return this;
-    }
+  /**
+   *qs
+   *
+   * @param querystring
+   * string
+   */
+  public qs(querystring: string): Query {
+    this.commandline += ` -qs:${querystring}`;
+    this.commandlineArray.push(`-qs:${querystring}`);
+    return this;
+  }
 
-    public wrap() {
-        this.commandline += ` -wrap`;
-        this.commandlineArray.push(`-wrap`);
-        return this;
-    }
+  /**
+   *stream
+   *
+   * @param options
+   * 'on' | 'off'
+   */
+  public stream(options: 'on' | 'off'): Query {
+    this.commandline += ` -stream:${options}`;
+    this.commandlineArray.push(`-stream:${options}`);
+    return this;
+  }
 
-    private getOS(): string {
-        if (platform() === 'win32') {
-            return 'query.exe';
-        } else if (platform() === 'linux') {
-            return 'saxon-xquery';
-        } else if (platform() === 'darwin') {
-            return 'saxon-xquery';
-            // var chilkat = require('@chilkat/ck-node11-macosx');
-        }
-        return 'saxon-xquery';
+  /**
+   *update
+   *
+   * @param options
+   * 'on' | 'off' | 'discard'
+   */
+  public update(options: 'on' | 'off' | 'discard'): Query {
+    this.commandline += ` -update:${options}`;
+    this.commandlineArray.push(`-update:${options}`);
+    return this;
+  }
+
+  /**
+   *wrap
+   */
+  public wrap(): Query {
+    this.commandline += ` -wrap`;
+    this.commandlineArray.push(`-wrap`);
+    return this;
+  }
+
+  /**
+   *getOS
+   */
+  private getOS(): string {
+    if (platform() === 'win32') {
+      return 'query.exe';
     }
+    if (platform() === 'linux') {
+      return 'saxon-xquery';
+    }
+    if (platform() === 'darwin') {
+      return 'saxon-xquery';
+      // var chilkat = require('@chilkat/ck-node11-macosx');
+    }
+    return 'saxon-xquery';
+  }
 }

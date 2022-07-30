@@ -11,6 +11,14 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/csd",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@cfdi/openssl",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/utils",
       "allowedCategories": [ "libraries" ]
     },
@@ -152,6 +160,10 @@
     },
     {
       "name": "chokidar",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "curp",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -421,6 +433,10 @@
     {
       "name": "typescript",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "validate-rfc",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "webpack",

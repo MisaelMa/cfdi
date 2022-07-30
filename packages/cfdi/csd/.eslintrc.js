@@ -11,6 +11,8 @@ module.exports = {
     "sort-imports": "off",
     "no-unused-vars": "off",
     "import/no-cycle": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-member-access":"off",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "React" }],
     "@typescript-eslint/no-unused-expressions": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",

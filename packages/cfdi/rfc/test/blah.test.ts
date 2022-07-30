@@ -1,5 +1,4 @@
-import { x509 } from "../src"
-const cli = x509.inform('DER').in("amir").noout().pubkey();
+import { sum } from '../src';
 
 describe('blah', () => {
   it('works', () => {

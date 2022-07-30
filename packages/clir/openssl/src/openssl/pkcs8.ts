@@ -6,9 +6,7 @@ import { CliShare } from './cliShare';
  *
  */
 class Pkcs8 extends CliShare {
-  public commandline = '';
-
-  public commandlineArray: string[] = [];
+  public commandline: string[] = [];
 
   public command = 'pkcs8';
 
@@ -20,15 +18,15 @@ class Pkcs8 extends CliShare {
   constructor() {
     super();
     this.opensslBin = getOsComandBin();
-    this.commandline = `${this.opensslBin} ${this.command}`;
+    this.commandline.push(this.opensslBin);
+    this.commandline.push(this.command);
   }
 
   /**
    *topk8
    */
   public topk8(): Pkcs8 {
-    this.commandline += ` -topk8`;
-    this.commandlineArray.push(`-topk8`);
+    this.commandline.push(`-topk8`);
     return this;
   }
 
@@ -36,8 +34,7 @@ class Pkcs8 extends CliShare {
    *traditional
    */
   public traditional(): Pkcs8 {
-    this.commandline += ` -traditional`;
-    this.commandlineArray.push(`-traditional`);
+    this.commandline.push(`-traditional`);
     return this;
   }
 
@@ -48,8 +45,7 @@ class Pkcs8 extends CliShare {
    * count
    */
   public iter(count: number): Pkcs8 {
-    this.commandline += ` -iter ${count}`;
-    this.commandlineArray.push(`-iter ${count}`);
+    this.commandline.push(`-iter ${count}`);
     return this;
   }
 
@@ -57,8 +53,7 @@ class Pkcs8 extends CliShare {
    *nocrypt
    */
   public nocrypt(): Pkcs8 {
-    this.commandline += ` -nocrypt`;
-    this.commandlineArray.push(`-nocrypt`);
+    this.commandline.push(`-nocrypt`);
     return this;
   }
 
@@ -69,8 +64,7 @@ class Pkcs8 extends CliShare {
    * file
    */
   public rand(file: string): Pkcs8 {
-    this.commandline += ` -rand ${file}`;
-    this.commandlineArray.push(`-rand ${file}`);
+    this.commandline.push(`-rand ${file}`);
     return this;
   }
 }
