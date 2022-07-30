@@ -312,65 +312,60 @@ export const checkend = (seconds: string | number) => {
 }
 
 
-  // /**
-  //  *
-  //  * @param cerFile
-  //  */
-  // public async ocspUri(cerFile: string): Promise<string> {
-  //   try {
-  //     return x509.inform('DER').in(cerFile).noout().ocsp_uri().run();
-  //     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -ocsp_uri`).stdout
-  //   } catch (e) {
-  //     return e.message;
-  //   }
-  // }
+/**
+ *
+ * @param cerFile
+ */
+export const ocspUri = (): string => {
+  try {
+    return x509.inform('DER').in(file).noout().ocsp_uri().run();
+    // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -ocsp_uri`).stdout
+  } catch (e) {
+    // @ts-ignore
+    throw new Error(e.message)
+  }
+}
 
-  // /**
-  //  *
-  //  * @param cerFile
-  //  */
-  // public async Dates(cerFile: string): Promise<string> {
-  //   try {
-  //     return x509.inform('DER').in(cerFile).noout().dates().run();
-  //     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -dates`).stdout
-  //   } catch (e) {
-  //     return e.message;
-  //   }
-  // }
+/**
+ *
+ * @param cerFile
+ */
+export const validity = (): {
+  notBefore: Date;
+  notAfter: Date;
+} => {
+  return getData().validity
+}
 
+/**
+ *
+ * @param cerFile
+ */
+export const fingerPrint = (): string => {
+  try {
+    // const check = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -fingerprint`).stdout
+    return x509.inform('DER').in(file).noout().fingerprint().run();
+  } catch (e) {
+    // @ts-ignore
+    throw new Error(e.message)
+  }
+}
 
-
-  // /**
-  //  *
-  //  * @param cerFile
-  //  */
-  // public async fingerPrint(cerFile: string): Promise<any> {
-  //   try {
-  //     // Certificate will expire El certificado caducará
-  //     // Certificate will not expire El certificado no caducará
-  //     // const check = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -fingerprint`).stdout
-  //     const check = x509.inform('DER').in(cerFile).noout().fingerprint().run();
-  //     return check;
-  //   } catch (e) {
-  //     return e.message;
-  //   }
-  // }
-
-  // /**
-  //  *
-  //  * @param cerFile
-  //  */
-  // public async C(cerFile: string): Promise<any> {
-  //   try {
-  //     // Certificate will expire El certificado caducará
-  //     // Certificate will not expire El certificado no caducará
-  //     // const check = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -C`).stdout
-  //     const check = x509.inform('DER').in(cerFile).noout().C().run();
-  //     return check;
-  //   } catch (e) {
-  //     return e.message;
-  //   }
-  // }
+/**
+ *
+ * @param cerFile
+ */
+export const C = (): string => {
+  try {
+    // Certificate will expire El certificado caducará
+    // Certificate will not expire El certificado no caducará
+    // const check = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -C`).stdout
+    return x509.inform('DER').in(file).noout().C().run();
+  } catch (e) {
+    // @ts-ignore
+    throw new Error(e.message)
+  }
+}
   // /**
   //  *agetCerPem
   //  *
@@ -390,23 +385,6 @@ export const checkend = (seconds: string | number) => {
   // public getCerFile(cerfile: string): string {
   //   return cerfile;
   // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // /**
   //  *
   //  */
