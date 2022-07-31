@@ -1,77 +1,68 @@
-import * as fs from 'fs';
-
+import { readFileSync } from 'fs';
+import * as crypto from 'crypto';
 import { pkcs8 } from '@clir/openssl';
 
-/**
- *
- */
-class Key {
-  /**
-   *getKey
-   *
-   * @param keyfile
-   * string
-   * @param password
-   * string
-   */
-  public getKey(
-    keyfile: string,
-    password: string
-  ): { privateKeyPem: string; privatekey: string } {
-    const cli = pkcs8
-      .inform('DER')
-      .in(keyfile)
-      .outform('PEM')
-      .passin(`pass:${password}`);
-    try {
-      // const keyPem = commandSync(`${getOsComandBin()} pkcs8 -inform DER -in ${keyfile} -outform PEM -passin pass:${password}`).stdout;
+import { pki, util, md } from 'node-forge';
+let isKey = false;
+let allowedFiles = [".key", ".pem"];
+let password = '';
+let file = '';
+let regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+export const setFile = (keyfile: string, pass: string) => {
 
-      const keyPem = cli.run();
-      const privateKey = {
-        privateKeyPem: keyPem,
-        privatekey: keyPem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, ''),
-      };
-      return privateKey;
-    } catch (e) {
-      const keyPem = cli.cli();
-      throw new Error(keyPem);
-    }
-  }
-
-  /**
-   *generaKeyPem
-   *
-   * @param filePathKey
-   * string
-   * @param outputpath
-   * outputpath
-   */
-  public generaKeyPem(filePathKey: string, outputpath: string): string {
-    return filePathKey + outputpath;
-  }
-
-  /**
-   *getKeyPem
-   *
-   * @param keyfile
-   * string
-   * @param title
-   * bolean
-   */
-  public async getKeyPem(keyfile: string, title = false): Promise<string> {
-    try {
-      const pem = await fs.readFileSync(keyfile);
-      // tslint:disable-next-line:no-shadowed-variable
-      let key = pem.toString('ascii');
-      if (title) {
-        key = key.replace(/(-+[^-]+-+)/g, '');
-        key = key.replace(/\s+/g, '');
+  const typeFile = keyfile.match(/\.[0-9a-z]+$/i)
+  if (typeFile && typeFile.length > 0) {
+    if (regex.test(keyfile.toLowerCase())) {
+      file = keyfile
+      password = pass
+      console.log("typeFile", typeFile[0])
+      if (typeFile[0] === '.key') {
+        isKey = true
       }
-      return key;
-    } catch (e) {
-      throw new Error('getKeyPem');
+    } else {
+      console.log("files not suported")
     }
   }
 }
 
-export const key = new Key();
+
+export const getPem = (options = { begin: false }): string => {
+  const cli = pkcs8.inform('DER').in(file).outform('PEM').passin(`pass:${password}`)
+  try {
+    const { begin } = options
+    let pem = ''
+    if (isKey) {
+      pem = cli.run();
+    } else {
+      pem = readFileSync(file, 'ascii')
+    }
+    if (begin) {
+      return pem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '')
+    } else {
+      return pem
+    }
+  } catch (e) {
+    const keyPem = cli.cli();
+    throw new Error(keyPem);
+  }
+}
+
+export const getData = () => {
+  return pki.privateKeyFromPem(getPem());
+}
+
+
+export const signatureHexForge = () => {
+  let messageDigest = md.sha256.create();
+  messageDigest.update('hello world', 'utf8');
+  const signature = getData().sign(messageDigest);
+  return Buffer.from(util.binary.raw.decode(signature)).toString('hex');
+  // const signatureHex = Buffer.from(raw.decode(signature)).toString('hex');
+}
+
+export const signatureHexCripto = () => {
+  const signer = crypto.createSign('RSA-SHA256').update('hello world', 'utf8');
+  const signature2Hex = signer.sign(getPem()).toString('hex');
+  return signature2Hex
+}
+

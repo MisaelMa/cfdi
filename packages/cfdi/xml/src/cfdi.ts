@@ -446,6 +446,7 @@ export class CFDI {
     return new Promise(async (resolve, reject) => {
       try {
         // const key = pem.toString('utf8');
+        // openssl dgst -sha256 -sign account.key -out signature.sha256 signature.b64
         const keyPem = await key.getKey(keyfile, password);
         // console.log(key);
         const sign = await crypto.createSign('RSA-SHA256');

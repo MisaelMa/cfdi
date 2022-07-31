@@ -29,11 +29,24 @@ export const setFile = (filePath: string) => {
   }
 }
 
-export const getPem = () => {
-  if (isCert) {
-    return x509.inform('DER').in(file).outform('PEM').run();
-  } else {
-    return readFileSync(file, 'utf-8')
+export const getPem = (options = { begin: false }) => {
+  const cli = x509.inform('DER').in(file).outform('PEM');
+  try {
+    const { begin } = options
+    let pem = ''
+    if (isCert) {
+      pem = cli.run();
+    } else {
+      pem = readFileSync(file, 'ascii')
+    }
+    if (begin) {
+      return pem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '')
+    } else {
+      return pem
+    }
+  } catch (e) {
+    const cerPem = cli.cli();
+    throw new Error(cerPem);
   }
 }
 
@@ -55,19 +68,6 @@ export const getNoCer = (): string => {
     return String.fromCharCode(parseInt(v, 16));
   }).join('');
 }
-
-
-
-/**
- *getCertificate
- *
- * @param cerFile
- * string
- */
-export const getCertificate = (): string => {
-  return getPem().replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '')
-}
-
 /**
   *text
   *

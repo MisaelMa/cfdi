@@ -1,5 +1,5 @@
 import { Controller, Res, Get } from '@nestjs/common';
-import { cer } from "@cfdi/csd"
+import { cer, key } from "@cfdi/csd"
 import { Response } from 'express';
 import path from 'path';
 /**
@@ -10,11 +10,13 @@ export class CsdController {
   @Get('/')
   async index(@Res() res: Response) {
     const fil = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'files', 'certificados', 'maca961017759.cer')
+    const filkey = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'files', 'certificados', 'LAN7008173R5.key')
     cer.setFile(fil);
+    key.setFile(filkey, '12345678a')
+
     res.json({
-      data: "amir",
       fil,
-      amir: {
+      cer: {
         version: cer.version(),
         serial: cer.serial(),
         cer: cer.getNoCer(),
@@ -31,7 +33,8 @@ export class CsdController {
         date: cer.date()
 
       },
-      cer: cer.getData()
+      key: 'amir',
+      data: key.getData()
     })
 
   }
