@@ -52,16 +52,16 @@ export const getData = () => {
 }
 
 
-export const signatureHexForge = () => {
+export const signatureHexForge = (message: string) => {
   let messageDigest = md.sha256.create();
-  messageDigest.update('hello world', 'utf8');
+  messageDigest.update(message, 'utf8');
   const signature = getData().sign(messageDigest);
   return Buffer.from(util.binary.raw.decode(signature)).toString('hex');
   // const signatureHex = Buffer.from(raw.decode(signature)).toString('hex');
 }
 
-export const signatureHexCripto = () => {
-  const signer = crypto.createSign('RSA-SHA256').update('hello world', 'utf8');
+export const signatureHexCripto = (message: string) => {
+  const signer = crypto.createSign('RSA-SHA256').update(message, 'utf8');
   const signature2Hex = signer.sign(getPem()).toString('hex');
   return signature2Hex
 }
