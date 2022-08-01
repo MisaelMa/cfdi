@@ -8,15 +8,18 @@ let allowedFiles = [".key", ".pem"];
 let password = '';
 let file = '';
 let regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
-export const setFile = (keyfile: string, pass: string) => {
+export const setFile = (keyfile: string, pass?: string) => {
 
   const typeFile = keyfile.match(/\.[0-9a-z]+$/i)
   if (typeFile && typeFile.length > 0) {
     if (regex.test(keyfile.toLowerCase())) {
       file = keyfile
-      password = pass
+      if (!pass && typeFile[0] === '.key') {
+        throw new Error(`contraseña requerida de el archivo ${keyfile}`);
+      }
       console.log("typeFile", typeFile[0])
-      if (typeFile[0] === '.key') {
+      if (typeFile[0] === '.key' && pass) {
+        password = pass
         isKey = true
       }
     } else {
