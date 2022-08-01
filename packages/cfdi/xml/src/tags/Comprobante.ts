@@ -1,6 +1,15 @@
-import { Structure } from "src/utils/structure";
-import { schema } from "src/utils/XmlHelp";
-import { XmlCdfi, ComlementType, XmlComplements, TagComprobante, XmlnsLinks, XmlVersion, ComprobanteAttr, Options } from "../types";
+import { Structure } from "../utils/structure";
+import { schema } from "../utils/XmlHelp";
+import {
+  XmlCdfi,
+  ComlementType,
+  XmlComplements,
+  TagComprobante,
+  XmlnsLinks,
+  XmlVersion,
+  ComprobanteAttr,
+  Options
+} from "../types";
 import { Concepts } from "./Concepts";
 import { Emisor } from "./Emisor";
 import { Impuestos } from "./Impuestos";
