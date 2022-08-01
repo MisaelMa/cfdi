@@ -46,7 +46,7 @@ export interface XmlRelacionadoAttributes {
   UUID: string;
 }
 
-export interface XmlComprobanteAttributes extends Comprobante, AnyKey {
+export interface XmlComprobanteAttributes extends ComprobanteAttr, AnyKey {
   'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
   'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
   /* ########XmlComplementsConcepts#########3 */
@@ -84,7 +84,7 @@ export interface XmlComprobanteAttributes extends Comprobante, AnyKey {
   'xsi:schemaLocation'?: string;
 }
 
-export interface Comprobante {
+export interface ComprobanteAttr {
   xmlns?: XmlnsLinks;
   schemaLocation?: string[];
   Version?: string;
