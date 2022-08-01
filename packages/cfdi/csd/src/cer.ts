@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { pki } from 'node-forge';
 import moment from 'moment';
 import { x509 } from '@clir/openssl';
+import console from 'console';
 // @ts-ignore
 // import * as rfc from "validate-rfc"
 // import { AnyKey } from '../interface/certificate.interface';
@@ -31,9 +32,11 @@ export const setFile = (filePath: string) => {
 
 export const getPem = (options = { begin: false }) => {
   const cli = x509.inform('DER').in(file).outform('PEM');
+  console.log(cli.cli())
   try {
     const { begin } = options
     let pem = ''
+    console.log("isCert", isCert)
     if (isCert) {
       pem = cli.run();
     } else {
@@ -45,7 +48,9 @@ export const getPem = (options = { begin: false }) => {
       return pem
     }
   } catch (e) {
+    // console.log(e)
     const cerPem = cli.cli();
+    console.log(cli.cli())
     throw new Error(cerPem);
   }
 }
