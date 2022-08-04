@@ -9,11 +9,8 @@ import { js2xml } from 'xml-js';
 
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
 import { Options } from './types/types';
-import { XmlConcepto } from './types/tags/concepts.interface';
 import {
   ComprobanteAttr,
-  XmlComprobante,
-  XmlComprobanteAttributes,
 } from './types/tags/comprobante.interface';
 import { FileSystem } from './utils/FileSystem';
 import { Comprobante } from './tags/Comprobante';
@@ -37,7 +34,6 @@ export class CFDI extends Comprobante {
     super(attr, options)
     const { debug = false } = options;
     this.debug = debug;
-    this.restartCfdi();
   }
 
   /**
@@ -129,25 +125,7 @@ export class CFDI extends Comprobante {
   /**
    *restartCfdi
    */
-  private restartCfdi(): void {
-    this.xml = {
-      _declaration: {
-        _attributes: {
-          encoding: 'utf-8',
-          version: '1.0',
-        },
-      },
-    } as XmlCdfi;
-    this.xml[this.tc] = {
-      _attributes: {} as XmlComprobanteAttributes,
-      'cfdi:Emisor': {},
-      'cfdi:Receptor': {},
-    } as XmlComprobante;
 
-    this.xml['cfdi:Comprobante']['cfdi:Conceptos'] = {
-      'cfdi:Concepto': [],
-    } as XmlConcepto;
-  }
 
   /**
    *getCadenaOriginal

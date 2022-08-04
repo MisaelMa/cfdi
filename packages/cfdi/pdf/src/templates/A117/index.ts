@@ -1,4 +1,4 @@
-import { Comprobante, XmlCdfi, XmlConcepto, XmlEmisor } from '@signati/core';
+import { Comprobante, XmlConcepto, XmlEmisor } from '@signati/core';
 import { XmlReceptor } from '@signati/core/lib/signati/types/Tags/receptor.inteface';
 import {
   FormaPagoList,
@@ -9,8 +9,8 @@ import {
 import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
 import { XmlImpuestos } from '@signati/core/lib/signati/types/Tags/impuestos.interface';
 import { XmlConceptoProperties } from '@signati/core/lib/signati/types/Tags/concepts.interface';
-import { ContentText, TDocumentDefinitions } from 'pdfmake/interfaces';
-import { logo, NumeroALetras } from '@cfdi/utils/src';
+import { ContentText } from 'pdfmake/interfaces';
+import { logo, NumeroALetras } from '@cfdi/utils';
 // @ts-ignore
 import * as QRCode from 'qrcode';
 
@@ -120,9 +120,11 @@ export class A117 extends RPDF {
           }
         }
         if (detail['cfdi:ComplementoConcepto']['terceros:PorCuentadeTerceros']) {
+          // @ts-ignore
           const terceros = detail['cfdi:ComplementoConcepto']['terceros:PorCuentadeTerceros'];
         }
         if (detail['cfdi:ComplementoConcepto']['ventavehiculos:VentaVehiculos']) {
+          // @ts-ignore
           const ventavehiculos = detail['cfdi:ComplementoConcepto']['ventavehiculos:VentaVehiculos'];
         }
       }

@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@cfdi/pdf": "workspace:*",
     "@cfdi/xml": "workspace:*",
     "@cfdi/csd": "workspace:*",
     "@clir/openssl": "workspace:*",

@@ -45,6 +45,12 @@
       "@cfdi/xml/*": [
         "./node_modules/@cfdi/xml/src/*"
       ],
+      "@cfdi/pdf": [
+        "./node_modules/@cfdi/pdf/src/index"
+      ],
+      "@cfdi/pdf/*": [
+        "./node_modules/@cfdi/pdf/src/*"
+      ],
       "@clir/openssl": [
         "./node_modules/@clir/openssl/src/index"
       ],

@@ -8,7 +8,10 @@ import {
   XmlnsLinks,
   XmlVersion,
   ComprobanteAttr,
-  Options
+  Options,
+  XmlComprobante,
+  XmlComprobanteAttributes,
+  XmlConcepto
 } from "../types";
 import { Concepts } from "./Concepts";
 import { Emisor } from "./Emisor";
@@ -39,6 +42,7 @@ export class Comprobante {
     xslt && (this.xslt = xslt);
     this.tags = new Structure(customTags);
     this.tc = this.tags.tagXml('cfdi:Comprobante');
+    this.restartCfdi();
     this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
     this.addSchemaLocation(attribute.schemaLocation || this.locations);
     if (attribute.xmlns) {
@@ -245,4 +249,23 @@ export class Comprobante {
     }
   }
 
+  protected restartCfdi(): void {
+    this.xml = {
+      _declaration: {
+        _attributes: {
+          encoding: 'utf-8',
+          version: '1.0',
+        },
+      },
+    } as XmlCdfi;
+    this.xml[this.tc] = {
+      _attributes: {} as XmlComprobanteAttributes,
+      'cfdi:Emisor': {},
+      'cfdi:Receptor': {},
+    } as XmlComprobante;
+
+    this.xml['cfdi:Comprobante']['cfdi:Conceptos'] = {
+      'cfdi:Concepto': [],
+    } as XmlConcepto;
+  }
 }

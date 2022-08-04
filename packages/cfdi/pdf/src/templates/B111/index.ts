@@ -1,7 +1,7 @@
 import { TDocumentDefinitions } from "pdfmake/interfaces";
 import { XmlCdfi } from "@signati/core";
 import { XmlToJson } from "@cfdi/utils";
-import { logo } from '@cfdi/utils/src/Logo';
+import { logo } from '@cfdi/utils';
 import { createPdf, TCreatedPdf } from "pdfmake/build/pdfmake";
 
 
@@ -9,6 +9,7 @@ import { createPdf, TCreatedPdf } from "pdfmake/build/pdfmake";
 
 
 export class B111 {
+  // @ts-ignore
   private xml: XmlCdfi;
   private docDefinition: TDocumentDefinitions = {
     pageSize: 'A4',
@@ -119,6 +120,7 @@ export class B111 {
                   ]
                 },
                 layout: {
+                  // @ts-ignore
                   fillColor: function (rowIndex, node, columnIndex) {
                     return (rowIndex % 2 === 0) ? '#CCCCCC' : null;
                   }
@@ -392,6 +394,7 @@ export class B111 {
 
 
   constructor(xml: string) {
+    // @ts-ignore
     this.xml = XmlToJson(xml)
   }
 

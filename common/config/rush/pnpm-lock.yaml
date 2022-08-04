@@ -354,6 +354,7 @@ importers:
   ../../packages/server:
     specifiers:
       '@cfdi/csd': workspace:*
+      '@cfdi/pdf': workspace:*
       '@cfdi/utils': workspace:*
       '@cfdi/xml': workspace:*
       '@clir/openssl': workspace:*
@@ -406,6 +407,7 @@ importers:
       typescript: ^4.7.4
     dependencies:
       '@cfdi/csd': link:../cfdi/csd
+      '@cfdi/pdf': link:../cfdi/pdf
       '@cfdi/utils': link:../cfdi/utils
       '@cfdi/xml': link:../cfdi/xml
       '@clir/openssl': link:../clir/openssl

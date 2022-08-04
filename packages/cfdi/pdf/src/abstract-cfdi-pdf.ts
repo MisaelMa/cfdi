@@ -1,16 +1,29 @@
 import { Comprobante, XmlCdfi, XmlConcepto, XmlEmisor, XmlImpuestos, XmlReceptor } from "@signati/core";
 import { XmlTfd } from "@signati/core/lib/signati/types/Complements/tfd/tfd.com";
-import { createPdf, TCreatedPdf, vfs } from 'pdfmake/build/pdfmake';
-import { pdfMake } from 'pdfmake/build/vfs_fonts';
+import { createPdf, TCreatedPdf, fonts } from 'pdfmake/build/pdfmake';
 import { OptionsPdf } from "./types";
-import { TDocumentDefinitions } from "pdfmake/interfaces";
+import { BufferOptions, TDocumentDefinitions } from "pdfmake/interfaces";
 import { XmlToJson } from "@cfdi/utils";
+import { writeFileSync } from "fs";
+import pdfMake from "pdfmake/build/pdfmake";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+// import PdfPrinter from 'pdfmake';
 // @ts-ignore
-vfs = pdfMake.vfs;
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import path from "path";
 export abstract class RPDF {
   public xml: XmlCdfi = {} as XmlCdfi;
   public options: OptionsPdf;
   public docDefinition: TDocumentDefinitions | any = {}
+  public fonts = {
+    Roboto: {
+      normal: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
+      bold: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
+      italics: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
+      bolditalics: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf')
+    },
+  }
   constructor(xml: string, options: OptionsPdf = {} as OptionsPdf) {
     // @ts-ignore
     this.xml = XmlToJson(xml)
@@ -73,7 +86,69 @@ export abstract class RPDF {
         await this.addQr(tfd, this.xml['cfdi:Comprobante']['cfdi:Emisor'], this.xml['cfdi:Comprobante']['cfdi:Receptor'], this.xml['cfdi:Comprobante']._attributes.Total);
       }
     }
-
+    const fo = { ...this.fonts, ...fonts, ...this.options.fonts }
+    console.log(fo)
     return createPdf(this.docDefinition);
+  }
+
+  public async save(path: string, name: string) {
+    const dir = path + `${name.replace('.pdf', '')}.pdf`
+    try {
+      const buffer = await this.getBuffer();
+      writeFileSync(dir, buffer, { encoding: 'binary' });
+      return {
+        save: true,
+        path: dir,
+      }
+
+    } catch (e) {
+      return {
+        save: false,
+        error: e,
+      }
+    }
+
+  }
+
+  public async getBlob(options?: BufferOptions): Promise<Blob> {
+    return new Promise(async (resolve) => {
+      const doc = await this.getDocument();
+      doc!.getBlob((result) => {
+        resolve(result)
+      }, options)
+    });
+  }
+
+  public async getBase64(options?: BufferOptions): Promise<string> {
+
+    return new Promise(async (resolve) => {
+      const doc = await this.getDocument();
+      doc!.getBase64((result) => {
+        resolve(result)
+      }, options)
+    });
+  }
+
+  public async getBuffer(options?: BufferOptions): Promise<Buffer> {
+    return new Promise(async (resolve) => {
+      const doc = await this.getDocument();
+      doc!.getBuffer((result) => {
+        resolve(result)
+      }, options)
+    });
+  }
+
+  public async getDataUrl(options?: BufferOptions): Promise<string> {
+    return new Promise(async (resolve) => {
+      const doc = await this.getDocument();
+      doc!.getDataUrl((result) => {
+        resolve(result)
+      }, options)
+    });
+  }
+
+  public async getStream(options?: BufferOptions) {
+    const doc = await this.getDocument();
+    return doc!.getStream(options)
   }
 }

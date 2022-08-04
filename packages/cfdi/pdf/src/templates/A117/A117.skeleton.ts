@@ -1,6 +1,6 @@
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
-import { logo } from '../../utils/Logo';
-export const A117SKELETON: TDocumentDefinitions = {
+import { logo } from '@cfdi/utils';
+export const A117SKELETON: TDocumentDefinitions | any = {
   pageSize: 'A4',
   pageMargins: [20, 25, 20, 25],
   content: [
@@ -95,18 +95,23 @@ export const A117SKELETON: TDocumentDefinitions = {
 
             },
             layout: {
+              // @ts-ignore
               paddingLeft: (i: any, node: any) => {
                 return 20;
               },
+              // @ts-ignore
               paddingRight: (i: any, node: any) => {
                 return 20;
               },
+              // @ts-ignore
               paddingTop: (i: any, node: any) => {
                 return 0;
               },
+              // @ts-ignore
               paddingBottom: (i: any, node: any) => {
                 return 0;
               },
+              // @ts-ignore
               fillColor: (rowIndex: number, node: any, columnIndex: any) => {
                 return (rowIndex === 0) ? '#eeeeee' : null;
               }
@@ -132,12 +137,15 @@ export const A117SKELETON: TDocumentDefinitions = {
 
             },
             layout: {
+              // @ts-ignore
               paddingTop: (i: any, node: any) => {
                 return 0;
               },
+              // @ts-ignore
               paddingBottom: (i: any, node: any) => {
                 return 0;
               },
+              // @ts-ignore
               fillColor: (rowIndex: number, node: any, columnIndex: any) => {
                 return (rowIndex === 0) ? '#eeeeee' : null;
               }
@@ -240,6 +248,7 @@ export const A117SKELETON: TDocumentDefinitions = {
         ],
       },
       layout: {
+        // @ts-ignore
         fillColor: (rowIndex: number, node: any, columnIndex: any) => {
           return (rowIndex === 0) ? '#eeeeee' : null;
         }
@@ -520,6 +529,7 @@ export const A117SKELETON: TDocumentDefinitions = {
       ]
     },
   ],
+  // @ts-ignore
   footer: (currentPage: number, pageCount: number) => {
     return {
       table: {
