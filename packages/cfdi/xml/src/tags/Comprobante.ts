@@ -35,7 +35,7 @@ export class Comprobante {
   protected xslt: string | null = null;
   constructor(attr: ComprobanteAttr, options: Options = { debug: false }) {
     const attribute = attr;
-    const { debug = false, xslt, customTags = {} } = options;
+    const { xslt, customTags = {} } = options;
     xslt && (this.xslt = xslt);
     this.tags = new Structure(customTags);
     this.tc = this.tags.tagXml('cfdi:Comprobante');

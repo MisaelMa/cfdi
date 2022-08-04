@@ -1,15 +1,15 @@
-import { Controller, Res, Req, Get } from '@nestjs/common';
-import { Request, Response } from 'express';
-import { readFileSync } from 'fs';
-import * as path from 'path';
+import { Controller, Res, Get } from '@nestjs/common';
+import { Response } from 'express';
+//import { readFileSync } from 'fs';
+//import * as path from 'path';
 // import { PDF, XmlToJson } from '../src';
 @Controller('pdf')
 export class PdfController {
 
   @Get('/')
-  async index(@Req() req: Request, @Res() res: Response) {
-    const xml = path.join(__filename, '../', '5E2D6AFF-2DD7-43D1-83D3-14C1ACA396D9.xml')
-    const logo = readFileSync(path.join(__filename, '../', 'logo.png'))
+  async index(@Res() res: Response) {
+    //const xml = path.join(__filename, '../', '5E2D6AFF-2DD7-43D1-83D3-14C1ACA396D9.xml')
+    //const logo = readFileSync(path.join(__filename, '../', 'logo.png'))
     // const a117 = new A117(xml, {
     //   lugarExpedicion: 'CARRETERA FEDERAL CANCUN TULUM KM 292 MANZANA 24 LOTE 24 FRACCION 4 EJIDO PLAYA',
     //   // logo: {

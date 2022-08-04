@@ -1,9 +1,9 @@
-import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
-import { cer, key } from '@signati/openssl';
+// import { cer, key } from '@signati/openssl';
+import { cer, key } from '@cfdi/csd';
 import { Transform } from '@signati/saxon';
 import { js2xml } from 'xml-js';
 
@@ -48,9 +48,9 @@ export class CFDI extends Comprobante {
    */
   public certificar(cerpath: string): CFDI | any {
     try {
-      const certi = cer.getCer(cerpath); // . await certificate.getCer(cerpath);
-      this.xml[this.tc]._attributes.NoCertificado = certi.nocer;
-      this.xml[this.tc]._attributes.Certificado = certi.cer;
+      cer.setFile(cerpath)
+      this.xml[this.tc]._attributes.NoCertificado = cer.getNoCer();
+      this.xml[this.tc]._attributes.Certificado = cer.getPem({ begin: true });
       return this;
     } catch (e) {
       if (this.debug) {
@@ -209,11 +209,11 @@ export class CFDI extends Comprobante {
       try {
         // const key = pem.toString('utf8');
         // openssl dgst -sha256 -sign account.key -out signature.sha256 signature.b64
-        const keyPem = await key.getKey(keyfile, password);
-        // console.log(key);
-        const sign = await crypto.createSign('RSA-SHA256');
-        await sign.update(cadenaOriginal);
-        resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
+        key.setFile(keyfile, password);
+        const sello = key.signatureHexForge(cadenaOriginal)
+        resolve(sello)
+        //await sign.update(cadenaOriginal);
+        // resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
       } catch (e) {
         if (this.debug) {
           console.log({

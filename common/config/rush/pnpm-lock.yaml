@@ -177,6 +177,7 @@ importers:
 
   ../../packages/cfdi/xml:
     specifiers:
+      '@cfdi/csd': workspace:*
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -204,6 +205,7 @@ importers:
       typescript: ^4.7.4
       xml-js: ^1.6.11
     dependencies:
+      '@cfdi/csd': link:../csd
       '@signati/openssl': 0.0.5
       '@signati/saxon': 0.0.4
       moment: 2.29.4

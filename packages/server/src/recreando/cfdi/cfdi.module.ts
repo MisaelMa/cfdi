@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 
 import { CsdController } from './controllers/csd/csd.controller';
 import { XmlController } from './controllers/xml/xml.controller';
-import { PdfController } from './pdf/pdf.controller';
+import { PdfController } from './controllers/pdf/pdf.controller';
 
 /**
  *

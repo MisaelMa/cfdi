@@ -1,6 +1,6 @@
 import { Controller, Res, Req, Get } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { CFDI, Comprobante, Concepts, Emisor, Impuestos, ObjetoImpEnum, Receptor, Relacionado } from '@cfdi/xml';
+import { CFDI, ComprobanteAttr, Concepts, Emisor, Impuestos, ObjetoImpEnum, Receptor, Relacionado } from '@cfdi/xml';
 // import { sum } from '@cfdi/utils';
 /**
  *
@@ -31,7 +31,7 @@ export class XmlController {
     // console.log(pathCer)
     // const key = `${pathCer}/LAN7008173R5.key`;
     // const cer = `${pathCer}/LAN7008173R5.cer`;
-    const comprobanteAttribute: Comprobante = {
+    const comprobanteAttribute: ComprobanteAttr = {
       Serie: 'E',
       // eslint-disable-next-line
       Folio: 'ACACUN-27',

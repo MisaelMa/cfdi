@@ -52,6 +52,7 @@
     }
   ],
   "dependencies": {
+    "@cfdi/csd": "workspace:*",
     "@signati/openssl": "^0.0.5",
     "@signati/saxon": "^0.0.4",
     "moment": "^2.29.4",
