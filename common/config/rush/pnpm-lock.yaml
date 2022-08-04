@@ -66,6 +66,7 @@ importers:
 
   ../../packages/cfdi/pdf:
     specifiers:
+      '@cfdi/utils': workspace:*
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -97,6 +98,7 @@ importers:
       typescript: ^4.7.4
       xml-js: ^1.6.11
     dependencies:
+      '@cfdi/utils': link:../utils
       '@signati/core': 3.3.10
       immutable: 4.1.0
       moment: 2.29.4
@@ -136,6 +138,7 @@ importers:
       '@recreando/typescript-settings': workspace:*
       '@rushstack/eslint-config': ^2.6.0
       '@rushstack/heft': ^0.45.1
+      '@signati/core': 4.0.2
       '@size-limit/preset-small-lib': ^7.0.8
       '@testing-library/dom': ^8.13.0
       '@testing-library/jest-dom': ^5.16.1
@@ -152,6 +155,10 @@ importers:
       tsdx: ^0.14.1
       tslib: ^2.4.0
       typescript: ^4.7.4
+      xml-js: ^1.6.11
+    dependencies:
+      '@signati/core': 4.0.2
+      xml-js: 1.6.11
     devDependencies:
       '@recreando/eslint-settings': link:../../../rigs/eslint
       '@recreando/jest': link:../../../rigs/jest
@@ -3281,6 +3288,17 @@ packages:
       moment: 2.29.4
       moment-timezone: 0.5.34
       node-forge: 0.10.0
+      xml-js: 1.6.11
+    dev: false
+
+  /@signati/core/4.0.2:
+    resolution: {integrity: sha512-6AxmvSHyI7xiEG3LNr3yLYTdf/uTTaPxSGxd5JVN4wWIheUl5bGkWMEZzpa3nikI3YN6U3JWv0ngH6vgIuvOyQ==}
+    dependencies:
+      '@signati/openssl': 0.0.5
+      '@signati/saxon': 0.0.4
+      moment: 2.29.4
+      moment-timezone: 0.5.34
+      node-forge: 1.3.1
       xml-js: 1.6.11
     dev: false
 
