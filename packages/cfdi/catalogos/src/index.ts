@@ -1,6 +1,5 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop juan');
-  }
-  return a + b;
-};
+export * from './FormaPago';
+export * from './MetodoPago';
+export * from './RegimenFiscal';
+export * from './TipoComprobante';
+export * from './Impuesto';

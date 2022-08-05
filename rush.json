@@ -61,6 +61,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/catalogos",
+      "projectFolder": "packages/cfdi/catalogos",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@cfdi/pdf",
       "projectFolder": "packages/cfdi/pdf",
       "versionPolicyName": "tooling",

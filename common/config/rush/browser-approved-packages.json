@@ -11,6 +11,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/catalogos",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/csd",
       "allowedCategories": [ "libraries" ]
     },

@@ -18,7 +18,6 @@ export * from './complements/ine/ine.com';
 export * from './complements/ine/ine.enum';
 export * from './complements/Nomina12.interface';
 export * from './complements/detallista';
-export * from './catalogs';
 export * from './tags/tags.structure';
 
 // certificado

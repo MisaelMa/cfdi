@@ -7,7 +7,7 @@ import {
   MetodoPagoType,
   TipoComprobante,
   TypeComprobante,
-} from '../catalogs';
+} from '@cfdi/catalogos';
 
 import {
   XmlReceptor,
