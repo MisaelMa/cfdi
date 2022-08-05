@@ -7,11 +7,11 @@ export const A117SKELETON: TDocumentDefinitions | any = {
     {
       columns: [
         {
-          text: 'logo'
+          text: 'logo',
         },
         {
           width: 40,
-          text: ''
+          text: '',
         },
         {
           margin: [0, 0, 0, 0],
@@ -22,7 +22,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               style: {
                 bold: true,
                 color: '#a76d09',
-              }
+              },
             },
             {
               text: [
@@ -31,10 +31,10 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
-                { text: '\n' }
-              ]
+                { text: '\n' },
+              ],
             },
             {
               text: [
@@ -43,10 +43,10 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
-                { text: '\n' }
-              ]
+                { text: '\n' },
+              ],
             },
             {
               text: [
@@ -55,15 +55,15 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
-                { text: '\n' }
-              ]
-            }
+                { text: '\n' },
+              ],
+            },
           ],
           style: {
             fontSize: 9,
-          }
+          },
         },
         [
           {
@@ -73,7 +73,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
             style: {
               fontSize: 9,
               bold: true,
-            }
+            },
           },
           {
             margin: [80, 0, 0, 10],
@@ -82,17 +82,18 @@ export const A117SKELETON: TDocumentDefinitions | any = {
             table: {
               alignment: 'right',
               body: [
-                [{
-                  text: 'FOLIO',
-                  style: {
-                    bold: true,
-                    fontSize: 9,
-                    alignment: 'center',
-                    margin: [0, 0, 0, 0],
-                  }
-                }],
+                [
+                  {
+                    text: 'FOLIO',
+                    style: {
+                      bold: true,
+                      fontSize: 9,
+                      alignment: 'center',
+                      margin: [0, 0, 0, 0],
+                    },
+                  },
+                ],
               ],
-
             },
             layout: {
               // @ts-ignore
@@ -113,9 +114,9 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               },
               // @ts-ignore
               fillColor: (rowIndex: number, node: any, columnIndex: any) => {
-                return (rowIndex === 0) ? '#eeeeee' : null;
-              }
-            }
+                return rowIndex === 0 ? '#eeeeee' : null;
+              },
+            },
           },
           {
             alignment: 'center',
@@ -124,17 +125,18 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               alignment: 'right',
               heights: 10,
               body: [
-                [{
-                  text: 'FECHA',
-                  style: {
-                    bold: true,
-                    fontSize: 9,
-                    alignment: 'center',
-                    margin: [0, 0, 0, 0],
-                  }
-                }],
+                [
+                  {
+                    text: 'FECHA',
+                    style: {
+                      bold: true,
+                      fontSize: 9,
+                      alignment: 'center',
+                      margin: [0, 0, 0, 0],
+                    },
+                  },
+                ],
               ],
-
             },
             layout: {
               // @ts-ignore
@@ -147,12 +149,12 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               },
               // @ts-ignore
               fillColor: (rowIndex: number, node: any, columnIndex: any) => {
-                return (rowIndex === 0) ? '#eeeeee' : null;
-              }
-            }
-          }
-        ]
-      ]
+                return rowIndex === 0 ? '#eeeeee' : null;
+              },
+            },
+          },
+        ],
+      ],
     },
     {
       bold: true,
@@ -161,15 +163,15 @@ export const A117SKELETON: TDocumentDefinitions | any = {
         {
           text: 'Datos del Cliente\n',
           style: {
-            color: '#0941a7'
-          }
+            color: '#0941a7',
+          },
         },
         {
           text: 'Razon Social: ',
           style: {
             bold: true,
             color: '#a76d09',
-          }
+          },
         },
         { text: '' },
         {
@@ -177,7 +179,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
           style: {
             bold: true,
             color: '#a76d09',
-          }
+          },
         },
         { text: '' },
         {
@@ -185,17 +187,17 @@ export const A117SKELETON: TDocumentDefinitions | any = {
           style: {
             bold: true,
             color: '#a76d09',
-          }
+          },
         },
-        { text: '' }
+        { text: '' },
       ],
       style: {
         fontSize: 10,
-      }
+      },
     },
     {
       style: {
-        fontSize: 9
+        fontSize: 9,
       },
       table: {
         widths: [45, 50, 213, 40, 50, 53, 40],
@@ -204,55 +206,55 @@ export const A117SKELETON: TDocumentDefinitions | any = {
             {
               text: 'CANTIDAD',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               text: 'CLAVE SAT',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               text: 'CONCEPTO/DESCRIPCIÓN',
               alignment: 'center',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               text: 'UNIDAD',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               text: 'P.UNITARIO',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               text: 'DESCUENTO',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               text: 'IMPORTE',
               style: {
-                bold: true
-              }
-            }
+                bold: true,
+              },
+            },
           ],
         ],
       },
       layout: {
         // @ts-ignore
         fillColor: (rowIndex: number, node: any, columnIndex: any) => {
-          return (rowIndex === 0) ? '#eeeeee' : null;
-        }
-      }
+          return rowIndex === 0 ? '#eeeeee' : null;
+        },
+      },
     },
     {
       margin: [0, 7, 0, 7],
@@ -266,16 +268,16 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   text: 'CANTIDAD CON LETRA',
                   style: {
                     bold: true,
-                    fontSize: 9
-                  }
+                    fontSize: 9,
+                  },
                 },
                 {
                   text: 'OCHOCIENTOS TREINTA Y NUEVE PESOS 99/100 M.N.',
                   style: {
-                    fontSize: 9
-                  }
-                }
-              ]
+                    fontSize: 9,
+                  },
+                },
+              ],
             },
             {
               text: [
@@ -284,7 +286,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
                 { text: '\n' },
                 {
@@ -292,7 +294,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
                 { text: '$\n' },
                 {
@@ -300,7 +302,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
                 { text: '$\n' },
                 {
@@ -308,20 +310,19 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   style: {
                     bold: true,
                     color: '#a76d09',
-                  }
+                  },
                 },
-                { text: '$' }
+                { text: '$' },
               ],
               style: {
-                fontSize: 9
-              }
-            }
+                fontSize: 9,
+              },
+            },
           ],
-        ]
-      }
+        ],
+      },
     },
     {
-
       columns: [
         {
           text: [
@@ -330,7 +331,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               style: {
                 bold: true,
                 color: '#a76d09',
-              }
+              },
             },
             { text: ' \n' },
             {
@@ -338,7 +339,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               style: {
                 bold: true,
                 color: '#a76d09',
-              }
+              },
             },
             { text: ' \n' },
             {
@@ -346,13 +347,13 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               style: {
                 bold: true,
                 color: '#a76d09',
-              }
+              },
             },
             { text: ' \n' },
           ],
           style: {
-            fontSize: 9
-          }
+            fontSize: 9,
+          },
         },
         {
           text: [
@@ -361,7 +362,7 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               style: {
                 bold: true,
                 color: '#a76d09',
-              }
+              },
             },
             { text: ' $ 1034.48\n' },
             {
@@ -369,19 +370,19 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               style: {
                 bold: true,
                 color: '#a76d09',
-              }
+              },
             },
             { text: ' $ 310.35\n' },
           ],
           style: {
-            fontSize: 9
-          }
-        }
-      ]
+            fontSize: 9,
+          },
+        },
+      ],
     },
     {
       style: {
-        fontSize: 9
+        fontSize: 9,
       },
       table: {
         widths: [250, 280],
@@ -392,28 +393,28 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               text: 'No. CSD del Emisor',
               alignment: 'center',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               border: [false, false, false, false],
               text: 'Fecha y hora de certificacion',
               alignment: 'center',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
           ],
           [
             {
               border: [false, true, false, false],
               text: ' ',
-              alignment: 'center'
+              alignment: 'center',
             },
             {
               border: [false, true, false, false],
               text: '',
-              alignment: 'center'
+              alignment: 'center',
             },
           ],
           [
@@ -422,41 +423,41 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               text: 'Folio Fiscal',
               alignment: 'center',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
             {
               border: [false, false, false, false],
               text: 'No. CSD del SAT',
               alignment: 'center',
               style: {
-                bold: true
-              }
+                bold: true,
+              },
             },
           ],
           [
             {
               border: [false, true, false, false],
               text: '',
-              alignment: 'center'
+              alignment: 'center',
             },
             {
               border: [false, true, false, false],
               text: '',
-              alignment: 'center'
+              alignment: 'center',
             },
           ],
-        ]
-      }
+        ],
+      },
     },
     {
       margin: [0, 25, 0, 0],
       style: {
-        fontSize: 9
+        fontSize: 9,
       },
       columns: [
         {
-          text: ''
+          text: '',
         },
         {
           margin: [-10, -15, 0, 0],
@@ -469,8 +470,8 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   text: 'SELLO DIGITAL DEL EMISOR',
                   style: {
                     alignment: 'left',
-                    color: '#0941a7'
-                  }
+                    color: '#0941a7',
+                  },
                 },
               ],
               [
@@ -478,8 +479,8 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   border: [false, false, false, false],
                   text: '',
                   style: {
-                    fontSize: 7
-                  }
+                    fontSize: 7,
+                  },
                 },
               ],
               [
@@ -488,8 +489,8 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   text: 'SELLO DEL SAT',
                   style: {
                     alignment: 'left',
-                    color: '#0941a7'
-                  }
+                    color: '#0941a7',
+                  },
                 },
               ],
               [
@@ -497,8 +498,8 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   border: [false, false, false, false],
                   text: '',
                   style: {
-                    fontSize: 7
-                  }
+                    fontSize: 7,
+                  },
                 },
               ],
               [
@@ -507,8 +508,8 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   text: 'CADENA ORIGINAL DEL COMPLEMENTO DE CERTIFICACION DIGITAL DEL SAT',
                   style: {
                     alignment: 'left',
-                    color: '#0941a7'
-                  }
+                    color: '#0941a7',
+                  },
                 },
               ],
               [
@@ -516,17 +517,17 @@ export const A117SKELETON: TDocumentDefinitions | any = {
                   border: [false, false, false, false],
                   text: '',
                   style: {
-                    fontSize: 7
-                  }
+                    fontSize: 7,
+                  },
                 },
-              ]
-            ]
+              ],
+            ],
           },
           style: {
-            fontSize: 9
-          }
-        }
-      ]
+            fontSize: 9,
+          },
+        },
+      ],
     },
   ],
   // @ts-ignore
@@ -535,7 +536,6 @@ export const A117SKELETON: TDocumentDefinitions | any = {
       table: {
         body: [
           [
-
             {
               image: logo,
               margin: [10, 0, 0, 0],
@@ -548,13 +548,13 @@ export const A117SKELETON: TDocumentDefinitions | any = {
               // stext: "Page " + currentPage.toString() + ' of ' + pageCount,
               alignment: 'right',
               style: {
-                fontSize: 10
-              }
+                fontSize: 10,
+              },
             },
           ],
-        ]
+        ],
       },
-      layout: 'noBorders'
+      layout: 'noBorders',
     };
   },
 };
