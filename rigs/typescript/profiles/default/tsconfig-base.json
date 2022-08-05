@@ -45,6 +45,12 @@
       "@cfdi/xml/*": [
         "./node_modules/@cfdi/xml/src/*"
       ],
+      "@cfdi/catalogos": [
+        "./node_modules/@cfdi/catalogos/src/index"
+      ],
+      "@cfdi/catalogos/*": [
+        "./node_modules/@cfdi/catalogos/src/*"
+      ],
       "@cfdi/pdf": [
         "./node_modules/@cfdi/pdf/src/index"
       ],
