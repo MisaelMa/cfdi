@@ -65,6 +65,7 @@ export class A111 extends RPDF {
   protected addTipoComprobante(tipo: string): void {
     //throw new Error('Method not implemented.');
   }
+
   protected addCSDSat(tfd: XmlTfd): void {
     //throw new Error('Method not implemented.');
   }
