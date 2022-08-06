@@ -9,6 +9,6 @@ export interface Mexican {
   statusCurp?: string; // https://www.notion.so/sanchezcarlosjr/statusCurp-68e3bd32a9274fd1976a3e9a6be33096
   pdf?: string;
   nationality?: string;
-  probatoryDocument?: string;
+  probatoryDocument?: number | string;
   probatoryDocumentData?: Record<string, string | number | undefined>;
 }

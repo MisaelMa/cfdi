@@ -1,11 +1,12 @@
-import axios from 'axios';
 import { birthday, birthdayFormatFromRenapo } from '../common/constants';
+import { Renapo, WithCurp, WithData } from '../types/gob.types';
 import { Mexican } from '../types/Mexican';
 import { captchaSolver } from '../utils/recaptach';
 import { api } from './api';
 const genderISOConverter = new Map([
   ['HOMBRE', '1'],
   ['MUJER', '2'],
+  ['No binario', '3'],
 ]);
 export const ensure = (code: string) => {
   switch (code) {
@@ -28,13 +29,10 @@ export const ensure = (code: string) => {
   }
 }
 
-const parseResponse = (
-  renapoResponse: { registros: any[] },
-  curp: string
-): Mexican => {
-  const register = renapoResponse.registros[0];
+const parseResponse = (payload: Renapo): Mexican => {
+  const register = payload.registros[0];
   return {
-    curp,
+    curp: register.curp,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     fatherName: register.primerApellido,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -65,33 +63,44 @@ const parseResponse = (
   };
 }
 
-const constulta = async () => {
+const constulta = async (data: WithData | WithCurp): Promise<Renapo> => {
   const captchaSolution = await captchaSolver(
     '6LdJssgUAAAAAKkVr-Aj-xP5QQzclPeGZmhRwXeY',
     'https://www.gob.mx/curp'
   );
 
-  api.post('renapoCURP/consulta', {
-    curp: curp,
-    tipoBusqueda: 'curp',
+  return api.post<Renapo>('renapoCURP/consulta', {
+    ...data,
     ip: '127.0.0.1',
     response: captchaSolution,
   }).then(res => res.data);
 }
 export const findByCurp = async (curp: string): Promise<Mexican | { error: string } | null> => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  ensure(renapoResponse.codigo);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  if (renapoResponse.registros == undefined) {
+  const res = await constulta({
+    curp: curp,
+    tipoBusqueda: "curp"
+  })
+  ensure(res.codigo);
+  if (res.registros == undefined) {
     return {
       curp: curp,
       error: 'CURP not found',
     };
   }
-  return parseResponse(renapoResponse, curp);
+  return parseResponse(res);
 }
-export const findByData = () => { }
+export const findByData = async (data: WithData) => {
+  const res = await constulta({
+    ...data,
+    tipoBusqueda: "datos",
+  })
+  ensure(res.codigo);
+  if (res.registros == undefined) {
+    return {
+      curp: "",
+      error: 'CURP not found',
+    };
+  }
+  return parseResponse(res);
+
+}
