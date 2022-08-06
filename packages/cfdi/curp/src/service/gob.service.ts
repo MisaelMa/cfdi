@@ -6,7 +6,7 @@ import { ensure, parseResponse } from '../utils/parse.reponse';
 import { captchaSolver } from '../utils/recaptach';
 import { api } from './api';
 
-const constulta = async (data: WithData | WithCurp): Promise<Renapo> => {
+const constulta = async (data: WithData & { fechaNacimiento: string } | WithCurp): Promise<Renapo> => {
   const captchaSolution = await captchaSolver(
     '6LdJssgUAAAAAKkVr-Aj-xP5QQzclPeGZmhRwXeY',
     'https://www.gob.mx/curp'
@@ -35,6 +35,7 @@ export const findByCurp = async (curp: string): Promise<Mexican | { error: strin
 export const findByData = async (data: WithData) => {
   const res = await constulta({
     ...data,
+    fechaNacimiento: `${data.diaNacimiento}/${data.mesNacimiento}/${data.selectedYear}`,
     tipoBusqueda: "datos",
   })
   ensure(res.codigo);

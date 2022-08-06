@@ -34,7 +34,6 @@ export type sexoType = typeof sexo[number];
 export interface WithData extends TypeFinde {
   claveEntidad: entidadType
   diaNacimiento: daysType
-  fechaNacimiento: string
   mesNacimiento: mesesType
   nombres: string
   primerApellido: string
