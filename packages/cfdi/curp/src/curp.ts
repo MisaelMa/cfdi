@@ -33,8 +33,9 @@ const validateState = (input: string) => {
   return STATE.includes(state);
 };
 
-const getState = (matches: (string | number)[]) => {
-  return matches[3];
+export const getState = (curp: string) => {
+  const macth = REGEX_CURP.exec(curp);
+  return macth[3] || '0';
 }
 
 export const validate = (input: string) => {
@@ -49,10 +50,30 @@ export const validate = (input: string) => {
   if (hasForbiddenWords()) {
     throw new BadCurpFormat(curp);
   }
-  // REGEX_CURP.exec("MACA961017HQRRHM06");
-  // REGEX_CURP.test("MACA961017HQRRHM06");
 }
-
+export const validateLocal = (input: string) => {
+  curp = parseInput(input)
+  if (!curp) {
+    throw new BadCurpFormat(curp);
+  }
+  const match = REGEX_CURP.exec(curp);
+  if (!match) {
+    throw new BadCurpFormat(curp);
+  }
+  if (hasForbiddenWords()) {
+    throw new BadCurpFormat(curp);
+  }
+  if (!validateDate(curp)) {
+    throw new BadCurpFormat(curp);
+  }
+  if (!validateState(curp)) {
+    throw new BadCurpFormat(curp);
+  }
+  if (!validateCheckDigit(curp)) {
+    throw new BadCurpFormat(curp);
+  }
+  return true
+}
 
 const hasForbiddenWords = (): boolean => {
   const prefix = (curp || '').slice(0, 4);

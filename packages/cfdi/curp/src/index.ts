@@ -1,6 +1,4 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop juan');
-  }
-  return a + b;
-};
+export * as curp from "./curp"
+export * as gob from "./service/gob.service"
+export * from './types'
+export * from './common/constants'

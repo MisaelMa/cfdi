@@ -1,67 +1,10 @@
-import { birthday, birthdayFormatFromRenapo } from '../common/constants';
+import { writeFileSync } from 'fs';
+
 import { Renapo, WithCurp, WithData } from '../types/gob.types';
-import { Mexican } from '../types/Mexican';
+import { Mexican } from '../types/mexican.types';
+import { ensure, parseResponse } from '../utils/parse.reponse';
 import { captchaSolver } from '../utils/recaptach';
 import { api } from './api';
-const genderISOConverter = new Map([
-  ['HOMBRE', '1'],
-  ['MUJER', '2'],
-  ['No binario', '3'],
-]);
-export const ensure = (code: string) => {
-  switch (code) {
-    case '01':
-      return;
-    case '02':
-    case '03':
-    case '04':
-    case '05':
-    case '07':
-      throw new Error('Invalid 07');
-    case '11':
-    case '13':
-      throw new Error('');
-    case '180001':
-    case '190001':
-      return;
-    default:
-      throw new Error('');
-  }
-}
-
-const parseResponse = (payload: Renapo): Mexican => {
-  const register = payload.registros[0];
-  return {
-    curp: register.curp,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    fatherName: register.primerApellido,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    motherName: register.segundoApellido,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    name: register.nombres,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    gender: genderISOConverter.get(register.sexo) ?? '',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    birthday: register.fechaNacimiento.replace(
-      birthdayFormatFromRenapo,
-      birthday
-    ),
-    // eslint-disable-next-line @typescript-eslint/await-thenable
-    birthState: "2", // await curp.getIsoState(),
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    statusCurp: register.statusCurp,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    nationality: register.nacionalidad,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    probatoryDocument: register.docProbatorio,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    pdf: register.parametro,
-    probatoryDocumentData: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      ...register.datosDocProbatorio,
-    },
-  };
-}
 
 const constulta = async (data: WithData | WithCurp): Promise<Renapo> => {
   const captchaSolution = await captchaSolver(
@@ -103,4 +46,16 @@ export const findByData = async (data: WithData) => {
   }
   return parseResponse(res);
 
+}
+
+export const getBase64Pdf = (params: string) => {
+  // 'data:application/pdf;base64,'
+  api.get(`https://consultas.curp.gob.mx/CurpSP/pdfgobmx${params}`).then((res) => res.data)
+}
+export const savePDF = (options: {
+  file: string,
+  fullPath: string
+}) => {
+  const { file, fullPath } = options
+  writeFileSync(fullPath, Buffer.from(file, 'base64'), 'utf8');
 }
