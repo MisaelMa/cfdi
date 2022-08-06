@@ -38,39 +38,30 @@ export const getState = (curp: string) => {
   return macth[3] || '0';
 }
 
-export const validate = (input: string) => {
-  curp = parseInput(input)
-  if (!curp) {
-    throw new BadCurpFormat(curp);
-  }
-  const match = REGEX_CURP.exec(curp);
-  if (!match) {
-    throw new BadCurpFormat(curp);
-  }
-  if (hasForbiddenWords()) {
-    throw new BadCurpFormat(curp);
-  }
-}
 export const validateLocal = (input: string) => {
   curp = parseInput(input)
-  if (!curp) {
-    throw new BadCurpFormat(curp);
+  const result = {
+    isValid: false,
+    rfc: curp || '',
+    error: []
   }
   const match = REGEX_CURP.exec(curp);
-  if (!match) {
-    throw new BadCurpFormat(curp);
+  if (match && !hasForbiddenWords()) {
+    result.isValid = true
   }
-  if (hasForbiddenWords()) {
-    throw new BadCurpFormat(curp);
+
+  return result;
+}
+export const validate = (input: string) => {
+  curp = parseInput(input)
+  const result = {
+    isValid: false,
+    rfc: curp || '',
   }
-  if (!validateDate(curp)) {
-    throw new BadCurpFormat(curp);
-  }
-  if (!validateState(curp)) {
-    throw new BadCurpFormat(curp);
-  }
-  if (!validateCheckDigit(curp)) {
-    throw new BadCurpFormat(curp);
+
+  const match = REGEX_CURP.exec(curp);
+  if (match && !hasForbiddenWords() && validateDate(curp) && validateState(curp) && validateCheckDigit(curp)) {
+    result.isValid = true
   }
   return true
 }
