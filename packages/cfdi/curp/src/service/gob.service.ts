@@ -1,12 +1,18 @@
 import { writeFileSync } from 'fs';
 
-import { Renapo, WithCurp, WithData } from '../types/gob.types';
+import { Renapo, TypeFinde, WithCurp, WithData } from '../types/gob.types';
 import { Mexican } from '../types/mexican.types';
 import { ensure, parseResponse } from '../utils/parse.reponse';
 import { captchaSolver } from '../utils/recaptach';
 import { api } from './api';
 
-const constulta = async (data: WithData & { fechaNacimiento: string } | WithCurp): Promise<Renapo> => {
+interface ConsutalWithData extends WithData, TypeFinde {
+  fechaNacimiento: string
+}
+interface ConsutalWithCurpt extends WithCurp, TypeFinde {
+
+}
+const constulta = async (data: ConsutalWithData | ConsutalWithCurpt): Promise<Renapo> => {
   const captchaSolution = await captchaSolver(
     '6LdJssgUAAAAAKkVr-Aj-xP5QQzclPeGZmhRwXeY',
     'https://www.gob.mx/curp'

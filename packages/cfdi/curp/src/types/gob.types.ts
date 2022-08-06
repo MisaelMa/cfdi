@@ -31,7 +31,7 @@ export type entidadType = typeof entidad[number]
 export type daysType = typeof dias[number]
 export type mesesType = typeof meses[number]
 export type sexoType = typeof sexo[number];
-export interface WithData extends TypeFinde {
+export interface WithData {
   claveEntidad: entidadType
   diaNacimiento: daysType
   mesNacimiento: mesesType
@@ -42,7 +42,7 @@ export interface WithData extends TypeFinde {
   sexo: sexoType
 }
 
-export interface WithCurp extends TypeFinde {
+export interface WithCurp {
   curp: string
 }
 
