@@ -1,5 +1,5 @@
 {
-  "name": "@cfdi/utils",
+  "name": "@cfdi/curp",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -21,7 +21,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -44,10 +43,11 @@
       "limit": "10 KB"
     }
   ],
+  "dependencies": {
+    "2captcha": "^3.0.5",
+    "axios": "^0.27.2"
+  },
   "devDependencies": {
-    "@recreando/eslint-settings": "workspace:*",
-    "@recreando/jest": "workspace:*",
-    "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^2.6.0",
     "@rushstack/heft": "^0.45.1",
     "@size-limit/preset-small-lib": "^7.0.8",

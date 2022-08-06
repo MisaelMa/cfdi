@@ -82,6 +82,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/curp",
+      "projectFolder": "packages/cfdi/curp",
+      "versionPolicyName": "tooling",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@clir/openssl",
       "projectFolder": "packages/clir/openssl",
       "versionPolicyName": "tooling",
