@@ -8,6 +8,13 @@
   "typings": "dist/index.d.ts",
   "module": "dist/xml.esm.js",
   "source": "src/index.ts",
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "beta"
+    ]
+  },
   "files": [
     "dist/**/*"
   ],
