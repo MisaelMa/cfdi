@@ -16,17 +16,17 @@ const acepts = [
 ];
 const args = ['merge', 'apart'];
 const cfdi = {
-  '@cfdi/xml': '../../packages/cfdi/xml',
-  '@cfdi/catalogos': '../../packages/cfdi/catalogos',
-  '@cfdi/csd': '../../packages/cfdi/csd',
+  '@cfdi/xml': './packages/cfdi/xml',
+  '@cfdi/catalogos': './packages/cfdi/catalogos',
+  '@cfdi/csd': './packages/cfdi/csd',
   '@cfdi/pdf': './packages/cfdi/pdf',
-  '@cfdi/rfc': '../../packages/cfdi/rfc',
-  '@cfdi/curp': '../../packages/cfdi/curp',
-  '@cfdi/utils': '../../packages/cfdi/utils',
+  '@cfdi/rfc': './packages/cfdi/rfc',
+  '@cfdi/curp': './packages/cfdi/curp',
+  '@cfdi/utils': './packages/cfdi/utils',
 };
 const clir = {
-  '@clir/openssl': '../../packages/clir/openssl',
-  '@clir/saxon-he': '../../packages/clir/saxon-he',
+  '@clir/openssl': './packages/clir/openssl',
+  '@clir/saxon-he': './packages/clir/saxon-he',
 };
 
 const projects = {
