@@ -379,6 +379,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "semantic-release",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "size-limit",
       "allowedCategories": [ "libraries" ]
     },
