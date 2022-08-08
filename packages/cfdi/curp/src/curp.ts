@@ -35,7 +35,10 @@ const validateState = (input: string) => {
 
 export const getState = (curp: string) => {
   const macth = REGEX_CURP.exec(curp);
-  return macth[3] || '0';
+  if (macth && macth[3]) {
+    return macth[3]
+  }
+  return '0';
 }
 
 export const validateLocal = (input: string) => {

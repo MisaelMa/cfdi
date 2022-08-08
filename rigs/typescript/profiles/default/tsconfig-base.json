@@ -57,6 +57,12 @@
       "@cfdi/pdf/*": [
         "./node_modules/@cfdi/pdf/src/*"
       ],
+      "@cfdi/curp": [
+        "./node_modules/@cfdi/curp/src/index"
+      ],
+      "@cfdi/curp/*": [
+        "./node_modules/@cfdi/curp/src/*"
+      ],
       "@clir/openssl": [
         "./node_modules/@clir/openssl/src/index"
       ],

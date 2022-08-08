@@ -19,6 +19,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/curp",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/openssl",
       "allowedCategories": [ "libraries" ]
     },

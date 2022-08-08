@@ -1,3 +1,4 @@
+// @ts-ignore
 const VALUES_MAP: { [key: string | number]: number } = {
   0: 0,
   1: 1,
@@ -40,6 +41,7 @@ const VALUES_MAP: { [key: string | number]: number } = {
 
 const getScore = (string: string) => string.split('').reduce((sum, char: number | string, i) => {
   const index = 18 - i;
+  // @ts-ignore
   const value = VALUES_MAP[char] || 0;
   return sum + value * index;
 }, 0);

@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@cfdi/pdf": "workspace:*",
+    "@cfdi/curp": "workspace:*",
     "@cfdi/xml": "workspace:*",
     "@cfdi/csd": "workspace:*",
     "@clir/openssl": "workspace:*",

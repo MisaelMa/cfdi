@@ -45,6 +45,9 @@
     "axios": "^0.27.2"
   },
   "devDependencies": {
+    "@recreando/eslint-settings": "workspace:*",
+    "@recreando/jest": "workspace:*",
+    "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^2.6.0",
     "@rushstack/heft": "^0.45.1",
     "@size-limit/preset-small-lib": "^7.0.8",
