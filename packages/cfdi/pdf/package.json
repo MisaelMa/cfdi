@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@cfdi/utils": "workspace:*",
-    "@signati/core": "^3.3.8",
+    "@signati/core": "4.0.2",
     "immutable": "^4.0.0-rc.12",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.27",

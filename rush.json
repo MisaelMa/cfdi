@@ -98,7 +98,7 @@
     {
       "packageName": "@clir/openssl",
       "projectFolder": "packages/clir/openssl",
-      "versionPolicyName": "clirOenssl",
+      "versionPolicyName": "clirOpenssl",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },

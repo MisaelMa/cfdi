@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/utils",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -26,13 +26,26 @@
       "pre-commit": "tsdx lint"
     }
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MisaelMa/recreando"
+  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "author": "MisaelMa",
+  "author": {
+    "name": "Amir Misael Marin Coh, Signati",
+    "email": "amisael.amir.misae@gmail.com, signatidev@gmail.com,",
+    "url": ""
+  },
   "size-limit": [
     {
       "path": "dist/utils.cjs.production.min.js",

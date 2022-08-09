@@ -2,6 +2,18 @@
   "name": "@cfdi/utils",
   "entries": [
     {
+      "version": "0.0.12",
+      "tag": "@cfdi/utils_v0.0.12",
+      "date": "Tue, 09 Aug 2022 23:04:29 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "utilerias"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.10",
       "tag": "@cfdi/utils_v0.0.10",
       "date": "Tue, 09 Aug 2022 17:08:57 GMT",
