@@ -72,7 +72,7 @@
       "projectFolder": "packages/cfdi/pdf",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": false
     },
     {
       "packageName": "@cfdi/utils",
