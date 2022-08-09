@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/xml",
-  "version": "0.0.4",
+  "version": "0.0.0-development",
   "description": "Crea el XML, Firmar Y Sella comprobantes fiscales digitales en Mexico (CFDI)",
   "homepage": "https://recreando.dev",
   "license": "MIT",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MisaelMa/recreando"
+    "url": "https://github.com/MisaelMa/recreando"
   },
   "engines": {
     "node": ">=10"
@@ -30,7 +30,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build-package": "tsdx build",
-    "semantic-release": "npx semantic-release",
+    "semantic-release": "semantic-release",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "ssssprepare": "tsdx build",
@@ -83,7 +83,7 @@
     "chalk": "^4.0.0",
     "chokidar": "^3.5.2",
     "eslint": "^8.13.0",
-    "semantic-release": "19.0.3",
+    "semantic-release": "^19.0.3",
     "husky": "^8.0.1",
     "jest": "^28.1.2",
     "size-limit": "^7.0.8",
