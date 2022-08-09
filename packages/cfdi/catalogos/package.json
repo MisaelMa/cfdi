@@ -1,10 +1,21 @@
 {
   "name": "@cfdi/catalogos",
-  "version": "0.1.0",
+  "version": "0.0.10",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/utils.esm.js",
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "beta"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Misael/recreando"
+  },
   "files": [
     "dist",
     "src"
@@ -15,6 +26,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "semantic-release": "npx semantic-release",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -53,6 +65,7 @@
     "@size-limit/preset-small-lib": "^7.0.8",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.1",
+    "semantic-release": "19.0.3",
     "@types/deep-freeze": "^0.1.2",
     "@types/jest": "^27.5.0",
     "@types/node": "^17.0.29",
