@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build-package": "tsdx build",
+    "build": "tsdx build",
     "semantic-release": "semantic-release",
     "test": "tsdx test",
     "lint": "tsdx lint",

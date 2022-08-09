@@ -304,7 +304,7 @@ importers:
       jest: ^28.1.2
       moment: ^2.29.4
       moment-timezone: ^0.5.27
-      semantic-release: 19.0.3
+      semantic-release: ^19.0.3
       size-limit: ^7.0.8
       tsdx: ^0.14.1
       tslib: ^2.4.0
