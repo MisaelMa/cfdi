@@ -1,6 +1,54 @@
 [
   {
-    "policyName": "tooling",
+    "policyName": "cfdiXml",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "cfdiCatalogos",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "cfdiCsd",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "cfdiPdf",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "cfdiCurp",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "cfdiRfc",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "cfdiUtils",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "clirOpenssl",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "clirSaxon-he",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"

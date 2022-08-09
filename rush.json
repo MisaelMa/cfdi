@@ -49,56 +49,63 @@
     {
       "packageName": "@cfdi/xml",
       "projectFolder": "packages/cfdi/xml",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "cfdiXml",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/csd",
       "projectFolder": "packages/cfdi/csd",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "cfdiCsd",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/catalogos",
       "projectFolder": "packages/cfdi/catalogos",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "cfdiCatalogos",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/pdf",
       "projectFolder": "packages/cfdi/pdf",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "cfdiPdf",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/utils",
       "projectFolder": "packages/cfdi/utils",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "cfdiUtils",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/curp",
       "projectFolder": "packages/cfdi/curp",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "cfdiCurp",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/rfc",
+      "projectFolder": "packages/cfdi/rfc",
+      "versionPolicyName": "cfdiRfc",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@clir/openssl",
       "projectFolder": "packages/clir/openssl",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "clirOenssl",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@clir/saxon-he",
       "projectFolder": "packages/clir/saxon-he",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "clirSaxon-he",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
