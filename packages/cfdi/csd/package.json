@@ -21,7 +21,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -46,10 +45,10 @@
   ],
   "dependencies": {
     "@clir/openssl": "workspace:*",
+    "curp": "^1.2.0",
     "moment": "^2.29.4",
     "node-forge": "^1.3.1",
-    "validate-rfc": "^2.0.2",
-    "curp": "^1.2.0"
+    "validate-rfc": "^2.0.2"
   },
   "devDependencies": {
     "@recreando/eslint-settings": "workspace:*",

@@ -33,7 +33,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -65,7 +64,6 @@
     "@size-limit/preset-small-lib": "^7.0.8",
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.1",
-    "semantic-release": "19.0.3",
     "@types/deep-freeze": "^0.1.2",
     "@types/jest": "^27.5.0",
     "@types/node": "^17.0.29",
@@ -75,6 +73,7 @@
     "eslint": "^8.13.0",
     "husky": "^8.0.1",
     "jest": "^28.1.2",
+    "semantic-release": "19.0.3",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
