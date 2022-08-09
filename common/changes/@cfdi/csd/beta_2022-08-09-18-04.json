@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@cfdi/csd",
+      "comment": "obtener informacion de los certificados",
+      "type": "none"
+    }
+  ],
+  "packageName": "@cfdi/csd"
+}

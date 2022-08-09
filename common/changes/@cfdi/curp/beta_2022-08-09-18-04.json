@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@cfdi/curp",
+      "comment": "aclarse a los servicios de renapo",
+      "type": "none"
+    }
+  ],
+  "packageName": "@cfdi/curp"
+}

@@ -6,6 +6,12 @@
       "commandKind": "global",
       "summary": "Build webapp for deployment",
       "shellCommand": "cd packages/cfdi/xml && rushx semantic-release"
+    },
+    {
+      "name": "publish:cfdi:catalogos",
+      "commandKind": "global",
+      "summary": "Build webapp for deployment",
+      "shellCommand": "cd packages/cfdi/xml && rushx semantic-release"
     }
   ],
   "parameters": []
