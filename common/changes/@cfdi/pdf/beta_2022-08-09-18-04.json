@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@cfdi/pdf",
+      "comment": "crear pedf de disenios",
+      "type": "none"
+    }
+  ],
+  "packageName": "@cfdi/pdf"
+}

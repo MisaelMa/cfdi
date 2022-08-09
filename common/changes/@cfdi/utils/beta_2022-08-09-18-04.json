@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@cfdi/utils",
+      "comment": "utilerias",
+      "type": "none"
+    }
+  ],
+  "packageName": "@cfdi/utils"
+}

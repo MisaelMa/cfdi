@@ -58,49 +58,49 @@
       "projectFolder": "packages/cfdi/csd",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@cfdi/catalogos",
       "projectFolder": "packages/cfdi/catalogos",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@cfdi/pdf",
       "projectFolder": "packages/cfdi/pdf",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@cfdi/utils",
       "projectFolder": "packages/cfdi/utils",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@cfdi/curp",
       "projectFolder": "packages/cfdi/curp",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@clir/openssl",
       "projectFolder": "packages/clir/openssl",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@clir/saxon-he",
       "projectFolder": "packages/clir/saxon-he",
       "versionPolicyName": "tooling",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@recreando/server",
