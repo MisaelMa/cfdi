@@ -18,7 +18,9 @@
     ]
   },
   "gitPolicy": {},
-  "repository": {},
+  "repository": {
+    "url": "https://github.com/MisaelMa/recreando"
+  },
   "eventHooks": {
     "preRushInstall": [],
     "postRushInstall": [],
