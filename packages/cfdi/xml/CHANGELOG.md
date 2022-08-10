@@ -1,6 +1,11 @@
 # Change Log - @cfdi/xml
 
-This log was last generated on Wed, 10 Aug 2022 15:23:54 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Aug 2022 15:31:32 GMT and should not be manually modified.
+
+## 0.0.12
+Wed, 10 Aug 2022 15:31:32 GMT
+
+_Version update only_
 
 ## 0.0.11
 Wed, 10 Aug 2022 15:23:54 GMT
