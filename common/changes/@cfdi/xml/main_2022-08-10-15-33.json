@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@cfdi/xml",
+      "comment": "test",
+      "type": "none"
+    }
+  ],
+  "packageName": "@cfdi/xml"
+}
