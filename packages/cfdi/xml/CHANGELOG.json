@@ -2,6 +2,18 @@
   "name": "@cfdi/xml",
   "entries": [
     {
+      "version": "0.0.11",
+      "tag": "@cfdi/xml_v0.0.11",
+      "date": "Wed, 10 Aug 2022 15:23:54 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "creacion de pdf"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.10",
       "tag": "@cfdi/xml_v0.0.10",
       "date": "Tue, 09 Aug 2022 17:08:57 GMT",

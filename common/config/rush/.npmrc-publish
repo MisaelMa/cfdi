@@ -17,4 +17,4 @@
 # environment variable, which can be referenced from .npmrc using ${} expansion.  For example:
 #
 #   //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
-//registry.npmjs.org/:_authToken=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
+//registry.npmjs.org/:_authToken=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
