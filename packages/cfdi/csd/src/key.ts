@@ -2,7 +2,9 @@ import { readFileSync } from 'fs';
 import * as crypto from 'crypto';
 import { pkcs8 } from '@clir/openssl';
 
-import { pki, util, md } from 'node-forge';
+import pkg from 'node-forge';
+const { pki, util, md } = pkg;
+// import { pki, util, md } from 'node-forge';
 let isKey = false;
 let allowedFiles = [".key", ".pem"];
 let password = '';

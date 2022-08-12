@@ -45,6 +45,9 @@
       "@cfdi/xml/*": [
         "./node_modules/@cfdi/xml/src/*"
       ],
+      "@cfdi/csd/*": [
+        "./node_modules/@cfdi/csd/src/*"
+      ],
       "@cfdi/catalogos": [
         "./node_modules/@cfdi/catalogos/src/index"
       ],
@@ -58,7 +61,7 @@
         "./node_modules/@cfdi/pdf/src/*"
       ],
       "@cfdi/curp": [
-        "./node_modules/@cfdi/curp/src/index"
+        "./node_modules/@cfdi/curp/src"
       ],
       "@cfdi/curp/*": [
         "./node_modules/@cfdi/curp/src/*"
@@ -81,6 +84,7 @@
     "../../../../../node_modules/@recreando/**/src/**/*.tsx",
     "../../../../../node_modules/@recreando/**/src/**/*.d.ts",
     "../../../../../node_modules/@recreando/**/src/**/*.json"
+
   ],
   "exclude": [
     "node_modules",

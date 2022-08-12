@@ -1,8 +1,14 @@
 import { Controller, Res, Get } from '@nestjs/common';
-import { cer, key } from "@cfdi/csd"
-import { gob, curp } from "@cfdi/curp/src"
+import { cer, key } from "@cfdi/csd/src/index"
+//import pkg from '@cfdi/csd/src/index';
+//const { cer, key } = pkg;
+import { gob, curp } from "@cfdi/curp"
 import { Response } from 'express';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 /**
  *
  */
@@ -16,9 +22,9 @@ export class CsdController {
     key.setFile(filkey, '12345678a')
 
     res.json({
-      fil,
+      // fil,
       cer: {
-        data: cer.getData(),
+        //  data: cer.getData(),
         version: cer.version(),
         serial: cer.serial(),
         cer: cer.getNoCer(),
@@ -47,7 +53,7 @@ export class CsdController {
   @Get('/curp')
   async curp(@Res() res: Response) {
 
-    const data = await gob.findByCurp('');
+    // const data = await gob.findByCurp('');
     res.json({})
 
   }

@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 
-import { pki } from 'node-forge';
+import pkg from 'node-forge';
+const { pki } = pkg;
 import moment from 'moment';
 import { x509 } from '@clir/openssl';
 import console from 'console';
@@ -55,7 +56,7 @@ export const getPem = (options = { begin: false }) => {
   }
 }
 
-export const getData = (): pki.Certificate => {
+export const getData = (): any => {
   return pki.certificateFromPem(getPem());
 }
 

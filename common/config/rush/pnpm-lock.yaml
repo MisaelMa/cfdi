@@ -722,12 +722,14 @@ importers:
       '@rushstack/heft-jest-plugin': ^0.3.1
       eslint: ^8.13.0
       jest-environment-node: ^27.5.1
+      tsconfig-paths: ^3.9.0
       typescript: ^4.7.4
     dependencies:
       '@rushstack/heft': 0.45.14
       '@rushstack/heft-jest-plugin': 0.3.25_@rushstack+heft@0.45.14
       eslint: 8.21.0
       jest-environment-node: 27.5.1
+      tsconfig-paths: 3.14.1
       typescript: 4.7.4
 
 packages:

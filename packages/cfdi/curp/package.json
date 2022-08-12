@@ -2,6 +2,10 @@
   "name": "@cfdi/curp",
   "version": "0.0.10",
   "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/utils.esm.js",
+  "source": "./src/index.ts",
   "files": [
     "dist",
     "src"
@@ -11,7 +15,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build-tsdx": "tsdx build",
+    "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
