@@ -67,10 +67,15 @@ export abstract class RPDF {
     // @ts-ignore
     this.addImpuesto(this.xml['cfdi:Comprobante']['cfdi:Impuestos'])
     this.addNumberToLetter(+this.xml['cfdi:Comprobante']._attributes.Total);
+    // @ts-ignore
     this.addCSDEmisor(this.xml['cfdi:Comprobante']._attributes.NoCertificado)
+    // @ts-ignore
     this.addFormaDePago(this.xml['cfdi:Comprobante']._attributes.FormaPago);
+    // @ts-ignore
     this.addMetodoDePago(this.xml['cfdi:Comprobante']._attributes.MetodoPago);
+    // @ts-ignore
     this.addMoneda(this.xml['cfdi:Comprobante']._attributes.Moneda);
+    // @ts-ignore
     this.addTipoComprobante(this.xml['cfdi:Comprobante']._attributes.TipoDeComprobante);
 
     if (this.xml['cfdi:Comprobante']!['cfdi:Complemento']) {

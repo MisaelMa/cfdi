@@ -1,7 +1,6 @@
 {
   "extends": "./node_modules/@recreando/typescript-settings/profiles/default/tsconfig-base.json",
   "compilerOptions": {
-    "types": ["node", "jest", "@testing-library/jest-dom"],
     "module": "commonjs",
     "allowJs": false,
     "emitDecoratorMetadata": true,
@@ -10,10 +9,10 @@
     "removeComments": true,
     "experimentalDecorators": true,
     "strict": false,
-        "noUnusedLocals": false,
+    "noUnusedLocals": false,
     "noUnusedParameters": false,
     "allowSyntheticDefaultImports": true,
-    "target": "es2017",
+    "target": "ESNext",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
@@ -25,6 +24,9 @@
     "noFallthroughCasesInSwitch": false
 
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": ["node_modules"],
   "outDir": "dist"
 }

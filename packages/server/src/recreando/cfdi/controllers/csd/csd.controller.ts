@@ -1,6 +1,6 @@
 import { Controller, Res, Get } from '@nestjs/common';
 import { cer, key } from "@cfdi/csd"
-import { gob, curp } from "@cfdi/curp"
+import { gob, curp } from "@cfdi/curp/src"
 import { Response } from 'express';
 import path from 'path';
 /**
@@ -41,6 +41,14 @@ export class CsdController {
       },
       data: key.getData()
     })
+
+  }
+
+  @Get('/curp')
+  async curp(@Res() res: Response) {
+
+    const data = await gob.findByCurp('');
+    res.json({})
 
   }
 }
