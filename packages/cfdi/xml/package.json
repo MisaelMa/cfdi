@@ -7,7 +7,6 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/xml.esm.js",
-  "type": "module",
   "source": "src/index.ts",
   "release": {
     "branches": [

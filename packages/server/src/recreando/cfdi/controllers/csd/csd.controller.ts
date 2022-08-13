@@ -1,7 +1,5 @@
 import { Controller, Res, Get } from '@nestjs/common';
 import { cer, key } from "@cfdi/csd"
-//import pkg from '@cfdi/csd/src/index';
-//const { cer, key } = pkg;
 import { gob, curp } from "@cfdi/curp"
 import { Response } from 'express';
 import path from 'path';

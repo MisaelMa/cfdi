@@ -3,9 +3,7 @@
   "compilerOptions": {
     "types": [
       "node",
-      "jest",
     ],
-    "jsx": "preserve",
     "module": "esnext",
     "resolveJsonModule": true,
     "noImplicitReturns": false,
