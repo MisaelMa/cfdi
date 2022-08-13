@@ -39,35 +39,20 @@
     "target": "ESNext",
     "types": [],
     "paths": {
-      "@cfdi/xml": [
-        "./node_modules/@cfdi/xml/src/index"
-      ],
       "@cfdi/xml/*": [
         "./node_modules/@cfdi/xml/src/*"
       ],
       "@cfdi/csd/*": [
         "./node_modules/@cfdi/csd/src/*"
       ],
-      "@cfdi/catalogos": [
-        "./node_modules/@cfdi/catalogos/src/index"
-      ],
       "@cfdi/catalogos/*": [
         "./node_modules/@cfdi/catalogos/src/*"
-      ],
-      "@cfdi/pdf": [
-        "./node_modules/@cfdi/pdf/src/index"
       ],
       "@cfdi/pdf/*": [
         "./node_modules/@cfdi/pdf/src/*"
       ],
-      "@cfdi/curp": [
-        "./node_modules/@cfdi/curp/src"
-      ],
       "@cfdi/curp/*": [
         "./node_modules/@cfdi/curp/src/*"
-      ],
-      "@clir/openssl": [
-        "./node_modules/@clir/openssl/src/index"
       ],
       "@clir/openssl/*": [
         "./node_modules/@clir/openssl/src/*"

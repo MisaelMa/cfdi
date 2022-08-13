@@ -469,6 +469,10 @@
     {
       "name": "xml-js",
       "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "xslt3",
+      "allowedCategories": [ "libraries" ]
     }
   ]
 }

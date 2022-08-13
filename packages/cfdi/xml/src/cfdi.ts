@@ -3,7 +3,6 @@ import * as os from 'os';
 import * as path from 'path';
 
 import { cer, key } from '@cfdi/csd';
-import { Transform } from '@signati/saxon';
 import { js2xml } from 'xml-js';
 
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
@@ -13,6 +12,7 @@ import {
 } from './types/tags/comprobante.interface';
 import { FileSystem } from './utils/FileSystem';
 import { Comprobante } from './tags/Comprobante';
+import { getOriginalString } from './utils/XmlHelp';
 
 /**
  *
@@ -144,12 +144,7 @@ export class CFDI extends Comprobante {
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const result = js2xml(this.xml, options);
         fs.writeFileSync(fullPath, result, 'utf8');
-        const transform = new Transform();
-        const cadena = transform
-          .s(fullPath)
-          .xsl(String(this.xslt))
-          .warnings('silent')
-          .run();
+        const cadena = getOriginalString(fullPath, String(this.xslt))
 
         if (this.debug) {
           console.log(this.xslt);
