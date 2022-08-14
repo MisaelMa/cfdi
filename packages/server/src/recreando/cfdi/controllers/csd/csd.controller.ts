@@ -51,8 +51,8 @@ export class CsdController {
   @Get('/curp')
   async curp(@Res() res: Response) {
 
-    // const data = await gob.findByCurp('');
-    res.json({})
+    const data = await gob.findByCurp('MACA961017HQRRHM06');
+    res.json({ ...data })
 
   }
 }

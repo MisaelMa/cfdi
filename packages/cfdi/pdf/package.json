@@ -2,10 +2,8 @@
   "name": "@cfdi/pdf",
   "version": "0.0.10",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/pdf.esm.js",
   "source": "./src/index.ts",
+  "type": "module",
   "files": [
     "dist",
     "src"

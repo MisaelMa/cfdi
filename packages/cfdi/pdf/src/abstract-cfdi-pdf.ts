@@ -1,10 +1,11 @@
 import { Comprobante, XmlCdfi, XmlConcepto, XmlEmisor, XmlImpuestos, XmlReceptor } from "@signati/core";
 import { XmlTfd } from "@signati/core/lib/signati/types/Complements/tfd/tfd.com";
-import { createPdf, TCreatedPdf, fonts } from 'pdfmake/build/pdfmake';
+import { createPdf, TCreatedPdf } from 'pdfmake/build/pdfmake';
 import { OptionsPdf } from "./types";
 import { BufferOptions, TDocumentDefinitions } from "pdfmake/interfaces";
 import { XmlToJson } from "@cfdi/utils";
 import { writeFileSync } from "fs";
+import * as Pd from "pdfmake/build/pdfmake"
 import pdfMake from "pdfmake/build/pdfmake";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -17,12 +18,12 @@ export abstract class RPDF {
   public options: OptionsPdf;
   public docDefinition: TDocumentDefinitions | any = {}
   public fonts = {
-    Roboto: {
-      normal: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
-      bold: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
-      italics: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
-      bolditalics: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf')
-    },
+    // Roboto: {
+    //   normal: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
+    //   bold: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
+    //   italics: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf'),
+    //   bolditalics: path.resolve(__dirname, '..', 'src', 'fonts', 'Roboto-Regular.ttf')
+    // },
   }
   constructor(xml: string, options: OptionsPdf = {} as OptionsPdf) {
     // @ts-ignore
@@ -91,7 +92,7 @@ export abstract class RPDF {
         await this.addQr(tfd, this.xml['cfdi:Comprobante']['cfdi:Emisor'], this.xml['cfdi:Comprobante']['cfdi:Receptor'], this.xml['cfdi:Comprobante']._attributes.Total);
       }
     }
-    const fo = { ...this.fonts, ...fonts, ...this.options.fonts }
+    const fo = { ...this.fonts, ...Pd.fonts, ...this.options.fonts }
     console.log(fo)
     return createPdf(this.docDefinition);
   }
