@@ -263,6 +263,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "get-mexican-data-by-curp",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "graphql",
       "allowedCategories": [ "libraries" ]
     },
@@ -341,6 +345,18 @@
     {
       "name": "prettier",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "puppeteer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "puppeteer-extra",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "puppeteer-extra-plugin-recaptcha",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "qrcode",

@@ -126,7 +126,7 @@ importers:
       '@types/jest': ^27.5.0
       '@types/node': ^17.0.29
       '@types/testing-library__jest-dom': ^5.9.1
-      2captcha: ^3.0.5
+      2captcha: 3.0.3
       axios: ^0.27.2
       chalk: ^4.0.0
       chokidar: ^3.5.2
@@ -138,7 +138,7 @@ importers:
       tslib: ^2.4.0
       typescript: ^4.7.4
     dependencies:
-      2captcha: 3.0.5
+      2captcha: 3.0.3
       axios: 0.27.2
     devDependencies:
       '@recreando/eslint-settings': link:../../../rigs/eslint
@@ -538,6 +538,7 @@ importers:
       eslint: ^8.13.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-prettier: ^4.0.0
+      get-mexican-data-by-curp: 0.7.5-beta
       jest: ^28.1.2
       nodemon: ^2.0.12
       prettier: ^2.6.2
@@ -565,6 +566,7 @@ importers:
       '@nestjs/common': 8.4.7_j5hagqx4mwzscud4kyjdvubauy
       '@nestjs/core': 8.4.7_vfcxgjfmqg6zhc6pfncoklq5wm
       '@nestjs/platform-express': 8.4.7_7tsmhnugyerf5okgqzer2mfqme
+      get-mexican-data-by-curp: 0.7.5-beta
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
       rxjs: 7.5.6
@@ -734,8 +736,8 @@ importers:
 
 packages:
 
-  /2captcha/3.0.5:
-    resolution: {integrity: sha512-YAE6kseEzAqT3o0yLLswKZLM46a2iBSfDOU8qPKj8Fh4MN0R1sC+Mm2YMq367NhxHqWMNqlSnM7o4fAGXjzP5A==}
+  /2captcha/3.0.3:
+    resolution: {integrity: sha512-H+s77qtT819rGuA8spmhLhrjTtG/MCn8ZM15C2SJ64MunsG8+2bg/tXSOXSEuzHwHIAVyMWvtoqt3sfB5grpvA==}
     dependencies:
       node-fetch: 2.6.7
     transitivePeerDependencies:
@@ -5082,6 +5084,14 @@ packages:
       - debug
     dev: false
 
+  /axios/0.26.1:
+    resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
+    dependencies:
+      follow-redirects: 1.15.1
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
@@ -8181,6 +8191,17 @@ packages:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.3
+
+  /get-mexican-data-by-curp/0.7.5-beta:
+    resolution: {integrity: sha512-P8yzRe60OqR8F0sdk9uzS7yRTWEviJNMm/3PG2ggLSoa+SXXZH2PJ+QbpFEonciDL8ItDlicTo6AGBPIdltS9g==}
+    engines: {node: '>=12.0'}
+    dependencies:
+      2captcha: 3.0.3
+      axios: 0.26.1
+    transitivePeerDependencies:
+      - debug
+      - encoding
+    dev: false
 
   /get-package-type/0.1.0:
     resolution: {integrity: sha512-pjzuKtY64GYfWizNAJ0fr9VqttZkNiK2iS430LtIHzjBEr6bX8Am2zm4sW4Ro5wjWW5cAlRL1qAMTcXbjNAO2Q==}

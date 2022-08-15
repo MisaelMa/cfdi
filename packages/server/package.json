@@ -22,6 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "get-mexican-data-by-curp": "0.7.5-beta",
     "@cfdi/pdf": "workspace:*",
     "@cfdi/curp": "workspace:*",
     "@cfdi/xml": "workspace:*",
