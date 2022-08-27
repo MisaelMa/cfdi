@@ -33,7 +33,6 @@ export const setFile = (filePath: string) => {
 
 export const getPem = (options = { begin: false }) => {
   const cli = x509.inform('DER').in(file).outform('PEM');
-  console.log(cli.cli())
   try {
     const { begin } = options
     let pem = ''

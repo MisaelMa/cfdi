@@ -331,6 +331,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "node_modules-path",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "node-forge",
       "allowedCategories": [ "libraries", "production" ]
     },
@@ -392,6 +396,10 @@
     },
     {
       "name": "save-file",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "saxon-js",
       "allowedCategories": [ "libraries" ]
     },
     {

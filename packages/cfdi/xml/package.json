@@ -6,8 +6,9 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/xml.esm.js",
+  "module": "dist/csd.esm.js",
   "source": "src/index.ts",
+  "type": "module",
   "release": {
     "branches": [
       "main",
@@ -16,7 +17,8 @@
     ]
   },
   "files": [
-    "dist/**/*"
+    "dist",
+    "src"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -67,6 +69,9 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.27",
     "xml-js": "^1.6.11",
+    "node_modules-path": "2.0.6",
+    "@signati/saxon": "^0.0.4",
+    "saxon-js": "^2.4.0",
     "xslt3": "^2.4.0",
     "execa": "^6.1.0"
   },

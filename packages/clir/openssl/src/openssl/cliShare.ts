@@ -97,7 +97,7 @@ export class CliShare {
    */
   public run(options?: execa.SyncOptions): string {
     try {
-      const cli = this.commandline.join(' ');
+      const cli = [...this.commandline].join(' ');
       this.commandline = [this.commandline[0], this.commandline[1]];
       const openssl = commandSync(cli, options).stdout;
       return openssl;
@@ -111,7 +111,7 @@ export class CliShare {
    */
   public cli(): string {
     try {
-      const cli = this.commandline.join(' ');
+      const cli = [...this.commandline].join(' ');
       this.commandline = [this.commandline[0], this.commandline[1]];
       return cli;
     } catch (e) {

@@ -1,2 +1,6 @@
-export * as cer from './cer';
-export * as key from './key';
+import * as cer from './cer';
+import * as key from './key';
+export {
+  cer,
+  key
+}

@@ -1,8 +1,9 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-
-import { cer, key } from '@cfdi/csd';
+import { saxon, Transform } from '@signati/saxon';
+import { key, cer } from "@cfdi/csd/src"
+// import * as cer from "@cfdi/csd/cer"
 import { js2xml } from 'xml-js';
 
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
@@ -144,13 +145,20 @@ export class CFDI extends Comprobante {
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const result = js2xml(this.xml, options);
         fs.writeFileSync(fullPath, result, 'utf8');
-        const cadena = getOriginalString(fullPath, String(this.xslt))
-
+        let cadena: string = ""
+        const transform = new Transform();
+        console.time('saxon cli');
+        cadena = transform.s(fullPath).xsl(String(this.xslt)).warnings('silent').run();
+        console.timeEnd('saxon cli');
+        console.time('saxon');
+        cadena = getOriginalString(fullPath, String(this.xslt)) as string
+        console.timeEnd('saxon');
         if (this.debug) {
           console.log(this.xslt);
           console.log('cadena original =>', cadena);
         }
-        fs.unlinkSync(fullPath);
+        // fs.unlinkSync(fullPath);
+        // @ts-ignore
         resolve(cadena);
       } catch (e) {
         console.log({

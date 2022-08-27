@@ -1,12 +1,10 @@
 import { Controller, Res, Get } from '@nestjs/common';
-import { cer, key } from "@cfdi/csd"
+import * as key from "@cfdi/csd/key"
+import * as cer from "@cfdi/csd/cer"
 import { gob, curp } from "@cfdi/curp"
 import { Response } from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { __dirname } from "../../../../utils/path"
 /**
  *
  */

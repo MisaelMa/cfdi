@@ -2,6 +2,9 @@
   "name": "@cfdi/csd",
   "version": "0.0.11",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/csd.esm.js",
   "source": "./src/index.ts",
   "type": "module",
   "files": [
