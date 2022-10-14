@@ -4,11 +4,21 @@
     "types": [
       "node",
     ],
-    "module": "esnext",
     "resolveJsonModule": true,
     "noImplicitReturns": false,
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "exactOptionalPropertyTypes": true,
+    "isolatedModules": true,
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "strict": true,
+    "target": "ESNext",
   },
   "include": [
     "src/**/*"
