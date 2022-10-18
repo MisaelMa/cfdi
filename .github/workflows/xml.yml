@@ -17,7 +17,6 @@ jobs:
           node common/scripts/install-run-rush.js install
           node common/scripts/publish.js @cfdi/xml merge
           node common/scripts/publish.js @cfdi/xml apart
-      - name: Publish
-        run: node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=public
+          node common/scripts/install-run-rush.js publish -p -b main --include-all --set-access-level=publicS
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
