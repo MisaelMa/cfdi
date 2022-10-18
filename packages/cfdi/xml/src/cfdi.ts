@@ -146,29 +146,30 @@ export class CFDI extends Comprobante {
         const result = js2xml(this.xml, options);
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = ""
-       
+
         if (this.xslt.xslt3) {
           //console.time('saxon');
           cadena = getOriginalString(fullPath, String(this.xslt.path)) as string
-          //console.timeEnd('saxon');        
+          //console.timeEnd('saxon');
         } else {
           const transform = new Transform();
           //console.time('saxon cli');
           cadena = transform.s(fullPath).xsl(String(this.xslt.path)).warnings('silent').run();
           //console.timeEnd('saxon cli');
         }
-       
+
         if (this.debug) {
-          console.log('xslt =>',this.xslt);
+          console.log('xslt =>', this.xslt);
           console.log('cadena original =>', cadena);
         }
         fs.unlinkSync(fullPath);
         // @ts-ignore
         resolve(cadena);
-      } catch (e: any) {
+      } catch (e) {
         if (this.debug) {
           console.log({
             method: 'getCadenaOriginal',
+            // @ts-ignore
             error: e.message || e || "error desconosido",
           });
         }

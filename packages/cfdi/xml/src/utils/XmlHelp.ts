@@ -16,7 +16,7 @@ export const schema = (locations: string[]): string => {
   return ` ${schemaL}`;
 };
 
-export const getOriginalString = (pathXmlFile: string, pathXlstFile: string, options?: SyncOptions) => {
+export const getOriginalString = (pathXmlFile: string, pathXlstFile: string, options?: SyncOptions): string => {
 
   const binaryPath = path.resolve(`${pathModule("xslt3")}/xslt3/node_modules/.bin/xslt3`)
   const cli = `${binaryPath} -s:${pathXmlFile} -xsl:${pathXlstFile}`;
@@ -25,9 +25,8 @@ export const getOriginalString = (pathXmlFile: string, pathXlstFile: string, opt
 
     const data = execaCommandSync(cli, options).stdout;
     //console.log(data)
-    return data
+    return data.toString()
   } catch (e) {
-    console.log(e)
-    // throw new Error(`${cli}`)
+    throw new Error(`${cli}`)
   }
 }

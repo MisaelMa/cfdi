@@ -4,6 +4,7 @@
     "lib": ["dom", "esnext"],
     "types": [ "node" ],
     "importHelpers": true,
+    "preserveSymlinks": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
     // output .js.map sourcemap files for consumers

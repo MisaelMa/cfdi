@@ -4,6 +4,7 @@
     "types": [
       "node",
     ],
+    "preserveSymlinks": true,
     "resolveJsonModule": true,
     "noImplicitReturns": false,
     "noUnusedLocals": false,

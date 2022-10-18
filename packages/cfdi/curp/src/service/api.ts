@@ -1,5 +1,5 @@
 import axios from "axios";
-export const api = axios.create({
+export const apiBase = axios.create({
   baseURL: 'https://www.gob.mx/v1/',
   timeout: 1000,
   headers: {
