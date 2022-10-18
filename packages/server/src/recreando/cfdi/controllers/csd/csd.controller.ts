@@ -12,8 +12,10 @@ import { __dirname } from "../../../../utils/path"
 export class CsdController {
   @Get('/')
   async index(@Res() res: Response) {
-    const fil = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'files', 'certificados', 'LAN7008173R5.cer.pem')
-    const filkey = path.join(__dirname, '..', '..', '..', '..', '..', '..', 'files', 'certificados', 'LAN7008173R5.key.pem')
+    const fil = path.join(__dirname, '..', '..', '..',    'files', 'certificados', 'LAN7008173R5.cer.pem')
+    const filkey = path.join(__dirname, '..', '..',  '..', 'files', 'certificados', 'LAN7008173R5.key.pem')
+    console.log(fil, filkey);
+    
     cer.setFile(fil);
     key.setFile(filkey, '12345678a')
 

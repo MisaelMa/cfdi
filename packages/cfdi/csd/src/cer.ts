@@ -36,7 +36,6 @@ export const getPem = (options = { begin: false }) => {
   try {
     const { begin } = options
     let pem = ''
-    console.log("isCert", isCert)
     if (isCert) {
       pem = cli.run();
     } else {

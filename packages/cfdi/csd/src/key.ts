@@ -19,7 +19,6 @@ export const setFile = (keyfile: string, pass?: string) => {
       if (!pass && typeFile[0] === '.key') {
         throw new Error(`contraseña requerida de el archivo ${keyfile}`);
       }
-      console.log("typeFile", typeFile[0])
       if (typeFile[0] === '.key' && pass) {
         password = pass
         isKey = true
