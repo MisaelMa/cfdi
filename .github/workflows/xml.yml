@@ -19,6 +19,7 @@ jobs:
 
       - name: Publish
         run: |
+          rush update
           rush version --version-policy cfdiXml --bump
           rush publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public
         env:
