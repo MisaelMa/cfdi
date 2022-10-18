@@ -19,9 +19,9 @@ jobs:
 
       - name: Publish
         run: |
-          rush update
-          rush version --version-policy cfdiXml --bump
-          rush publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public
+          node common/scripts/install-run-rush.js install
+          node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
+          node common/scripts/install-run-rush.js publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
