@@ -30,7 +30,7 @@ export class CFDI extends Comprobante {
    * @param options
    *Options;
    */
-  constructor(attr: ComprobanteAttr, options: Options = { debug: false }) {
+  constructor(attr: ComprobanteAttr, options: Options = { debug: false, xslt: { xslt3: false } } as Options) {
     super(attr, options)
     const { debug = false } = options;
     this.debug = debug;
@@ -146,25 +146,32 @@ export class CFDI extends Comprobante {
         const result = js2xml(this.xml, options);
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = ""
-        const transform = new Transform();
-        console.time('saxon cli');
-        cadena = transform.s(fullPath).xsl(String(this.xslt)).warnings('silent').run();
-        console.timeEnd('saxon cli');
-        console.time('saxon');
-        cadena = getOriginalString(fullPath, String(this.xslt)) as string
-        console.timeEnd('saxon');
+       
+        if (this.xslt.xslt3) {
+          //console.time('saxon');
+          cadena = getOriginalString(fullPath, String(this.xslt.path)) as string
+          //console.timeEnd('saxon');        
+        } else {
+          const transform = new Transform();
+          //console.time('saxon cli');
+          cadena = transform.s(fullPath).xsl(String(this.xslt.path)).warnings('silent').run();
+          //console.timeEnd('saxon cli');
+        }
+       
         if (this.debug) {
-          console.log(this.xslt);
+          console.log('xslt =>',this.xslt);
           console.log('cadena original =>', cadena);
         }
-        // fs.unlinkSync(fullPath);
+        fs.unlinkSync(fullPath);
         // @ts-ignore
         resolve(cadena);
-      } catch (e) {
-        console.log({
-          method: 'getCadenaOriginal',
-          error: e,
-        });
+      } catch (e: any) {
+        if (this.debug) {
+          console.log({
+            method: 'getCadenaOriginal',
+            error: e.message || e || "error desconosido",
+          });
+        }
         reject(e);
       }
     });

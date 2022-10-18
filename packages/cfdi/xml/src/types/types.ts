@@ -2,7 +2,11 @@ export interface Options {
   debug: boolean;
   compact?: boolean;
   customTags?: any;
-  xslt?: string; // @  Extensible Stylesheet Language Transformation
+  xslt: XsltSheet // @  Extensible Stylesheet Language Transformation
+}
+export interface XsltSheet {
+  path: string;
+  xslt3?: boolean;
 }
 
 export enum InvoiceType {

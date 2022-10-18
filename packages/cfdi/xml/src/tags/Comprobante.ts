@@ -11,7 +11,8 @@ import {
   Options,
   XmlComprobante,
   XmlComprobanteAttributes,
-  XmlConcepto
+  XmlConcepto,
+  XsltSheet
 } from "../types";
 import { Concepts } from "./Concepts";
 import { Emisor } from "./Emisor";
@@ -35,11 +36,11 @@ export class Comprobante {
     'http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
   ];
 
-  protected xslt: string | null = null;
-  constructor(attr: ComprobanteAttr, options: Options = { debug: false }) {
+  protected xslt: XsltSheet;
+  constructor(attr: ComprobanteAttr, options: Options = { debug: false, xslt: { xslt3: false } } as Options) {
     const attribute = attr;
     const { xslt, customTags = {} } = options;
-    xslt && (this.xslt = xslt);
+    this.xslt = xslt
     this.tags = new Structure(customTags);
     this.tc = this.tags.tagXml('cfdi:Comprobante');
     this.restartCfdi();

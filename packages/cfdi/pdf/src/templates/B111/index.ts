@@ -16,7 +16,7 @@ export class B111 extends RPDF {
   }
   protected addFolio(c: Comprobante): void {
     console.log(c);
-    const data = { text: c.Folio + "hola", alignment: 'center' };
+    const data = { text: c.Folio + "hola amor", alignment: 'center' };
     const arr = this.docDefinition.content[0].table.body[0][2].table.body[3];
     arr.push(data);
     //  this.docDefinition.content[0].table.body[0][2].table.body[3].push(data);

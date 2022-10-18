@@ -21,10 +21,10 @@ export const getOriginalString = (pathXmlFile: string, pathXlstFile: string, opt
   const binaryPath = path.resolve(`${pathModule("xslt3")}/xslt3/node_modules/.bin/xslt3`)
   const cli = `${binaryPath} -s:${pathXmlFile} -xsl:${pathXlstFile}`;
   try {
-    console.log(cli);
+    // console.log(cli);
 
     const data = execaCommandSync(cli, options).stdout;
-    console.log(data)
+    //console.log(data)
     return data
   } catch (e) {
     console.log(e)

@@ -332,7 +332,7 @@ export class A117 extends RPDF {
     const rfcEmisor = emisor!._attributes!.Rfc;
     const rfcReceptor = receptor!._attributes!.Rfc;
     const sello = tfd._attributes.SelloCFD.substr(-8);
-    const totalSplit = total.split('.');
+    const totalSplit = total.split('.') as any;
     const totalStart = totalSplit[0].padStart(18, '0');
     const totalEnd = totalSplit[1]
       ? totalSplit[1].padEnd(6, '0')

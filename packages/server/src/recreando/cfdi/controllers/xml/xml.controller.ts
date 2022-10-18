@@ -53,7 +53,9 @@ export class XmlController {
     // };
     const cfd = new CFDI(comprobanteAttribute, {
       debug: true,
-      xslt: styleSheet,
+      xslt: {
+        path: styleSheet,
+      },
     });
     cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
