@@ -28,7 +28,9 @@ jobs:
           git push
 
       - name: Publish
-        run: rush publish -p -b main --include-all --set-access-level=public
+        run: |
+          rush version --version-policy cfdiXml --bump
+          rush publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # - name: Install and Build
