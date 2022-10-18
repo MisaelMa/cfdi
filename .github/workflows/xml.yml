@@ -11,14 +11,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v3
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Install and Build
         run: |
           node common/scripts/install-run-rush.js install
           node common/scripts/publish.js @cfdi/xml merge
-          node common/scripts/install-run-rush.js publish:cfdi:xml
           node common/scripts/publish.js @cfdi/xml apart
+      - name: Publish
+        run: rush publish -p -b main --include-all --set-access-level=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
