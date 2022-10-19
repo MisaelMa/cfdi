@@ -21,13 +21,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: MisaelMa
-          author_email: amisael.amir.misael@gmail.com
-          message: 'Your commit message'
-          add: '*.'
+      #- name: Commit changes
+      #  uses: EndBug/add-and-commit@v9
+      #  with:
+      #    author_name: MisaelMa
+      #    author_email: amisael.amir.misael@gmail.com
+      #    message: 'Your commit message'
+      #    add: '*.'
 
       # - name: Install and Build
       #   run: |
