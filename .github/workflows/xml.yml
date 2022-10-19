@@ -29,7 +29,7 @@ jobs:
           git commit -a -m 'Updated dists' || echo "No changes to commit"
           git push
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       #- name: Publish
       #  run: |
       #    git config user.name MisaelMa
