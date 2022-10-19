@@ -1,5 +1,5 @@
 import * as execa from 'execa';
-import { commandSync } from 'execa';
+import { execaCommandSync } from 'execa';
 
 import { getOsComandBin } from '../utils';
 
@@ -99,7 +99,7 @@ export class CliShare {
     try {
       const cli = [...this.commandline].join(' ');
       this.commandline = [this.commandline[0], this.commandline[1]];
-      const openssl = commandSync(cli, options).stdout;
+      const openssl = execaCommandSync(cli, options).stdout;
       return openssl;
     } catch (e) {
       throw new Error('run');

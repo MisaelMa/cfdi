@@ -1,6 +1,6 @@
 import { existsSync } from 'fs';
 
-import { commandSync } from 'execa';
+import { execaCommandSync } from 'execa';
 
 /**
  *
@@ -465,7 +465,7 @@ export class CliShare {
    */
   public run(): string {
     try {
-      const saxonProc = commandSync(this.commandline).stdout;
+      const saxonProc = execaCommandSync(this.commandline).stdout;
       return saxonProc;
     } catch (e) {
       throw new Error('saxon');
