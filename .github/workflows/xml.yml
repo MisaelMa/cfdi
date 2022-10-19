@@ -11,17 +11,35 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Rush CLI
+        run: npm install -g @microsoft/rush@5.50.0
 
-      - name: Publish
+      - name: Rush Install
+        uses: advancedcsg-open/actions-rush@v1.4.5
+
+      - name: Rush Update
         run: |
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
-          node common/scripts/install-run-rush.js install
-          node common/scripts/install-run-rush.js update
-          node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
-          node common/scripts/install-run-rush.js publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public --npm-auth-token=${{ secrets.NPM_TOKEN }}
+          rush update
+      - name: Publish
+        run: |
+          rush version --version-policy cfdiXml --bump
+          rush publish -p -b main --include-all --set-access-level=public
+          git commit -a -m 'Updated dists' || echo "No changes to commit"
+          git push
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #- name: Publish
+      #  run: |
+      #    git config user.name MisaelMa
+      #    git config user.email amisael.amir.misael@gmail.com
+      #    node common/scripts/install-run-rush.js install
+      #    node common/scripts/install-run-rush.js update
+      #    node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
+      #    node common/scripts/install-run-rush.js publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public --npm-auth-token=${{ secrets.NPM_TOKEN }}
+      #  env:
+      #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       #- name: Commit changes
       #  uses: EndBug/add-and-commit@v9
