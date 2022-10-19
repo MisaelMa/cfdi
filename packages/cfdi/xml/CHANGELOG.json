@@ -2,6 +2,12 @@
   "name": "@cfdi/xml",
   "entries": [
     {
+      "version": "0.0.11",
+      "tag": "@cfdi/xml_v0.0.11",
+      "date": "Wed, 19 Oct 2022 23:50:11 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.10",
       "tag": "@cfdi/xml_v0.0.10",
       "date": "Tue, 09 Aug 2022 17:08:57 GMTa",
