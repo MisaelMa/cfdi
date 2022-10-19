@@ -14,6 +14,8 @@ jobs:
 
       - name: Publish
         run: |
+          git config user.name MisaelMa
+          git config user.email amisael.amir.misael@gmail.com
           node common/scripts/install-run-rush.js install
           node common/scripts/install-run-rush.js update
           node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
