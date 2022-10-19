@@ -21,12 +21,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Commit Dist
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git commit -a -m 'Updated dists' || echo "No changes to commit"
-          git push
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: MisaelMa
+          author_email: amisael.amir.misael@gmail.com
+          message: 'Your commit message'
+          add: '*.'
+
       # - name: Install and Build
       #   run: |
       #     node common/scripts/install-run-rush.js install
