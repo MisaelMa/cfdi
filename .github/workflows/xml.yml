@@ -15,6 +15,7 @@ jobs:
       - name: Publish
         run: |
           node common/scripts/install-run-rush.js install
+          node common/scripts/install-run-rush.js update
           node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
           node common/scripts/install-run-rush.js publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public
         env:
