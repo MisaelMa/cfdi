@@ -414,7 +414,7 @@ importers:
       chalk: ^4.0.0
       chokidar: ^3.5.2
       eslint: ^8.13.0
-      execa: ^4.1.0
+      execa: ^6.1.0
       husky: ^8.0.1
       jest: ^28.1.2
       moment: ^2.29.4
@@ -424,7 +424,7 @@ importers:
       tslib: ^2.4.0
       typescript: ^4.7.4
     dependencies:
-      execa: 4.1.0
+      execa: 6.1.0
       moment: 2.29.4
       node-forge: 1.3.1
     devDependencies:
@@ -469,7 +469,7 @@ importers:
       chokidar: ^3.5.2
       eslint: ^8.13.0
       exact-math: ^2.1.2
-      execa: ^4.1.0
+      execa: ^6.1.0
       husky: ^8.0.1
       immutable: ^4.0.0-rc.12
       jest: ^28.1.2
@@ -480,7 +480,7 @@ importers:
       typescript: ^4.7.4
     dependencies:
       exact-math: 2.2.3
-      execa: 4.1.0
+      execa: 6.1.0
       immutable: 4.1.0
       moment: 2.29.4
     devDependencies:
