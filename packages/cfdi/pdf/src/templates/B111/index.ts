@@ -16,13 +16,37 @@ export class B111 extends RPDF {
   }
   protected addFolio(c: Comprobante): void {
     console.log(c);
-    const data = { text: c.Folio + "hola mili", alignment: 'center' };
+    //const data = { text: c.Folio, alignment: 'center' };
+    const data = [
+      {
+        text: c.Serie + ' - ' + c.Folio,
+        style: {
+          fontSize: 10,
+          alignment: 'center',
+          color: 'red',
+          margin: [0, 0, 0, 0],
+        },
+      },
+      {
+        text: c.Serie + ' - ' + c.Folio,
+        style: {
+          fontSize: 10,
+          alignment: 'center',
+          color: 'red',
+          margin: [0, 0, 0, 0],
+        },
+      },
+    ];
     const arr = this.docDefinition.content[0].table.body[0][2].table.body[3];
-    arr.push(data);
+    const arr1 = this.docDefinition.content[0].table.body[0][2].table.body[4];
+    
+    arr.push(data[0]);
+    arr1.push(data[1]);
     //  this.docDefinition.content[0].table.body[0][2].table.body[3].push(data);
   }
   protected addEmisorData(emisor: XmlEmisor, expedido: string): void {
     //throw new Error('Method not implemented.');
+    this.docDefinition.content[1].table.body[0][0].text[0].text = "Datos del Emisor: " + emisor._attributes?.Nombre + '\n';
   }
   protected addDate(date: string): void {
     //throw new Error('Method not implemented.');
