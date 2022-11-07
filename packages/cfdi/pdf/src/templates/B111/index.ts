@@ -17,37 +17,21 @@ export class B111 extends RPDF {
   }
   protected addFolio(c: Comprobante): void {
     console.log(c);
-    //const data = { text: c.Folio, alignment: 'center' };
-    const data = [
-      {
-        text: c.Serie + ' - ' + c.Folio,
-        style: {
-          fontSize: 10,
-          alignment: 'center',
-          color: 'red',
-          margin: [0, 0, 0, 0],
-        },
-      },
-      {
-        text: c.Serie + ' - ' + c.Folio,
-        style: {
-          fontSize: 10,
-          alignment: 'center',
-          color: 'red',
-          margin: [0, 0, 0, 0],
-        },
-      },
-    ];
-    const arr = this.docDefinition.content[0].table.body[0][2].table.body[3];
-    const arr1 = this.docDefinition.content[0].table.body[0][2].table.body[4];
+    const data = { text: c.Folio, alignment: 'center',color:"red" };
     
-    arr.push(data[0]);
-    arr1.push(data[1]);
+    const arr = this.docDefinition.content[0].table.body[0][2].table.body[3];
+    this.docDefinition.content[0].table.body[0][2].table.body[5].text=c.NoCertificado;
+    
+    arr.push(data);
     //  this.docDefinition.content[0].table.body[0][2].table.body[3].push(data);
   }
   protected addEmisorData(emisor: XmlEmisor, expedido: string): void {
     //throw new Error('Method not implemented.');
-    this.docDefinition.content[1].table.body[0][0].text[0].text = "Datos del Emisor: " + emisor._attributes?.Nombre + '\n';
+    this.docDefinition.content[1].table.body[0][0].text[2].text =" "+ emisor._attributes?.Nombre + "\n" ;
+    this.docDefinition.content[1].table.body[0][0].text[4].text =" "+ emisor._attributes?.Rfc + "\n" ;
+    this.docDefinition.content[1].table.body[0][0].text[6].text =" "+ this.options.lugarExpedicion + "\n" ;
+    this.docDefinition.content[1].table.body[0][0].text[8].text =" "+ emisor._attributes?.RegimenFiscal + "\n" ;
+ 
   }
   protected addDate(date: string): void {
     //throw new Error('Method not implemented.');

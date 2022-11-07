@@ -1,6 +1,6 @@
 import { Controller, Res, Get } from '@nestjs/common';
 import { Response } from 'express';
-import { B111 } from '@cfdi/pdf';
+import { B111 } from '@cfdi/pdf/src/index';
 import { readFileSync } from 'fs';
 
 
