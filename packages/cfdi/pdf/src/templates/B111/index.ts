@@ -1,14 +1,15 @@
 import {
   Comprobante,
-  XmlEmisor,
-  XmlReceptor,
-  XmlImpuestos,
   XmlConcepto,
+  XmlEmisor,
+  XmlImpuestos,
+  XmlReceptor,
 } from '@signati/core';
-import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
-import { RPDF } from '../../abstract-cfdi-pdf';
-import { OptionsPdf } from '../../types';
+
 import { B111ESKELETON } from './B111.skeleton';
+import { OptionsPdf } from '../../types';
+import { RPDF } from '../../abstract-cfdi-pdf';
+import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
 
 export class B111 extends RPDF {
   protected addLogo(): void {
@@ -16,7 +17,7 @@ export class B111 extends RPDF {
   }
   protected addFolio(c: Comprobante): void {
     console.log(c);
-    const data = { text: c.Folio + "hola mili", alignment: 'center' };
+    const data = { text: c.Folio + 'hola jose', alignment: 'center' };
     const arr = this.docDefinition.content[0].table.body[0][2].table.body[3];
     arr.push(data);
     //  this.docDefinition.content[0].table.body[0][2].table.body[3].push(data);

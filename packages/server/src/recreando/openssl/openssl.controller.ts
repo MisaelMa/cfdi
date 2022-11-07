@@ -1,4 +1,4 @@
-import { pkcs8 } from '@clir/openssl';
+import { pkcs8 } from '@clir/openssl/src';
 import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
 /**
