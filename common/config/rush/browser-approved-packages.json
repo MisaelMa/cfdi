@@ -63,6 +63,14 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@hapi/joi",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs-modules/mailer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/cli",
       "allowedCategories": [ "libraries" ]
     },
@@ -71,7 +79,19 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/config",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/core",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/jwt",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/passport",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -79,11 +99,31 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/schedule",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/schematics",
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/swagger",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/testing",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/typeorm",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjsx/crud",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjsx/crud-typeorm",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -93,6 +133,10 @@
     {
       "name": "@recreando/jest",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "@recreando/tss",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@recreando/typescript-settings",
@@ -127,11 +171,23 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@swc/cli",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@swc/core",
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@swc/helpers",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@swc/jest",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@swc/register",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -175,11 +231,27 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "bcrypt",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "bcryptjs",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "chalk",
       "allowedCategories": [ "libraries" ]
     },
     {
       "name": "chokidar",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "class-transformer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "class-validator",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -275,6 +347,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "helmet",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "husky",
       "allowedCategories": [ "libraries" ]
     },
@@ -323,6 +399,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "mysql2",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "next",
       "allowedCategories": [ "libraries" ]
     },
@@ -339,11 +419,31 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "nodemailer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "nodemon",
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "passport",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "passport-jwt",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "passport-local",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "pdfmake",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "pg",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -388,6 +488,14 @@
     },
     {
       "name": "rimraf",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "rollup",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "rollup-plugin-swc",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -479,11 +587,27 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "typeorm",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "typescript",
       "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "validate-rfc",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "vite",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "vite-plugin-node",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "vite-tsconfig-paths",
       "allowedCategories": [ "libraries" ]
     },
     {
