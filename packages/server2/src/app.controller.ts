@@ -44,7 +44,7 @@ export class AppController {
 
   @Get('/curp')
   async curp(@Res() res: Response) {
-    const data = await gob.findByCurp('MACA961017HQRRHM06');
-    res.json({ ...data });
+    //const data = await gob.findByCurp('MACA961017HQRRHM06');
+    //res.json({ ...data });
   }
 }

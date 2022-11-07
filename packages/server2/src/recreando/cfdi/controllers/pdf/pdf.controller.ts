@@ -1,6 +1,6 @@
 import { Controller, Res, Get } from '@nestjs/common';
 import { Response } from 'express';
-import { B111 } from '@cfdi/pdf/src';
+import { B111, A117 } from '@cfdi/pdf/src';
 import { readFileSync } from 'fs';
 
 import path from 'path';
@@ -31,4 +31,5 @@ export class PdfController {
     res.contentType('application/pdf');
     res.send(download);
   }
+
 }
