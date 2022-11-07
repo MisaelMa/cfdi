@@ -21,7 +21,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import pdfMake from 'pdfmake/build/pdfmake';
 import { writeFileSync } from 'fs';
 
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export abstract class RPDF {
   public xml: XmlCdfi = {} as XmlCdfi;
