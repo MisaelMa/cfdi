@@ -14,10 +14,10 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build-2": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare-2": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },

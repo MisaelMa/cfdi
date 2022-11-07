@@ -2,7 +2,7 @@ import console from 'console';
 import moment from 'moment';
 import pkg from 'node-forge';
 import { readFileSync } from 'fs';
-import { x509 } from '@clir/openssl';
+import { x509 } from '@clir/openssl/src';
 
 const { pki } = pkg;
 // @ts-ignore

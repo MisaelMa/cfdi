@@ -2,9 +2,11 @@
   "name": "@clir/openssl",
   "version": "0.0.10",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/openssl.esm.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/openssl.esm.js",
+  "source": "./src/index.ts",
+  "type": "module",
   "files": [
     "dist",
     "src"
@@ -14,10 +16,10 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build-2": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare-2": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
