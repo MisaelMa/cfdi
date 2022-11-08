@@ -206,7 +206,7 @@ export const B111ESKELETON: TDocumentDefinitions | any = {
                   },
                 },
                 {
-                  text: 'Nombre Fiscal',
+                  text: 'Nombre Fiscal: ',
                   style: {
                     bold: true,
                     color: '#a76d09',
@@ -217,7 +217,7 @@ export const B111ESKELETON: TDocumentDefinitions | any = {
                 {
                   text: [
                     {
-                      text: 'Rfc',
+                      text: 'Rfc:',
                       style: {
                         bold: true,
                         color: '#a76d09',
@@ -230,7 +230,7 @@ export const B111ESKELETON: TDocumentDefinitions | any = {
                 {
                   text: [
                     {
-                      text: 'Dirrecion',
+                      text: 'Dirección:',
                       style: {
                         bold: true,
                         color: '#a76d09',
@@ -243,7 +243,7 @@ export const B111ESKELETON: TDocumentDefinitions | any = {
                 {
                   text: [
                     {
-                      text: 'Regimen Fiscal',
+                      text: 'Regimen Fiscal:',
                       style: {
                         bold: true,
                         color: '#a76d09',

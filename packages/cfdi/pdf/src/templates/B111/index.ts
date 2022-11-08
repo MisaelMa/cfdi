@@ -9,7 +9,9 @@ import {
 import { B111ESKELETON } from './B111.skeleton';
 import { OptionsPdf } from '../../types';
 import { RPDF } from '../../abstract-cfdi-pdf';
+import { XmlConceptoProperties } from '@signati/core/lib/signati/types/Tags/concepts.interface';
 import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
+import { ContentText } from 'pdfmake/interfaces';
 
 export class B111 extends RPDF {
   protected addLogo(): void {
@@ -37,6 +39,11 @@ export class B111 extends RPDF {
     //throw new Error('Method not implemented.');
   }
   protected addReceptor(receptor: XmlReceptor): void {
+    this.docDefinition.content[1].table.body[0][1].text[2].text =" "+ receptor._attributes?.Nombre + "\n" ;
+    this.docDefinition.content[1].table.body[0][1].text[4].text =" "+ receptor._attributes?.Rfc + "\n" ;
+    this.docDefinition.content[1].table.body[0][1].text[6].text =" "+ this.options.lugarExpedicion + "\n" ;
+    this.docDefinition.content[1].table.body[0][1].text[8].text =" "+ receptor._attributes?.UsoCFDI + "\n" ;
+ 
     //  throw new Error('Method not implemented.');
   }
   protected fechaTimbrado(tfd: XmlTfd): void {
@@ -55,6 +62,23 @@ export class B111 extends RPDF {
     //throw new Error('Method not implemented.');
   }
   protected addDetalles(detalles: XmlConcepto): void {
+    let deatails: XmlConceptoProperties[] = [];
+    if (Array.isArray(detalles['cfdi:Concepto'])) {
+      deatails = detalles['cfdi:Concepto'];
+    } else {
+      // @ts-ignore
+      deatails.push(detalles['cfdi:Concepto']);
+    }
+
+    for (const detail of deatails) {
+      const con = detail._attributes;
+      const descripcion: ContentText[] = [
+        {
+          text: con.Descripcion + '\n',
+        },
+      ];
+   // this.docDefinition.content[2].table.body[1][1].push([con.Cantidad]) ;
+    }
     //throw new Error('Method not implemented.');
   }
   protected addFormaDePago(forma: string): void {
