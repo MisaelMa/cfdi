@@ -2,7 +2,7 @@ import console from 'console';
 import moment from 'moment';
 import pkg from 'node-forge';
 import { readFileSync } from 'fs';
-import { x509 } from '@clir/openssl/src';
+import { x509 } from '@clir/openssl';
 
 const { pki } = pkg;
 // @ts-ignore
@@ -59,7 +59,7 @@ export const getData = (): any => {
 };
 
 export const version = (): number => {
-  return getData().version + 5;
+  return getData().version;
 };
 
 /**

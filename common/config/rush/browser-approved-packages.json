@@ -3,6 +3,22 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
   "packages": [
     {
+      "name": "@ammc/components",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@ammc/eslint-settings",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@ammc/jest",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@ammc/typescript-settings",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@babel/core",
       "allowedCategories": [ "libraries" ]
     },
@@ -43,6 +59,22 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@emotion/cache",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/react",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/server",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/styled",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@graphql-codegen/cli",
       "allowedCategories": [ "libraries" ]
     },
@@ -64,6 +96,22 @@
     },
     {
       "name": "@hapi/joi",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mdi/js",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mdi/react",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mui/icons-material",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mui/material",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -141,6 +189,10 @@
     {
       "name": "@recreando/typescript-settings",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "@reduxjs/toolkit",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@rushstack/eslint-config",
@@ -255,6 +307,14 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "cookie",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "cookies-next",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "curp",
       "allowedCategories": [ "libraries" ]
     },
@@ -272,6 +332,10 @@
     },
     {
       "name": "eslint-config-airbnb-typescript",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "eslint-config-next",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -335,6 +399,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "formik",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "get-mexican-data-by-curp",
       "allowedCategories": [ "libraries" ]
     },
@@ -360,6 +428,10 @@
     },
     {
       "name": "immutable",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "iron-session",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -391,6 +463,18 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "jose",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "jsonwebtoken",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "material-ui-popup-state",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "moment",
       "allowedCategories": [ "libraries" ]
     },
@@ -404,6 +488,10 @@
     },
     {
       "name": "next",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "next-redux-wrapper",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -480,6 +568,18 @@
     },
     {
       "name": "react-native",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "redux",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "redux-logger",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "redux-persist",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -620,6 +720,10 @@
     },
     {
       "name": "xslt3",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "yup",
       "allowedCategories": [ "libraries" ]
     }
   ]

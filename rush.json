@@ -114,6 +114,12 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@recreando/express",
+      "projectFolder": "packages/express",
+      "reviewCategory": "libraries",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@recreando/server",
       "projectFolder": "packages/server",
       "reviewCategory": "libraries",

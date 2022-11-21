@@ -1,0 +1,9 @@
+{
+  "extends": "./node_modules/@recreando/typescript-settings/profiles/default/tsconfig-base.json",
+  "compilerOptions": {
+    "preserveSymlinks": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "jsx": "preserve"
+  },
+  "exclude": ["node_modules"]
+}
