@@ -1,25 +1,23 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import { saxon, Transform } from '@signati/saxon';
-import { key, cer } from "@cfdi/csd/src"
+
+import { Transform, saxon } from '@signati/saxon';
+import { cer, key } from '@cfdi/csd';
+
+import { Comprobante } from './tags/Comprobante';
+import { ComprobanteAttr } from './types/tags/comprobante.interface';
+import { FileSystem } from './utils/FileSystem';
+import { Options } from './types/types';
+import { XmlCdfi } from './types/tags/xmlCdfi.interface';
+import { getOriginalString } from './utils/XmlHelp';
 // import * as cer from "@cfdi/csd/cer"
 import { js2xml } from 'xml-js';
-
-import { XmlCdfi } from './types/tags/xmlCdfi.interface';
-import { Options } from './types/types';
-import {
-  ComprobanteAttr,
-} from './types/tags/comprobante.interface';
-import { FileSystem } from './utils/FileSystem';
-import { Comprobante } from './tags/Comprobante';
-import { getOriginalString } from './utils/XmlHelp';
 
 /**
  *
  */
 export class CFDI extends Comprobante {
-
   private debug = false;
 
   /**
@@ -30,8 +28,11 @@ export class CFDI extends Comprobante {
    * @param options
    *Options;
    */
-  constructor(attr: ComprobanteAttr, options: Options = { debug: false, xslt: { xslt3: false } } as Options) {
-    super(attr, options)
+  constructor(
+    attr: ComprobanteAttr,
+    options: Options = { debug: false, xslt: { xslt3: false } } as Options
+  ) {
+    super(attr, options);
     const { debug = false } = options;
     this.debug = debug;
   }
@@ -44,7 +45,7 @@ export class CFDI extends Comprobante {
    */
   public certificar(cerpath: string): CFDI | any {
     try {
-      cer.setFile(cerpath)
+      cer.setFile(cerpath);
       this.xml[this.tc]._attributes.NoCertificado = cer.getNoCer();
       this.xml[this.tc]._attributes.Certificado = cer.getPem({ begin: true });
       return this;
@@ -126,7 +127,6 @@ export class CFDI extends Comprobante {
    *restartCfdi
    */
 
-
   /**
    *getCadenaOriginal
    */
@@ -145,16 +145,23 @@ export class CFDI extends Comprobante {
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const result = js2xml(this.xml, options);
         fs.writeFileSync(fullPath, result, 'utf8');
-        let cadena: string = ""
+        let cadena: string = '';
 
         if (this.xslt.xslt3) {
           //console.time('saxon');
-          cadena = getOriginalString(fullPath, String(this.xslt.path)) as string
+          cadena = getOriginalString(
+            fullPath,
+            String(this.xslt.path)
+          ) as string;
           //console.timeEnd('saxon');
         } else {
           const transform = new Transform();
           //console.time('saxon cli');
-          cadena = transform.s(fullPath).xsl(String(this.xslt.path)).warnings('silent').run();
+          cadena = transform
+            .s(fullPath)
+            .xsl(String(this.xslt.path))
+            .warnings('silent')
+            .run();
           //console.timeEnd('saxon cli');
         }
 
@@ -170,7 +177,7 @@ export class CFDI extends Comprobante {
           console.log({
             method: 'getCadenaOriginal',
             // @ts-ignore
-            error: e.message || e || "error desconosido",
+            error: e.message || e || 'error desconosido',
           });
         }
         reject(e);
@@ -198,8 +205,8 @@ export class CFDI extends Comprobante {
         // const key = pem.toString('utf8');
         // openssl dgst -sha256 -sign account.key -out signature.sha256 signature.b64
         key.setFile(keyfile, password);
-        const sello = key.signatureHexForge(cadenaOriginal)
-        resolve(sello)
+        const sello = key.signatureHexForge(cadenaOriginal);
+        resolve(sello);
         //await sign.update(cadenaOriginal);
         // resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
       } catch (e) {

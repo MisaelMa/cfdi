@@ -59,6 +59,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@clir/saxon-he",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@emotion/cache",
       "allowedCategories": [ "libraries" ]
     },

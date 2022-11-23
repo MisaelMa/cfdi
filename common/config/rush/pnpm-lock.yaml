@@ -331,6 +331,7 @@ importers:
     specifiers:
       '@cfdi/catalogos': workspace:*
       '@cfdi/csd': workspace:*
+      '@clir/saxon-he': workspace:*
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -364,6 +365,7 @@ importers:
     dependencies:
       '@cfdi/catalogos': link:../catalogos
       '@cfdi/csd': link:../csd
+      '@clir/saxon-he': link:../../clir/saxon-he
       '@signati/saxon': 0.0.4
       execa: 6.1.0
       moment: 2.29.4

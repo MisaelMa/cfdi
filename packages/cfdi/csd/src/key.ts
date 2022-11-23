@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
 
-import { pkcs8 } from '@clir/openssl/src';
+import { pkcs8 } from '@clir/openssl';
 import pkg from 'node-forge';
 import { readFileSync } from 'fs';
 

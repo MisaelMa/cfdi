@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { B111 } from '@cfdi/pdf';
 import path from 'path';
-import { pkcs8 } from '@clir/openssl/src';
+import { pkcs8 } from '@clir/openssl';
 
 export default async function loginRoute(
   req: NextApiRequest,

@@ -1,0 +1,42 @@
+name: Semantic Checker
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
+
+jobs:
+  check-label:
+    name: Check label
+    runs-on: ubuntu-latest
+    steps:
+      - name: Platform label
+        uses: agilepathway/label-checker@v1.0.104
+        with:
+          any_of: catalogs,csd,curp,pdf,rfc,utils,xml,openssl,saxon
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+  check-title:
+    name: Check PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          wip: true
+          validateSingleCommit: true
+          scopes: |
+            catalogs
+            csd
+            curp
+            pdf
+            rfc
+            utils
+            xml
+            openssl
+            saxon

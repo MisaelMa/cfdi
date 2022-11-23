@@ -76,7 +76,7 @@
       "projectFolder": "packages/cfdi/pdf",
       "versionPolicyName": "cfdiPdf",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": false
     },
     {
       "packageName": "@cfdi/utils",
@@ -90,14 +90,14 @@
       "projectFolder": "packages/cfdi/curp",
       "versionPolicyName": "cfdiCurp",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": false
     },
     {
       "packageName": "@cfdi/rfc",
       "projectFolder": "packages/cfdi/rfc",
       "versionPolicyName": "cfdiRfc",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": false
     },
     {
       "packageName": "@clir/openssl",

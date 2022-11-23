@@ -65,6 +65,7 @@
   "dependencies": {
     "@cfdi/catalogos": "workspace:*",
     "@cfdi/csd": "workspace:*",
+    "@clir/saxon-he": "workspace:*",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.27",
     "xml-js": "^1.6.11",

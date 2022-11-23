@@ -2,9 +2,9 @@
   "name": "@cfdi/utils",
   "version": "0.0.12",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/utils.esm.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/utils.esm.js",
   "source": "./src/index.ts",
   "files": [
     "dist",
