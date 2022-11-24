@@ -6,6 +6,23 @@ module.exports = {
         // Applicable always|never: never inverts the rule.
         // Value: value to use for this rule.
         "subject-case": [2, 'always', ['lower-case', 'sentence-case']],
-        "body-max-line-length": [2, 'always', 200]
+        "body-max-line-length": [2, 'always', 200],
+        'scope-enum': [
+          2,
+          'always',
+          [
+            'config',
+            'core',
+            'catalogs',
+            'csd',
+            'curp',
+            'pdf',
+            'rfc',
+            'utils',
+            'xml',
+            'openssl',
+            'saxon'
+          ]
+      ]
     }
 }
