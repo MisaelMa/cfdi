@@ -40,6 +40,5 @@ module.exports = async ({github, context, core}) => {
       const data = await execa('rush', ['version', '--version-policy', scope, '--bump' ])
       console.log(scope, stdout);
     }
-    console.log("commit",commit)
   }
 }

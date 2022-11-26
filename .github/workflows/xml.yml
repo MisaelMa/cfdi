@@ -31,10 +31,9 @@ jobs:
       - name: Publish
         run: |
           echo "amir"
-      #    rush version --version-policy cfdiXml --bump
-      #    rush publish -p -b main --include-all --set-access-level=public
-      #    git commit -a -m 'Updated dists' || echo "No changes to commit"
-      #    git push
+          rush publish -p -b main --include-all --set-access-level=public
+          git commit -a -m 'Updated dists' || echo "No changes to commit"
+          git push
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       #- name: Publish

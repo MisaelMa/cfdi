@@ -127,12 +127,6 @@
       "projectFolder": "packages/server",
       "reviewCategory": "libraries",
       "shouldPublish": false
-    },
-    {
-      "packageName": "@recreando/server2",
-      "projectFolder": "packages/server2",
-      "reviewCategory": "libraries",
-      "shouldPublish": false
     }
   ]
 }
