@@ -11,22 +11,22 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Rush CLI
-        run: npm install -g @microsoft/rush@5.50.0
+     # - name: Rush CLI
+     #   run: npm install -g @microsoft/rush@5.50.0
 
-      - name: Rush Install
-        uses: advancedcsg-open/actions-rush@v1.4.5
+     # - name: Rush Install
+     #   uses: advancedcsg-open/actions-rush@v1.4.5
 
-      - name: Rush Update
-        run: |
-          git config user.name MisaelMa
-          git config user.email amisael.amir.misael@gmail.com
-          rush update
+     # - name: Rush Update
+     #   run: |
+     #     git config user.name MisaelMa
+     #     git config user.email amisael.amir.misael@gmail.com
+     #     rush update
       - name: Script
         uses: actions/github-script@v6
         with:
           script: |
-            const script = require('./common/script/github-actions.js')
+            const script = require('../common/script/github-actions.js')
             await script({github, context, core})
       - name: Publish
         run: |
@@ -35,8 +35,8 @@ jobs:
       #    rush publish -p -b main --include-all --set-access-level=public
       #    git commit -a -m 'Updated dists' || echo "No changes to commit"
       #    git push
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # env:
+      #    NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       #- name: Publish
       #  run: |
       #    git config user.name MisaelMa
