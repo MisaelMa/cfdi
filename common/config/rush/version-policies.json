@@ -1,54 +1,54 @@
 [
   {
-    "policyName": "cfdiXml",
+    "policyName": "xml",
     "definitionName": "lockStepVersion",
     "version": "0.0.11",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiCatalogos",
+    "policyName": "catalogs",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiCsd",
+    "policyName": "csd",
     "definitionName": "lockStepVersion",
     "version": "0.0.11",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiPdf",
+    "policyName": "pdf",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiCurp",
+    "policyName": "curp",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiRfc",
+    "policyName": "rfc",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiUtils",
+    "policyName": "utils",
     "definitionName": "lockStepVersion",
     "version": "0.0.12",
     "nextBump": "patch"
   },
   {
-    "policyName": "clirOpenssl",
+    "policyName": "openssl",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"
   },
   {
-    "policyName": "clirSaxon-he",
+    "policyName": "saxon",
     "definitionName": "lockStepVersion",
     "version": "0.0.10",
     "nextBump": "patch"

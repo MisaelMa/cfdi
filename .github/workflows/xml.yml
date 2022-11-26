@@ -22,8 +22,16 @@ jobs:
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
           rush update
+      - name: Script
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const execa = require('execa')
+            const script = require('./common/script/github-actions.js')
+            await script({github, context, core, execa})
       - name: Publish
-      #  run: |
+        run: |
+          echo "amir"
       #    rush version --version-policy cfdiXml --bump
       #    rush publish -p -b main --include-all --set-access-level=public
       #    git commit -a -m 'Updated dists' || echo "No changes to commit"
