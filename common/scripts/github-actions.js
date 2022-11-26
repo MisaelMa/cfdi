@@ -26,7 +26,9 @@ async function execa(command, params) {
 
 
 module.exports = async ({github, context, core}) => {
-  const commits = github.event.commits
+  console.log(JSON.stringify(github))
+  console.log(JSON.stringify(context))
+  const commits = github.event.commits || []
   // const list = ['catalogs','csd','curp','pdf','rfc','utils','xml','openssl','saxon']
   const list = ['catalogs','csd','utils','xml','openssl','saxon']
   for (const commit of commits) {
