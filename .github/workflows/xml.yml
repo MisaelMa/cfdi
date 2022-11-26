@@ -22,8 +22,6 @@ jobs:
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
           rush update
-      - run: npm ci
-      # or one-off:
       - run: npm install execa
       - name: Script
         uses: actions/github-script@v6
