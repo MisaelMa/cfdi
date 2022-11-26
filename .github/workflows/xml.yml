@@ -18,8 +18,6 @@ jobs:
      #   uses: advancedcsg-open/actions-rush@v1.4.5
 
       - name: Rush Update
-        run: |
-          ls
      #     git config user.name MisaelMa
      #     git config user.email amisael.amir.misael@gmail.com
      #     rush update
@@ -27,7 +25,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const script = require('../common/script/github-actions.js')
+            const script = require('./common/scripts/github-actions.js')
             await script({github, context, core})
       - name: Publish
         run: |
