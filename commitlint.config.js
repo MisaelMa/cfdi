@@ -21,14 +21,15 @@ module.exports = {
             'utils',
             'xml',
             'openssl',
-            'saxon'
+            'saxon',
+            'publish'
           ]
       ],
       'type-enum': [
         2,
         'always',
         [
-          'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'revert', 'content', // For articles, tutorials, etc...
+          'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'revert', 'content', 'npm', // For articles, tutorials, etc...
         ],
       ],
     }

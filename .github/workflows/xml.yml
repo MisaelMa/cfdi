@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "amir"
           rush publish -p -b main --include-all --set-access-level=public
-          git commit -a -m 'Updated dists' || echo "No changes to commit"
+          git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
           git push
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

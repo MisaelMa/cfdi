@@ -42,3 +42,4 @@ jobs:
             xml
             openssl
             saxon
+            publish
