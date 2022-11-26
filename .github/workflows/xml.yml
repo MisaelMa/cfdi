@@ -22,14 +22,12 @@ jobs:
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
           rush update
-      - run: npm install execa
       - name: Script
         uses: actions/github-script@v6
         with:
           script: |
-            const execa = require('execa')
             const script = require('./common/script/github-actions.js')
-            await script({github, context, core, execa})
+            await script({github, context, core})
       - name: Publish
         run: |
           echo "amir"
