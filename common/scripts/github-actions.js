@@ -38,7 +38,7 @@ module.exports = async ({github, context, core}) => {
     const scope = type.match(/\(([^)]+)\)/g).pop().replace(/[{()}]/g, '')
     if (list.includes(scope)){
       const data = await execa('rush', ['version', '--version-policy', scope, '--bump' ])
-      console.log(scope, stdout);
+      console.log(scope, data);
     }
   }
 }
