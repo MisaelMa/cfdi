@@ -30,6 +30,11 @@ module.exports = async ({github, context, core}) => {
   const commits = context.payload.commits || []
   // const list = ['catalogs','csd','curp','pdf','rfc','utils','xml','openssl','saxon']
   const list = ['catalogs','csd','utils','xml','openssl','saxon']
+
+  for (var i = 0; i < commits.length; i++) {
+    const commit = commits[i];
+    console.log("commit",commit)
+  }
   for (const commit of commits) {
     const commit = commit.message;
     const [type, msg] = commit.split(':')
