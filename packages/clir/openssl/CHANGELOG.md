@@ -1,6 +1,11 @@
 # Change Log - @clir/openssl
 
-This log was last generated on Sun, 27 Nov 2022 17:45:39 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Nov 2022 18:47:54 GMT and should not be manually modified.
+
+## 0.0.13
+Sun, 27 Nov 2022 18:47:54 GMT
+
+_Version update only_
 
 ## 0.0.12
 Sun, 27 Nov 2022 17:45:39 GMT
