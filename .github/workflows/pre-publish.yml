@@ -1,0 +1,28 @@
+name: prebublish
+on:
+  pull_request:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Rush CLI
+        run: npm install -g @microsoft/rush@5.50.0
+
+      - name: Rush Install
+        uses: advancedcsg-open/actions-rush@v1.4.5
+
+      - name: Script
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./common/scripts/github-actions.js')
+            await script({github, context, core})

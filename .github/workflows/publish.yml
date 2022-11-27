@@ -1,5 +1,8 @@
-name: cfdi/xml
-on: push
+name: publish
+on:
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
