@@ -3,7 +3,6 @@
   "version": "0.0.10",
   "license": "MIT",
   "source": "./src/index.ts",
-  "type": "module",
   "files": [
     "dist",
     "src"
