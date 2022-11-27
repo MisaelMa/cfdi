@@ -18,8 +18,7 @@
     "url": "git+https://github.com/Misael/recreando"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -27,7 +26,6 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "semantic-release": "npx semantic-release",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -74,7 +72,6 @@
     "eslint": "^8.26.0",
     "husky": "^8.0.1",
     "jest": "^28.1.2",
-    "semantic-release": "19.0.3",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
