@@ -6,7 +6,6 @@
   "typings": "./dist/index.d.ts",
   "module": "./dist/csd.esm.js",
   "source": "./src/index.ts",
-  "type": "module",
   "files": [
     "dist"
   ],
