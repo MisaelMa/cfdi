@@ -1,6 +1,6 @@
 {
   "name": "@clir/openssl",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
