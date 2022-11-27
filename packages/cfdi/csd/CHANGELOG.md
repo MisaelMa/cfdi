@@ -1,6 +1,11 @@
 # Change Log - @cfdi/csd
 
-This log was last generated on Fri, 12 Aug 2022 18:33:44 GMT and should not be manually modified.
+This log was last generated on Sun, 27 Nov 2022 03:35:05 GMT and should not be manually modified.
+
+## 0.0.14
+Sun, 27 Nov 2022 03:35:05 GMT
+
+_Version update only_
 
 ## 0.0.11
 Fri, 12 Aug 2022 18:33:44 GMT
