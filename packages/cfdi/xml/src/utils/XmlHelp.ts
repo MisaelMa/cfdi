@@ -27,8 +27,9 @@ export const getOriginalString = async (
   );
   const cli = `${binaryPath} -s:${pathXmlFile} -xsl:${pathXlstFile}`;
   try {
-    // console.log(cli);
-    const { execaCommandSync } = await import('execa/index.js');
+    // @ts-ignore
+    // @ts-nocheck
+    const { execaCommandSync } = await import('execa');
     const data = execaCommandSync(cli, options).stdout;
     //console.log(data)
     return data.toString();
