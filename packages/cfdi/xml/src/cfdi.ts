@@ -149,10 +149,10 @@ export class CFDI extends Comprobante {
 
         if (this.xslt.xslt3) {
           //console.time('saxon');
-          cadena = getOriginalString(
+          cadena = (await getOriginalString(
             fullPath,
             String(this.xslt.path)
-          ) as string;
+          )) as string;
           //console.timeEnd('saxon');
         } else {
           const transform = new Transform();

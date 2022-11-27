@@ -1,11 +1,12 @@
-import { execaCommandSync, SyncOptions } from 'execa';
+import { SyncOptions } from 'execa';
+import path from 'path';
 // @ts-ignore
 import pathModule from 'node_modules-path';
 // @ts-ignore
 import saxon from 'saxon-js';
 // @ts-ignore
 import xslt3 from 'xslt3';
-import path from 'path';
+
 /**
  *schema
  *
@@ -16,17 +17,22 @@ export const schema = (locations: string[]): string => {
   return ` ${schemaL}`;
 };
 
-export const getOriginalString = (pathXmlFile: string, pathXlstFile: string, options?: SyncOptions): string => {
-
-  const binaryPath = path.resolve(`${pathModule("xslt3")}/xslt3/node_modules/.bin/xslt3`)
+export const getOriginalString = async (
+  pathXmlFile: string,
+  pathXlstFile: string,
+  options?: SyncOptions
+): Promise<string> => {
+  const binaryPath = path.resolve(
+    `${pathModule('xslt3')}/xslt3/node_modules/.bin/xslt3`
+  );
   const cli = `${binaryPath} -s:${pathXmlFile} -xsl:${pathXlstFile}`;
   try {
     // console.log(cli);
-
+    const { execaCommandSync } = await import('execa/index.js');
     const data = execaCommandSync(cli, options).stdout;
     //console.log(data)
-    return data.toString()
+    return data.toString();
   } catch (e) {
-    throw new Error(`${cli}`)
+    throw new Error(`${cli}`);
   }
-}
+};
