@@ -2,6 +2,18 @@
   "name": "@clir/openssl",
   "entries": [
     {
+      "version": "0.0.11",
+      "tag": "@clir/openssl_v0.0.11",
+      "date": "Sun, 27 Nov 2022 17:29:44 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "openssl"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.10",
       "tag": "@clir/openssl_v0.0.10",
       "date": "Tue, 09 Aug 2022 17:08:57 GMT",
