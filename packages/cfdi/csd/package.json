@@ -8,8 +8,7 @@
   "source": "./src/index.ts",
   "type": "module",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
