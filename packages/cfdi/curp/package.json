@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/curp",
-  "version": "0.0.10",
+  "version": "0.0.10-beta.1",
   "license": "MIT",
   "source": "./src/index.ts",
   "files": [
