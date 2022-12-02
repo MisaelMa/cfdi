@@ -97,12 +97,16 @@ export const text = (): string => {
  */
 export const pubkey = (options = { begin: false }): string => {
   const { begin = false } = options;
-  const cli = x509.inform('DER').in(file).noout().pubkey();
+
   try {
+    // const cli = x509.inform('DER').in(file).noout().pubkey();
     // const result = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -pubkey`).stdout;
-    const data = cli.run();
-    return begin ? data.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '') : data;
+    // const data = cli.run();
+    const data = pki.publicKeyToPem(getData().publicKey);
+    return data
+    // return begin ? data.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '') : data;
   } catch (error) {
+    console.log(error)
     throw new Error(cli.cli());
   }
 };
@@ -112,16 +116,18 @@ export const pubkey = (options = { begin: false }): string => {
  * @param cerFile
  */
 export const modulu = (): string => {
-  const cli = x509.inform('DER').in(file).noout().modulus();
+  // const cli = x509.inform('DER').in(file).noout().modulus();
   try {
     // const result = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -modulus`).stdout
-    const data = cli.run();
+    // const data = cli.run();
+    let data = '';
     return data
       .replace('Modulus=', '')
       .replace(/^\s+/g, '')
       .replace(/\s+$/g, '');
   } catch (e) {
-    throw new Error(cli.cli());
+    return ""
+   // throw new Error(cli.cli());
   }
 };
 

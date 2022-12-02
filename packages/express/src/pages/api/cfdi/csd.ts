@@ -39,12 +39,12 @@ export default async function loginRoute(
   res.send({
     // fil,
     cer: {
-      //  data: cer.getData(),
+      data: cer.getData(),
       version: cer.version(),
       serial: cer.serial(),
       cer: cer.getNoCer(),
-      // pubkey: cer.pubkey({ begin: true }),
-      // module: cer.modulu(),
+      pubkey: cer.pubkey({ begin: true }),
+      module: cer.modulu(),
       // subjectHash: cer.subjectHash(),
       // issuerHash: cer.issuerHash(),
       // ocspid: cer.ocspid(),
@@ -53,7 +53,7 @@ export default async function loginRoute(
       // issuerHashOld: cer.issuerHashOld(),
       issuer: cer.issuer(),
       subject: cer.subject(),
-      date: cer.date(),
+      valid: cer.date(),
     },
     key: {
       forge: key.signatureHexForge('amir'),
