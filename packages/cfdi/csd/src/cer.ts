@@ -107,7 +107,7 @@ export const pubkey = (options = { begin: false }): string => {
     // return begin ? data.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '') : data;
   } catch (error) {
     console.log(error)
-    //throw new Error(cli.cli());
+    throw new Error();
   }
 };
 
