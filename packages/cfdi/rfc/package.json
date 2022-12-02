@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/rfc",
-  "version": "0.0.10",
+  "version": "0.0.10-beta.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
