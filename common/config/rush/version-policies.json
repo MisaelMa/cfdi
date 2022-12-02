@@ -20,20 +20,20 @@
   {
     "policyName": "pdf",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
-    "nextBump": "patch"
+    "version": "0.0.10-beta.1",
+    "nextBump": "prerelease"
   },
   {
     "policyName": "curp",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
-    "nextBump": "patch"
+    "version": "0.0.10-beta.1",
+    "nextBump": "prerelease"
   },
   {
     "policyName": "rfc",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
-    "nextBump": "patch"
+    "version": "0.0.10-beta.1",
+    "nextBump": "prerelease"
   },
   {
     "policyName": "utils",

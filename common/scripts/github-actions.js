@@ -1,44 +1,79 @@
-
 async function execa(command, params) {
   const { spawn } = require('child_process');
   const child = spawn(command, params);
 
-  let data = "";
+  let data = '';
   for await (const chunk of child.stdout) {
-      console.log('stdout chunk: '+chunk);
-      data += chunk;
+    console.log('stdout chunk: ' + chunk);
+    data += chunk;
   }
-  let error = "";
+  let error = '';
   for await (const chunk of child.stderr) {
-      console.error('stderr chunk: '+chunk);
-      error += chunk;
+    console.error('stderr chunk: ' + chunk);
+    error += chunk;
   }
-  const exitCode = await new Promise( (resolve, reject) => {
-      child.on('close', resolve);
+  const exitCode = await new Promise((resolve, reject) => {
+    child.on('close', resolve);
   });
 
-  if( exitCode) {
-      throw new Error( `subprocess error exit ${exitCode}, ${error}`);
+  if (exitCode) {
+    throw new Error(`subprocess error exit ${exitCode}, ${error}`);
   }
   return data;
 }
-
-
-
-module.exports = async ({github, context, core}) => {
-  console.log(JSON.stringify(context.payload.commits))
-  const commits = context.payload.commits || []
-  // const list = ['catalogs','csd','curp','pdf','rfc','utils','xml','openssl','saxon']
-  const list = ['catalogs','csd','utils','xml','openssl','saxon']
-
+function getDependences(scope) {
+  const dependencies = {
+    utils: {
+      pdf: true,
+    },
+    csd: {
+      xml: true,
+    },
+    openssl: {
+      csd: true,
+      xml: true,
+    },
+    saxon: {
+      xml: true,
+    },
+    catalogs: {
+      xml: true,
+    },
+    curp: {},
+    pdf: {},
+    rfc: {},
+  };
+  return dependencies[scope] || {}
+}
+async function getScopes(commits = []) {
+  const list = ['catalogs','csd','curp','pdf','rfc','utils','xml','openssl','saxon']
+  const scopes = [];
+  const pivote = {};
   for (var i = 0; i < commits.length; i++) {
     const commit = commits[i];
     const message = commit.message;
-    const [type, msg] = message.split(':')
-    const scope = type.match(/\(([^)]+)\)/g).pop().replace(/[{()}]/g, '')
-    if (list.includes(scope)){
-      const data = await execa('rush', ['version', '--version-policy', scope, '--bump' ])
-      console.log(scope, data);
+    const [type, msg] = message.split(':');
+    const findScope = type.match(/\(([^)]+)\)/g);
+    if (findScope) {
+      const scope = findScope.pop().replace(/[{()}]/g, '');
+      if (list.includes(scope)) {
+      }
     }
   }
+  return scopes;
 }
+module.exports = async ({ github, context, core }) => {
+  const commits = context.payload.commits || [];
+  const scopes = await getScopes(commits);
+
+  for (var i = 0; i < scopes.length; i++) {
+    const scope = scopes[i];
+    const data = await execa('rush', [
+      'version',
+      '--version-policy',
+      scope,
+      '--bump',
+    ]);
+    console.log(scope, data);
+  }
+};
