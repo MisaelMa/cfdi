@@ -23,32 +23,46 @@ async function execa(command, params) {
 }
 function getDependences(scope) {
   const dependencies = {
+    xml: {
+      xml: true,
+    },
     utils: {
       pdf: true,
+      utils: true,
     },
     csd: {
+      csd: true,
       xml: true,
     },
     openssl: {
+      openssl: true,
       csd: true,
       xml: true,
     },
     saxon: {
+      saxon: true,
       xml: true,
     },
     catalogs: {
+      catalogs: true,
       xml: true,
     },
-    curp: {},
-    pdf: {},
-    rfc: {},
+    curp: {
+      curp: true,
+    },
+    pdf: {
+      pdf: true,
+    },
+    rfc: {
+      rfc: true,
+    },
   };
-  return dependencies[scope] || {}
+  return dependencies[scope] || {};
 }
-async function getScopes(commits = []) {
+
+function getScopes(commits = []) {
   const list = ['catalogs','csd','curp','pdf','rfc','utils','xml','openssl','saxon']
-  const scopes = [];
-  const pivote = {};
+  let scopes = {};
   for (var i = 0; i < commits.length; i++) {
     const commit = commits[i];
     const message = commit.message;
@@ -57,14 +71,18 @@ async function getScopes(commits = []) {
     if (findScope) {
       const scope = findScope.pop().replace(/[{()}]/g, '');
       if (list.includes(scope)) {
+        scopes = {
+          ...scopes,
+          ...getDependences(scope)
+        }
       }
     }
   }
-  return scopes;
+  return Object.keys(scopes);
 }
 module.exports = async ({ github, context, core }) => {
   const commits = context.payload.commits || [];
-  const scopes = await getScopes(commits);
+  const scopes =  getScopes(commits);
 
   for (var i = 0; i < scopes.length; i++) {
     const scope = scopes[i];

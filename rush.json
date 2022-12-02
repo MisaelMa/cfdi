@@ -34,6 +34,9 @@
   },
   "variants": [],
   "telemetryEnabled": false,
+  "allowedProjectTags": [
+    "beta"
+  ],
   "projects": [
     {
       "packageName": "@recreando/typescript-settings",
@@ -79,7 +82,10 @@
       "projectFolder": "packages/cfdi/pdf",
       "versionPolicyName": "pdf",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": false,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@cfdi/utils",
@@ -93,14 +99,20 @@
       "projectFolder": "packages/cfdi/curp",
       "versionPolicyName": "curp",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@cfdi/rfc",
       "projectFolder": "packages/cfdi/rfc",
       "versionPolicyName": "rfc",
       "reviewCategory": "libraries",
-      "shouldPublish": false
+      "shouldPublish": true,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@clir/openssl",
