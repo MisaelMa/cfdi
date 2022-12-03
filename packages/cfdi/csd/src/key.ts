@@ -64,12 +64,12 @@ export const signatureHexForge = (message: string) => {
   let messageDigest = md.sha256.create();
   messageDigest.update(message, 'utf8');
   const signature = getData().sign(messageDigest);
-  return Buffer.from(util.binary.raw.decode(signature)).toString('hex');
+  return Buffer.from(util.binary.raw.decode(signature)).toString('base64');
   // const signatureHex = Buffer.from(raw.decode(signature)).toString('hex');
 };
 
 export const signatureHexCripto = (message: string) => {
   const signer = crypto.createSign('RSA-SHA256').update(message, 'utf8');
-  const signature2Hex = signer.sign(getPem()).toString('hex');
+  const signature2Hex = signer.sign(getPem(),'base64');
   return signature2Hex;
 };
