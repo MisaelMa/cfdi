@@ -1,5 +1,5 @@
 {
-  "version": "0.0.14",
+  "version": "0.0.15",
   "license": "MIT",
   "name": "@clir/saxon-he",
   "main": "./dist/index.js",
