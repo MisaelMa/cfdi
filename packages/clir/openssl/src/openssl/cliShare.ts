@@ -1,6 +1,6 @@
-import * as execa from 'execa';
+import * as execa from '@esm2cjs/execa';
 
-import { execaCommandSync } from 'execa';
+import { execaCommandSync } from '@esm2cjs/execa';
 import { getOsComandBin } from '../utils';
 
 /**
