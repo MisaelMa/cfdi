@@ -2,6 +2,12 @@
   "name": "@clir/saxon-he",
   "entries": [
     {
+      "version": "0.0.14",
+      "tag": "@clir/saxon-he_v0.0.14",
+      "date": "Sat, 03 Dec 2022 19:23:53 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.13",
       "tag": "@clir/saxon-he_v0.0.13",
       "date": "Sun, 27 Nov 2022 18:43:12 GMT",

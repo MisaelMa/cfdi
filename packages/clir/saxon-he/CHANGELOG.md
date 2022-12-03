@@ -1,6 +1,11 @@
 # Change Log - @clir/saxon-he
 
-This log was last generated on Sun, 27 Nov 2022 18:43:12 GMT and should not be manually modified.
+This log was last generated on Sat, 03 Dec 2022 19:23:53 GMT and should not be manually modified.
+
+## 0.0.14
+Sat, 03 Dec 2022 19:23:53 GMT
+
+_Version update only_
 
 ## 0.0.13
 Sun, 27 Nov 2022 18:43:12 GMT
