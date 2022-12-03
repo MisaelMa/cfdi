@@ -330,6 +330,7 @@ importers:
       '@cfdi/catalogos': workspace:*
       '@cfdi/csd': workspace:*
       '@clir/saxon-he': workspace:*
+      '@esm2cjs/execa': ~6.1.1-cjs.1
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -346,7 +347,7 @@ importers:
       chalk: ^4.0.0
       chokidar: ^3.5.2
       eslint: ^8.26.0
-      execa: ^6.1.0
+      execa: npm:@esm2cjs/execa
       husky: ^8.0.1
       jest: ^28.1.2
       moment: ^2.29.4
@@ -363,8 +364,9 @@ importers:
       '@cfdi/catalogos': link:../catalogos
       '@cfdi/csd': link:../csd
       '@clir/saxon-he': link:../../clir/saxon-he
+      '@esm2cjs/execa': 6.1.1-cjs.1
       '@signati/saxon': 0.0.4
-      execa: 6.1.0
+      execa: /@esm2cjs/execa/6.1.1-cjs.1
       moment: 2.29.4
       moment-timezone: 0.5.38
       node_modules-path: 2.0.6
@@ -396,6 +398,7 @@ importers:
 
   ../../packages/clir/openssl:
     specifiers:
+      '@esm2cjs/execa': ~6.1.1-cjs.1
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -412,7 +415,7 @@ importers:
       chalk: ^4.0.0
       chokidar: ^3.5.2
       eslint: ^8.26.0
-      execa: ^6.1.0
+      execa: npm:@esm2cjs/execa
       husky: ^8.0.1
       jest: ^28.1.2
       moment: ^2.29.4
@@ -422,7 +425,8 @@ importers:
       tslib: ^2.4.0
       typescript: ^4.8.4
     dependencies:
-      execa: 6.1.0
+      '@esm2cjs/execa': 6.1.1-cjs.1
+      execa: /@esm2cjs/execa/6.1.1-cjs.1
       moment: 2.29.4
       node-forge: 1.3.1
     devDependencies:
@@ -451,6 +455,7 @@ importers:
 
   ../../packages/clir/saxon-he:
     specifiers:
+      '@esm2cjs/execa': ~6.1.1-cjs.1
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -466,8 +471,7 @@ importers:
       chalk: ^4.0.0
       chokidar: ^3.5.2
       eslint: ^8.26.0
-      exact-math: ^2.1.2
-      execa: ^6.1.0
+      execa: npm:@esm2cjs/execa
       husky: ^8.0.1
       immutable: ^4.0.0-rc.12
       jest: ^28.1.2
@@ -477,8 +481,8 @@ importers:
       tslib: ^2.4.0
       typescript: ^4.8.4
     dependencies:
-      exact-math: 2.2.3
-      execa: 6.1.0
+      '@esm2cjs/execa': 6.1.1-cjs.1
+      execa: /@esm2cjs/execa/6.1.1-cjs.1
       immutable: 4.1.0
       moment: 2.29.4
     devDependencies:
@@ -2235,6 +2239,60 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  /@esm2cjs/execa/6.1.1-cjs.1:
+    resolution: {integrity: sha512-FHxfnmuDIjY1VS/BLzDkL8EkbcFvi8s6x1nYQ1Nyu0An0n88EJcGhDBcRWLFwt3C3nT7xwI+MwHRH1TZcAFW2w==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      '@esm2cjs/human-signals': 3.0.1
+      '@esm2cjs/is-stream': 3.0.0
+      '@esm2cjs/npm-run-path': 5.1.1-cjs.0
+      '@esm2cjs/onetime': 6.0.1-cjs.0
+      '@esm2cjs/strip-final-newline': 3.0.1-cjs.0
+      cross-spawn: 7.0.3
+      get-stream: 6.0.1
+      merge-stream: 2.0.0
+      signal-exit: 3.0.7
+    dev: false
+
+  /@esm2cjs/human-signals/3.0.1:
+    resolution: {integrity: sha512-QZme4eF/PwTpeSbMB4AaWGQ4VSygzE30jI+Oas1NPTtZQAgcHwWVDOQpIW8FUmtzn5Q+2cS7AjnTzbtqtc5P6g==}
+    engines: {node: '>=12.20.0'}
+    dev: false
+
+  /@esm2cjs/is-stream/3.0.0:
+    resolution: {integrity: sha512-qcBscHlJpZFOD5nnmMHkzOrq2xyvsp9fbVreQLS8x2LOs8N3CrNi3fqvFY0GVJR+YSOHscwhG9T5t4Ck7R7QGw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
+  /@esm2cjs/mimic-fn/4.0.0:
+    resolution: {integrity: sha512-LIIAjcpjLr4rcbYmRQ+eRu55Upy/MMB78seIlwqbnyiA+cTa1/pxWnJ1NHJQrw6tx2wMQmlYoJj+wf16NjWH6Q==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /@esm2cjs/npm-run-path/5.1.1-cjs.0:
+    resolution: {integrity: sha512-CWeAIyE8iNSCgP2ItPE8iPgS+lACqgH+MuFRaWOIl2T7hnHqPFfhAJJ/LcLJJ/RMIxNMeenjFMwc91HW7NWr1A==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      '@esm2cjs/path-key': 4.0.0
+    dev: false
+
+  /@esm2cjs/onetime/6.0.1-cjs.0:
+    resolution: {integrity: sha512-MkZMZSxrSC/6yUuAw6Azc56XOgwHQQIsNDlO/zgFmOcycJBhRwRuc/gdYUUOFNZIh7y+f0JSIxkNdJPFvJ5W0w==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@esm2cjs/mimic-fn': 4.0.0
+    dev: false
+
+  /@esm2cjs/path-key/4.0.0:
+    resolution: {integrity: sha512-fKzZ3uIIP4j+7WfyG0MEkomGHL0hUXWCx1kY2Zct3GTdl4pyY+3k5lCUxjgdDa2Ld1BCjMNorXnRHiBP6jW6CQ==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /@esm2cjs/strip-final-newline/3.0.1-cjs.0:
+    resolution: {integrity: sha512-o41riCGPiOEStayoikBCAqwa6igbv9L9rP+k5UCfQ24EJD/wGrdDs/KTNwkHG5JzDK3T60D5dMkWkLKEPy8gjA==}
+    engines: {node: '>=12'}
+    dev: false
 
   /@humanwhocodes/config-array/0.11.7:
     resolution: {integrity: sha512-kBbPWzN8oVMLb0hOUYXhmxggL/1cJE6ydvjDIGi9EnAGUyA7cLVKQg+d/Dsm+KZwx2czGHrCmMVLiyg8s5JPKw==}
@@ -7480,21 +7538,6 @@ packages:
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
 
-  /execa/6.1.0:
-    resolution: {integrity: sha512-QVWlX2e50heYJcCPG0iWtf8r0xjEYfz/OYLGDYH+IyjWezzPNxz63qNFOu0l4YftGWuizFVZHHs8PrLU5p2IDA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      cross-spawn: 7.0.3
-      get-stream: 6.0.1
-      human-signals: 3.0.1
-      is-stream: 3.0.0
-      merge-stream: 2.0.0
-      npm-run-path: 5.1.0
-      onetime: 6.0.0
-      signal-exit: 3.0.7
-      strip-final-newline: 3.0.0
-    dev: false
-
   /execall/2.0.0:
     resolution: {integrity: sha512-0FU2hZ5Hh6iQnarpRtQurM/aAvp3RIbfvgLHrcqJYzhXyV2KFruhuChf9NC6waAhiUR7FFtlugkI4p7f2Fqlow==}
     engines: {node: '>=8'}
@@ -8422,11 +8465,6 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  /human-signals/3.0.1:
-    resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
-    engines: {node: '>=12.20.0'}
-    dev: false
-
   /humanize-duration/3.27.3:
     resolution: {integrity: sha512-iimHkHPfIAQ8zCDQLgn08pRqSVioyWvnGfaQ8gond2wf7Jq2jJ+24ykmnRyiz3fIldcn4oUuQXpjqKLhSVR7lw==}
     dev: true
@@ -8845,11 +8883,6 @@ packages:
   /is-stream/2.0.1:
     resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
     engines: {node: '>=8'}
-
-  /is-stream/3.0.0:
-    resolution: {integrity: sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: false
 
   /is-string/1.0.7:
     resolution: {integrity: sha512-tE2UXzivje6ofPW7l23cjDOMa09gb7xlAqG6jG5ej6uPV32TlWP3NKPigtaGeHNu9fohccRYvIiZMfOOnOYUtg==}
@@ -11169,11 +11202,6 @@ packages:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
 
-  /mimic-fn/4.0.0:
-    resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
-    engines: {node: '>=12'}
-    dev: false
-
   /min-indent/1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
@@ -11513,13 +11541,6 @@ packages:
     dependencies:
       path-key: 3.1.1
 
-  /npm-run-path/5.1.0:
-    resolution: {integrity: sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      path-key: 4.0.0
-    dev: false
-
   /num2fraction/1.2.2:
     resolution: {integrity: sha512-Y1wZESM7VUThYY+4W+X4ySH2maqcA+p7UR+w8VWNWVAd6lwuXXWz/w/Cz43J/dI2I+PS6wD5N+bJUF+gjWvIqg==}
 
@@ -11646,13 +11667,6 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       mimic-fn: 2.1.0
-
-  /onetime/6.0.0:
-    resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
-    engines: {node: '>=12'}
-    dependencies:
-      mimic-fn: 4.0.0
-    dev: false
 
   /optionator/0.8.3:
     resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
@@ -11834,11 +11848,6 @@ packages:
   /path-key/3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
     engines: {node: '>=8'}
-
-  /path-key/4.0.0:
-    resolution: {integrity: sha512-haREypq7xkM7ErfgIyA0z+Bj4AGKlMSdlQE2jvJo6huWD1EdkKYV+G/T4nq0YEF2vgTT8kqMFKo1uHn950r4SQ==}
-    engines: {node: '>=12'}
-    dev: false
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
@@ -13313,11 +13322,6 @@ packages:
   /strip-final-newline/2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
     engines: {node: '>=6'}
-
-  /strip-final-newline/3.0.0:
-    resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}
-    engines: {node: '>=12'}
-    dev: false
 
   /strip-indent/3.0.0:
     resolution: {integrity: sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==}

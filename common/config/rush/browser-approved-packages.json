@@ -4,1112 +4,731 @@
   "packages": [
     {
       "name": "@ammc/components",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@ammc/eslint-settings",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@ammc/jest",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@ammc/typescript-settings",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@babel/core",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@babel/preset-env",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/catalogos",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/csd",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/curp",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/openssl",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/pdf",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/utils",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@cfdi/xml",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@clir/openssl",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@clir/saxon-he",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@emotion/cache",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@emotion/react",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@emotion/server",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@emotion/styled",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@esm2cjs/execa",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@graphql-codegen/cli",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@graphql-codegen/near-operation-file-preset",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@graphql-codegen/typescript",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@graphql-codegen/typescript-graphql-files-modules",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@graphql-codegen/typescript-operations",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@hapi/joi",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@mdi/js",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@mdi/react",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@mui/icons-material",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@mui/material",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs-modules/mailer",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/cli",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/common",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/config",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/core",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/jwt",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/passport",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/platform-express",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/schedule",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/schematics",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/swagger",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/testing",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjs/typeorm",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjsx/crud",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@nestjsx/crud-typeorm",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@recreando/eslint-settings",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@recreando/jest",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@recreando/tss",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@recreando/typescript-settings",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@reduxjs/toolkit",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@rushstack/eslint-config",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@rushstack/heft",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@rushstack/heft-jest-plugin",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@signati/core",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@signati/openssl",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@signati/saxon",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@size-limit/preset-small-lib",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@swc/cli",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@swc/core",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@swc/helpers",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@swc/jest",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@swc/register",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@testing-library/dom",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@testing-library/jest-dom",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@testing-library/react",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "@testing-library/user-event",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@typescript-eslint/parser",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "2captcha",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "axios",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "babel-jest",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "babel-plugin-transform-import-meta",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "bcrypt",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "bcryptjs",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "chalk",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "chokidar",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "class-transformer",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "class-validator",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "cookie",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "cookies-next",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "curp",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "eslint-config-airbnb",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-config-airbnb-base",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-config-airbnb-typescript",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-config-next",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-config-prettier",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-import-resolver-typescript",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-better-styled-components",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-import",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-jest",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-jsdoc",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-jsx-a11y",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-prettier",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-react",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-react-hooks",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "eslint-plugin-sort-destructure-keys",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "exact-math",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "execa",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "express",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "fetch-mock-jest",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "formik",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "get-mexican-data-by-curp",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "graphql",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "graphql-tag",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "helmet",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "husky",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "identity-obj-proxy",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "immutable",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "iron-session",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jest",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "jest-environment-jsdom",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jest-environment-node",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jest-light-runner",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jest-styled-components",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jest-transform-graphql",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jest-watch-typeahead",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jose",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "jsonwebtoken",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "material-ui-popup-state",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "moment",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "moment-timezone",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "mysql2",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "next",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "next-redux-wrapper",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "next-router-mock",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "node_modules-path",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "node-forge",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "nodemailer",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "nodemon",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "passport",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "passport-jwt",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "passport-local",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "pdfmake",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "pg",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "prettier",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "puppeteer",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "puppeteer-extra",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "puppeteer-extra-plugin-recaptcha",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "qrcode",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "react",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "react-dom",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "react-is",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "react-native",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "redux",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "redux-logger",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "redux-persist",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "reflect-metadata",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "rimraf",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "rollup",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "rollup-plugin-swc",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "rxjs",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "save-file",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "saxon-js",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "size-limit",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "source-map-support",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "styled-components",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "stylelint",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "stylelint-config-recommended",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "stylelint-config-styled-components",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "stylelint-order",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "stylelint-processor-styled-components",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "supertest",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "ts-jest",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "ts-loader",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "ts-node",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "tsconfig-paths",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "tsconfig-paths-webpack-plugin",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "tsdx",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "tslib",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "tslint",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "tslint-config-prettier",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "typeorm",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "typescript",
-      "allowedCategories": [
-        "libraries",
-        "production"
-      ]
+      "allowedCategories": [ "libraries", "production" ]
     },
     {
       "name": "validate-rfc",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "vite",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "vite-plugin-node",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "vite-tsconfig-paths",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "webpack",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "xml-js",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "xslt3",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "yup",
-      "allowedCategories": [
-        "libraries"
-      ]
+      "allowedCategories": [ "libraries" ]
     }
   ]
 }
