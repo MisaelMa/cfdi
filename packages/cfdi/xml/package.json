@@ -71,8 +71,7 @@
     "@signati/saxon": "^0.0.4",
     "saxon-js": "^2.4.0",
     "xslt3": "^2.4.0",
-    "@esm2cjs/execa": "~6.1.1-cjs.1",
-    "execa": "npm:@esm2cjs/execa"
+    "@esm2cjs/execa": "^6.1.1-cjs.1"
   },
   "devDependencies": {
     "@recreando/eslint-settings": "workspace:*",

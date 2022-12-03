@@ -1,4 +1,5 @@
-import { SyncOptions } from 'execa';
+import { SyncOptions, execaCommandSync } from '@esm2cjs/execa';
+
 import path from 'path';
 // @ts-ignore
 import pathModule from 'node_modules-path';
@@ -27,9 +28,6 @@ export const getOriginalString = async (
   );
   const cli = `${binaryPath} -s:${pathXmlFile} -xsl:${pathXlstFile}`;
   try {
-    // @ts-ignore
-    // @ts-nocheck
-    const { execaCommandSync } = await import('execa');
     const data = execaCommandSync(cli, options).stdout;
     //console.log(data)
     return data.toString();
