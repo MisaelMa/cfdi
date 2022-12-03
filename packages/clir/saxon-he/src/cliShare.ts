@@ -1,6 +1,5 @@
+import { execaCommandSync } from '@esm2cjs/execa';
 import { existsSync } from 'fs';
-
-import { execaCommandSync } from 'execa';
 
 /**
  *

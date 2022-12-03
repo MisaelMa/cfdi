@@ -44,8 +44,7 @@
     }
   ],
   "dependencies": {
-    "@esm2cjs/execa": "~6.1.1-cjs.1",
-    "execa": "npm:@esm2cjs/execa",
+    "@esm2cjs/execa": "^6.1.1-cjs.1",
     "immutable": "^4.0.0-rc.12",
     "moment": "^2.29.4"
   },
