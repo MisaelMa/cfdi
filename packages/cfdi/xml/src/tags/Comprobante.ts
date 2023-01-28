@@ -1,24 +1,25 @@
-import { Structure } from "../utils/structure";
-import { schema } from "../utils/XmlHelp";
 import {
-  XmlCdfi,
+  CFDIAttributes,
   ComlementType,
-  XmlComplements,
-  TagComprobante,
-  XmlnsLinks,
-  XmlVersion,
-  ComprobanteAttr,
   Options,
+  TagComprobante,
+  XmlCdfi,
+  XmlComplements,
   XmlComprobante,
   XmlComprobanteAttributes,
   XmlConcepto,
-  XsltSheet
-} from "../types";
-import { Concepts } from "./Concepts";
-import { Emisor } from "./Emisor";
-import { Impuestos } from "./Impuestos";
-import { Receptor } from "./Receptor";
-import { Relacionado } from "./Relacionado";
+  XmlVersion,
+  XmlnsLinks,
+  XsltSheet,
+} from '../types';
+
+import { Concepts } from './Concepts';
+import { Emisor } from './Emisor';
+import { Impuestos } from './Impuestos';
+import { Receptor } from './Receptor';
+import { Relacionado } from './Relacionado';
+import { Structure } from '../utils/structure';
+import { schema } from '../utils/XmlHelp';
 
 export class Comprobante {
   protected xml: XmlCdfi = {} as XmlCdfi;
@@ -37,10 +38,13 @@ export class Comprobante {
   ];
 
   protected xslt: XsltSheet;
-  constructor(attr: ComprobanteAttr, options: Options = { debug: false, xslt: { xslt3: false } } as Options) {
+  constructor(
+    attr: CFDIAttributes,
+    options: Options = { debug: false, xslt: { xslt3: false } } as Options
+  ) {
     const attribute = attr;
     const { xslt, customTags = {} } = options;
-    this.xslt = xslt
+    this.xslt = xslt;
     this.tags = new Structure(customTags);
     this.tc = this.tags.tagXml('cfdi:Comprobante');
     this.restartCfdi();
@@ -58,11 +62,11 @@ export class Comprobante {
   }
 
   /**
-  *xmlns
-  *
-  * @param xmlns
-  * XmlnsLinks
-  */
+   *xmlns
+   *
+   * @param xmlns
+   * XmlnsLinks
+   */
   protected xmlns(xmlns: XmlnsLinks): void {
     if (!xmlns.xsi) {
       this.addXmlns('xsi', this.XMLSchema);

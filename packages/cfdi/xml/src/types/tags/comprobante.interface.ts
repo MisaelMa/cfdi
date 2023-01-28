@@ -1,4 +1,12 @@
 import {
+  AnyKey,
+  XmlComplements,
+  XmlConcepto,
+  XmlEmisor,
+  XmlImpuestos,
+  XmlReceptor,
+} from '.';
+import {
   ExportacionEnum,
   ExportacionType,
   FormaPago,
@@ -8,15 +16,6 @@ import {
   TipoComprobante,
   TypeComprobante,
 } from '@cfdi/catalogos';
-
-import {
-  XmlReceptor,
-  XmlConcepto,
-  XmlImpuestos,
-  AnyKey,
-  XmlComplements,
-  XmlEmisor,
-} from '.';
 
 export interface XmlComprobante {
   _attributes: XmlComprobanteAttributes;
@@ -46,7 +45,7 @@ export interface XmlRelacionadoAttributes {
   UUID: string;
 }
 
-export interface XmlComprobanteAttributes extends ComprobanteAttr, AnyKey {
+export interface XmlComprobanteAttributes extends CFDIAttributes, AnyKey {
   'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
   'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
   /* ########XmlComplementsConcepts#########3 */
@@ -84,7 +83,7 @@ export interface XmlComprobanteAttributes extends ComprobanteAttr, AnyKey {
   'xsi:schemaLocation'?: string;
 }
 
-export interface ComprobanteAttr {
+export interface CFDIAttributes {
   xmlns?: XmlnsLinks;
   schemaLocation?: string[];
   Version?: string;

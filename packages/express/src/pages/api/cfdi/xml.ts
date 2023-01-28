@@ -1,6 +1,6 @@
 import {
   CFDI,
-  ComprobanteAttr,
+  CFDIAttributes,
   Concepts,
   Emisor,
   Impuestos,
@@ -26,7 +26,7 @@ export default async function loginRoute(
   const key = `${files}/certificados/LAN7008173R5.key`;
   const cer = `${files}/certificados/LAN7008173R5.cer`;
 
-  const comprobanteAttribute: ComprobanteAttr = {
+  const comprobanteAttribute: CFDIAttributes = {
     Serie: 'E',
     // eslint-disable-next-line
     Folio: 'ACACUN-27',

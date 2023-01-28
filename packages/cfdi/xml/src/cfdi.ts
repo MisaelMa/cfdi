@@ -5,8 +5,8 @@ import * as path from 'path';
 import { Transform, saxon } from '@signati/saxon';
 import { cer, key } from '@cfdi/csd';
 
+import { CFDIAttributes } from './types/tags/comprobante.interface';
 import { Comprobante } from './tags/Comprobante';
-import { ComprobanteAttr } from './types/tags/comprobante.interface';
 import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
@@ -29,7 +29,7 @@ export class CFDI extends Comprobante {
    *Options;
    */
   constructor(
-    attr: ComprobanteAttr,
+    attr: CFDIAttributes,
     options: Options = { debug: false, xslt: { xslt3: false } } as Options
   ) {
     super(attr, options);
