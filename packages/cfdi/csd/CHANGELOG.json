@@ -2,6 +2,12 @@
   "name": "@cfdi/csd",
   "entries": [
     {
+      "version": "0.0.18",
+      "tag": "@cfdi/csd_v0.0.18",
+      "date": "Sat, 03 Dec 2022 20:48:35 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.17",
       "tag": "@cfdi/csd_v0.0.17",
       "date": "Sat, 03 Dec 2022 19:23:52 GMT",
