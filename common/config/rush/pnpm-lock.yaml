@@ -524,6 +524,7 @@ importers:
       redux: ^4.2.0
       redux-logger: ^3.0.6
       typescript: ^4.8.4
+      xslt3: ^2.4.0
     dependencies:
       '@cfdi/csd': link:../cfdi/csd
       '@cfdi/curp': link:../cfdi/curp
@@ -536,6 +537,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       redux: 4.2.0
       redux-logger: 3.0.6
+      xslt3: 2.5.0
     devDependencies:
       '@recreando/eslint-settings': link:../../rigs/eslint
       '@recreando/jest': link:../../rigs/jest

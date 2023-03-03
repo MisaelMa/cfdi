@@ -41,7 +41,7 @@ export default async function loginRoute(
   res.send({
     // fil,
     cer: {
-      data: cer.getData(),
+      //data: cer.getData(),
       version: cer.version(),
       serial: cer.serial(),
       cer: cer.getNoCer(),
