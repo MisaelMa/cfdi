@@ -1,0 +1,88 @@
+{
+  "name": "@cfdi/csf",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/csf.esm.js",
+  "source": "./src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MisaelMa/recreando"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "author": {
+    "name": "Amir Misael Marin Coh, Signati",
+    "email": "amisael.amir.misae@gmail.com, signatidev@gmail.com,",
+    "url": ""
+  },
+  "size-limit": [
+    {
+      "path": "dist/csf.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/csf.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "dependencies": {
+    "@signati/core": "4.0.2",
+    "xml-js": "^1.6.11",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@recreando/eslint-settings": "workspace:*",
+    "@recreando/jest": "workspace:*",
+    "@recreando/typescript-settings": "workspace:*",
+    "@rushstack/eslint-config": "^2.6.0",
+    "@rushstack/heft": "^0.45.1",
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@testing-library/dom": "^8.19.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@types/deep-freeze": "^0.1.2",
+    "@types/jest": "^27.5.0",
+    "@types/node": "^18.11.3",
+    "@types/testing-library__jest-dom": "^5.9.1",
+    "chalk": "^4.0.0",
+    "chokidar": "^3.5.2",
+    "eslint": "^8.26.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.2",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  }
+}

@@ -71,6 +71,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/csf",
+      "projectFolder": "packages/cfdi/csf",
+      "versionPolicyName": "csd",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@cfdi/catalogos",
       "projectFolder": "packages/cfdi/catalogos",
       "versionPolicyName": "catalogs",

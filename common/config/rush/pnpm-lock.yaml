@@ -110,6 +110,59 @@ importers:
       tslib: 2.4.0
       typescript: 4.8.4
 
+  ../../packages/cfdi/csf:
+    specifiers:
+      '@recreando/eslint-settings': workspace:*
+      '@recreando/jest': workspace:*
+      '@recreando/typescript-settings': workspace:*
+      '@rushstack/eslint-config': ^2.6.0
+      '@rushstack/heft': ^0.45.1
+      '@signati/core': 4.0.2
+      '@size-limit/preset-small-lib': ^7.0.8
+      '@testing-library/dom': ^8.19.0
+      '@testing-library/jest-dom': ^5.16.1
+      '@types/deep-freeze': ^0.1.2
+      '@types/jest': ^27.5.0
+      '@types/node': ^18.11.3
+      '@types/testing-library__jest-dom': ^5.9.1
+      chalk: ^4.0.0
+      chokidar: ^3.5.2
+      eslint: ^8.26.0
+      husky: ^8.0.1
+      jest: ^28.1.2
+      pdf-parse: ^1.1.1
+      size-limit: ^7.0.8
+      tsdx: ^0.14.1
+      tslib: ^2.4.0
+      typescript: ^4.8.4
+      xml-js: ^1.6.11
+    dependencies:
+      '@signati/core': 4.0.2
+      pdf-parse: 1.1.1
+      xml-js: 1.6.11
+    devDependencies:
+      '@recreando/eslint-settings': link:../../../rigs/eslint
+      '@recreando/jest': link:../../../rigs/jest
+      '@recreando/typescript-settings': link:../../../rigs/typescript
+      '@rushstack/eslint-config': 2.6.2_zksrc6ykdxhogxjbhb5axiabwi
+      '@rushstack/heft': 0.45.14
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      '@testing-library/dom': 8.19.0
+      '@testing-library/jest-dom': 5.16.5
+      '@types/deep-freeze': 0.1.2
+      '@types/jest': 27.5.2
+      '@types/node': 18.11.9
+      '@types/testing-library__jest-dom': 5.14.5
+      chalk: 4.1.2
+      chokidar: 3.5.3
+      eslint: 8.28.0
+      husky: 8.0.1
+      jest: 28.1.3_@types+node@18.11.9
+      size-limit: 7.0.8
+      tsdx: 0.14.1_@types+node@18.11.9
+      tslib: 2.4.1
+      typescript: 4.8.4
+
   ../../packages/cfdi/curp:
     specifiers:
       '@recreando/eslint-settings': workspace:*
@@ -11413,6 +11466,10 @@ packages:
       lodash: 4.17.21
     dev: true
 
+  /node-ensure/0.0.0:
+    resolution: {integrity: sha512-DRI60hzo2oKN1ma0ckc6nQWlHU69RH6xN0sjQTjMpChPfTYvKZdcQFfdYK2RWbJcKyUizSIy/l8OTGxMAM1QDw==}
+    dev: false
+
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
@@ -11863,6 +11920,16 @@ packages:
   /path-type/4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  /pdf-parse/1.1.1:
+    resolution: {integrity: sha512-v6ZJ/efsBpGrGGknjtq9J/oC8tZWq0KWL5vQrk2GlzLEQPUDB1ex+13Rmidl1neNN358Jn9EHZw5y07FFtaC7A==}
+    engines: {node: '>=6.8.1'}
+    dependencies:
+      debug: 3.2.7
+      node-ensure: 0.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /pdfkit/0.12.3:
     resolution: {integrity: sha512-+qDLgm2yq6WOKcxTb43lDeo3EtMIDQs0CK1RNqhHC9iT6u0KOmgwAClkYh9xFw2ATbmUZzt4f7KMwDCOfPDluA==}
@@ -14081,7 +14148,6 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
-    dev: false
 
   /tslint-config-prettier/1.18.0:
     resolution: {integrity: sha512-xPw9PgNPLG3iKRxmK7DWr+Ea/SzrvfHtjFt5LBl61gk2UBG/DB9kCXRjv+xyIU1rUtnayLeMUVJBcMX8Z17nDg==}
