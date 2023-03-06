@@ -73,7 +73,7 @@
     {
       "packageName": "@cfdi/csf",
       "projectFolder": "packages/cfdi/csf",
-      "versionPolicyName": "csd",
+      "versionPolicyName": "csf",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },

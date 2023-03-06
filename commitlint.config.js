@@ -15,6 +15,7 @@ module.exports = {
             'core',
             'catalogs',
             'csd',
+            'csf',
             'curp',
             'pdf',
             'rfc',

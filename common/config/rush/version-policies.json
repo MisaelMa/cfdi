@@ -18,6 +18,12 @@
     "nextBump": "patch"
   },
   {
+    "policyName": "csf",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.1",
+    "nextBump": "patch"
+  },
+  {
     "policyName": "pdf",
     "definitionName": "lockStepVersion",
     "version": "0.0.10-beta.2",
