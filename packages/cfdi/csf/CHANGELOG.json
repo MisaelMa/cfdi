@@ -1,6 +1,12 @@
 {
-  "name": "@cfdi/utils",
+  "name": "@cfdi/csf",
   "entries": [
+    {
+      "version": "0.0.1",
+      "tag": "@cfdi/csf_v0.0.1",
+      "date": "Mon, 06 Mar 2023 21:39:01 GMT",
+      "comments": {}
+    },
     {
       "version": "0.0.13",
       "tag": "@cfdi/utils_v0.0.13",
