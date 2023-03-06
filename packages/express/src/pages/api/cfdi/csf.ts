@@ -1,3 +1,6 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
+import path from 'path';
 import pdfParse from 'pdf-parse';
 import { readFileSync } from 'fs';
 
@@ -14,28 +17,41 @@ const agruparSegun = (array: any[], groupBy: string, newProp: string) => {
   return Object.keys(objeto).map(x => objeto[x]);
 };
 
-const deleteProps = (objeto: any, props: any) => {
-  props.forEach((element: any) => {
+const deleteProps = (objeto, props) => {
+  props.forEach(element => {
     for (let o in objeto) {
       delete objeto[o][element];
     }
   });
 };
+export default async function loginRoute(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const constancia = path.join(
+    __dirname,
+    '..',
+    '..',
+    '..',
+    '..',
+    '..',
+    '..',
+    'files',
+    'pdf',
+    'csf.pdf'
+  );
+  const pagerender = (pageData: any) => {
+    let render_options = {
+      //replaces all occurrences of whitespace with standard spaces (0x20). The default value is `false`.
+      normalizeWhitespace: false,
+      //do not attempt to combine same line TextItem's. The default value is `false`.
+      disableCombineTextItems: false,
+    };
 
-const pagerender = (pageData: any) => {
-  let render_options = {
-    //replaces all occurrences of whitespace with standard spaces (0x20). The default value is `false`.
-    normalizeWhitespace: false,
-    //do not attempt to combine same line TextItem's. The default value is `false`.
-    disableCombineTextItems: false,
+    return pageData.getTextContent(render_options).then((textContent: any) => {
+      return `,${JSON.stringify(textContent)}`;
+    });
   };
-
-  return pageData.getTextContent(render_options).then((textContent: any) => {
-    return `,${JSON.stringify(textContent)}`;
-  });
-};
-
-export const csf = async (constancia: string) => {
   const data = await pdfParse(readFileSync(constancia), { pagerender });
   const datax = JSON.parse(
     `[${data.text.replace(/(?:\r\n|\r|\n)/g, '').replace(',', '')}]`
@@ -89,5 +105,7 @@ export const csf = async (constancia: string) => {
     };
   });
 
-  return pdfData;
-};
+  res.send({
+    text: pdfData,
+  });
+}

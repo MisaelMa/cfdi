@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "next": "^12.3.1",
+    "pdf-parse": "^1.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "redux": "^4.2.0",
@@ -19,6 +20,7 @@
     "@cfdi/curp": "workspace:*",
     "@cfdi/xml": "workspace:*",
     "@cfdi/csd": "workspace:*",
+    "@cfdi/csf": "workspace:*",
     "@clir/openssl": "workspace:*",
     "@cfdi/utils": "workspace:*"
   },
@@ -26,6 +28,7 @@
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
+    "@types/pdf-parse": "^1.1.1",
     "@types/node": "^18.11.3",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
