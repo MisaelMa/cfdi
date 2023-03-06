@@ -23,6 +23,6 @@ export default async function loginRoute(
   const pdfData = await csf(constancia);
 
   res.send({
-    text: pdfData,
+    constancia: pdfData,
   });
 }

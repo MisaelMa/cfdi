@@ -76,21 +76,18 @@ const buildObj = (data:any[])=>{
     nombre_de_vialidad:findIndexSplit(data,'Nombre de Vialidad:'),
     numero_exterior:findIndexSplit(data,'Exterior:'),
     numero_interior:findIndexSplit(data,'Interior:'),
-    nombre_de_la_colonia:"",
-    nombre_de_la_localidad:"",
+    nombre_de_la_colonia:findIndexSplit(data,'Colonia:'),
+    nombre_de_la_localidad:findIndexSplit(data,'Localidad:'),
     // Nombre del Municipio o Demarcación Territorial
-    nombre_del_municipio:"",
-    nombre_de_la_entidad_federativa:"",
-    entre_calle:"",
-    y_calle:"",
-    regimen:"",
-    "razon_social": "",
-    "regimen_de_capital": "",
-    data
+    nombre_del_municipio: findIndexSplit(data,'Territorial:'),
+    nombre_de_la_entidad_federativa:findIndexSplit(data,'Federativa:'),
+    entre_calle:findIndexSplit(data,'Entre Calle:'),
+    y_calle:findIndexSplit(data,'Y Calle:'),
+    regimen:data[58] ? data[58]:'',
   }
 }
 
-export const csf = async (constancia: string) => {
+export const csf = async (constancia: string, onlyData = false) => {
   const data = await pdfParse(readFileSync(constancia), { pagerender });
   const datax = JSON.parse(
     `[${data.text.replace(/(?:\r\n|\r|\n)/g, '').replace(',', '')}]`
@@ -143,10 +140,13 @@ export const csf = async (constancia: string) => {
         .filter((text: string) => !['Página  ['].find(rg => text.includes(rg))),
     };
   });
-
-  return buildObj(pdfData.reduce((flatt: string[], element:any) => {
+  const flat = pdfData.reduce((flatt: string[], element:any) => {
     return flatt.concat(element.items);
-  }, []));
+  }, [])
+  if (onlyData){
+    return flat
+  }
+  return buildObj(flat);
 };
 
 export default csf;
