@@ -35,6 +35,61 @@ const pagerender = (pageData: any) => {
   });
 };
 
+const findIndex = (data: any[],world: string)=>{
+  return data.findIndex((item)=>item.includes(world));
+}
+
+const findIndexSplit = (data: any[],world: string)=>{
+  const text = data.find((item)=>item.includes(world));
+  if (text){
+    return text.split(':')[1].replace(' ','')
+  }
+  return ''
+}
+
+const buildObj = (data:any[])=>{
+  const cif =  data.find((item)=>item.includes('idCIF:'));
+  const rfcIndex =  findIndex(data,'RFC:');
+  const curpIndex =  findIndex(data,'CURP:');
+  const nombreIndex = findIndex(data,'Nombre (s):');
+  const paIndex = findIndex(data,'Primer Apellido:');
+  const saIndex = findIndex(data,'Segundo Apellido:');
+  const fioIndex = findIndex(data,'Fecha inicio de operaciones:');
+  const padronIndex = findIndex(data,'padrón:');
+  const fucsIndex = findIndex(data,'estado:');
+  const ncIndex = findIndex(data,'Comercial:');
+
+  const rfc = data[rfcIndex+1]
+  return {
+    "id_cif": cif ? cif.split(':')[1].replace(' ',''):"",
+    "rfc": rfc,
+    "curp":data[curpIndex+1],
+    "nombre": data[nombreIndex+1],
+    primer_apellido: data[paIndex+1],
+    segundo_apellido: data[saIndex+1],
+    fecha_inicio_de_operaciones: data[fioIndex+1],
+    estatus_en_el_padrón: data[padronIndex+1],
+    fecha_de_último_cambio_de_estado: data[fucsIndex+1],
+    nombre_comercial: data[ncIndex+1],
+    cp:findIndexSplit(data,'Postal:'),
+    tipo_de_vialidad:findIndexSplit(data,'Tipo de Vialidad:'),
+    nombre_de_vialidad:findIndexSplit(data,'Nombre de Vialidad:'),
+    numero_exterior:findIndexSplit(data,'Exterior:'),
+    numero_interior:findIndexSplit(data,'Interior:'),
+    nombre_de_la_colonia:"",
+    nombre_de_la_localidad:"",
+    // Nombre del Municipio o Demarcación Territorial
+    nombre_del_municipio:"",
+    nombre_de_la_entidad_federativa:"",
+    entre_calle:"",
+    y_calle:"",
+    regimen:"",
+    "razon_social": "",
+    "regimen_de_capital": "",
+    data
+  }
+}
+
 export const csf = async (constancia: string) => {
   const data = await pdfParse(readFileSync(constancia), { pagerender });
   const datax = JSON.parse(
@@ -63,7 +118,7 @@ export const csf = async (constancia: string) => {
               if (index > 0) {
                 const last = gr.items[index - 1];
                 const diff = item.line1 - last.line1;
-                if (diff < 50) {
+                if (diff < 60) {
                   text.splice(
                     currentIndex,
                     1,
@@ -89,6 +144,9 @@ export const csf = async (constancia: string) => {
     };
   });
 
-  return pdfData;
+  return buildObj(pdfData.reduce((flatt: string[], element:any) => {
+    return flatt.concat(element.items);
+  }, []));
 };
+
 export default csf;
