@@ -91,3 +91,4 @@ export const csf = async (constancia: string) => {
 
   return pdfData;
 };
+export default csf;
