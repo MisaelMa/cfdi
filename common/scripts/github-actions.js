@@ -28,6 +28,7 @@ function getDependences(scope) {
     },
     complementos:{
       complementos: true,
+      xml: true
     },
     utils: {
       pdf: true,
