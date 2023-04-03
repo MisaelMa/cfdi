@@ -1,6 +1,12 @@
 {
-  "name": "@cfdi/xml",
+  "name": "@cfdi/complementos",
   "entries": [
+    {
+      "version": "4.0.6",
+      "tag": "@cfdi/complementos_v4.0.6",
+      "date": "Mon, 03 Apr 2023 22:58:53 GMT",
+      "comments": {}
+    },
     {
       "version": "4.0.5",
       "tag": "@cfdi/xml_v4.0.5",
