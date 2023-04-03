@@ -4,5 +4,4 @@ export * from './tags/Emisor';
 export * from './tags/Receptor';
 export * from './tags/Concepts';
 export * from './tags/Impuestos';
-export * from './complements';
 export * from './types';

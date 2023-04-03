@@ -63,6 +63,7 @@
   "dependencies": {
     "@cfdi/catalogos": "workspace:*",
     "@cfdi/csd": "workspace:*",
+    "@cfdi/complementos": "workspace:*",
     "@clir/saxon-he": "workspace:*",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.27",

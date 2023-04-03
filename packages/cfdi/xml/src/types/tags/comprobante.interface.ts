@@ -1,11 +1,9 @@
 import {
-  AnyKey,
+  XmlComplementsAttributes,
+  XmlnsComplementsLinks,
   XmlComplements,
-  XmlConcepto,
-  XmlEmisor,
-  XmlImpuestos,
-  XmlReceptor,
-} from '.';
+} from '@cfdi/complementos';
+import { AnyKey, XmlConcepto, XmlEmisor, XmlImpuestos, XmlReceptor } from '.';
 import {
   ExportacionEnum,
   ExportacionType,
@@ -45,41 +43,12 @@ export interface XmlRelacionadoAttributes {
   UUID: string;
 }
 
-export interface XmlComprobanteAttributes extends CFDIAttributes, AnyKey {
+export interface XmlComprobanteAttributes
+  extends XmlComplementsAttributes,
+    CFDIAttributes,
+    AnyKey {
   'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
   'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
-  /* ########XmlComplementsConcepts#########3 */
-  'xmlns:cfdi'?: string; // http://www.sat.gob.mx/cfd/3
-  'xmlns:ecc11'?: string; // http://www.sat.gob.mx/EstadoDeCuentaCombustible
-  'xmlns:donat'?: string; // http://www.sat.gob.mx/donat
-  'xmlns:divisas'?: string; // http://www.sat.gob.mx/divisas
-  'xmlns:implocal'?: string; // http://www.sat.gob.mx/implocal
-  'xmlns:leyendasFisc'?: string; // http://www.sat.gob.mx/leyendasFiscales
-  'xmlns:pfic'?: string; // http://www.sat.gob.mx/pfic
-  'xmlns:tpe'?: string; // http://www.sat.gob.mx/TuristaPasajeroExtranjero
-  'xmlns:spei'?: string; // http://www.sat.gob.mx/spei
-  'xmlns:detallista'?: string; // http://www.sat.gob.mx/detallista
-  'xmlns:registrofiscal'?: string; // http://www.sat.gob.mx/registrofiscal
-  'xmlns:nomina12'?: string; // http://www.sat.gob.mx/nomina12
-  'xmlns:pagoenespecie'?: string; // http://www.sat.gob.mx/pagoenespecie
-  'xmlns:valesdedespensa'?: string; // http://www.sat.gob.mx/valesdedespensa
-  'xmlns:consumodecombustibles11'?: string; // http://www.sat.gob.mx/ConsumoDeCombustibles11
-  'xmlns:aerolineas'?: string; // ="http://www.sat.gob.mx/aerolineas"
-  'xmlns:notariospublicos'?: string; // http://www.sat.gob.mx/notariospublicos
-  'xmlns:vehiculousado'?: string; // http://www.sat.gob.mx/vehiculousado
-  'xmlns:servicioparcial'?: string; // http://www.sat.gob.mx/servicioparcialconstruccion
-  'xmlns:decreto'?: string; // http://www.sat.gob.mx/renovacionysustitucionvehiculos
-  'xmlns:destruccion'?: string; // http://www.sat.gob.mx/certificadodestruccion
-  'xmlns:obrasarte'?: string; //  http://www.sat.gob.mx/arteantiguedades
-  'xmlns:ine'?: string; // http://www.sat.gob.mx/ine
-  'xmlns:cce11'?: string; // http://www.sat.gob.mx/ComercioExterior11
-  'xmlns:pago10'?: string; // http://www.sat.gob.mx/Pagos
-  'xmlns:gceh'?: string; // http://www.sat.gob.mx/GastosHidrocarburos10
-  /* ########XmlComplementsConcepts#########3 */
-  'xmlns:iedu'?: string; // http://www.sat.gob.mx/iedu
-  'xmlns:ventavehiculos'?: string; // http://www.sat.gob.mx/ventavehiculos
-  'xmlns:terceros'?: string; // http://www.sat.gob.mx/terceros
-  'xmlns:aieps'?: string; // http://www.sat.gob.mx/acreditamiento
   'xsi:schemaLocation'?: string;
 }
 
@@ -107,39 +76,8 @@ export interface CFDIAttributes {
   Sello?: string;
 }
 
-export interface XmlnsLinks extends AnyKey {
+export interface XmlnsLinks extends XmlnsComplementsLinks, AnyKey {
   cfdi?: string; // http://www.sat.gob.mx/cfd/3
   xs?: string; // http://www.w3.org/2001/XMLSchema
   xsi?: string; // http://www.w3.org/2001/XMLSchema-instance
-  /* ########XmlComplementsConcepts#########3 */
-  ecc11?: string; // http://www.sat.gob.mx/EstadoDeCuentaCombustible
-  donat?: string; // http://www.sat.gob.mx/donat
-  divisas?: string; // http://www.sat.gob.mx/divisas
-  implocal?: string; // http://www.sat.gob.mx/implocal
-  leyendasFisc?: string; // http://www.sat.gob.mx/leyendasFiscales
-  pfic?: string; // http://www.sat.gob.mx/pfic
-  tpe?: string; // http://www.sat.gob.mx/TuristaPasajeroExtranjero
-  spei?: string; // http://www.sat.gob.mx/spei
-  detallista?: string; // http://www.sat.gob.mx/detallista
-  registrofiscal?: string; // http://www.sat.gob.mx/registrofiscal
-  nomina12?: string; // http://www.sat.gob.mx/nomina12
-  pagoenespecie?: string; // http://www.sat.gob.mx/pagoenespecie
-  valesdedespensa?: string; // http://www.sat.gob.mx/valesdedespensa
-  consumodecombustibles11?: string; // http://www.sat.gob.mx/ConsumoDeCombustibles11
-  aerolineas?: string; // ="http://www.sat.gob.mx/aerolineas"
-  notariospublicos?: string; // http://www.sat.gob.mx/notariospublicos
-  vehiculousado?: string; // http://www.sat.gob.mx/vehiculousado
-  servicioparcial?: string; // http://www.sat.gob.mx/servicioparcialconstruccion
-  decreto?: string; // http://www.sat.gob.mx/renovacionysustitucionvehiculos
-  destruccion?: string; // http://www.sat.gob.mx/certificadodestruccion
-  obrasarte?: string; // http://www.sat.gob.mx/arteantiguedades
-  ine?: string; // http://www.sat.gob.mx/ine
-  cce11?: string; // http://www.sat.gob.mx/ComercioExterior11
-  pago10?: string; // http://www.sat.gob.mx/Pagos
-  gceh?: string; // http://www.sat.gob.mx/GastosHidrocarburos10
-  /* ########XmlComplementsConcepts#########3 */
-  iedu?: string; // http://www.sat.gob.mx/iedu
-  ventavehiculos?: string; // http://www.sat.gob.mx/ventavehiculos
-  terceros?: string; // http://www.sat.gob.mx/terceros
-  aieps?: string; // http://www.sat.gob.mx/acreditamiento
 }

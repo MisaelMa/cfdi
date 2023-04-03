@@ -1,10 +1,8 @@
 import {
   CFDIAttributes,
-  ComlementType,
   Options,
   TagComprobante,
   XmlCdfi,
-  XmlComplements,
   XmlComprobante,
   XmlComprobanteAttributes,
   XmlConcepto,
@@ -12,6 +10,7 @@ import {
   XmlnsLinks,
   XsltSheet,
 } from '../types';
+import { XmlComplements, ComlementType } from '@cfdi/complementos';
 
 import { Concepts } from './Concepts';
 import { Emisor } from './Emisor';

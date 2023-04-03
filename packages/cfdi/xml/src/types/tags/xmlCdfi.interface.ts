@@ -11,3 +11,7 @@ export interface XmlVersion {
   version: string;
   encoding: string;
 }
+
+export interface AnyKey {
+  [key: string]: any;
+}

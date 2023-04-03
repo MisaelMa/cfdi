@@ -1,12 +1,14 @@
 import {
+  ComlementTypeConcept,
+  ComplementProperties,
+  XmlComplementsConcepts,
+} from '@cfdi/complementos';
+import {
   XmlConceptoAttributes,
   XmlConceptoProperties,
   XmlConceptoTercerosAttributes,
   XmlConceptParteAttributes,
   XmlTranRentAttributesProperties,
-  ComlementTypeConcept,
-  ComplementProperties,
-  XmlComplementsConcepts,
 } from '../types';
 
 import { Impuestos } from './Impuestos';
@@ -38,8 +40,7 @@ export class Concepts {
 
   private existComplemnt = false;
 
-  private complementProperties: ComplementProperties =
-    {} as ComplementProperties;
+  private complementProperties: ComplementProperties = {} as ComplementProperties;
 
   private concepto: XmlConceptoProperties = {} as XmlConceptoProperties;
 
@@ -67,8 +68,13 @@ export class Concepts {
       this.concepto['cfdi:ComplementoConcepto'] = {} as XmlComplementsConcepts;
     }
     this.existComplemnt = true;
-    const { complement, key, schemaLocation, xmlns, xmlnskey } =
-      data.getComplement();
+    const {
+      complement,
+      key,
+      schemaLocation,
+      xmlns,
+      xmlnskey,
+    } = data.getComplement();
     this.complementProperties.key = key;
     this.complementProperties.xmlns = xmlns;
     this.complementProperties.xmlnskey = xmlnskey;
@@ -141,8 +147,9 @@ export class Concepts {
   traslado(
     traslado: XmlTranRentAttributesProperties & { Base: string | number }
   ): Concepts {
-    this.concepto['cfdi:Impuestos'] =
-      this.impuesto.traslados(traslado).impuesto; // = traslado;
+    this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(
+      traslado
+    ).impuesto; // = traslado;
     return this;
   }
 
@@ -159,8 +166,9 @@ export class Concepts {
       Importe: string | number;
     }
   ): Concepts {
-    this.concepto['cfdi:Impuestos'] =
-      this.impuesto.retenciones(retencion).impuesto; // = traslado;
+    this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(
+      retencion
+    ).impuesto; // = traslado;
     return this;
   }
 
