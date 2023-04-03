@@ -21,6 +21,7 @@ module.exports = {
             'rfc',
             'utils',
             'xml',
+            'complementos',
             'openssl',
             'saxon',
             'publish'
