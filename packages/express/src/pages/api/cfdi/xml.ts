@@ -8,9 +8,19 @@ import {
   Receptor,
   Relacionado,
 } from '@cfdi/xml';
+
+import {
+  Destruccion,
+  Pago10,
+  Pago10Relacionado,
+  Pago10Impuestos,
+  Iedu,
+} from '@cfdi/complementos';
+
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import path from 'path';
+import { XmlIeduAttribute } from '@cfdi/complementos';
 
 export default async function loginRoute(
   req: NextApiRequest,
@@ -95,6 +105,17 @@ export default async function loginRoute(
     Descuento: '00.0',
     ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto,
   });
+
+  const ieduObject: XmlIeduAttribute = {
+    version: '1.0',
+    autRVOE: '201587PRIM',
+    CURP: 'EJEMPLOGH101004HQRRRN',
+    nivelEducativo: 'Primaria',
+    nombreAlumno: 'ejemplo garcia correa',
+    rfcPago: 'XAXX010101000',
+  };
+  const iedu = new Iedu(ieduObject);
+  concepto.complemento(iedu);
   concepto.predial('000121231');
   concepto.aduana('21  47  3807  8003832');
   concepto.parte({
@@ -166,6 +187,81 @@ export default async function loginRoute(
     Importe: '59.17',
   });
   cfd.impuesto(impuesto);
+
+  const destruccion = new Destruccion({
+    Version: '1.0',
+    NumFolDesVeh: '0221',
+    Serie: '012',
+  });
+  destruccion.InformacionAduanera({
+    Aduana: 'ADUANA',
+    Fecha: '129283',
+    NumPedImp: 'ASAS',
+  });
+  destruccion.VehiculoDestruido({
+    Año: '2019',
+    Marca: 'Nissan',
+    Modelo: 'ASAD',
+    TipooClase: 'ASDSA',
+    NumFolTarjCir: 'ASSA',
+    NumPlacas: 'QRR0',
+  });
+  cfd.complemento(destruccion);
+
+  const pago = new Pago10({
+    Version: '1.0',
+  });
+  const docRela = new Pago10Relacionado();
+  docRela.relacion({
+    IdDocumento: 'hasd',
+    MonedaDR: 'MMX',
+    MetodoDePagoDR: 'PUE',
+  });
+  docRela.relacion({
+    IdDocumento: 'hasd',
+    MonedaDR: 'MMX',
+    MetodoDePagoDR: 'PUE',
+  });
+  const pagoImpuesto = new Pago10Impuestos({
+    TotalImpuestosRetenidos: '12',
+    TotalImpuestosTrasladados: '234z ',
+  });
+  pagoImpuesto.traslados({
+    Importe: '100',
+    Impuesto: '1201',
+    TasaOCuota: '123',
+    TipoFactor: '%',
+  });
+  pagoImpuesto.retenciones({ Importe: '10', Impuesto: '10' });
+
+  const pagoImpuesto2 = new Pago10Impuestos({
+    TotalImpuestosRetenidos: '12',
+    TotalImpuestosTrasladados: '234z ',
+  });
+  pagoImpuesto2.traslados({
+    Importe: '100',
+    Impuesto: '1201',
+    TasaOCuota: '123',
+    TipoFactor: '%',
+  });
+  pagoImpuesto2.retenciones({ Importe: '10', Impuesto: '10' });
+  pago.pago({
+    data: {
+      FechaPago: '2019-11-27T00:00:00',
+      FormaDePagoP: '03',
+      MonedaP: 'MXN',
+      Monto: '5220.00',
+      NumOperacion: '1',
+      RfcEmisorCtaOrd: 'SEQ920520ME3',
+      NomBancoOrdExt: 'BBVA Bancomer',
+      RfcEmisorCtaBen: 'WSI1503194J6',
+      CtaBeneficiario: '0101255614',
+    },
+    relacionado: docRela.getRelations(),
+    impuestos: [pagoImpuesto.getImpuesto(), pagoImpuesto.getImpuesto()],
+  });
+
+  cfd.complemento(pago);
 
   await cfd.certificar(cer);
   await cfd.sellar(key, '12345678a');

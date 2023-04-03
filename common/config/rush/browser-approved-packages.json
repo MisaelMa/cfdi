@@ -31,6 +31,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/complementos",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/csd",
       "allowedCategories": [ "libraries" ]
     },

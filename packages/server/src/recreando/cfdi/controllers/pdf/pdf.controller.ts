@@ -3,7 +3,6 @@ import { Response } from 'express';
 import { B111 } from '@cfdi/pdf/src/index';
 import { readFileSync } from 'fs';
 
-
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { A117 } from '@cfdi/pdf/src';

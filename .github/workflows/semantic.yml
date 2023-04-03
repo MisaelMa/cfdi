@@ -17,7 +17,7 @@ jobs:
       - name: Platform label
         uses: agilepathway/label-checker@v1.0.104
         with:
-          any_of: catalogs,csf,csd,curp,pdf,rfc,utils,xml,openssl,saxon,core,config
+          any_of: catalogs,csf,csd,curp,pdf,rfc,utils,xml,complementos,openssl,saxon,core,config
           repo_token: ${{ secrets.GITHUB_TOKEN }}
 
   check-title:
@@ -40,6 +40,7 @@ jobs:
             rfc
             utils
             xml
+            complementos
             openssl
             saxon
             publish

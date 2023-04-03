@@ -51,6 +51,75 @@ importers:
       tslib: 2.4.0
       typescript: 4.8.4
 
+  ../../packages/cfdi/complementos:
+    specifiers:
+      '@cfdi/catalogos': workspace:*
+      '@cfdi/csd': workspace:*
+      '@clir/saxon-he': workspace:*
+      '@esm2cjs/execa': ^6.1.1-cjs.1
+      '@recreando/eslint-settings': workspace:*
+      '@recreando/jest': workspace:*
+      '@recreando/typescript-settings': workspace:*
+      '@rushstack/eslint-config': ^2.6.0
+      '@rushstack/heft': ^0.45.1
+      '@signati/saxon': ^0.0.4
+      '@size-limit/preset-small-lib': ^7.0.8
+      '@testing-library/dom': ^8.19.0
+      '@testing-library/jest-dom': ^5.16.1
+      '@types/deep-freeze': ^0.1.2
+      '@types/jest': ^27.5.0
+      '@types/node': ^18.11.3
+      '@types/testing-library__jest-dom': ^5.9.1
+      chalk: ^4.0.0
+      chokidar: ^3.5.2
+      eslint: ^8.26.0
+      husky: ^8.0.1
+      jest: ^28.1.2
+      moment: ^2.29.4
+      moment-timezone: ^0.5.27
+      node_modules-path: 2.0.6
+      saxon-js: ^2.4.0
+      size-limit: ^7.0.8
+      tsdx: ^0.14.1
+      tslib: ^2.4.0
+      typescript: ^4.8.4
+      xml-js: ^1.6.11
+      xslt3: ^2.4.0
+    dependencies:
+      '@cfdi/catalogos': link:../catalogos
+      '@cfdi/csd': link:../csd
+      '@clir/saxon-he': link:../../clir/saxon-he
+      '@esm2cjs/execa': 6.1.1-cjs.1
+      '@signati/saxon': 0.0.4
+      moment: 2.29.4
+      moment-timezone: 0.5.38
+      node_modules-path: 2.0.6
+      saxon-js: 2.5.0
+      xml-js: 1.6.11
+      xslt3: 2.5.0
+    devDependencies:
+      '@recreando/eslint-settings': link:../../../rigs/eslint
+      '@recreando/jest': link:../../../rigs/jest
+      '@recreando/typescript-settings': link:../../../rigs/typescript
+      '@rushstack/eslint-config': 2.6.2_zksrc6ykdxhogxjbhb5axiabwi
+      '@rushstack/heft': 0.45.14
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      '@testing-library/dom': 8.19.0
+      '@testing-library/jest-dom': 5.16.5
+      '@types/deep-freeze': 0.1.2
+      '@types/jest': 27.5.2
+      '@types/node': 18.11.9
+      '@types/testing-library__jest-dom': 5.14.5
+      chalk: 4.1.2
+      chokidar: 3.5.3
+      eslint: 8.28.0
+      husky: 8.0.1
+      jest: 28.1.3_@types+node@18.11.9
+      size-limit: 7.0.8
+      tsdx: 0.14.1_@types+node@18.11.9
+      tslib: 2.4.1
+      typescript: 4.8.4
+
   ../../packages/cfdi/csd:
     specifiers:
       '@clir/openssl': workspace:*
@@ -383,6 +452,7 @@ importers:
   ../../packages/cfdi/xml:
     specifiers:
       '@cfdi/catalogos': workspace:*
+      '@cfdi/complementos': workspace:*
       '@cfdi/csd': workspace:*
       '@clir/saxon-he': workspace:*
       '@esm2cjs/execa': ^6.1.1-cjs.1
@@ -416,6 +486,7 @@ importers:
       xslt3: ^2.4.0
     dependencies:
       '@cfdi/catalogos': link:../catalogos
+      '@cfdi/complementos': link:../complementos
       '@cfdi/csd': link:../csd
       '@clir/saxon-he': link:../../clir/saxon-he
       '@esm2cjs/execa': 6.1.1-cjs.1
@@ -559,6 +630,7 @@ importers:
 
   ../../packages/express:
     specifiers:
+      '@cfdi/complementos': workspace:*
       '@cfdi/csd': workspace:*
       '@cfdi/csf': workspace:*
       '@cfdi/curp': workspace:*
@@ -584,6 +656,7 @@ importers:
       typescript: ^4.8.4
       xslt3: ^2.4.0
     dependencies:
+      '@cfdi/complementos': link:../cfdi/complementos
       '@cfdi/csd': link:../cfdi/csd
       '@cfdi/csf': link:../cfdi/csf
       '@cfdi/curp': link:../cfdi/curp

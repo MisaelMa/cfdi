@@ -42,6 +42,9 @@
       "@cfdi/xml": [
         "./node_modules/@cfdi/xml/src"
       ],
+      "@cfdi/complementos": [
+        "./node_modules/@cfdi/complementos/src"
+      ],
       "@cfdi/csd": [
         "./node_modules/@cfdi/csd/src"
       ],
@@ -50,6 +53,9 @@
       ],
       "@cfdi/catalogos/*": [
         "./node_modules/@cfdi/catalogos/src/*"
+      ],
+      "@cfdi/catalogos": [
+        "./node_modules/@cfdi/catalogos/src"
       ],
       "@cfdi/pdf": [
         "./node_modules/@cfdi/pdf/src"

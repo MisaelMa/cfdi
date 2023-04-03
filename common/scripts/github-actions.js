@@ -26,6 +26,9 @@ function getDependences(scope) {
     xml: {
       xml: true,
     },
+    complementos:{
+      complementos: true,
+    },
     utils: {
       pdf: true,
       utils: true,
@@ -64,7 +67,7 @@ function getDependences(scope) {
 }
 
 function getScopes(commits = []) {
-  const list = ['catalogs','csd','csf','curp','pdf','rfc','utils','xml','openssl','saxon']
+  const list = ['catalogs','csd','csf','curp','pdf','rfc','utils','xml','complementos','openssl','saxon']
   let scopes = {};
   for (var i = 0; i < commits.length; i++) {
     const commit = commits[i];

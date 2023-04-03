@@ -6,6 +6,12 @@
     "nextBump": "patch"
   },
   {
+    "policyName": "complementos",
+    "definitionName": "lockStepVersion",
+    "version": "4.0.5",
+    "nextBump": "patch"
+  },
+  {
     "policyName": "catalogs",
     "definitionName": "lockStepVersion",
     "version": "0.0.12",

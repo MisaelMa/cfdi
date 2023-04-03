@@ -64,6 +64,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/complementos",
+      "projectFolder": "packages/cfdi/complementos",
+      "versionPolicyName": "complementos",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@cfdi/csd",
       "projectFolder": "packages/cfdi/csd",
       "versionPolicyName": "csd",
