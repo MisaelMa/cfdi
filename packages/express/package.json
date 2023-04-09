@@ -19,6 +19,7 @@
     "@cfdi/pdf": "workspace:*",
     "@cfdi/curp": "workspace:*",
     "@cfdi/xml": "workspace:*",
+    "@cfdi/xsd": "workspace:*",
     "@cfdi/complementos": "workspace:*",
     "@cfdi/csd": "workspace:*",
     "@cfdi/csf": "workspace:*",

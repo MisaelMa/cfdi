@@ -12,6 +12,12 @@
     "nextBump": "patch"
   },
   {
+    "policyName": "transform",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.1-beta.0",
+    "nextBump": "prerelease"
+  },
+  {
     "policyName": "catalogs",
     "definitionName": "lockStepVersion",
     "version": "0.0.12",

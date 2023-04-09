@@ -71,6 +71,13 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/xsd",
+      "projectFolder": "packages/cfdi/xsd",
+      "versionPolicyName": "transform",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@cfdi/csd",
       "projectFolder": "packages/cfdi/csd",
       "versionPolicyName": "csd",

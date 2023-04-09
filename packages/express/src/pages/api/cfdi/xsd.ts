@@ -17,6 +17,7 @@ import {
 } from '@cfdi/complementos';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import TransformXsd from '@cfdi/xsd';
 import { XmlIeduAttribute } from '@cfdi/complementos';
 import path from 'path';
 
@@ -114,62 +115,7 @@ export default async function loginRoute(
   };
   const iedu = new Iedu(ieduObject);
   concepto.complemento(iedu);
-  concepto.predial('000121231');
-  concepto.aduana('21  47  3807  8003832');
-  concepto.parte({
-    ClaveProdServ: '51241200',
-    NoIdentificacion: 'IM020',
-    Cantidad: 1,
-    Unidad: 'PIEZA',
-    Descripcion:
-      '25311FM00114 CREMA FUNGICIDA 35ML (ACIDO UNDECILENICO, ARBOL DEL TE VEHICULO EMOLIENTE)',
-    ValorUnitario: '172.50',
-    Importe: '172.50',
-  });
-  concepto.traslado({
-    Base: '369.83',
-    Impuesto: '002',
-    TipoFactor: 'Tasa',
-    TasaOCuota: '0.16',
-    Importe: '59.17',
-  });
-  concepto.traslado({
-    Base: '369.8aaaa3',
-    Impuesto: '002',
-    TipoFactor: 'Tasa',
-    TasaOCuota: '0.16',
-    Importe: '59.17',
-  });
-
-  concepto.retencion({
-    Base: '369.83',
-    Impuesto: '002',
-    TipoFactor: 'Tasa',
-    TasaOCuota: '0.16',
-    Importe: '59.17',
-  });
-
   cfd.concepto(concepto);
-
-  const concepto2 = new Concepts({
-    ClaveProdServ: '001',
-    NoIdentificacion: '1212',
-    Cantidad: '2',
-    ClaveUnidad: 'pieza',
-    Unidad: 'Pieza',
-    Descripcion: 'audifonos',
-    ValorUnitario: '1000',
-    Importe: '2000',
-    Descuento: '00.0',
-    ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto,
-  });
-  concepto2.terceros({
-    RfcACuentaTerceros: 'JUFA7608212V6',
-    NombreACuentaTerceros: 'ADRIANA JUAREZ FERNANDEZ',
-    RegimenFiscalACuentaTerceros: '601',
-    DomicilioFiscalACuentaTerceros: '29133',
-  });
-  cfd.concepto(concepto2);
   const impuesto: Impuestos = new Impuestos({
     TotalImpuestosRetenidos: '1000',
   });
@@ -186,91 +132,14 @@ export default async function loginRoute(
   });
   cfd.impuesto(impuesto);
 
-  const destruccion = new Destruccion({
-    Version: '1.0',
-    NumFolDesVeh: '0221',
-    Serie: '012',
-  });
-  destruccion.InformacionAduanera({
-    Aduana: 'ADUANA',
-    Fecha: '129283',
-    NumPedImp: 'ASAS',
-  });
-  destruccion.VehiculoDestruido({
-    Año: '2019',
-    Marca: 'Nissan',
-    Modelo: 'ASAD',
-    TipooClase: 'ASDSA',
-    NumFolTarjCir: 'ASSA',
-    NumPlacas: 'QRR0',
-  });
-  cfd.complemento(destruccion);
-
-  const pago = new Pago10({
-    Version: '1.0',
-  });
-  const docRela = new Pago10Relacionado();
-  docRela.relacion({
-    IdDocumento: 'hasd',
-    MonedaDR: 'MMX',
-    MetodoDePagoDR: 'PUE',
-  });
-  docRela.relacion({
-    IdDocumento: 'hasd',
-    MonedaDR: 'MMX',
-    MetodoDePagoDR: 'PUE',
-  });
-  const pagoImpuesto = new Pago10Impuestos({
-    TotalImpuestosRetenidos: '12',
-    TotalImpuestosTrasladados: '234z ',
-  });
-  pagoImpuesto.traslados({
-    Importe: '100',
-    Impuesto: '1201',
-    TasaOCuota: '123',
-    TipoFactor: '%',
-  });
-  pagoImpuesto.retenciones({ Importe: '10', Impuesto: '10' });
-
-  const pagoImpuesto2 = new Pago10Impuestos({
-    TotalImpuestosRetenidos: '12',
-    TotalImpuestosTrasladados: '234z ',
-  });
-  pagoImpuesto2.traslados({
-    Importe: '100',
-    Impuesto: '1201',
-    TasaOCuota: '123',
-    TipoFactor: '%',
-  });
-  pagoImpuesto2.retenciones({ Importe: '10', Impuesto: '10' });
-  pago.pago({
-    data: {
-      FechaPago: '2019-11-27T00:00:00',
-      FormaDePagoP: '03',
-      MonedaP: 'MXN',
-      Monto: '5220.00',
-      NumOperacion: '1',
-      RfcEmisorCtaOrd: 'SEQ920520ME3',
-      NomBancoOrdExt: 'BBVA Bancomer',
-      RfcEmisorCtaBen: 'WSI1503194J6',
-      CtaBeneficiario: '0101255614',
-    },
-    relacionado: docRela.getRelations(),
-    impuestos: [pagoImpuesto.getImpuesto(), pagoImpuesto.getImpuesto()],
-  });
-
-  cfd.complemento(pago);
-
   await cfd.certificar(cer);
-  /*  const mio = await cfd.prueba();
-  const saxon = await cfd.getCadenaOriginal(); */
-  await cfd.sellar(key, '12345678a');
+  const saxon = await cfd.getCadenaOriginal();
+  //await cfd.sellar(key, '12345678a');
   const json = await cfd.getJsonCdfi();
   const xml = await cfd.getXmlCdfi();
-  // console.log(xml)
-  // console.log(json)
-  // return json;
 
+  const trs = new TransformXsd(json);
+  const mio = await trs.run();
   // const download = Buffer.from(await Receip.getBase64(), 'base64');
   // res.contentType('application/pdf');
   if (req.query.xml) {
@@ -279,8 +148,8 @@ export default async function loginRoute(
     res.send(xml);
   } else {
     res.send({
-      /*    mio,
-      saxon, */
+      mio,
+      saxon,
       xml: json,
     });
   }

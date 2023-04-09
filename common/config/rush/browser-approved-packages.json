@@ -63,6 +63,10 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "@cfdi/xsd",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@clir/openssl",
       "allowedCategories": [ "libraries" ]
     },
@@ -740,6 +744,22 @@
     },
     {
       "name": "xml-js",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "xsd2json",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "xsd2jsonschema",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "xslt",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "xslt-processor",
       "allowedCategories": [ "libraries" ]
     },
     {
