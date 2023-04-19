@@ -148,9 +148,10 @@ export default async function loginRoute(
     res.send(xml);
   } else {
     res.send({
+      xsd: await trs.xsd(json),
       mio,
       saxon,
-      xml: json,
+      //xml: json,
     });
   }
 }

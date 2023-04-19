@@ -291,6 +291,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "ajv",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "axios",
       "allowedCategories": [ "libraries" ]
     },

@@ -1,5 +1,10 @@
+// @ts-ignore
+
 import { xml2js, xml2json } from 'xml-js';
 
+import Ajv from 'ajv';
+// @ts-ignore
+import { Xsd2JsonSchema } from 'xsd2jsonschema';
 import { readFileSync } from 'fs';
 
 export default class TransformXsd {
@@ -10,6 +15,51 @@ export default class TransformXsd {
     this.xml = xml;
   }
 
+  async xsd(xml: any) {
+    const xsd = readFileSync(
+      '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/xsd/src/files/cfdv40.xsd',
+      'utf-8'
+    );
+    console.log(Xsd2JsonSchema);
+    const options = { indent: '  ',noRefs: true };
+    const xs2js = new Xsd2JsonSchema();
+
+    const convertedSchemas = xs2js.processAllSchemas({
+      schemas: { 'hello_world.xsd': xsd },
+
+    });
+    const jsonSchema = convertedSchemas['hello_world.xsd'].getJsonSchema();
+
+    const ajv = new Ajv(); // options can be passed, e.g. {allErrors: true}
+
+    const schema3 = {
+      type: 'object',
+      properties: {
+        foo: { type: 'integer' },
+        bar: { type: 'string' },
+      },
+      required: ['foo'],
+      additionalProperties: false,
+    };
+
+    const data = {
+      foo: 1,
+      bar: 'abc',
+    };
+
+    const validate = ajv.compile(jsonSchema);
+
+    const valid = validate(xml);
+
+    var optionsxml = { ignoreComment: true, alwaysChildren: true };
+    const schema = await xml2js(xsd, optionsxml).elements[0].elements[2]
+      .elements[1].elements;
+    return {
+      schema,
+      jsonSchema,
+      valid,
+    };
+  }
   async run() {
     const rear = await this.obtenerValores(this.xml['cfdi:Comprobante']);
     const xsd = readFileSync(
