@@ -23,7 +23,7 @@ import {
   Tpe,
   ValesDeDespensa,
   VehiculoUsado,
-} from '../../complements';
+} from '../..';
 import {
   XmlAerolineas,
   XmlCartaPorte,
@@ -52,7 +52,7 @@ import {
   XmlVehiculousado,
 } from '../complements';
 
-import { Complemento } from '../../complements/Complemento';
+import { Complemento } from '../../Complemento';
 
 export interface AnyKey {
   [key: string]: any;

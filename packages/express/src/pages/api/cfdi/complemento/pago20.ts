@@ -1,7 +1,7 @@
 import { CFDI, CFDIAttributes, Emisor, Receptor, Relacionado } from '@cfdi/xml';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { Pago20 } from '@cfdi/complementos';
+import { Pago20, Pago } from '@cfdi/complementos/4.0/pago20';
 import path from 'path';
 
 export default async function loginRoute(
@@ -76,6 +76,19 @@ export default async function loginRoute(
   cfd.receptor(receptor);
 
   const pago20 = new Pago20();
+  const pago = Pago.getInstance();
+  pago.setAttribute({
+    FechaPago: '2019-11-27T00:00:00',
+    FormaDePagoP: '03',
+    MonedaP: 'MXN',
+    Monto: '5220.00',
+    NumOperacion: '1',
+    RfcEmisorCtaOrd: 'SEQ920520ME3',
+    NomBancoOrdExt: 'BBVA Bancomer',
+    RfcEmisorCtaBen: 'WSI1503194J6',
+    CtaBeneficiario: '0101255614',
+  });
+  pago20.pago(pago);
   const v = pago20.getComplement();
   console.log(v.key);
 

@@ -45,6 +45,9 @@
       "@cfdi/complementos": [
         "./node_modules/@cfdi/complementos/src"
       ],
+      "@cfdi/complementos/*": [
+        "./node_modules/@cfdi/complementos/src/*"
+      ],
       "@cfdi/csd": [
         "./node_modules/@cfdi/csd/src"
       ],
