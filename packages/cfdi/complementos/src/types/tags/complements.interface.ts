@@ -1,56 +1,58 @@
 import {
-  RegistroFiscal,
+  Aerolineas,
   Cce11,
   ConsumoDeCombustibles11,
   Decreto,
-  Ine,
-  Iedu,
-  Pago10,
+  Destruccion,
+  Divisas,
   Donat,
-  LeyendaFisc,
-  PagoEnEspecie,
-  Spei,
-  ServicioParcial,
-  VehiculoUsado,
   Gceh,
+  Iedu,
   Ieeh,
   Implocal,
-  Pfic,
-  Tfd,
-  Aerolineas,
-  Destruccion,
+  Ine,
+  LeyendaFisc,
   ObrasArte,
-  ValesDeDespensa,
-  Divisas,
+  Pago10,
+  PagoEnEspecie,
+  Pfic,
+  RegistroFiscal,
+  ServicioParcial,
+  Spei,
+  Tfd,
   Tpe,
+  ValesDeDespensa,
+  VehiculoUsado,
 } from '../../complements';
 import {
-  XmlIne,
-  XmlSpei,
-  XmlPagoenespecie,
-  XmlVehiculousado,
-  XmlServicioparcial,
-  XmlValesDeDespensa,
-  XmlObrasarte,
-  XmlTpe,
-  XmlDivisas,
-  XmlCartaPorte,
-  XmlLeyendasFiscales,
-  XmlIeeh,
-  XmlGceh,
-  XmlImplocal,
-  XmlPfic,
-  XmlTfd,
-  XmlIedu,
-  XmlRegistrofiscal,
-  XmlDonat,
   XmlAerolineas,
-  XmlPagos10,
+  XmlCartaPorte,
   XmlCce11,
   XmlConsumodecombustibles,
   XmlDecreto,
   XmlDestruccion,
+  XmlDivisas,
+  XmlDonat,
+  XmlGceh,
+  XmlIedu,
+  XmlIeeh,
+  XmlImplocal,
+  XmlIne,
+  XmlLeyendasFiscales,
+  XmlObrasarte,
+  XmlPagoenespecie,
+  XmlPagos10,
+  XmlPfic,
+  XmlRegistrofiscal,
+  XmlServicioparcial,
+  XmlSpei,
+  XmlTfd,
+  XmlTpe,
+  XmlValesDeDespensa,
+  XmlVehiculousado,
 } from '../complements';
+
+import { Complemento } from '../../complements/Complemento';
 
 export interface AnyKey {
   [key: string]: any;
@@ -148,8 +150,9 @@ export declare type ComlementType =
   | Gceh
   | Implocal
   | Pfic
-  | Tfd;
-export declare type ComplementTypeXml =
+  | Tfd
+  | Complemento;
+export declare type ComplementTypeXml<T> =
   | XmlAerolineas
   | XmlCce11
   | XmlConsumodecombustibles
@@ -174,11 +177,12 @@ export declare type ComplementTypeXml =
   | XmlImplocal
   | XmlPfic
   | XmlTfd
-  | XmlCartaPorte;
+  | XmlCartaPorte
+  | T;
 export declare type ComlementTypeConcept = Iedu;
 
-export interface ComplementsReturn extends ComplementProperties {
-  complement: ComplementTypeXml;
+export interface ComplementsReturn<T = any> extends ComplementProperties {
+  complement: ComplementTypeXml<T>;
 }
 
 export interface ComplementProperties {

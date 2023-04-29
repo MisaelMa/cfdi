@@ -1,6 +1,6 @@
 // @ts-ignore
 
-import { xml2js, xml2json } from 'xml-js';
+import { js2xml, xml2js } from 'xml-js';
 
 import Ajv from 'ajv';
 // @ts-ignore
@@ -21,43 +21,37 @@ export default class TransformXsd {
       'utf-8'
     );
     console.log(Xsd2JsonSchema);
-    const options = { indent: '  ',noRefs: true };
+
+    var optionsxml = { ignoreComment: true, alwaysChildren: true };
+    const schema = await xml2js(
+      xsd,
+      optionsxml
+    ).elements[0].elements[2].elements[1].elements.filter(
+      (x) => x.name !== 'xs:sequence'
+    );
+
+    const optionsc = { compact: true, ignoreComment: true, spaces: 4 };
+    const cfdi = await js2xml(schema, optionsc);
+
+    const options = { indent: '  ', noRefs: true };
     const xs2js = new Xsd2JsonSchema();
 
     const convertedSchemas = xs2js.processAllSchemas({
-      schemas: { 'hello_world.xsd': xsd },
-
+      schemas: { 'hello_world.xsd': cfdi },
     });
     const jsonSchema = convertedSchemas['hello_world.xsd'].getJsonSchema();
 
     const ajv = new Ajv(); // options can be passed, e.g. {allErrors: true}
 
-    const schema3 = {
-      type: 'object',
-      properties: {
-        foo: { type: 'integer' },
-        bar: { type: 'string' },
-      },
-      required: ['foo'],
-      additionalProperties: false,
-    };
+    //const validate = ajv.compile(jsonSchema);
 
-    const data = {
-      foo: 1,
-      bar: 'abc',
-    };
+    //const valid = validate(xml);
 
-    const validate = ajv.compile(jsonSchema);
-
-    const valid = validate(xml);
-
-    var optionsxml = { ignoreComment: true, alwaysChildren: true };
-    const schema = await xml2js(xsd, optionsxml).elements[0].elements[2]
-      .elements[1].elements;
     return {
       schema,
       jsonSchema,
-      valid,
+      cfdi,
+      //valid,
     };
   }
   async run() {
