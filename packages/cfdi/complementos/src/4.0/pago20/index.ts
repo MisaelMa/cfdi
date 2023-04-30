@@ -1,9 +1,9 @@
-import { Pago } from './Pago';
 import { Pago20 } from './Pago20';
-import { PagoImpuestosP } from './Pago20Impuestos';
-import { PagoRelacionado } from './Pago20Relacionado';
+import { Pago20ImpuestosP } from './Pago20Impuestos';
+import { Pago20Relacionado } from './Pago20Relacionado';
+import { Pagos20 } from './Pagos20';
 
-export { PagoRelacionado };
-export { PagoImpuestosP };
-export { Pago20, Pago };
-export default Pago20;
+export { Pago20Relacionado };
+export { Pago20ImpuestosP };
+export { Pago20, Pagos20 };
+export default Pagos20;

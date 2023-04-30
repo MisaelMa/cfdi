@@ -1,55 +1,43 @@
-import {
-  XmlPagos20,
-  XmlPagos20Attributes,
-  XmlPagos20TotalesAttributes,
-} from './types/pago20.interface';
+import { XmlPago20, XmlPago20Attributes } from './types/pago20.interface';
 
-import { Complemento } from '../../Complemento';
-import { Pago } from './Pago';
+import { Pago20ImpuestosP } from './Pago20Impuestos';
+import { Pago20Relacionado } from './Pago20Relacionado';
 
-/**
- *
- */
-const xmlns = 'http://www.sat.gob.mx/Pagos20';
-const xsd = 'http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos20.xsd';
+export class Pago20 {
+  private static instance: Pago20;
 
-export class Pago20 extends Complemento<XmlPagos20> {
-  public complemento: XmlPagos20 = {} as XmlPagos20;
-
-  /**
-   *constructor
-   *
-   * @param attributes
-   * XmlPagos10Attributes
-   */
-  constructor(attributes: XmlPagos20Attributes = { Version: '2.0' }) {
-    super({ key: 'pago20:Pagos', xmlns, xsd });
-    this.complemento._attributes = attributes;
+  private pago: XmlPago20 = {} as XmlPago20;
+  constructor(data?: XmlPago20Attributes) {
+    this.pago  = {} as XmlPago20;
+    if (data) {
+      this.pago._attributes = data;
+    }
+  }
+  static getInstance(data?: XmlPago20Attributes): Pago20 {
+    if (!Pago20.instance) {
+      Pago20.instance = new Pago20(data);
+    }
+    return Pago20.instance;
   }
 
-  totales(total: XmlPagos20TotalesAttributes): void {
-    if (!this.complemento['pago20:Totales']) {
-      this.complemento['pago20:Totales'] = [];
-    }
-
-    this.complemento['pago20:Totales'].push({ _attributes: total });
+  setAttribute(data: XmlPago20Attributes) {
+    this.pago._attributes = data;
   }
-  /**
-   *pago
-   *
-   * @param pago
-   * XmlPago10Attributes
-   * @param pago.data
-   * XmlPago10Attributes
-   * @param pago.relacionado
-   * XmlDoctoRelacionado
-   * @param pago.impuestos
-   * XmlPago10Impuesto
-   */
-  setPago(pago: Pago): void {
-    if (!this.complemento['pago20:Pago']) {
-      this.complemento['pago20:Pago'] = [];
+
+  doctoRelacionado(documents: Pago20Relacionado) {
+    if (!this.pago['pago20:DoctoRelacionado']) {
+      this.pago['pago20:DoctoRelacionado'] = [];
     }
-    this.complemento['pago20:Pago'].push(pago.getPago());
+    this.pago['pago20:DoctoRelacionado'].push(documents.getRelation())
+  }
+  setImpuestosP(impuestos: Pago20ImpuestosP) {
+    if (!this.pago['pago20:ImpuestosP'] || this.pago['pago20:ImpuestosP']) {
+      this.pago['pago20:ImpuestosP'] = [];
+    }
+    this.pago['pago20:ImpuestosP'].push(impuestos.getImpuestosP());
+  }
+
+  getPago() {
+    return this.pago;
   }
 }

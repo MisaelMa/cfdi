@@ -7,7 +7,7 @@ import {
 /**
  *
  */
-export class PagoImpuestosP {
+export class Pago20ImpuestosP {
   private impuesto: XmlPago20ImpuestoP = {} as XmlPago20ImpuestoP;
 
   /**
@@ -24,7 +24,7 @@ export class PagoImpuestosP {
    * @param data
    * XmlPagoRetencionAttributes
    */
-  retenciones(data: XmlPagoRetencionPAttributes): void {
+  setRetencionesP(data: XmlPagoRetencionPAttributes): void {
     if (!this.impuesto['pago20:RetencionesP']) {
       this.impuesto['pago20:RetencionesP'] = {
         'pago20:RetencionP': [],
@@ -41,7 +41,7 @@ export class PagoImpuestosP {
    * @param data
    * XmlPagoTranladoAttributes
    */
-  traslados(data: XmlPagoTranladoPAttributes): void {
+  setTrasladosP(data: XmlPagoTranladoPAttributes): void {
     if (!this.impuesto['pago20:TrasladosP']) {
       this.impuesto['pago20:TrasladosP'] = {
         'pago20:TrasladoP': [],
@@ -55,7 +55,7 @@ export class PagoImpuestosP {
   /**
    *getImpuesto
    */
-  getImpuestos(): XmlPago20ImpuestoP {
+  getImpuestosP(): XmlPago20ImpuestoP {
     return this.impuesto;
   }
 }

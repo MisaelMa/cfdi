@@ -2,22 +2,22 @@ import {
   XmlDoctoRelAttributes,
   XmlDoctoRelacionado,
   XmlImpuestosDR,
-  XmlTrasladoDRAttributes,
   XmlRetencionDRAttributes,
+  XmlTrasladoDRAttributes,
 } from './types/pago20.interface';
 
 /**
  *
  */
-export class PagoRelacionado {
-  private doctoRelacionado: XmlDoctoRelacionado[] = [];
-  private static instance: PagoRelacionado;
+export class Pago20Relacionado {
+  private doctoRelacionado: XmlDoctoRelacionado = {} as XmlDoctoRelacionado
+  private static instance: Pago20Relacionado;
 
-  static getInstance(): PagoRelacionado {
-    if (!PagoRelacionado.instance) {
-      PagoRelacionado.instance = new PagoRelacionado();
+  static getInstance(): Pago20Relacionado {
+    if (!Pago20Relacionado.instance) {
+      Pago20Relacionado.instance = new Pago20Relacionado();
     }
-    return PagoRelacionado.instance;
+    return Pago20Relacionado.instance;
   }
   /**
    *relacion
@@ -67,13 +67,13 @@ export class PagoRelacionado {
         }
       }
     }
-    this.doctoRelacionado.push(docR);
+    this.doctoRelacionado = docR;
   }
 
   /**
    *getRelations
    */
-  getRelations(): XmlDoctoRelacionado[] {
+  getRelation(): XmlDoctoRelacionado {
     return this.doctoRelacionado;
   }
 }

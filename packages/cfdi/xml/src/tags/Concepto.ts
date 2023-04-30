@@ -4,10 +4,10 @@ import {
   XmlComplementsConcepts,
 } from '@cfdi/complementos';
 import {
+  XmlConceptParteAttributes,
   XmlConceptoAttributes,
   XmlConceptoProperties,
   XmlConceptoTercerosAttributes,
-  XmlConceptParteAttributes,
   XmlTranRentAttributesProperties,
 } from '../types';
 
@@ -16,7 +16,7 @@ import { Impuestos } from './Impuestos';
 /**
  *
  */
-export class Concepts {
+export class Concepto {
   // private conceptComplemnets: any = [
   //   {
   //     key: 'aerolineas:Aerolineas',
@@ -40,7 +40,8 @@ export class Concepts {
 
   private existComplemnt = false;
 
-  private complementProperties: ComplementProperties = {} as ComplementProperties;
+  private complementProperties: ComplementProperties =
+    {} as ComplementProperties;
 
   private concepto: XmlConceptoProperties = {} as XmlConceptoProperties;
 
@@ -68,13 +69,8 @@ export class Concepts {
       this.concepto['cfdi:ComplementoConcepto'] = {} as XmlComplementsConcepts;
     }
     this.existComplemnt = true;
-    const {
-      complement,
-      key,
-      schemaLocation,
-      xmlns,
-      xmlnskey,
-    } = data.getComplement();
+    const { complement, key, schemaLocation, xmlns, xmlnskey } =
+      data.getComplement();
     this.complementProperties.key = key;
     this.complementProperties.xmlns = xmlns;
     this.complementProperties.xmlnskey = xmlnskey;
@@ -88,7 +84,7 @@ export class Concepts {
    * @param cuenta
    * XmlConceptoTercerosAttributes
    */
-  terceros(cuenta: XmlConceptoTercerosAttributes): Concepts {
+  terceros(cuenta: XmlConceptoTercerosAttributes): Concepto {
     this.concepto['cfdi:ACuentaTerceros'] = {
       _attributes: cuenta,
     };
@@ -101,7 +97,7 @@ export class Concepts {
    * @param cuenta
    * number | string
    */
-  predial(cuenta: number | string): Concepts {
+  predial(cuenta: number | string): Concepto {
     this.concepto['cfdi:CuentaPredial'] = {
       _attributes: {
         Numero: cuenta,
@@ -116,7 +112,7 @@ export class Concepts {
    * @param parte
    * XmlConceptParteAttributes
    */
-  parte(parte: XmlConceptParteAttributes): Concepts {
+  parte(parte: XmlConceptParteAttributes): Concepto {
     this.concepto['cfdi:Parte'] = {
       _attributes: parte,
     };
@@ -129,7 +125,7 @@ export class Concepts {
    * @param pedimento
    * number | string
    */
-  aduana(pedimento: number | string): Concepts {
+  aduana(pedimento: number | string): Concepto {
     this.concepto['cfdi:InformacionAduanera'] = {
       _attributes: {
         NumeroPedimento: pedimento,
@@ -146,10 +142,9 @@ export class Concepts {
    */
   traslado(
     traslado: XmlTranRentAttributesProperties & { Base: string | number }
-  ): Concepts {
-    this.concepto['cfdi:Impuestos'] = this.impuesto.traslados(
-      traslado
-    ).impuesto; // = traslado;
+  ): Concepto {
+    this.concepto['cfdi:Impuestos'] =
+      this.impuesto.traslados(traslado).impuesto; // = traslado;
     return this;
   }
 
@@ -165,10 +160,9 @@ export class Concepts {
       TasaOCuota: string | number;
       Importe: string | number;
     }
-  ): Concepts {
-    this.concepto['cfdi:Impuestos'] = this.impuesto.retenciones(
-      retencion
-    ).impuesto; // = traslado;
+  ): Concepto {
+    this.concepto['cfdi:Impuestos'] =
+      this.impuesto.retenciones(retencion).impuesto; // = traslado;
     return this;
   }
 

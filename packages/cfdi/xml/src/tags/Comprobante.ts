@@ -10,9 +10,9 @@ import {
   XmlnsLinks,
   XsltSheet,
 } from '../types';
-import { XmlComplements, ComlementType } from '@cfdi/complementos';
+import { ComlementType, XmlComplements } from '@cfdi/complementos';
 
-import { Concepts } from './Concepts';
+import { Concepto } from './Concepto';
 import { Emisor } from './Emisor';
 import { Impuestos } from './Impuestos';
 import { Receptor } from './Receptor';
@@ -199,7 +199,7 @@ export class Comprobante {
    * @param concept
    * Concepts
    */
-  public concepto(concept: Concepts): void {
+  public concepto(concept: Concepto): void {
     if (concept.isComplement()) {
       const properties = concept.getComplementProperties();
       this.addXmlns(properties.xmlnskey, properties.xmlns);
