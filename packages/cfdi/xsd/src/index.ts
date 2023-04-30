@@ -27,7 +27,7 @@ export default class TransformXsd {
       xsd,
       optionsxml
     ).elements[0].elements[2].elements[1].elements.filter(
-      (x) => x.name !== 'xs:sequence'
+      (x: any) => x.name !== 'xs:sequence'
     );
 
     const optionsc = { compact: true, ignoreComment: true, spaces: 4 };
