@@ -1,6 +1,7 @@
 import {
   CFDI,
   CFDIAttributes,
+  Concepto,
   Concepts,
   Emisor,
   Impuestos,
@@ -91,7 +92,7 @@ export default async function loginRoute(
   });
   cfd.receptor(receptor);
 
-  const concepto = new Concepts({
+  const concepto = new Concepto({
     ClaveProdServ: '001',
     NoIdentificacion: '1212',
     Cantidad: '2',

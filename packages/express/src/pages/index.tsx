@@ -1,9 +1,5 @@
 import * as React from 'react';
 
 export default function Home() {
-  return (
-    <div>
-aa
-    </div>
-  );
+  return <div></div>;
 }

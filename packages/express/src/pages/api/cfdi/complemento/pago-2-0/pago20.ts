@@ -1,12 +1,12 @@
 import { CFDI, CFDIAttributes, Emisor, Receptor, Relacionado } from '@cfdi/xml';
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import {
   Pago20,
-  Pago,
-  PagoRelacionado,
-  PagoImpuestosP,
+  Pago20ImpuestosP,
+  Pago20Relacionado,
+  Pagos20,
 } from '@cfdi/complementos/4.0/pago20';
+
 import path from 'path';
 
 export default async function loginRoute(
@@ -14,7 +14,18 @@ export default async function loginRoute(
   res: NextApiResponse
 ) {
   const files = path.join(
-    path.resolve(__dirname, '..', '..', '..', '..', '..', '..', '..', 'files')
+    path.resolve(
+      __dirname,
+      '..',
+      '..',
+      '..',
+      '..',
+      '..',
+      '..',
+      '..',
+      '..',
+      'files'
+    )
   );
   console.log('ruta', files);
 
@@ -80,20 +91,20 @@ export default async function loginRoute(
   });
   cfd.receptor(receptor);
 
-  const pago20 = new Pago20();
-  pago20.totales({
+  const pago20 = new Pagos20();
+  pago20.setTotales({
     TotalTrasladosBaseIVA16: '5843.11',
     TotalTrasladosImpuestoIVA16: '934.90',
     TotalTrasladosBaseIVA0: '0.00',
     MontoTotalPagos: '6778.00',
   });
-  pago20.totales({
+  pago20.setTotales({
     TotalTrasladosBaseIVA16: '5843.11',
     TotalTrasladosImpuestoIVA16: '934.90',
     TotalTrasladosBaseIVA0: '0.00',
     MontoTotalPagos: '6778.00',
   });
-  const pago = Pago.getInstance();
+  const pago = Pago20.getInstance();
   pago.setAttribute({
     FechaPago: '2019-11-27T00:00:00',
     FormaDePagoP: '03',
@@ -108,7 +119,7 @@ export default async function loginRoute(
 
   pago20.setPago(pago);
 
-  const docRela = new PagoRelacionado();
+  const docRela = new Pago20Relacionado();
   docRela.setRelacion({
     doc: {
       IdDocumento: 'hasd',
@@ -159,21 +170,21 @@ export default async function loginRoute(
 
   pago.doctoRelacionado(docRela);
 
-  const impuestosP = new PagoImpuestosP();
-  impuestosP.retenciones({
+  const impuestosP = new Pago20ImpuestosP();
+  impuestosP.setRetencionesP({
     ImpuestoP: '001',
     ImporteP: '35.00',
   });
-  impuestosP.retenciones({
+  impuestosP.setRetencionesP({
     ImpuestoP: '001',
     ImporteP: '35.00',
   });
-  impuestosP.traslados({
+  impuestosP.setTrasladosP({
     BaseP: '1.00',
     ImpuestoP: '002',
     TipoFactorP: 'Exento',
   });
-  impuestosP.traslados({
+  impuestosP.setTrasladosP({
     BaseP: '1.00',
     ImpuestoP: '002',
     TipoFactorP: 'Tasa',
