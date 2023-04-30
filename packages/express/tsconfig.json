@@ -3,7 +3,9 @@
   "compilerOptions": {
     "preserveSymlinks": true,
     "types": ["node", "jest", "@testing-library/jest-dom"],
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "noUnusedLocals": false
+
   },
   "exclude": ["node_modules"]
 }
