@@ -1,7 +1,12 @@
 import { CFDI, CFDIAttributes, Emisor, Receptor, Relacionado } from '@cfdi/xml';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { Pago20, Pago } from '@cfdi/complementos/4.0/pago20';
+import {
+  Pago20,
+  Pago,
+  PagoRelacionado,
+  PagoImpuestosP,
+} from '@cfdi/complementos/4.0/pago20';
 import path from 'path';
 
 export default async function loginRoute(
@@ -76,6 +81,18 @@ export default async function loginRoute(
   cfd.receptor(receptor);
 
   const pago20 = new Pago20();
+  pago20.totales({
+    TotalTrasladosBaseIVA16: '5843.11',
+    TotalTrasladosImpuestoIVA16: '934.90',
+    TotalTrasladosBaseIVA0: '0.00',
+    MontoTotalPagos: '6778.00',
+  });
+  pago20.totales({
+    TotalTrasladosBaseIVA16: '5843.11',
+    TotalTrasladosImpuestoIVA16: '934.90',
+    TotalTrasladosBaseIVA0: '0.00',
+    MontoTotalPagos: '6778.00',
+  });
   const pago = Pago.getInstance();
   pago.setAttribute({
     FechaPago: '2019-11-27T00:00:00',
@@ -88,10 +105,82 @@ export default async function loginRoute(
     RfcEmisorCtaBen: 'WSI1503194J6',
     CtaBeneficiario: '0101255614',
   });
-  pago20.pago(pago);
-  const v = pago20.getComplement();
-  console.log(v.key);
 
+  pago20.setPago(pago);
+
+  const docRela = new PagoRelacionado();
+  docRela.setRelacion({
+    doc: {
+      IdDocumento: 'hasd',
+      MonedaDR: 'MMX',
+      ImpPagado: '300.00',
+      ImpSaldoAnt: '',
+      ImpSaldoInsoluto: '',
+      NumParcialidad: '1',
+      ObjetoImpDR: '1',
+    },
+    trasladoDR: [
+      {
+        BaseDR: '100.00',
+        ImporteDR: '001',
+        ImpuestoDR: '00.00',
+        TasaOCuotaDR: '0.000000',
+        TipoFactorDR: 'Tasa',
+      },
+      {
+        BaseDR: '100.00',
+        ImporteDR: '001',
+        ImpuestoDR: '00.00',
+        TasaOCuotaDR: '0.000000',
+        TipoFactorDR: 'Tasa',
+      },
+    ],
+    retencionDR: [
+      {
+        BaseDR: '100.00',
+        ImporteDR: '001',
+        ImpuestoDR: '00.00',
+        TasaOCuotaDR: '0.000000',
+        TipoFactorDR: 'Tasa',
+      },
+    ],
+  });
+  docRela.setRelacion({
+    doc: {
+      IdDocumento: 'hasd',
+      MonedaDR: 'MMX',
+      ImpPagado: '300.00',
+      ImpSaldoAnt: '',
+      ImpSaldoInsoluto: '',
+      NumParcialidad: '1',
+      ObjetoImpDR: '1',
+    },
+  });
+
+  pago.doctoRelacionado(docRela);
+
+  const impuestosP = new PagoImpuestosP();
+  impuestosP.retenciones({
+    ImpuestoP: '001',
+    ImporteP: '35.00',
+  });
+  impuestosP.retenciones({
+    ImpuestoP: '001',
+    ImporteP: '35.00',
+  });
+  impuestosP.traslados({
+    BaseP: '1.00',
+    ImpuestoP: '002',
+    TipoFactorP: 'Exento',
+  });
+  impuestosP.traslados({
+    BaseP: '1.00',
+    ImpuestoP: '002',
+    TipoFactorP: 'Tasa',
+    TasaOCuotaP: '0.160000',
+    ImporteP: '0.160000',
+  });
+  pago.setImpuestosP(impuestosP);
   cfd.complemento(pago20);
 
   await cfd.certificar(cer);

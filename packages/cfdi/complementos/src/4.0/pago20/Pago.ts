@@ -1,4 +1,6 @@
-import { XmlPago20, XmlPago20Attributes } from './types/pago10.interface';
+import { PagoImpuestosP } from './Pago20Impuestos';
+import { PagoRelacionado } from './Pago20Relacionado';
+import { XmlPago20, XmlPago20Attributes } from './types/pago20.interface';
 
 export class Pago {
   private static instance: Pago;
@@ -18,6 +20,20 @@ export class Pago {
 
   setAttribute(data: XmlPago20Attributes) {
     this.pago._attributes = data;
+  }
+
+  doctoRelacionado(documents: PagoRelacionado) {
+    if (!this.pago['pago20:DoctoRelacionado']) {
+      this.pago['pago20:DoctoRelacionado'] = [];
+    }
+    this.pago['pago20:DoctoRelacionado'] = documents.getRelations();
+  }
+  setImpuestosP(impuestos: PagoImpuestosP) {
+    if(!this.pago['pago20:ImpuestosP'] || this.pago['pago20:ImpuestosP']){
+      this.pago['pago20:ImpuestosP'] = []
+    }
+    this.pago['pago20:ImpuestosP'].push(impuestos.getImpuestos())
+
   }
 
   getPago() {

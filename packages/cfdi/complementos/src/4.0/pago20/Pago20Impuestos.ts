@@ -1,15 +1,14 @@
 import {
-  XmlPago10Impuesto,
-  XmlPagoImptoAttributes,
-  XmlPagoRetencionAttributes,
-  XmlPagoTranladoAttributes,
-} from '../../../types/complements/pago10.interface';
+  XmlPago20ImpuestoP,
+  XmlPagoRetencionPAttributes,
+  XmlPagoTranladoPAttributes,
+} from './types/pago20.interface';
 
 /**
  *
  */
-export class Pago20Impuestos {
-  private impuesto: XmlPago10Impuesto = {} as XmlPago10Impuesto;
+export class PagoImpuestosP {
+  private impuesto: XmlPago20ImpuestoP = {} as XmlPago20ImpuestoP;
 
   /**
    *constructor
@@ -17,9 +16,7 @@ export class Pago20Impuestos {
    * @param data
    * XmlPagoImptoAttributes
    */
-  constructor(data: XmlPagoImptoAttributes) {
-    this.impuesto._attributes = data;
-  }
+  constructor() {}
 
   /**
    *retenciones
@@ -27,13 +24,13 @@ export class Pago20Impuestos {
    * @param data
    * XmlPagoRetencionAttributes
    */
-  retenciones(data: XmlPagoRetencionAttributes): void {
-    if (!this.impuesto['pago10:Retenciones']) {
-      this.impuesto['pago10:Retenciones'] = {
-        'pago10:Retencion': [],
+  retenciones(data: XmlPagoRetencionPAttributes): void {
+    if (!this.impuesto['pago20:RetencionesP']) {
+      this.impuesto['pago20:RetencionesP'] = {
+        'pago20:RetencionP': [],
       };
     }
-    this.impuesto['pago10:Retenciones']['pago10:Retencion'].push({
+    this.impuesto['pago20:RetencionesP']['pago20:RetencionP'].push({
       _attributes: data,
     });
   }
@@ -44,13 +41,13 @@ export class Pago20Impuestos {
    * @param data
    * XmlPagoTranladoAttributes
    */
-  traslados(data: XmlPagoTranladoAttributes): void {
-    if (!this.impuesto['pago10:Traslados']) {
-      this.impuesto['pago10:Traslados'] = {
-        'pago10:Traslado': [],
+  traslados(data: XmlPagoTranladoPAttributes): void {
+    if (!this.impuesto['pago20:TrasladosP']) {
+      this.impuesto['pago20:TrasladosP'] = {
+        'pago20:TrasladoP': [],
       };
     }
-    this.impuesto['pago10:Traslados']['pago10:Traslado'].push({
+    this.impuesto['pago20:TrasladosP']['pago20:TrasladoP'].push({
       _attributes: data,
     });
   }
@@ -58,7 +55,7 @@ export class Pago20Impuestos {
   /**
    *getImpuesto
    */
-  getImpuesto(): XmlPago10Impuesto {
+  getImpuestos(): XmlPago20ImpuestoP {
     return this.impuesto;
   }
 }
