@@ -113,7 +113,7 @@ export class Comprobante {
    * XmlVersion
    */
   public setAttributesXml(attr: XmlVersion = {} as XmlVersion): void {
-    const { encoding = 'utf-8', version = '1.0' } = attr;
+    const { version = '1.0', encoding = 'utf-8' } = attr;
     this.xml._declaration._attributes = {
       version,
       // eslint-disable-next-line sort-keys
@@ -257,8 +257,8 @@ export class Comprobante {
     this.xml = {
       _declaration: {
         _attributes: {
-          encoding: 'utf-8',
           version: '1.0',
+          encoding: 'utf-8',
         },
       },
     } as XmlCdfi;
