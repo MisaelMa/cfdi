@@ -1,6 +1,11 @@
 # Change Log - @cfdi/complementos
 
-This log was last generated on Fri, 05 May 2023 01:55:03 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 14:50:41 GMT and should not be manually modified.
+
+## 4.0.9
+Fri, 05 May 2023 14:50:41 GMT
+
+_Version update only_
 
 ## 4.0.8
 Fri, 05 May 2023 01:55:03 GMT
