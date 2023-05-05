@@ -49,7 +49,6 @@ import {
 } from '../complements';
 
 import { Complemento } from '../../Complemento';
-import { Pagos20 } from '../../4.0/pago20/types/Pago20.dto';
 import { XmlCartaPorte20 } from '../../4.0/cartaporte20/types/CartaPorte20.xslt';
 import { XmlIedu } from '../../4.0/iedu/type/iedu.xslt';
 import { XmlPagos20 } from '../../4.0/pago20/types/pago20.interface';
@@ -134,7 +133,6 @@ export declare type ComlementType =
   | Decreto
   | Destruccion
   | Ine
-  | Pagos20
   | RegistroFiscal
   | Donat
   | ObrasArte
@@ -159,7 +157,6 @@ export declare type ComplementTypeXml<T> =
   | XmlDecreto
   | XmlDestruccion
   | XmlIne
-  | XmlPagos20
   | XmlRegistrofiscal
   | XmlDonat
   | XmlObrasarte

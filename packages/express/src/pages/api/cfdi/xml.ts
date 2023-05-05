@@ -9,13 +9,7 @@ import {
   Receptor,
   Relacionado,
 } from '@cfdi/xml';
-import {
-  Destruccion,
-  Iedu,
-  Pago10,
-  Pago10Impuestos,
-  Pago10Relacionado,
-} from '@cfdi/complementos';
+import { Destruccion, Iedu } from '@cfdi/complementos';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { XmlIeduAttribute } from '@cfdi/complementos';
@@ -206,61 +200,6 @@ export default async function loginRoute(
     NumPlacas: 'QRR0',
   });
   cfd.complemento(destruccion);
-
-  const pago = new Pago10({
-    Version: '1.0',
-  });
-  const docRela = new Pago10Relacionado();
-  docRela.relacion({
-    IdDocumento: 'hasd',
-    MonedaDR: 'MMX',
-    MetodoDePagoDR: 'PUE',
-  });
-  docRela.relacion({
-    IdDocumento: 'hasd',
-    MonedaDR: 'MMX',
-    MetodoDePagoDR: 'PUE',
-  });
-  const pagoImpuesto = new Pago10Impuestos({
-    TotalImpuestosRetenidos: '12',
-    TotalImpuestosTrasladados: '234z ',
-  });
-  pagoImpuesto.traslados({
-    Importe: '100',
-    Impuesto: '1201',
-    TasaOCuota: '123',
-    TipoFactor: '%',
-  });
-  pagoImpuesto.retenciones({ Importe: '10', Impuesto: '10' });
-
-  const pagoImpuesto2 = new Pago10Impuestos({
-    TotalImpuestosRetenidos: '12',
-    TotalImpuestosTrasladados: '234z ',
-  });
-  pagoImpuesto2.traslados({
-    Importe: '100',
-    Impuesto: '1201',
-    TasaOCuota: '123',
-    TipoFactor: '%',
-  });
-  pagoImpuesto2.retenciones({ Importe: '10', Impuesto: '10' });
-  pago.pago({
-    data: {
-      FechaPago: '2019-11-27T00:00:00',
-      FormaDePagoP: '03',
-      MonedaP: 'MXN',
-      Monto: '5220.00',
-      NumOperacion: '1',
-      RfcEmisorCtaOrd: 'SEQ920520ME3',
-      NomBancoOrdExt: 'BBVA Bancomer',
-      RfcEmisorCtaBen: 'WSI1503194J6',
-      CtaBeneficiario: '0101255614',
-    },
-    relacionado: docRela.getRelations(),
-    impuestos: [pagoImpuesto.getImpuesto(), pagoImpuesto.getImpuesto()],
-  });
-
-  cfd.complemento(pago);
 
   await cfd.certificar(cer);
   /*  const mio = await cfd.prueba();
