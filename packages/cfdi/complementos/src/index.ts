@@ -34,4 +34,5 @@ export * from './3.3/ventavehiculos';
 
 // migracion
 export * from './4.0/pago20';
+export * from './4.0/cartaporte20';
 export * from './types';
