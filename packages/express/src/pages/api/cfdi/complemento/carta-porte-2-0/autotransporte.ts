@@ -10,6 +10,7 @@ import {
   CartaPorte20,
   CtaPrt20Mercancias,
   CtaPrt20Ubicacion,
+  CtaPrt20FiguraTransporte,
 } from '@cfdi/complementos/4.0/cartaporte20';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -330,6 +331,39 @@ export default async function loginRoute(
   });
 
   cartaPorte20.setMercancias(mercancias);
+
+  const figuraT = new CtaPrt20FiguraTransporte();
+  figuraT.setAttributes({ TipoFigura: '1' });
+  figuraT.setPartesTransporte({ ParteTransporte: '1' });
+  figuraT.setPartesTransporte({ ParteTransporte: '1.1' });
+  const figuraT2 = new CtaPrt20FiguraTransporte();
+  figuraT2.setAttributes({ TipoFigura: '2' });
+  figuraT2.setPartesTransporte({ ParteTransporte: '2' });
+  figuraT2.setDomicilio({
+    Calle: 'calle',
+    NumeroExterior: '211',
+    Colonia: '0347',
+    Localidad: '23',
+    Referencia: 'casa blanca 1',
+    Municipio: '004',
+    Estado: 'COA',
+    Pais: 'MEX',
+    CodigoPostal: '25350',
+  });
+  figuraT2.setDomicilio({
+    Calle: 'calle',
+    NumeroExterior: '211',
+    Colonia: '0347',
+    Localidad: '23',
+    Referencia: 'casa blanca 1',
+    Municipio: '004',
+    Estado: 'COA',
+    Pais: 'MEX',
+    CodigoPostal: '25350',
+  });
+  cartaPorte20.setFiguraTransporte(figuraT);
+  cartaPorte20.setFiguraTransporte(figuraT2);
+
   cfd.complemento(cartaPorte20);
 
   await cfd.certificar(cer);

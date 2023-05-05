@@ -7,6 +7,7 @@ import { Complemento } from '../../Complemento';
 import { ComplementsReturn } from '../../types/tags';
 import { CtaPrt20Mercancias } from './CtaPrt20Mercancias';
 import { CtaPrt20Ubicacion } from './CtaPrt20Ubicacion';
+import { CtaPrt20FiguraTransporte } from './CtaPrt20FiguraTransporte';
 
 /**
  *
@@ -52,5 +53,16 @@ export class CartaPorte20 extends Complemento<XmlCartaPorte20> {
 
   setMercancias(mercancia: CtaPrt20Mercancias) {
     this.complemento['cartaporte20:Mercancias'] = mercancia.getMercancias();
+  }
+
+  setFiguraTransporte(ft: CtaPrt20FiguraTransporte) {
+    if (!this.complemento['cartaporte20:FiguraTransporte']) {
+      this.complemento['cartaporte20:FiguraTransporte'] = {
+        'cartaporte20:TiposFigura': [],
+      };
+    }
+    this.complemento['cartaporte20:FiguraTransporte'][
+      'cartaporte20:TiposFigura'
+    ].push(ft.getFiguraTransporte());
   }
 }

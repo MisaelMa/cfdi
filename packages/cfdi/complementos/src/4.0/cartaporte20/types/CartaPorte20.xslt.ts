@@ -4,18 +4,36 @@ export interface XmlCartaPorte20 {
   _attributes?: XmlCartaPorte20Attribute;
   'cartaporte20:Ubicaciones': CP20Ubicaciones;
   'cartaporte20:Mercancias': CP20Mercancias;
-  'cartaporte20:FiguraTransporte': CPFTransporte;
+  'cartaporte20:FiguraTransporte': CP20FTransporte;
 }
 export interface CP20Ubicaciones {
   'cartaporte20:Ubicacion': CP20Ubicacion[];
 }
 
-export interface CPFTransporte {
-  _attributes?: XmlCPFTransporteAttribute;
-  'cartaporte:Operadores': CPFTOperadores;
-  'cartaporte:Propietario': CPPropietario[];
-  'cartaporte:Arrendatario': CPArrendatario[];
-  'cartaporte:Notificado': CPNotificado[];
+export interface CP20FTransporte {
+  'cartaporte20:TiposFigura': CP20TiposFigura[];
+}
+
+export interface CP20TiposFigura {
+  _attributes: CP20TiposFiguraAttr;
+  'cartaporte20:PartesTransporte': PartesTransporte[];
+  'cartaporte20:Domicilio': CPDomicilio[];
+}
+
+export interface PartesTransporte {
+  _attributes: PartesTransporteAttr;
+}
+export interface PartesTransporteAttr {
+  ParteTransporte: string;
+}
+
+export interface CP20TiposFiguraAttr {
+  TipoFigura: string;
+  RFCFigura?: string;
+  NumLicencia?: string;
+  NombreFigura?: string;
+  NumRegIdTribFigura?: string;
+  ResidenciaFiscalFigura?: string;
 }
 
 export interface CPNotificado {
