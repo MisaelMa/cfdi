@@ -26,6 +26,9 @@ function getDependences(scope) {
     xml: {
       xml: true,
     },
+    'only-complementos':{
+      complementos: true,
+    },
     complementos:{
       complementos: true,
       xml: true

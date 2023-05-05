@@ -22,6 +22,7 @@ module.exports = {
             'utils',
             'xml',
             'complementos',
+            'only-complementos',
             'openssl',
             'saxon',
             'publish'
