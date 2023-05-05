@@ -13,7 +13,6 @@ import {
   Ine,
   LeyendaFisc,
   ObrasArte,
-  Pago10,
   PagoEnEspecie,
   Pfic,
   RegistroFiscal,
@@ -26,7 +25,6 @@ import {
 } from '../..';
 import {
   XmlAerolineas,
-  XmlCartaPorte,
   XmlCce11,
   XmlConsumodecombustibles,
   XmlDecreto,
@@ -34,14 +32,12 @@ import {
   XmlDivisas,
   XmlDonat,
   XmlGceh,
-  XmlIedu,
   XmlIeeh,
   XmlImplocal,
   XmlIne,
   XmlLeyendasFiscales,
   XmlObrasarte,
   XmlPagoenespecie,
-  XmlPagos10,
   XmlPfic,
   XmlRegistrofiscal,
   XmlServicioparcial,
@@ -53,6 +49,10 @@ import {
 } from '../complements';
 
 import { Complemento } from '../../Complemento';
+import { Pagos20 } from '../../4.0/pago20/types/Pago20.dto';
+import { XmlCartaPorte20 } from '../../4.0/cartaporte20/types/CartaPorte20.xslt';
+import { XmlIedu } from '../../4.0/iedu/type/iedu.xslt';
+import { XmlPagos20 } from '../../4.0/pago20/types/pago20.interface';
 
 export interface AnyKey {
   [key: string]: any;
@@ -109,7 +109,7 @@ export interface XmlComplements extends AnyKey {
   // https://www.sat.gob.mx/consultas/92764/comprobante-de-recepcion-de-pagos
   // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/recepcion_de_pagos.htm
   // http://omawww.sat.gob.mx/tramitesyservicios/Paginas/documentos/Pagos10.pdf
-  'pago10:Pagos'?: XmlPagos10;
+  'pago20:Pagos'?: XmlPagos20;
   // https://www.sat.gob.mx/consulta/50282/conoce-los-complementos-para-consorcios-en-materia-de-hidrocarburos
   'gceh:GastosHidrocarburos'?: any;
   'ieeh:IngresosHidrocarburos'?: any;
@@ -134,7 +134,7 @@ export declare type ComlementType =
   | Decreto
   | Destruccion
   | Ine
-  | Pago10
+  | Pagos20
   | RegistroFiscal
   | Donat
   | ObrasArte
@@ -159,8 +159,7 @@ export declare type ComplementTypeXml<T> =
   | XmlDecreto
   | XmlDestruccion
   | XmlIne
-  | XmlPagos10
-  | XmlIedu
+  | XmlPagos20
   | XmlRegistrofiscal
   | XmlDonat
   | XmlObrasarte
@@ -177,7 +176,7 @@ export declare type ComplementTypeXml<T> =
   | XmlImplocal
   | XmlPfic
   | XmlTfd
-  | XmlCartaPorte
+  | XmlCartaPorte20
   | T;
 export declare type ComlementTypeConcept = Iedu;
 

@@ -10,10 +10,9 @@ export * from './3.3/divisas';
 export * from './3.3/donat';
 export * from './3.3/ecc11';
 export * from './3.3/hidrocarburos';
-export * from './3.3/iedu';
+
 export * from './3.3/implocal';
 export * from './3.3/ine';
-export * from './3.3/pago10';
 export * from './3.3/tfd';
 
 //
@@ -35,4 +34,5 @@ export * from './3.3/ventavehiculos';
 // migracion
 export * from './4.0/pago20';
 export * from './4.0/cartaporte20';
+export * from './4.0/iedu';
 export * from './types';

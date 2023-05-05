@@ -15,13 +15,10 @@ export * from './valesdedespensa/valesdedespensa.com';
 export * from './vehiculousado/vehiculousado.com';
 
 export * from './aerolineas.interface';
-export * from './cartaporte.interface';
 export * from './cce11.interface';
 export * from './consumodecombustibles.interface';
 export * from './decreto.interface';
 export * from './destruccion.interface';
 export * from './donatarias.interface';
-export * from './iedu.interface';
 export * from './Nomina12.interface';
-export * from './pago10.interface';
 export * from './registrofiscal.interface';
