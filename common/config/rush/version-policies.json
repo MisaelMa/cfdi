@@ -2,13 +2,13 @@
   {
     "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "4.0.7",
+    "version": "4.0.8",
     "nextBump": "patch"
   },
   {
     "policyName": "complementos",
     "definitionName": "lockStepVersion",
-    "version": "4.0.7",
+    "version": "4.0.8",
     "nextBump": "patch"
   },
   {
