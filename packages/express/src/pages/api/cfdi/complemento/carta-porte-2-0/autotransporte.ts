@@ -8,7 +8,7 @@ import {
 } from '@cfdi/xml';
 import {
   CartaPorte20,
-  CtaPrt20Mercancia,
+  CtaPrt20Mercancias,
   CtaPrt20Ubicacion,
 } from '@cfdi/complementos/4.0/cartaporte20';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -169,14 +169,144 @@ export default async function loginRoute(
   });
   cartaPorte20.setUbicacion(ubicacion3);
 
-  const mercancia = new CtaPrt20Mercancia();
-  mercancia.setAttributes({
+  const mercancias = new CtaPrt20Mercancias();
+  mercancias.setAttributes({
     PesoBrutoTotal: '2.0',
     UnidadPeso: 'XBX',
     NumTotalMercancias: '2',
   });
-  mercancia.setMercancia({
+
+  const mercancia1 = mercancias.setMercancia({
     BienesTransp: '11121900',
+    Descripcion: 'Productos de perfumería',
+    Cantidad: '1.0',
+    ClaveUnidad: 'XBX',
+    PesoEnKg: '1.0',
+    MaterialPeligroso: 'Sí',
+    CveMaterialPeligroso: '1266',
+    Embalaje: '4H2',
+  });
+  mercancia1.setPedimentos({ Pedimento: '1' });
+  mercancia1.setPedimentos({ Pedimento: '2' });
+  mercancia1.setGuiaIdentificacion({
+    DescripGuiaIdentificacion: '143',
+    NumeroGuiaIdentificacion: '2213',
+    PesoGuiaIdentificacion: 'NZ2332',
+  });
+  mercancia1.setGuiaIdentificacion({
+    DescripGuiaIdentificacion: '143',
+    NumeroGuiaIdentificacion: '2213',
+    PesoGuiaIdentificacion: 'NZ2332',
+  });
+  mercancia1.setCantidadTransporta({
+    Cantidad: '100',
+    IDDestino: '10',
+    IDOrigen: '10',
+  });
+  mercancia1.setCantidadTransporta({
+    Cantidad: '100',
+    IDDestino: '10',
+    IDOrigen: '10',
+    CvesTransporte: 'g',
+  });
+
+  mercancia1.setDetalleMercancia({
+    NumPiezas: '1',
+    PesoBruto: '1',
+    PesoNeto: '1',
+    PesoTara: '1',
+    UnidadPesoMerc: 'A44',
+  });
+
+  const autotransporte1 = mercancias.setAutotransporte({
+    NumPermisoSCT: '2',
+    PermSCT: '2',
+  });
+
+  autotransporte1.setIdentificacionVehicular({
+    AnioModeloVM: '2',
+    ConfigVehicular: '3',
+    PlacaVM: 'dsd',
+  });
+  autotransporte1.setIdentificacionVehicular({
+    AnioModeloVM: '2',
+    ConfigVehicular: '3',
+    PlacaVM: 'dad',
+  });
+  autotransporte1.setSeguro({
+    AseguraRespCivil: '',
+    PolizaRespCivil: '',
+    AseguraCarga: '',
+  });
+  autotransporte1.setSeguro({
+    AseguraRespCivil: '',
+    PolizaRespCivil: '',
+    AseguraCarga: '',
+  });
+
+  autotransporte1.setRemolque({
+    Placa: '3333',
+    SubTipoRem: 'trac',
+  });
+  autotransporte1.setRemolque({
+    Placa: '44444',
+    SubTipoRem: 'ambulancia',
+  });
+
+  const tMaritmo = mercancias.setTransporteMaritimo({
+    Matricula: 'ssss',
+    NacionalidadEmbarc: '2',
+    NombreAgenteNaviero: '344',
+    NumAutorizacionNaviero: '333',
+    NumCertITC: 'ee',
+    NumeroOMI: '3',
+    TipoCarga: '3',
+    TipoEmbarcacion: '4',
+    UnidadesDeArqBruto: '4',
+  });
+  tMaritmo.setContenedor({
+    MatriculaContenedor: '333',
+    TipoContenedor: 'MZN',
+  });
+  tMaritmo.setContenedor({
+    MatriculaContenedor: '444',
+    TipoContenedor: 'MZN2',
+  });
+
+  mercancias.setTransporteAereo({
+    CodigoTransportista: '222',
+    NumeroGuia: '2222',
+    NumPermisoSCT: '333',
+    PermSCT: '555',
+  });
+
+  const ferroviario = mercancias.setTransporteFerroviario({
+    TipoDeServicio: 'mega',
+  });
+
+  ferroviario.setDerechosDePaso({
+    KilometrajePagado: '200',
+    TipoDerechoDePaso: '222',
+  });
+
+  ferroviario.setCarro({
+    carro: {
+      GuiaCarro: '3333',
+      MatriculaCarro: '3303MX',
+      TipoCarro: 'AUTOMOVIL',
+      ToneladasNetasCarro: 'S',
+    },
+    contenedores: [
+      {
+        PesoContenedorVacio: '2KG',
+        PesoNetoMercancia: '300KG',
+        TipoContenedor: '2',
+      },
+    ],
+  });
+
+  const mercancia2 = mercancias.setMercancia({
+    BienesTransp: '11121910',
     Descripcion: 'Productos de perfumería',
     Cantidad: '1.0',
     ClaveUnidad: 'XBX',
@@ -186,17 +316,20 @@ export default async function loginRoute(
     Embalaje: '4H2',
   });
 
-  mercancia.setMercancia({
-    BienesTransp: '11121900',
-    Descripcion: 'Productos de perfumería',
-    Cantidad: '1.0',
-    ClaveUnidad: 'XBX',
-    PesoEnKg: '1.0',
-    MaterialPeligroso: 'Sí',
-    CveMaterialPeligroso: '1266',
-    Embalaje: '4H2',
+  mercancia2.setPedimentos({ Pedimento: '11' });
+  mercancia2.setGuiaIdentificacion({
+    DescripGuiaIdentificacion: '143',
+    NumeroGuiaIdentificacion: '2213',
+    PesoGuiaIdentificacion: 'NZ2332',
   });
-  cartaPorte20.setMercancia(mercancia);
+
+  mercancia2.setCantidadTransporta({
+    Cantidad: '100',
+    IDDestino: '10',
+    IDOrigen: '10',
+  });
+
+  cartaPorte20.setMercancias(mercancias);
   cfd.complemento(cartaPorte20);
 
   await cfd.certificar(cer);

@@ -5,7 +5,7 @@ import {
 
 import { Complemento } from '../../Complemento';
 import { ComplementsReturn } from '../../types/tags';
-import { CtaPrt20Mercancia } from './CtaPrt20Mercancia';
+import { CtaPrt20Mercancias } from './CtaPrt20Mercancias';
 import { CtaPrt20Ubicacion } from './CtaPrt20Ubicacion';
 
 /**
@@ -50,7 +50,7 @@ export class CartaPorte20 extends Complemento<XmlCartaPorte20> {
     );
   }
 
-  setMercancia(mercancia: CtaPrt20Mercancia) {
+  setMercancias(mercancia: CtaPrt20Mercancias) {
     this.complemento['cartaporte20:Mercancias'] = mercancia.getMercancias();
   }
 }

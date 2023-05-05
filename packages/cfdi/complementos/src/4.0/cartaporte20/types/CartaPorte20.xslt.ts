@@ -95,54 +95,119 @@ export interface XmlCPFTransporteAttribute extends Attributes {
 export interface CP20Mercancias {
   _attributes?: XmlCP20MercanciasAttribute;
   'cartaporte20:Mercancia': CP20Mercancia[];
-  'cartaporte20:Autotransporte': CPMAFederal[];
-  'cartaporte20:TransporteMaritimo': CPMTMaritimo;
-  'cartaporte20:TransporteAereo': CPMTAereo[];
-  'cartaporte20:TransporteFerroviario': CPMTFerroviario;
+  'cartaporte20:Autotransporte': CPM20Autotransporte[];
+  'cartaporte20:TransporteMaritimo': CPM20TMaritimo[];
+  'cartaporte20:TransporteAereo': CPMT20Aereo[];
+  'cartaporte20:TransporteFerroviario': CPM20TFerroviario[];
 }
 
-export interface CPMTFerroviario {
-  _attributes?: XmlCPMTFerroviarioAttribute;
-  'cartaporte:DerechosDePaso': {};
-  'cartaporte:Carro': {};
+export interface CPM20Autotransporte {
+  _attributes?: CPM20AutotransporteAttr;
+  'cartaporte20:IdentificacionVehicular': CrtPrtIdentificacionVehicular[];
+  'cartaporte20:Seguros': CrtPrtSeguros[];
+  'cartaporte20:Remolques': Remolques;
+}
+export interface Remolques {
+  'cartaporte20:Remolque': Remolque[];
 }
 
-export interface XmlCPMTFerroviarioAttribute {
+export interface Remolque {
+  _attributes: RemolqueAttr;
+}
+export interface RemolqueAttr {
+  SubTipoRem: string;
+  Placa: string;
+}
+
+export interface CrtPrtSeguros {
+  _attributes: CrtPrtSegurosAttr;
+}
+
+export interface CrtPrtSegurosAttr {
+  AseguraRespCivil: string;
+  PolizaRespCivil: string;
+  AseguraMedAmbiente?: string;
+  PolizaMedAmbiente?: string;
+  AseguraCarga?: string;
+  PolizaCarga?: string;
+  PrimaSeguro?: string;
+}
+export interface CrtPrtIdentificacionVehicular {
+  _attributes: CrtPrtIdentificacionVehicularAttr;
+}
+export interface CrtPrtIdentificacionVehicularAttr {
+  ConfigVehicular: string;
+  PlacaVM: string;
+  AnioModeloVM: string;
+}
+export interface CPM20AutotransporteAttr {
+  PermSCT: string;
+  NumPermisoSCT: string;
+}
+
+export interface CPM20TFerroviario {
+  _attributes?: XmlCPM20TFerroviarioAttribute;
+  'cartaporte20:DerechosDePaso': DerechosDePaso[];
+  'cartaporte20:Carro': Carro[];
+}
+export interface Carro {
+  _attributes: CarroAttr;
+  'cartaporte20:Contenedor': CarroContenedor[];
+}
+
+export interface CarroContenedor {
+  _attributes: CarroContenedorAttr;
+}
+export interface CarroContenedorAttr {
+  TipoContenedor: string;
+  PesoContenedorVacio: string;
+  PesoNetoMercancia: string;
+}
+export interface CarroAttr {
+  TipoCarro: string;
+  MatriculaCarro: string;
+  GuiaCarro: string;
+  ToneladasNetasCarro: string;
+}
+export interface DerechosDePaso {
+  _attributes: DerechosDePasoAttr;
+}
+export interface DerechosDePasoAttr {
+  TipoDerechoDePaso: string;
+  KilometrajePagado: string;
+}
+export interface XmlCPM20TFerroviarioAttribute {
   TipoDeServicio: string;
   NombreAseg?: string;
   NumPolizaSeguro?: string;
   Concesionario?: string;
 }
 
-export interface CPMTAereo {
-  _attributes?: XmlCPMTAereoAttribute;
+export interface CPMT20Aereo {
+  _attributes?: XmlCPM20TAereoAttribute;
 }
 
-export interface XmlCPMTAereoAttribute extends Attributes {
+export interface XmlCPM20TAereoAttribute extends Attributes {
   PermSCT: string;
   NumPermisoSCT: string;
-  MatriculaAeronave: string;
+  MatriculaAeronave?: string;
   NombreAseg?: string;
   NumPolizaSeguro?: string;
   NumeroGuia: string;
   LugarContrato?: string;
-  RFCTransportista?: string;
   CodigoTransportista: string;
-  NumRegIdTribTranspor?: string;
-  ResidenciaFiscalTranspor?: string;
-  NombreTransportista?: string;
   RFCEmbarcador?: string;
   NumRegIdTribEmbarc?: string;
   ResidenciaFiscalEmbarc?: string;
   NombreEmbarcador?: string;
 }
 
-export interface CPMTMaritimo {
-  _attributes?: XmlCPMTMaritimoAttribute;
-  'cartaporte:Contenedor': CPMTMaritimoCon[];
+export interface CPM20TMaritimo {
+  _attributes?: XmlCPM20TMaritimoAttribute;
+  'cartaporte20:Contenedor': CPMTMaritimoCont[];
 }
 
-export interface CPMTMaritimoCon {
+export interface CPMTMaritimoCont {
   _attributes?: XmlCPMTMaritimoConAttribute;
 }
 
@@ -152,7 +217,7 @@ export interface XmlCPMTMaritimoConAttribute extends Attributes {
   NumPrecinto?: string;
 }
 
-export interface XmlCPMTMaritimoAttribute extends Attributes {
+export interface XmlCPM20TMaritimoAttribute extends Attributes {
   PermSCT?: string;
   NumPermisoSCT?: string;
   NombreAseg?: string;
@@ -214,12 +279,48 @@ export interface XmlCPMAFederalAttribute {
 
 export interface CP20Mercancia {
   _attributes?: XmlCP20MercanciaAttribute;
-  'cartaporte20:Pedimentos': CPMCTransporta[];
-  'cartaporte20:GuiasIdentificacion': CPMDMercancia[];
-  'cartaporte20:CantidadTransporta': [];
-  'cartaporte20:DetalleMercancia': [];
+  'cartaporte20:Pedimentos': CrtPrt20Pedimentos[];
+  'cartaporte20:GuiasIdentificacion': CrtPrt20GuiaIdentificacion[];
+  'cartaporte20:CantidadTransporta': CrtPrt20CantidadTransporta[];
+  'cartaporte20:DetalleMercancia': CrtPrt20DetalleMercancia[];
 }
 
+export interface CrtPrt20DetalleMercancia {
+  _attributes: CrtPrt20DetalleMercanciaAttr;
+}
+
+export interface CrtPrt20DetalleMercanciaAttr {
+  UnidadPesoMerc: string;
+  PesoBruto: string;
+  PesoNeto: string;
+  PesoTara: string;
+  NumPiezas?: string;
+}
+export interface CrtPrt20CantidadTransporta {
+  _attributes: CrtPrt20CantidadTransportaAttr;
+}
+
+export interface CrtPrt20CantidadTransportaAttr {
+  Cantidad: string;
+  IDOrigen: string;
+  IDDestino: string;
+  CvesTransporte?: string;
+}
+
+export interface CrtPrt20GuiaIdentificacion {
+  _attributes: CrtPrt20GuiaIdAttr;
+}
+export interface CrtPrt20GuiaIdAttr {
+  NumeroGuiaIdentificacion: string;
+  DescripGuiaIdentificacion: string;
+  PesoGuiaIdentificacion: string;
+}
+export interface CrtPrt20Pedimentos {
+  _attributes: CrtPrt20PedimentosAttr;
+}
+export interface CrtPrt20PedimentosAttr {
+  Pedimento: string;
+}
 export interface CPMDMercancia {
   _attributes?: CPMDMercanciaAttribute;
 }
