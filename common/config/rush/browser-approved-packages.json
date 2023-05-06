@@ -339,6 +339,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "cpy-cli",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "curp",
       "allowedCategories": [ "libraries" ]
     },

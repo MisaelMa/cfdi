@@ -32,7 +32,8 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build && rimraf ./dist/index.js ./dist/xml.cjs.development.* && npm run cp",
+    "cp": "cp ./config/index.js ./dist",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -75,6 +76,7 @@
     "@esm2cjs/execa": "^6.1.1-cjs.1"
   },
   "devDependencies": {
+    "rimraf": "^5.0.0",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
