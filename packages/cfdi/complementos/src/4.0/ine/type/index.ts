@@ -1,2 +1,2 @@
-export * from './ine.com';
+export * from './ine.xslt';
 export * from './ine.enum';

@@ -9,4 +9,5 @@ export {
   CtaPrt20Mercancias,
   CtaPrt20FiguraTransporte,
 };
+export * from './types/CartaPorte20.xslt';
 export default CartaPorte20;

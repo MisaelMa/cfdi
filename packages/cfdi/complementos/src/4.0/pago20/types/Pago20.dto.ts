@@ -6,7 +6,7 @@ import {
   XmlPagos20TotalesAttributes,
   XmlRetencionDRAttributes,
   XmlTrasladoDRAttributes,
-} from './pago20.interface';
+} from './pago20.xslt';
 
 export interface DoctoRelacionado extends XmlDoctoRelAttributes {
   ImpuestosDR: ImpuestosDR;

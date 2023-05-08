@@ -12,7 +12,7 @@ export * from './3.3/ecc11';
 export * from './3.3/hidrocarburos';
 
 export * from './3.3/implocal';
-export * from './3.3/ine';
+export * from './4.0/ine';
 export * from './3.3/tfd';
 
 //

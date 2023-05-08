@@ -4,13 +4,13 @@ import {
   XmlImpuestosDR,
   XmlRetencionDRAttributes,
   XmlTrasladoDRAttributes,
-} from './types/pago20.interface';
+} from './types/pago20.xslt';
 
 /**
  *
  */
 export class Pago20Relacionado {
-  private doctoRelacionado: XmlDoctoRelacionado = {} as XmlDoctoRelacionado
+  private doctoRelacionado: XmlDoctoRelacionado = {} as XmlDoctoRelacionado;
   private static instance: Pago20Relacionado;
 
   static getInstance(): Pago20Relacionado {

@@ -10,7 +10,6 @@ import {
   Iedu,
   Ieeh,
   Implocal,
-  Ine,
   LeyendaFisc,
   ObrasArte,
   PagoEnEspecie,
@@ -34,7 +33,6 @@ import {
   XmlGceh,
   XmlIeeh,
   XmlImplocal,
-  XmlIne,
   XmlLeyendasFiscales,
   XmlObrasarte,
   XmlPagoenespecie,
@@ -51,7 +49,8 @@ import {
 import { Complemento } from '../../Complemento';
 import { XmlCartaPorte20 } from '../../4.0/cartaporte20/types/CartaPorte20.xslt';
 import { XmlIedu } from '../../4.0/iedu/type/iedu.xslt';
-import { XmlPagos20 } from '../../4.0/pago20/types/pago20.interface';
+import { XmlIne } from '../../4.0/ine/type/ine.xslt';
+import { XmlPagos20 } from '../../4.0/pago20/types/pago20.xslt';
 
 export interface AnyKey {
   [key: string]: any;
@@ -132,7 +131,6 @@ export declare type ComlementType =
   | ConsumoDeCombustibles11
   | Decreto
   | Destruccion
-  | Ine
   | RegistroFiscal
   | Donat
   | ObrasArte
@@ -156,7 +154,6 @@ export declare type ComplementTypeXml<T> =
   | XmlConsumodecombustibles
   | XmlDecreto
   | XmlDestruccion
-  | XmlIne
   | XmlRegistrofiscal
   | XmlDonat
   | XmlObrasarte
@@ -213,7 +210,7 @@ export interface XmlComplementsAttributes extends AnyKey {
   'xmlns:obrasarte'?: string; //  http://www.sat.gob.mx/arteantiguedades
   'xmlns:ine'?: string; // http://www.sat.gob.mx/ine
   'xmlns:cce11'?: string; // http://www.sat.gob.mx/ComercioExterior11
-  'xmlns:pago10'?: string; // http://www.sat.gob.mx/Pagos
+  'xmlns:pago20'?: string; // http://www.sat.gob.mx/Pagos
   'xmlns:gceh'?: string; // http://www.sat.gob.mx/GastosHidrocarburos10
   /* ########XmlComplementsConcepts#########3 */
   'xmlns:iedu'?: string; // http://www.sat.gob.mx/iedu
@@ -247,7 +244,7 @@ export interface XmlnsComplementsLinks extends AnyKey {
   obrasarte?: string; // http://www.sat.gob.mx/arteantiguedades
   ine?: string; // http://www.sat.gob.mx/ine
   cce11?: string; // http://www.sat.gob.mx/ComercioExterior11
-  pago10?: string; // http://www.sat.gob.mx/Pagos
+  pago20?: string; // http://www.sat.gob.mx/Pagos
   gceh?: string; // http://www.sat.gob.mx/GastosHidrocarburos10
   /* ########XmlComplementsConcepts#########3 */
   iedu?: string; // http://www.sat.gob.mx/iedu

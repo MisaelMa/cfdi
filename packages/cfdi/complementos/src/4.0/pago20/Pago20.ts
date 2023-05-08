@@ -1,4 +1,4 @@
-import { XmlPago20, XmlPago20Attributes } from './types/pago20.interface';
+import { XmlPago20, XmlPago20Attributes } from './types/pago20.xslt';
 
 import { Pago20ImpuestosP } from './Pago20Impuestos';
 import { Pago20Relacionado } from './Pago20Relacionado';
@@ -8,7 +8,7 @@ export class Pago20 {
 
   private pago: XmlPago20 = {} as XmlPago20;
   constructor(data?: XmlPago20Attributes) {
-    this.pago  = {} as XmlPago20;
+    this.pago = {} as XmlPago20;
     if (data) {
       this.pago._attributes = data;
     }
@@ -28,7 +28,7 @@ export class Pago20 {
     if (!this.pago['pago20:DoctoRelacionado']) {
       this.pago['pago20:DoctoRelacionado'] = [];
     }
-    this.pago['pago20:DoctoRelacionado'].push(documents.getRelation())
+    this.pago['pago20:DoctoRelacionado'].push(documents.getRelation());
   }
   setImpuestosP(impuestos: Pago20ImpuestosP) {
     if (!this.pago['pago20:ImpuestosP'] || this.pago['pago20:ImpuestosP']) {

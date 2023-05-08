@@ -2,7 +2,7 @@ import {
   XmlPago20ImpuestoP,
   XmlPagoRetencionPAttributes,
   XmlPagoTranladoPAttributes,
-} from './types/pago20.interface';
+} from './types/pago20.xslt';
 
 /**
  *

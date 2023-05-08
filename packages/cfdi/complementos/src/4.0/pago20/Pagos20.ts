@@ -2,7 +2,7 @@ import {
   XmlPagos20,
   XmlPagos20Attributes,
   XmlPagos20TotalesAttributes,
-} from './types/pago20.interface';
+} from './types/pago20.xslt';
 
 import { Complemento } from '../../Complemento';
 import { Pago20 } from './Pago20';

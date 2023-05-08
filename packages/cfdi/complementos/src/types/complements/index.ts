@@ -2,7 +2,6 @@ export * from './detallista';
 export * from './divisas';
 export * from './hidrocarburos';
 export * from './implocal/implocal.com';
-export * from './ine';
 export * from './leyendasFiscales/leyendasFiscales.com';
 export * from './obrasarte';
 export * from './pagoenespecie/pagoenespecie.com';
