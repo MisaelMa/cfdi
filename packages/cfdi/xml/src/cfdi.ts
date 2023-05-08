@@ -75,8 +75,8 @@ export class CFDI extends Comprobante {
   public async sellar(keyfile: string, password: string): Promise<void> {
     const cadena = await this.generarCadenaOriginal();
     const sello = await this.generarSello(cadena, keyfile, password);
-    this.cadenaOriginal = cadena;
-    this.sello = sello;
+    this._cadenaOriginal = cadena;
+    this._sello = sello;
     this.xml['cfdi:Comprobante']._attributes.Sello = sello;
   }
 
@@ -227,19 +227,11 @@ export class CFDI extends Comprobante {
     });
   }
 
-  get sello(): string {
+  public get sello(): string {
     return this._sello;
   }
 
-  private set sello(seal: string) {
-    this._sello = seal;
-  }
-
-  get cadenaOriginal(): string {
+  public get cadenaOriginal(): string {
     return this._cadenaOriginal;
-  }
-
-  private set cadenaOriginal(cadena: string) {
-    this._cadenaOriginal = cadena;
   }
 }
