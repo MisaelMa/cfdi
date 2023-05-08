@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "module": "./dist/xml.esm.js",
+  "module": "./dist/xml.esm.production.min.js",
   "source": "./src/index.ts",
   "release": {
     "branches": [

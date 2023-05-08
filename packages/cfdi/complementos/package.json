@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "module": "./dist/complementos.esm.js",
+  "module": "./dist/complementos.esm.production.min.js",
   "source": "./src/index.ts",
   "release": {
     "branches": [
