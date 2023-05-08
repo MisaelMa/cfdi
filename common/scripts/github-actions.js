@@ -72,6 +72,9 @@ function getDependences(scope) {
 
 function getScopes(commits = []) {
   const list = ['catalogs','csd','csf','curp','pdf','rfc','utils','xml','complementos','openssl','saxon']
+  const onlys = {
+    'only-complementos': 'complementos'
+  }
   let scopes = {};
   for (var i = 0; i < commits.length; i++) {
     const commit = commits[i];
@@ -80,7 +83,8 @@ function getScopes(commits = []) {
     const findScope = type.match(/\(([^)]+)\)/g);
     if (findScope) {
       const scope = findScope.pop().replace(/[{()}]/g, '');
-      if (list.includes(scope)) {
+      const onlyScope =  onlys[scope] || scope
+      if (list.includes(onlyScope)) {
         scopes = {
           ...scopes,
           ...getDependences(scope)
