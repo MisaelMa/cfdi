@@ -52,7 +52,7 @@ export default async function loginRoute(
   //   'cfdi:Comprobante': 'comprobante',
   // };
   const cfd = new CFDI(comprobanteAttribute, {
-    debug: true,
+    debug: false,
     xslt: {
       path: styleSheet,
     },
@@ -205,6 +205,11 @@ export default async function loginRoute(
   /*  const mio = await cfd.prueba();
   const saxon = await cfd.getCadenaOriginal(); */
   await cfd.sellar(key, '12345678a');
+
+  console.log('cadenaOriginal', cfd.cadenaOriginal);
+
+  console.log('sello', cfd.sello);
+
   const json = await cfd.getJsonCdfi();
   const xml = await cfd.getXmlCdfi();
   // console.log(xml)

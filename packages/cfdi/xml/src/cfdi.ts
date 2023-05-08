@@ -19,6 +19,8 @@ import { js2xml } from 'xml-js';
  */
 export class CFDI extends Comprobante {
   private debug = false;
+  private _sello: string = '';
+  private _cadenaOriginal: string = '';
 
   /**
    *constructor
@@ -35,6 +37,8 @@ export class CFDI extends Comprobante {
     super(attr, options);
     const { debug = false } = options;
     this.debug = debug;
+    this._cadenaOriginal = '';
+    this._sello = '';
   }
 
   /**
@@ -69,8 +73,10 @@ export class CFDI extends Comprobante {
    * string
    */
   public async sellar(keyfile: string, password: string): Promise<void> {
-    const cadena = await this.getCadenaOriginal();
-    const sello = await this.getSello(cadena, keyfile, password);
+    const cadena = await this.generarCadenaOriginal();
+    const sello = await this.generarSello(cadena, keyfile, password);
+    this.cadenaOriginal = cadena;
+    this.sello = sello;
     this.xml['cfdi:Comprobante']._attributes.Sello = sello;
   }
 
@@ -130,7 +136,7 @@ export class CFDI extends Comprobante {
   /**
    *getCadenaOriginal
    */
-  private async getCadenaOriginal(): Promise<string> {
+  private async generarCadenaOriginal(): Promise<string> {
     if (!this.xslt) {
       throw new Error(
         '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
@@ -195,7 +201,7 @@ export class CFDI extends Comprobante {
    * @param password
    * string
    */
-  private getSello(
+  private generarSello(
     cadenaOriginal: string,
     keyfile: string,
     password: string
@@ -219,5 +225,21 @@ export class CFDI extends Comprobante {
         reject(e);
       }
     });
+  }
+
+  get sello(): string {
+    return this._sello;
+  }
+
+  private set sello(seal: string) {
+    this._sello = seal;
+  }
+
+  get cadenaOriginal(): string {
+    return this._cadenaOriginal;
+  }
+
+  private set cadenaOriginal(cadena: string) {
+    this._cadenaOriginal = cadena;
   }
 }

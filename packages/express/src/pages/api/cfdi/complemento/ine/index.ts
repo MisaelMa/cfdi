@@ -46,7 +46,7 @@ export default async function loginRoute(
   };
 
   const cfd = new CFDI(comprobanteAttribute, {
-    debug: true,
+    debug: false,
     xslt: {
       path: styleSheet,
     },
@@ -93,6 +93,9 @@ export default async function loginRoute(
 
   await cfd.certificar(cer);
   await cfd.sellar(key, '12345678a');
+  console.log('ine cadenaOriginal', cfd.cadenaOriginal);
+
+  console.log('ine sello', cfd.sello);
   const json = await cfd.getJsonCdfi();
   const xml = await cfd.getXmlCdfi();
 

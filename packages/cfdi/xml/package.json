@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build && rimraf ./dist/index.js ./dist/xml.cjs.development.* && npm run cp",
+    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/xml.cjs.development.* && npm run cp",
     "cp": "cp ./config/index.js ./dist",
     "test": "tsdx test",
     "lint": "tsdx lint",
