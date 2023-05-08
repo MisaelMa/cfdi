@@ -1,7 +1,6 @@
 // Tags
 export * from './tags/complements.interface';
 // complementos
-export * from './complements/aerolineas.interface';
 export * from './complements/cce11.interface';
 export * from './complements/consumodecombustibles.interface';
 export * from './complements/decreto.interface';

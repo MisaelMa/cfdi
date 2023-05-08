@@ -1,5 +1,4 @@
 import {
-  Aerolineas,
   Cce11,
   ConsumoDeCombustibles11,
   Decreto,
@@ -23,7 +22,6 @@ import {
   VehiculoUsado,
 } from '../..';
 import {
-  XmlAerolineas,
   XmlCce11,
   XmlConsumodecombustibles,
   XmlDecreto,
@@ -47,6 +45,7 @@ import {
 } from '../complements';
 
 import { Complemento } from '../../Complemento';
+import { XmlAerolineas } from '../../4.0/aerolineas/type/aerolineas.xslt';
 import { XmlCartaPorte20 } from '../../4.0/cartaporte20/types/CartaPorte20.xslt';
 import { XmlIedu } from '../../4.0/iedu/type/iedu.xslt';
 import { XmlIne } from '../../4.0/ine/type/ine.xslt';
@@ -126,7 +125,6 @@ export interface XmlComplementsConcepts extends AnyKey {
 }
 
 export declare type ComlementType =
-  | Aerolineas
   | Cce11
   | ConsumoDeCombustibles11
   | Decreto
@@ -149,7 +147,6 @@ export declare type ComlementType =
   | Tfd
   | Complemento;
 export declare type ComplementTypeXml<T> =
-  | XmlAerolineas
   | XmlCce11
   | XmlConsumodecombustibles
   | XmlDecreto

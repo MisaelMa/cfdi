@@ -78,6 +78,7 @@ importers:
       moment: ^2.29.4
       moment-timezone: ^0.5.27
       node_modules-path: 2.0.6
+      rimraf: ^5.0.0
       saxon-js: ^2.4.0
       size-limit: ^7.0.8
       tsdx: ^0.14.1
@@ -115,6 +116,7 @@ importers:
       eslint: 8.38.0
       husky: 8.0.3
       jest: 28.1.3_@types+node@18.15.11
+      rimraf: 5.0.0
       size-limit: 7.0.8
       tsdx: 0.14.1_@types+node@18.15.11
       tslib: 2.5.0

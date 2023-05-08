@@ -12,8 +12,6 @@ export * from './tfd/tfd.com';
 export * from './turistaPasajeroExtranjero';
 export * from './valesdedespensa/valesdedespensa.com';
 export * from './vehiculousado/vehiculousado.com';
-
-export * from './aerolineas.interface';
 export * from './cce11.interface';
 export * from './consumodecombustibles.interface';
 export * from './decreto.interface';
