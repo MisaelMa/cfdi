@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/csd.cjs.development.* && npm run cp",
+    "cp": "cp ./config/index.js ./dist",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -51,6 +52,7 @@
     "validate-rfc": "^2.0.2"
   },
   "devDependencies": {
+    "rimraf": "^5.0.0",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",

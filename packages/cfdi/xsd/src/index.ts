@@ -1,11 +1,43 @@
 // @ts-ignore
 
-import { js2xml, xml2js } from 'xml-js';
+import { readFileSync, writeFileSync } from 'fs';
 
 import Ajv from 'ajv';
+import {LoadXsd} from './LoadXsd'
 // @ts-ignore
 import { Xsd2JsonSchema } from 'xsd2jsonschema';
-import { readFileSync } from 'fs';
+import { js2xml } from 'xml-js';
+
+function cleanObjectKeys(obj) {
+  if (typeof obj !== 'object') {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(cleanObjectKeys);
+  }
+
+  const cleanedObj = {};
+
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      if (key === '_attributes') {
+        const attributes = obj[key];
+        for (const attrKey in attributes) {
+          if (Object.prototype.hasOwnProperty.call(attributes, attrKey)) {
+            cleanedObj[`@${attrKey}`] = attributes[attrKey];
+          }
+        }
+      } else {
+        const cleanedKey = key.split(':').pop();
+        cleanedObj[cleanedKey] = cleanObjectKeys(obj[key]);
+      }
+    }
+  }
+
+  return cleanedObj;
+}
+
 
 export default class TransformXsd {
   xml: any = {};
@@ -16,42 +48,16 @@ export default class TransformXsd {
   }
 
   async xsd(xml: any) {
-    const xsd = readFileSync(
-      '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/xsd/src/files/cfdv40.xsd',
-      'utf-8'
-    );
-    console.log(Xsd2JsonSchema);
 
-    var optionsxml = { ignoreComment: true, alwaysChildren: true };
-    const schema = await xml2js(
-      xsd,
-      optionsxml
-    ).elements[0].elements[2].elements[1].elements.filter(
-      (x: any) => x.name !== 'xs:sequence'
-    );
 
-    const optionsc = { compact: true, ignoreComment: true, spaces: 4 };
-    const cfdi = await js2xml(schema, optionsc);
 
-    const options = { indent: '  ', noRefs: true };
-    const xs2js = new Xsd2JsonSchema();
+    const singleton = LoadXsd.getInstance();
 
-    const convertedSchemas = xs2js.processAllSchemas({
-      schemas: { 'hello_world.xsd': cfdi },
-    });
-    const jsonSchema = convertedSchemas['hello_world.xsd'].getJsonSchema();
-
-    const ajv = new Ajv(); // options can be passed, e.g. {allErrors: true}
-
-    //const validate = ajv.compile(jsonSchema);
-
-    //const valid = validate(xml);
+    const cfdi = cleanObjectKeys(xml)
 
     return {
-      schema,
-      jsonSchema,
       cfdi,
-      //valid,
+      data: singleton.processSchemasAndValidate(cfdi)
     };
   }
   async run() {

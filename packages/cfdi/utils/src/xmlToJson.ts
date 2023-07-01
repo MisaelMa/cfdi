@@ -23,5 +23,5 @@ export function XmlToJson(xmlPath: string): XmlCdfi {
      }*/
   };
   const json = xml2js(stringXml, options) as unknown;
-  return json as XmlCdfi
+  return json as XmlCdfi;
 }

@@ -66,9 +66,9 @@ export default async function loginRoute(
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
   cfd.informacionGlobal({
-    Periodicidad: 'amir',
-    Meses: '1',
-    Año: '2',
+    Periodicidad: '01',
+    Meses: '01',
+    Año: 2021,
   });
   const relation = new Relacionado({ TipoRelacion: '01' });
   relation.addRelation('asdasd-3234-asdasd-2332-asdas');
@@ -78,8 +78,7 @@ export default async function loginRoute(
   const emisor = new Emisor({
     Rfc: 'TCM970625MB1',
     Nombre: 'FACTURACION MODERNA SA DE CV',
-    RegimenFiscal: 601,
-    FacAtrAdquirente: 'asdasd',
+    RegimenFiscal: '601',
   });
   cfd.emisor(emisor);
 
@@ -87,8 +86,8 @@ export default async function loginRoute(
     Rfc: 'XAXX010101000',
     Nombre: 'PUBLICO EN GENERAL',
     UsoCFDI: 'G01',
-    DomicilioFiscalReceptor: '112',
-    RegimenFiscalReceptor: '22',
+    DomicilioFiscalReceptor: '77728',
+    RegimenFiscalReceptor: '601',
   });
   cfd.receptor(receptor);
 
@@ -133,8 +132,8 @@ export default async function loginRoute(
   cfd.impuesto(impuesto);
 
   await cfd.certificar(cer);
-  const saxon = await cfd.getCadenaOriginal();
-  //await cfd.sellar(key, '12345678a');
+  await cfd.sellar(key, '12345678a');
+  const saxon = await cfd.cadenaOriginal;
   const json = await cfd.getJsonCdfi();
   const xml = await cfd.getXmlCdfi();
 
@@ -151,7 +150,7 @@ export default async function loginRoute(
       xsd: await trs.xsd(json),
       mio,
       saxon,
-      //xml: json,
+      xml: json,
     });
   }
 }

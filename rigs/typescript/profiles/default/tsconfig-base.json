@@ -71,6 +71,12 @@
       ],
       "@clir/openssl": [
         "./node_modules/@clir/openssl/src"
+      ],
+      "@clir/saxon-he": [
+        "./node_modules/@clir/saxon-he/src"
+      ],
+      "@clir/saxon-he/*": [
+        "./node_modules/@clir/saxon-he/src/*"
       ]
 
     }
