@@ -1,6 +1,7 @@
+import Ajv, { ValidateFunction } from 'ajv';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 
-import Ajv from 'ajv';
+import { JTDDataType } from 'ajv/dist/types/jtd-schema';
 // @ts-ignore
 import { Xsd2JsonSchema } from 'xsd2jsonschema';
 
@@ -12,7 +13,13 @@ export class LoadXsd {
   private tdCFDIFilePath = 'tdCFDI.json';
   private route =
     '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/xsd/src/files/';
-  private constructor() {}
+  private ajv: Ajv;
+  private isLoad = false;
+  private validate: ValidateFunction;
+  constructor() {
+    this.ajv = new Ajv();
+    //this.loadData()
+  }
 
   public static getInstance(): LoadXsd {
     if (!LoadXsd.instance) {
@@ -28,6 +35,7 @@ export class LoadXsd {
   public existsFile(filePath: string): boolean {
     return existsSync(`${this.route}${filePath}`);
   }
+
   public loadJsonFromFile(filePath: string): any {
     if (existsSync(`${this.route}${filePath}`)) {
       const fileContents = readFileSync(`${this.route}${filePath}`, 'utf-8');
@@ -35,8 +43,8 @@ export class LoadXsd {
     }
     return null;
   }
-
-  public processSchemasAndValidate(xml: string) {
+  public loadData() {
+    if (this.isLoad) return;
     const cfdiXsdPath = 'cfdv40.xsd';
     const catXsdPath = 'catCFDI.xsd';
     const tdCFDIXsdPath = 'tdCFDI.xsd';
@@ -44,29 +52,34 @@ export class LoadXsd {
     let comprobante = {};
     let catalogos = {};
     let tdCFDI = {};
-    const singleton = LoadXsd.getInstance();
 
     const load = [];
-
+    console.time(this.comprobanteFilePath);
     if (!this.existsFile(this.comprobanteFilePath)) {
       load.push(this.comprobanteFilePath);
     } else {
-      comprobante = singleton.loadJsonFromFile(this.comprobanteFilePath);
+      comprobante = this.loadJsonFromFile(this.comprobanteFilePath);
     }
+    console.timeEnd(this.comprobanteFilePath);
 
+    console.time(this.catalogosFilePath);
     if (!this.existsFile(this.catalogosFilePath)) {
       load.push(this.catalogosFilePath);
     } else {
-      catalogos = singleton.loadJsonFromFile(this.catalogosFilePath);
+      catalogos = this.loadJsonFromFile(this.catalogosFilePath);
     }
+    console.timeEnd(this.catalogosFilePath);
 
+    console.time(this.tdCFDIFilePath);
     if (!this.existsFile(this.tdCFDIFilePath)) {
       load.push(this.tdCFDIFilePath);
     } else {
-      tdCFDI = singleton.loadJsonFromFile(this.tdCFDIFilePath);
+      tdCFDI = this.loadJsonFromFile(this.tdCFDIFilePath);
     }
+    console.timeEnd(this.tdCFDIFilePath);
+
     if (load.length > 0) {
-      console.log("generando archivos");
+      console.log('generando archivos');
 
       const xs2js = new Xsd2JsonSchema();
 
@@ -90,36 +103,30 @@ export class LoadXsd {
       this.saveJsonToFile(this.comprobanteFilePath, comprobante);
       this.saveJsonToFile(this.catalogosFilePath, catalogos);
       this.saveJsonToFile(this.tdCFDIFilePath, tdCFDI);
-    } else {
-      console.log("cargando archivos");
     }
-    const ajv = new Ajv();
-    const validate = ajv
-      .addSchema(catalogos)
-      .addSchema(tdCFDI)
-      .compile(comprobante);
-
-    const valid = validate(xml);
+    this.ajv.addSchema(catalogos);
+    this.ajv.addSchema(tdCFDI);
+    this.validate = this.ajv.compile(comprobante);
+    this.isLoad = true;
+  }
+  public processSchemasAndValidate(xml: string) {
+    console.time('AJV_validate');
+    const valid = this.validate(xml);
+    console.timeEnd('AJV_validate');
 
     if (valid) {
       console.log('El objeto es válido según los esquemas.');
     } else {
       console.log(
         'El objeto no cumple con los esquemas. Errores:',
-        validate.errors
+        this.validate.errors
       );
     }
+
     return {
-      //catalogos,
-      tdCFDI,
-      comprobante
-    }
+      // catalogos,
+      //tdCFDI,
+      //comprobante,
+    };
   }
 }
-
-/* // Uso de la clase Singleton
-const xmlData = '...'; // Tu objeto XML aquí
-
-const singleton = Singleton.getInstance();
-singleton.processSchemasAndValidate(xmlData);
- */

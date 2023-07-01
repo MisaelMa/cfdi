@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 
 import Ajv from 'ajv';
-import {LoadXsd} from './LoadXsd'
+import { LoadXsd } from './LoadXsd';
 // @ts-ignore
 import { Xsd2JsonSchema } from 'xsd2jsonschema';
 import { js2xml } from 'xml-js';
@@ -25,7 +25,9 @@ function cleanObjectKeys(obj) {
         const attributes = obj[key];
         for (const attrKey in attributes) {
           if (Object.prototype.hasOwnProperty.call(attributes, attrKey)) {
-            cleanedObj[`@${attrKey}`] = attributes[attrKey];
+            if (!attrKey.includes(':')) {
+              cleanedObj[`@${attrKey}`] = attributes[attrKey];
+            }
           }
         }
       } else {
@@ -38,7 +40,7 @@ function cleanObjectKeys(obj) {
   return cleanedObj;
 }
 
-
+export const CFDIXsd = LoadXsd.getInstance();
 export default class TransformXsd {
   xml: any = {};
   xslPath = '';
@@ -48,16 +50,13 @@ export default class TransformXsd {
   }
 
   async xsd(xml: any) {
-
-
-
     const singleton = LoadXsd.getInstance();
-
-    const cfdi = cleanObjectKeys(xml)
+    singleton.loadData();
+    const cfdi = cleanObjectKeys(xml);
 
     return {
       cfdi,
-      data: singleton.processSchemasAndValidate(cfdi)
+      data: singleton.processSchemasAndValidate(cfdi),
     };
   }
   async run() {
@@ -70,6 +69,8 @@ export default class TransformXsd {
     /*  return xml2js(xsd, options)
       .elements[0].elements[2].elements[1].elements.filter((e) => e.attributes)
       .map((e) => e); */
+
+    console.log(rear);
     return `||${rear.filter((e) => e).join('|')}||`;
   }
 
@@ -121,7 +122,10 @@ export default class TransformXsd {
           );
         } else {
           console.log(obj[key], key);
-          valores.push(obj[key]);
+          const ingnore: string[] = ['Sello'];
+          if (!ingnore.includes(key)) {
+            valores.push(obj[key]);
+          }
         }
       }
     }
