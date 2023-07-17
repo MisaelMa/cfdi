@@ -1,14 +1,29 @@
 // @ts-ignore
 
+import { js2xml, json2xml, xml2js } from 'xml-js';
 import { readFileSync, writeFileSync } from 'fs';
 
 import Ajv from 'ajv';
 import { LoadXsd } from './LoadXsd';
 // @ts-ignore
 import { Xsd2JsonSchema } from 'xsd2jsonschema';
-import { js2xml } from 'xml-js';
 
-function cleanObjectKeys(obj) {
+type XsdElement = {
+  name: string;
+  minOccurs?: string;
+  elements?: XsdElement[];
+  attributes?: Record<string, { name: string; use: string }>;
+};
+
+type JsonSchema = {
+  $schema: string;
+  type: string;
+  properties: Record<string, any>;
+  required: string[];
+  additionalProperties: false;
+};
+
+function cleanObjectKeys(obj: any): any {
   if (typeof obj !== 'object') {
     return obj;
   }
@@ -26,12 +41,14 @@ function cleanObjectKeys(obj) {
         for (const attrKey in attributes) {
           if (Object.prototype.hasOwnProperty.call(attributes, attrKey)) {
             if (!attrKey.includes(':')) {
+              // @ts-ignore
               cleanedObj[`@${attrKey}`] = attributes[attrKey];
             }
           }
         }
       } else {
         const cleanedKey = key.split(':').pop();
+        // @ts-ignore
         cleanedObj[cleanedKey] = cleanObjectKeys(obj[key]);
       }
     }
@@ -40,7 +57,8 @@ function cleanObjectKeys(obj) {
   return cleanedObj;
 }
 
-export const CFDIXsd = LoadXsd.getInstance();
+//export const CFDIXsd = LoadXsd.getInstance();
+
 export default class TransformXsd {
   xml: any = {};
   xslPath = '';
@@ -49,28 +67,8 @@ export default class TransformXsd {
     this.xml = xml;
   }
 
-  async xsd(xml: any) {
-    const singleton = LoadXsd.getInstance();
-    singleton.loadData();
-    const cfdi = cleanObjectKeys(xml);
-
-    return {
-      cfdi,
-      data: singleton.processSchemasAndValidate(cfdi),
-    };
-  }
   async run() {
     const rear = await this.obtenerValores(this.xml['cfdi:Comprobante']);
-    const xsd = readFileSync(
-      '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/xsd/src/files/cfdv40.xsd',
-      'utf-8'
-    );
-    var options = { ignoreComment: true, alwaysChildren: true };
-    /*  return xml2js(xsd, options)
-      .elements[0].elements[2].elements[1].elements.filter((e) => e.attributes)
-      .map((e) => e); */
-
-    console.log(rear);
     return `||${rear.filter((e) => e).join('|')}||`;
   }
 
@@ -83,6 +81,7 @@ export default class TransformXsd {
     this.xslPath = xslPath;
     return this;
   }
+
   warnings(type: string = 'silent') {
     return this;
   }
@@ -112,6 +111,8 @@ export default class TransformXsd {
       ],
       concepto: [],
     };
+
+    const ingnore: string[] = ['Sello'];
     // @ts-ignore
     const clavesOrdenadas = ignore ? Object.keys(obj) : miObjeto[tagKey];
     for (let key of clavesOrdenadas) {
@@ -121,8 +122,6 @@ export default class TransformXsd {
             this.obtenerValores(obj[key], { ignore: true })
           );
         } else {
-          console.log(obj[key], key);
-          const ingnore: string[] = ['Sello'];
           if (!ingnore.includes(key)) {
             valores.push(obj[key]);
           }

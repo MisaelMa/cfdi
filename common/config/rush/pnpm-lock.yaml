@@ -402,6 +402,63 @@ importers:
       tslib: 2.5.0
       typescript: 4.9.5
 
+  ../../packages/cfdi/schema:
+    specifiers:
+      '@recreando/eslint-settings': workspace:*
+      '@recreando/jest': workspace:*
+      '@recreando/typescript-settings': workspace:*
+      '@rushstack/eslint-config': ^2.6.0
+      '@rushstack/heft': ^0.45.1
+      '@size-limit/preset-small-lib': ^7.0.8
+      '@testing-library/dom': ^8.19.0
+      '@testing-library/jest-dom': ^5.16.1
+      '@types/deep-freeze': ^0.1.2
+      '@types/jest': ^27.5.0
+      '@types/node': ^18.11.3
+      '@types/testing-library__jest-dom': ^5.9.1
+      ajv: ^8.12.0
+      chalk: ^4.0.0
+      chokidar: ^3.5.2
+      eslint: ^8.26.0
+      husky: ^8.0.1
+      jest: ^28.1.2
+      size-limit: ^7.0.8
+      tsdx: ^0.14.1
+      tslib: ^2.4.0
+      typescript: ^4.8.4
+      xml-js: ^1.6.11
+      xsd2jsonschema: ^0.3.7
+      xslt: ^0.9.1
+      xslt-processor: ^0.11.7
+    dependencies:
+      ajv: 8.12.0
+      xml-js: 1.6.11
+      xsd2jsonschema: 0.3.7
+      xslt: 0.9.1
+      xslt-processor: 0.11.7
+    devDependencies:
+      '@recreando/eslint-settings': link:../../../rigs/eslint
+      '@recreando/jest': link:../../../rigs/jest
+      '@recreando/typescript-settings': link:../../../rigs/typescript
+      '@rushstack/eslint-config': 2.6.2_ze6bmax3gcsfve3yrzu6npguhe
+      '@rushstack/heft': 0.45.14
+      '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
+      '@testing-library/dom': 8.20.0
+      '@testing-library/jest-dom': 5.16.5
+      '@types/deep-freeze': 0.1.2
+      '@types/jest': 27.5.2
+      '@types/node': 18.15.11
+      '@types/testing-library__jest-dom': 5.14.5
+      chalk: 4.1.2
+      chokidar: 3.5.3
+      eslint: 8.38.0
+      husky: 8.0.3
+      jest: 28.1.3_@types+node@18.15.11
+      size-limit: 7.0.8
+      tsdx: 0.14.1_@types+node@18.15.11
+      tslib: 2.5.0
+      typescript: 4.9.5
+
   ../../packages/cfdi/utils:
     specifiers:
       '@recreando/eslint-settings': workspace:*
@@ -698,6 +755,7 @@ importers:
       '@cfdi/csf': workspace:*
       '@cfdi/curp': workspace:*
       '@cfdi/pdf': workspace:*
+      '@cfdi/schema': workspace:*
       '@cfdi/utils': workspace:*
       '@cfdi/xml': workspace:*
       '@cfdi/xsd': workspace:*
@@ -725,6 +783,7 @@ importers:
       '@cfdi/csf': link:../cfdi/csf
       '@cfdi/curp': link:../cfdi/curp
       '@cfdi/pdf': link:../cfdi/pdf
+      '@cfdi/schema': link:../cfdi/schema
       '@cfdi/utils': link:../cfdi/utils
       '@cfdi/xml': link:../cfdi/xml
       '@cfdi/xsd': link:../cfdi/xsd
@@ -1594,7 +1653,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.21.4_supports-color@9.3.1
+      '@babel/core': 7.21.4
       '@babel/helper-plugin-utils': 7.20.2
 
   /@babel/plugin-transform-arrow-functions/7.20.7_@babel+core@7.21.4:

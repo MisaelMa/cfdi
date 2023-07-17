@@ -8,15 +8,9 @@ import {
   Receptor,
   Relacionado,
 } from '@cfdi/xml';
-import {
-  Destruccion,
-  Iedu,
-  Pago10,
-  Pago10Impuestos,
-  Pago10Relacionado,
-} from '@cfdi/complementos';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import CfdiSchema from '@cfdi/schema';
 import TransformXsd from '@cfdi/xsd';
 import { XmlIeduAttribute } from '@cfdi/complementos';
 import { getFactura } from '../../../comprobantes';
@@ -38,13 +32,25 @@ export default async function loginRoute(
   if (req.query.xml) {
     res.setHeader('Content-Type', 'text/xml');
     // console.log(xml)
-    res.send(xml);
+    //res.send(xml);
   } else {
+    const comprobanteXsd = CfdiSchema.of();
+    const patch =
+      '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/';
+    comprobanteXsd.setConfig({
+      xsd: {
+        cfdi: `${patch}cfdv40.xsd`,
+        catalogos: `${patch}catCFDI.xsd`,
+        tipoDatos: `${patch}tdCFDI.xsd`,
+      },
+    });
+    const xsd = await comprobanteXsd.processAll();
+    await comprobanteXsd.save(`${patch}schema/`);
     res.send({
-      xsd: await trs.xsd(json),
+      xsd,
       mio,
       saxon,
-      xml: json,
+      //xml: json,
     });
   }
 }

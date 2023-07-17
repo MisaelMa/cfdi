@@ -25,7 +25,8 @@ module.exports = {
             'only-complementos',
             'openssl',
             'saxon',
-            'publish'
+            'publish',
+            'schema'
           ]
       ],
       'type-enum': [

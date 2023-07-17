@@ -18,7 +18,7 @@
     "build": "echo 'Realizando build...'",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "echo 'Realizando build...'",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
