@@ -72,12 +72,7 @@ export default class TransformXsd {
     return `||${rear.filter((e) => e).join('|')}||`;
   }
 
-  s(fullPath: string) {
-    this.fullPath = fullPath;
-    return this;
-  }
-
-  xsl(xslPath: string) {
+  json(xslPath: string) {
     this.xslPath = xslPath;
     return this;
   }
