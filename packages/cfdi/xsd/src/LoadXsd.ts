@@ -15,106 +15,61 @@ export class LoadXsd {
   private comprobante = {};
   private catalogos = {};
   private tdCFDI = {};
-  private route =
-    '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/xsd/src/files/';
   private ajv: Ajv;
   private isLoad = false;
   private validate: ValidateFunction;
+  private pathSchema = '';
   constructor() {
     this.ajv = new Ajv();
   }
 
-  public static getInstance(): LoadXsd {
+  public static of(): LoadXsd {
     if (!LoadXsd.instance) {
       LoadXsd.instance = new LoadXsd();
     }
     return LoadXsd.instance;
   }
-
-  public saveJsonToFile(filePath: string, data: any): void {
-    writeFileSync(`${this.route}${filePath}`, JSON.stringify(data, null, 2));
+  setConfig(options: any) {
+    const { path } = options;
+    this.pathSchema = path;
+    this.loadFiles();
   }
 
-  public existsFile(filePath: string): boolean {
-    return existsSync(`${this.route}${filePath}`);
+  getContentFile(file: string) {
+    const data = JSON.parse(readFileSync(file, 'utf8'));
+
+    return data;
+  }
+  loadFiles() {
+    const cfdi = this.getContentFile(`${this.pathSchema}/cfdi.json`);
+    const extras = cfdi.extras;
+    const comprobante = cfdi.comprobante;
+    const complementos = cfdi.complementos;
+    this.loadData(extras);
+    this.loadData(comprobante);
+    this.loadData(complementos);
   }
 
-  public loadJsonFromFile(filePath: string): any {
-    if (existsSync(`${this.route}${filePath}`)) {
-      const fileContents = readFileSync(`${this.route}${filePath}`, 'utf-8');
-      return JSON.parse(fileContents);
-    }
-    return null;
-  }
-  public get schemas() {
-    return {
-      comprobante: this.comprobante,
-      catalogos: this.catalogos,
-      tdCFDI: this.tdCFDI,
-    };
-  }
-  public loadData() {
-    //if (this.isLoad) return;
-    const cfdiXsdPath = 'cfdv40.xsd';
-    const catXsdPath = 'catCFDI.xsd';
-    const tdCFDIXsdPath = 'tdCFDI.xsd';
-
-    const load = [];
-    console.time(this.comprobanteFilePath);
-    if (!this.existsFile(this.comprobanteFilePath)) {
-      load.push(this.comprobanteFilePath);
-    } else {
-      this.comprobante = this.loadJsonFromFile(this.comprobanteFilePath);
-    }
-    console.timeEnd(this.comprobanteFilePath);
-
-    console.time(this.catalogosFilePath);
-    if (!this.existsFile(this.catalogosFilePath)) {
-      load.push(this.catalogosFilePath);
-    } else {
-      this.catalogos = this.loadJsonFromFile(this.catalogosFilePath);
-    }
-    console.timeEnd(this.catalogosFilePath);
-
-    console.time(this.tdCFDIFilePath);
-    if (!this.existsFile(this.tdCFDIFilePath)) {
-      load.push(this.tdCFDIFilePath);
-    } else {
-      this.tdCFDI = this.loadJsonFromFile(this.tdCFDIFilePath);
-    }
-    console.timeEnd(this.tdCFDIFilePath);
-
-    if (load.length > 0 || load.length === 0) {
-      console.log('generando archivos');
-
-      const xs2js = new Xsd2JsonSchema();
-      // http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd
-      const cfdiXsd = readFileSync(`${this.route}${cfdiXsdPath}`, 'utf-8');
-      // http://www.sat.gob.mx/sitio_internet/cfd/catalogos/catCFDI.xsd
-      const catXsd = readFileSync(`${this.route}${catXsdPath}`, 'utf-8');
-      // http://omawww.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI/tdCFDI.xsd
-      const tdCFDIXsd = readFileSync(`${this.route}${tdCFDIXsdPath}`, 'utf-8');
-
-      const convertedSchemas = xs2js.processAllSchemas({
-        schemas: {
-          comprobante: cfdiXsd,
-          catCFDI: catXsd,
-          tdCFDI: tdCFDIXsd,
-        },
-      });
-
-      this.comprobante = convertedSchemas.comprobante.getJsonSchema();
-      this.catalogos = convertedSchemas.catCFDI.getJsonSchema();
-      this.tdCFDI = convertedSchemas.tdCFDI.getJsonSchema();
-      this.saveJsonToFile(this.comprobanteFilePath, this.comprobante);
-      this.saveJsonToFile(this.catalogosFilePath, this.catalogos);
-      this.saveJsonToFile(this.tdCFDIFilePath, this.tdCFDI);
-    }
-    this.ajv.addSchema(this.catalogos, 'catCFDI');
+  public loadData(schemas: any[]) {
+    schemas.forEach((schema) => {
+      if (!this.ajv.getSchema(schema.name)) {
+        this.ajv.addSchema(
+          this.getContentFile(`${this.pathSchema}/${schema.name}.json`),
+          schema.name
+        );
+      }
+    });
+    /*   this.ajv.addSchema(this.catalogos, 'catCFDI');
     this.ajv.addSchema(this.tdCFDI);
     this.validate = this.ajv.compile(this.comprobante);
-    this.isLoad = true;
+    this.isLoad = true; */
   }
+
+  public getAjv() {
+    this.ajv.compile(this.ajv.getSchema('Comprobante.json')?.schema.valueOf());
+    return this.ajv;
+  }
+
   public processSchemasAndValidate(xml: string) {
     console.time('AJV_validate');
     const valid = this.validate(xml);
