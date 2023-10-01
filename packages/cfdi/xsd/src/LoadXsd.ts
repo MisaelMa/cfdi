@@ -66,7 +66,7 @@ export class LoadXsd {
   }
 
   public getAjv() {
-    this.ajv.compile(this.ajv.getSchema('Comprobante.json')?.schema.valueOf());
+    //this.ajv.compile(this.ajv.getSchema('Comprobante.json')?.schema.valueOf());
     return this.ajv;
   }
 
