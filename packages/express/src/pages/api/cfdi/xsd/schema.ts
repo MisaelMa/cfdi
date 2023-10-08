@@ -25,24 +25,24 @@ export default async function loginRoute(
   const cfdi = CfdiProcess.of();
   cfdi.setConfig({ path: `${patch}cfdv40.xsd` });
   const targetXsd = cfdi.readXsd();
+  const x: any = [];
+  cfdi.schemaWrap(targetXsd, x);
+  // const schemaXsd = cfdi.generateSchemas(schemaWrap);
 
-  const schemaWrap = cfdi.schemaWrap(targetXsd);
-  const schemaXsd = cfdi.generateSchemas(schemaWrap);
-
-  schemaWrap.forEach(schema => {
+  x.forEach((schema: any) => {
     const name = schema.name.toLowerCase();
 
     writeFileSync(
       '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/xsd/' +
         name +
         '.xsd',
-      schema.xsd
+      cfdi.toXsd(schema.xsd)
     );
   });
 
   res.send({
-    schemaWrap,
-    process: await cfdi.process(),
+    x,
+    // process: await cfdi.process(),
     //xml: json,
   });
 }
