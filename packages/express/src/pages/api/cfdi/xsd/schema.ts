@@ -22,14 +22,23 @@ export default async function loginRoute(
   const xsd = await comprobanteXsd.processAll();
   await comprobanteXsd.save(`${patch}schema/`);
 
-  const cfdi = CfdiProcess.of();
+  /*   const cfdi = CfdiProcess.of();
   cfdi.setConfig({ path: `${patch}cfdv40.xsd` });
   const targetXsd = cfdi.readXsd();
   const x: any = [];
-  cfdi.schemaWrap(targetXsd, x);
+
+  cfdi.schemaWrap(targetXsd, x, null, 'comprobante', 'comprobante');
+  const comprobante = cfdi.comprobante({ ...targetXsd });
+  x.unshift({
+    name: 'comprobante',
+    path: 'comprobante',
+    key: 'comprobante',
+    folder: 'comprobante',
+    xsd: comprobante,
+  }); */
   // const schemaXsd = cfdi.generateSchemas(schemaWrap);
 
-  x.forEach((schema: any) => {
+  /*   x.forEach((schema: any) => {
     const name = schema.name.toLowerCase();
 
     writeFileSync(
@@ -38,10 +47,10 @@ export default async function loginRoute(
         '.xsd',
       cfdi.toXsd(schema.xsd)
     );
-  });
+  }); */
 
   res.send({
-    x,
+    xsd,
     // process: await cfdi.process(),
     //xml: json,
   });
