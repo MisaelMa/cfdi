@@ -16,6 +16,7 @@
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
     "xslt3": "^2.4.0",
+    "ajv": "^8.12.0",
     "@cfdi/pdf": "workspace:*",
     "@cfdi/curp": "workspace:*",
     "@cfdi/xml": "workspace:*",

@@ -5,13 +5,8 @@ import { JTDDataType } from 'ajv/dist/types/jtd-schema';
 // @ts-ignore
 import { Xsd2JsonSchema } from 'xsd2jsonschema';
 
-export class LoadXsd {
-  private static instance: LoadXsd;
-  // Guardar o cargar los archivos JSON según su existencia
-  private comprobanteFilePath = 'comprobante.json';
-  private catalogosFilePath = 'catalogos.json';
-  private tdCFDIFilePath = 'tdCFDI.json';
-
+export default class Schema {
+  private static instance: Schema;
   private comprobante = {};
   private catalogos = {};
   private tdCFDI = {};
@@ -23,11 +18,11 @@ export class LoadXsd {
     this.ajv = new Ajv();
   }
 
-  public static of(): LoadXsd {
-    if (!LoadXsd.instance) {
-      LoadXsd.instance = new LoadXsd();
+  public static of(): Schema {
+    if (!Schema.instance) {
+      Schema.instance = new Schema();
     }
-    return LoadXsd.instance;
+    return Schema.instance;
   }
   setConfig(options: any) {
     const { path } = options;
@@ -36,33 +31,36 @@ export class LoadXsd {
   }
 
   getContentFile(file: string) {
+    console.log(file);
+
     const data = JSON.parse(readFileSync(file, 'utf8'));
 
     return data;
   }
   loadFiles() {
     const cfdi = this.getContentFile(`${this.pathSchema}/cfdi.json`);
-    const extras = cfdi.extras;
+    const catalogos = cfdi.catalogos;
     const comprobante = cfdi.comprobante;
     const complementos = cfdi.complementos;
-    this.loadData(extras);
+    this.loadData(catalogos);
     this.loadData(comprobante);
     this.loadData(complementos);
   }
 
   public loadData(schemas: any[]) {
     schemas.forEach((schema) => {
-      if (!this.ajv.getSchema(schema.name)) {
+      if (
+        !this.ajv.getSchema(schema.key) &&
+        schema.key !== 'COMPROBANTE_CONCEPTOS_CONCEPTO_INFORMACIONADUANERA'
+      ) {
         this.ajv.addSchema(
-          this.getContentFile(`${this.pathSchema}/${schema.name}.json`),
-          schema.name
+          this.getContentFile(
+            `${this.pathSchema}/${schema.path}/${schema.name}.json`
+          ),
+          schema.key
         );
       }
     });
-    /*   this.ajv.addSchema(this.catalogos, 'catCFDI');
-    this.ajv.addSchema(this.tdCFDI);
-    this.validate = this.ajv.compile(this.comprobante);
-    this.isLoad = true; */
   }
 
   public getAjv() {

@@ -767,6 +767,7 @@ importers:
       '@types/pdf-parse': ^1.1.1
       '@types/react': ^18.0.21
       '@types/react-dom': ^18.0.6
+      ajv: ^8.12.0
       eslint: ^8.26.0
       eslint-config-next: ^12.3.1
       next: ^12.3.1
@@ -788,6 +789,7 @@ importers:
       '@cfdi/xml': link:../cfdi/xml
       '@cfdi/xsd': link:../cfdi/xsd
       '@clir/openssl': link:../clir/openssl
+      ajv: 8.12.0
       next: 12.3.4_biqbaboplfbrettd7655fr4n2y
       pdf-parse: 1.1.1
       react: 18.2.0
