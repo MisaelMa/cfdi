@@ -23,7 +23,8 @@ export default async function loginRoute(
     RegimenFiscal: '607',
   };
 
-  const valid = emisor.schemaEnv?.validate(objetoValido);
+  const valid =
+    emisor.schemaEnv.validate && emisor.schemaEnv.validate(objetoValido);
   console.log(emisor.errors);
   res.send({
     emisor,
