@@ -20,7 +20,7 @@ export default async function loginRoute(
   const objetoValido = {
     Rfc: 'LAN7008173R59',
     Nombre: 'amir',
-    RegimenFiscal: '607',
+    RegimenFiscal: '617',
   };
 
   const valid =
