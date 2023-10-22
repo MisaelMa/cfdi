@@ -14,12 +14,6 @@ jobs:
           ref: main
           path: schema  # Nombre con el que se descargará el repositorio
           token: ${{ secrets.PAT_GITHUB }}  # Utiliza el secreto PAT_GITHUB
-
-      - name: Renombrar y mover a la carpeta "packages/cfdi/schema"
-        run: |
-          ls -la .
-          mv schema packages/cfdi/
-        working-directory: .
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -32,6 +26,7 @@ jobs:
 
       - name: Rush Update
         run: |
+          ls -la .
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
           rush update
