@@ -80,10 +80,9 @@
     {
       "packageName": "@cfdi/schema",
       "projectFolder": "packages/cfdi/schema",
-      "versionPolicyName": "transform",
       "reviewCategory": "libraries",
       "shouldPublish": false,
-      "skipRushCheck": true
+      "skipRushCheck": false
     },
     {
       "packageName": "@cfdi/csd",
