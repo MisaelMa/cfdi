@@ -18,7 +18,9 @@ jobs:
           token: ${{ secrets.PAT_GITHUB }}
 
       - name: show
-        run: ls -la
+        run: |
+         ls -la packages
+         ls -la packages/cfdi
         working-directory: .  # Ubicación raíz del proyecto
 
       - name: Use Node.js ${{ matrix.node-version }}
