@@ -26,7 +26,6 @@ module.exports = {
             'openssl',
             'saxon',
             'publish',
-            'schema',
             'xsd'
           ]
       ],
