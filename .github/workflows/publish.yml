@@ -9,11 +9,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        #with:
-         # repository: MisaelMa/cfdi-schema
-         # ref: main
-         # path: schema  # Nombre con el que se descargará el repositorio
-         # token: ${{ secrets.PAT_GITHUB }}  # Utiliza el secreto PAT_GITHUB
+
+      - name: Clone Dependency Repository
+        run: |
+          git clone https://github.com/MisaelMa/cfdi-schema schema
+        env:
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+        working-directory: .
+
+      - name: Mover el repositorio clonado
+        run: |
+          mv schema packages/cfdi
+        working-directory: .  # Ubicación raíz del proyecto
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -45,37 +52,3 @@ jobs:
           git push
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #- name: Publish
-      #  run: |
-      #    git config user.name MisaelMa
-      #    git config user.email amisael.amir.misael@gmail.com
-      #    node common/scripts/install-run-rush.js install
-      #    node common/scripts/install-run-rush.js update
-      #    node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
-      #    node common/scripts/install-run-rush.js publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public --npm-auth-token=${{ secrets.NPM_TOKEN }}
-      #  env:
-      #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      #- name: Commit changes
-      #  uses: EndBug/add-and-commit@v9
-      #  with:
-      #    author_name: MisaelMa
-      #    author_email: amisael.amir.misael@gmail.com
-      #    message: 'Your commit message'
-      #    add: '*.'
-
-      # - name: Install and Build
-      #   run: |
-      #     node common/scripts/install-run-rush.js install
-      # - name: Publish
-      #   run: |
-      #     node common/scripts/install-run-rush.js version --version-policy cfdiXml --bump
-      #     node common/scripts/install-run-rush.js publish -p -b main --version-policy cfdiXml --include-all --set-access-level=public
-      #     node common/scripts/publish.js @cfdi/xml merge
-      #     node common/scripts/publish.js @cfdi/xml apart
-      #     git config user.name MisaelMa
-      #     git config user.email amisael.amir.misael@gmail.com
-      #     git commit -a -m 'Updated dists' || echo "No changes to commit"
-      #     git push
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
