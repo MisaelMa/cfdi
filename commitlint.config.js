@@ -26,7 +26,8 @@ module.exports = {
             'openssl',
             'saxon',
             'publish',
-            'schema'
+            'schema',
+            'xsd'
           ]
       ],
       'type-enum': [

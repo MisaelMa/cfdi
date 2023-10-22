@@ -66,12 +66,15 @@ function getDependences(scope) {
     rfc: {
       rfc: true,
     },
+    xsd: {
+      xsd: true
+    }
   };
   return dependencies[scope] || {};
 }
 
 function getScopes(commits = []) {
-  const list = ['catalogs','csd','csf','curp','pdf','rfc','utils','xml','complementos','openssl','saxon']
+  const list = ['catalogs','csd','csf','curp','pdf','rfc','utils','xml','complementos','openssl','saxon','xsd']
   const onlys = {
     'only-complementos': 'complementos'
   }
