@@ -12,6 +12,8 @@ jobs:
 
       - name: Clone Dependency Repository
         run: |
+          git config user.name MisaelMa
+          git config user.email amisael.amir.misael@gmail.com
           git clone https://github.com/MisaelMa/cfdi-schema schema
         env:
           PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
@@ -35,8 +37,6 @@ jobs:
       - name: Rush Update
         run: |
           ls -la .
-          git config user.name MisaelMa
-          git config user.email amisael.amir.misael@gmail.com
           rush update
       - name: Script
         uses: actions/github-script@v6
