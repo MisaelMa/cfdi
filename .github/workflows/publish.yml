@@ -17,6 +17,7 @@ jobs:
 
       - name: Renombrar y mover a la carpeta "packages/cfdi/schema"
         run: |
+          ls
           mv schema packages/cfdi/
 
       - name: Use Node.js ${{ matrix.node-version }}
