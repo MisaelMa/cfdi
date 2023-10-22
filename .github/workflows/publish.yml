@@ -10,18 +10,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Clone Dependency Repository
-        run: |
-          git config user.name MisaelMa
-          git config user.email amisael.amir.misael@gmail.com
-          git clone https://github.com/MisaelMa/cfdi-schema schema
-        env:
-          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
-        working-directory: .
+      - name: schema
+        uses: actions/checkout@v3
+        with:
+          repository: MisaelMa/cfdi-schema
+          path: packages/cfdi
+          token: ${{ secrets.PAT_GITHUB }}
 
-      - name: Mover el repositorio clonado
-        run: |
-          mv schema packages/cfdi
+      - name: show
+        run: ls -la
         working-directory: .  # Ubicación raíz del proyecto
 
       - name: Use Node.js ${{ matrix.node-version }}
