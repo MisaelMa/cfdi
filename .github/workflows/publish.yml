@@ -23,6 +23,8 @@ jobs:
 
       - name: Rush Install
         uses: advancedcsg-open/actions-rush
+        with:
+          build: true
 
       - name: Rush Update
         run: |
