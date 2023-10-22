@@ -19,9 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Rush CLI
-        run: |
-          ls -la .
-          npm install -g @microsoft/rush@5.50.0
+        run: npm install -g @microsoft/rush@5.50.0
 
       - name: Rush Install
         uses: advancedcsg-open/actions-rush
