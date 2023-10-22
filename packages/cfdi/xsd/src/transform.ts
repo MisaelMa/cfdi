@@ -4,7 +4,6 @@ import { js2xml, json2xml, xml2js } from 'xml-js';
 import { readFileSync, writeFileSync } from 'fs';
 
 import Ajv from 'ajv';
-import { LoadXsd } from './schema';
 // @ts-ignore
 import { Xsd2JsonSchema } from 'xsd2jsonschema';
 

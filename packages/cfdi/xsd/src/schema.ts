@@ -12,7 +12,7 @@ export default class Schema {
   private tdCFDI = {};
   private ajv: Ajv;
   private isLoad = false;
-  private validate: ValidateFunction;
+  private validate!: ValidateFunction;
   private pathSchema = '';
   constructor() {
     this.ajv = new Ajv();
