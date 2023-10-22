@@ -9,6 +9,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          repository: MisaelMa/cfdi-schema
+          ref: main
+          path: schema  # Nombre con el que se descargará el repositorio
+      - name: Renombrar y mover a la carpeta "packages/cfdi/schema"
+        run: |
+          mv schema packages/cfdi/
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
