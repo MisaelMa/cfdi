@@ -70,5 +70,11 @@
     "definitionName": "lockStepVersion",
     "version": "0.0.15",
     "nextBump": "patch"
+  },
+  {
+    "policyName": "xsd",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.13",
+    "nextBump": "patch"
   }
 ]
