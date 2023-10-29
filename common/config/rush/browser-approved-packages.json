@@ -200,11 +200,11 @@
     },
     {
       "name": "@recreando/eslint-settings",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@recreando/jest",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@recreando/tss",
@@ -212,7 +212,7 @@
     },
     {
       "name": "@recreando/typescript-settings",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@reduxjs/toolkit",
@@ -220,11 +220,11 @@
     },
     {
       "name": "@rushstack/eslint-config",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@rushstack/heft",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@rushstack/heft-jest-plugin",
@@ -244,7 +244,7 @@
     },
     {
       "name": "@size-limit/preset-small-lib",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "@swc/cli",
@@ -268,11 +268,11 @@
     },
     {
       "name": "@testing-library/dom",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@testing-library/jest-dom",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@testing-library/react",
@@ -296,7 +296,7 @@
     },
     {
       "name": "ajv",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "axios",
@@ -320,11 +320,11 @@
     },
     {
       "name": "chalk",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "chokidar",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "class-transformer",
@@ -352,7 +352,7 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "eslint-config-airbnb",
@@ -452,7 +452,7 @@
     },
     {
       "name": "husky",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "identity-obj-proxy",
@@ -468,7 +468,7 @@
     },
     {
       "name": "jest",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "jest-environment-jsdom",
@@ -652,7 +652,7 @@
     },
     {
       "name": "size-limit",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "source-map-support",
@@ -708,11 +708,11 @@
     },
     {
       "name": "tsdx",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "tslib",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "tslint",
@@ -728,7 +728,7 @@
     },
     {
       "name": "typescript",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "underscore",
@@ -760,7 +760,7 @@
     },
     {
       "name": "xml-js",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "xsd2json",
@@ -768,15 +768,15 @@
     },
     {
       "name": "xsd2jsonschema",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "xslt",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "xslt-processor",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "xslt3",
