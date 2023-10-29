@@ -33,7 +33,7 @@ jobs:
       - name: Rush Install
         uses: advancedcsg-open/actions-rush
 
-      - name: Rush Update
+      - name: Rush Update A
         run: |
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
