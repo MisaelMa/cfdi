@@ -11,7 +11,8 @@
   "approvedPackagesPolicy": {
     "reviewCategories": [
       "production",
-      "libraries"
+      "libraries",
+      "private"
     ],
     "ignoredNpmScopes": [
       "@types"
@@ -80,9 +81,9 @@
     {
       "packageName": "@cfdi/schema",
       "projectFolder": "packages/cfdi/schema",
-      "reviewCategory": "libraries",
+      "reviewCategory": "private",
       "shouldPublish": false,
-      "skipRushCheck": false
+      "skipRushCheck": true
     },
     {
       "packageName": "@cfdi/csd",
