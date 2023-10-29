@@ -454,8 +454,6 @@ importers:
       tsdx: ^0.14.1
       tslib: ^2.4.0
       typescript: ^4.8.4
-      vite-tsconfig-paths: ~4.2.1
-      vitest: ~0.34.6
       xml-js: ^1.6.11
       xsd2jsonschema: ^0.3.7
       xslt: ^0.9.1
@@ -488,8 +486,6 @@ importers:
       tsdx: 0.14.1_@types+node@18.15.11
       tslib: 2.5.0
       typescript: 4.9.5
-      vite-tsconfig-paths: 4.2.1_typescript@4.9.5
-      vitest: 0.34.6
 
   ../../packages/cfdi/utils:
     specifiers:
@@ -1705,7 +1701,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.21.4_supports-color@9.3.1
+      '@babel/core': 7.21.4
       '@babel/helper-plugin-utils': 7.20.2
 
   /@babel/plugin-transform-arrow-functions/7.20.7_@babel+core@7.21.4:
