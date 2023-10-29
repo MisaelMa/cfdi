@@ -31,9 +31,9 @@ jobs:
         run: npm install -g @microsoft/rush@5.82.1
 
       - name: Rush Install
-        uses: advancedcsg-open/actions-rush
+        run:  node common/scripts/install-run-rush.js install
 
-      - name: Rush Update A
+      - name: Rush Update
         run: |
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
