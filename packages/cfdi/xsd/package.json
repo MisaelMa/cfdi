@@ -58,7 +58,6 @@
     }
   ],
   "dependencies": {
-    "xsd2jsonschema": "^0.3.7",
     "xml-js": "^1.6.11",
     "xslt-processor": "^0.11.7",
     "ajv": "^8.12.0",

@@ -8,24 +8,20 @@ export default async function loginRoute(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const schema = Schema.of();
-  schema.setConfig({
+  const validate = Schema.of();
+  validate.setConfig({
     path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
   });
-  const emisor = schema
-    .getAjv()
-    .getSchema('COMPROBANTE_EMISOR') as AnyValidateFunction;
-
+  const emisor = validate.cfdi.emisor;
   // Objeto a validar (en este caso, un objeto válido según el esquema)
   const objetoValido = {
-    Rfc: 'LAN7008173R59',
-    Nombre: 'amir',
-    RegimenFiscal: '617',
+    Rfc: '',
+    Nombre: '',
+    RegimenFiscal: '',
   };
 
-  const valid =
-    emisor.schemaEnv.validate && emisor.schemaEnv.validate(objetoValido);
-  console.log(emisor.errors);
+  const valid = emisor(objetoValido);
+
   res.send({
     emisor,
     amir: 2,
