@@ -28,10 +28,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Rush CLI
-        run: npm install -g @microsoft/rush@5.50.0
+        run: npm install -g @microsoft/rush@5.82.1
 
       - name: Rush Install
-        uses: advancedcsg-open/actions-rush@v1.4.5
+        uses: advancedcsg-open/actions-rush
 
       - name: Rush Update
         run: |
