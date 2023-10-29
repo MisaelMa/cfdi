@@ -30,9 +30,6 @@ jobs:
       - name: Rush CLI
         run: npm install -g @microsoft/rush@5.82.1
 
-      - name: Rush Install
-        run: rush update
-
       - name: Rush Update
         run: |
           git config user.name MisaelMa
