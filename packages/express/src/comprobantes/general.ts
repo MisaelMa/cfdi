@@ -30,9 +30,9 @@ export const general = async (config: any): Promise<CFDI> => {
     NoCertificado: '',
     Certificado: '',
     condicionesDePago: 'Contado',
-    SubTotal: '16148.04',
+    SubTotal: 16148.04,
     Descuento: '645.92',
-    Moneda: 'MXN',
+    Moneda: 'Moneda',
     Total: '17207.35',
     TipoDeComprobante: 'I',
     MetodoPago: 'PUE',
@@ -46,6 +46,9 @@ export const general = async (config: any): Promise<CFDI> => {
     debug: true,
     xslt: {
       path: styleSheet,
+    },
+    schema: {
+      path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
     },
   });
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
@@ -117,6 +120,6 @@ export const general = async (config: any): Promise<CFDI> => {
   cfd.impuesto(impuesto);
 
   await cfd.certificar(cer);
-  await cfd.sellar(key, '12345678a');
+  //await cfd.sellar(key, '12345678a');
   return cfd;
 };

@@ -11,7 +11,6 @@ import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
 import { getOriginalString } from './utils/XmlHelp';
-// import * as cer from "@cfdi/csd/cer"
 import { js2xml } from 'xml-js';
 
 /**
@@ -83,14 +82,8 @@ export class CFDI extends Comprobante {
   /**
    *getJsonCdfi
    */
-  public async getJsonCdfi(): Promise<XmlCdfi> {
-    return new Promise((resolve, reject) => {
-      try {
-        resolve(this.xml);
-      } catch (e) {
-        reject(e);
-      }
-    });
+  public getJsonCdfi(): XmlCdfi {
+    return this.xml
   }
 
   /**
@@ -99,6 +92,10 @@ export class CFDI extends Comprobante {
   public async getXmlCdfi(): Promise<string> {
     return new Promise(async (resolve, reject) => {
       try {
+        const comprobante = this.schema.cfdi.comprobante
+        const d = comprobante({...this.xml['cfdi:Comprobante']._attributes})
+        console.log(comprobante.errors);
+
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const cfdi = await js2xml({ ...this.xml }, options);
         this.restartCfdi();

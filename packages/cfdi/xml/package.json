@@ -64,6 +64,7 @@
   "dependencies": {
     "@cfdi/catalogos": "workspace:*",
     "@cfdi/csd": "workspace:*",
+    "@cfdi/xsd": "workspace:*",
     "@cfdi/complementos": "workspace:*",
     "@clir/saxon-he": "workspace:*",
     "moment": "^2.29.4",

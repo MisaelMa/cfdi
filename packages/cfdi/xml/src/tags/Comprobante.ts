@@ -17,30 +17,32 @@ import { Emisor } from './Emisor';
 import { Impuestos } from './Impuestos';
 import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
+import { Schema } from '@cfdi/xsd'
 import { Structure } from '../utils/structure';
-import { schema } from '../utils/XmlHelp';
+import { schemaBuild } from '../utils/XmlHelp';
 
 export class Comprobante {
   protected xml: XmlCdfi = {} as XmlCdfi;
   protected tc: TagComprobante = 'cfdi:Comprobante';
   protected version = '4.0';
-
   protected tags: Structure;
-
   protected XMLSchema = 'http://www.w3.org/2001/XMLSchema-instance';
-
   protected cfd = 'http://www.sat.gob.mx/cfd/4';
-
   protected locations = [
     'http://www.sat.gob.mx/cfd/4',
     'http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
   ];
 
   protected xslt: XsltSheet;
+  schema = Schema.of()
   constructor(
     attr: CFDIAttributes,
-    options: Options = { debug: false, xslt: { xslt3: false } } as Options
+    options: Options = { debug: false, xslt: { xslt3: false }, schema: { path: ''} } as Options
   ) {
+
+    this.schema.setConfig({
+      path: options.schema?.path
+    });
     const attribute = attr;
     const { xslt, customTags = {} } = options;
     this.xslt = xslt;
@@ -57,8 +59,12 @@ export class Comprobante {
       ...this.xml[this.tc]._attributes,
       ...{ Version: this.version },
       ...attribute,
+      SubTotal: Number(attribute.SubTotal),
+      Descuento: Number(attribute.Descuento),
+      Total: Number(attribute.Total)
     };
   }
+
 
   /**
    *xmlns
@@ -102,7 +108,7 @@ export class Comprobante {
     if (!this.xml[this.tc]._attributes['xsi:schemaLocation']) {
       this.xml[this.tc]._attributes['xsi:schemaLocation'] = '';
     }
-    const schemaLocation = schema(locations);
+    const schemaLocation = schemaBuild(locations);
     this.xml[this.tc]._attributes['xsi:schemaLocation'] += ` ${schemaLocation}`;
   }
 

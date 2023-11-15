@@ -13,7 +13,7 @@ export default class Schema {
   private pathSchema = '';
   private schemaKeys: string[] = [];
   constructor() {
-    this.ajv = new Ajv();
+    this.ajv = new Ajv({ strict: false });
   }
 
   public static of(): Schema {
