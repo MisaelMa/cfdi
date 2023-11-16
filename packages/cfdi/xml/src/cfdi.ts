@@ -33,7 +33,8 @@ export class CFDI extends Comprobante {
     attr: CFDIAttributes,
     options: Options = { debug: false, xslt: { xslt3: false } } as Options
   ) {
-    super(attr, options);
+    super(options);
+    this.setAttributes(attr)
     const { debug = false } = options;
     this.debug = debug;
     this._cadenaOriginal = '';
@@ -92,10 +93,6 @@ export class CFDI extends Comprobante {
   public async getXmlCdfi(): Promise<string> {
     return new Promise(async (resolve, reject) => {
       try {
-        const comprobante = this.schema.cfdi.comprobante
-        const d = comprobante({...this.xml['cfdi:Comprobante']._attributes})
-        console.log(comprobante.errors);
-
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const cfdi = await js2xml({ ...this.xml }, options);
         this.restartCfdi();

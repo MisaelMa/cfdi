@@ -17,7 +17,7 @@ import { Emisor } from './Emisor';
 import { Impuestos } from './Impuestos';
 import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
-import { Schema } from '@cfdi/xsd'
+import { Schema } from '@cfdi/xsd';
 import { Structure } from '../utils/structure';
 import { schemaBuild } from '../utils/XmlHelp';
 
@@ -34,37 +34,23 @@ export class Comprobante {
   ];
 
   protected xslt: XsltSheet;
-  schema = Schema.of()
+  schema = Schema.of();
   constructor(
-    attr: CFDIAttributes,
-    options: Options = { debug: false, xslt: { xslt3: false }, schema: { path: ''} } as Options
+    options: Options = {
+      debug: false,
+      xslt: { xslt3: false },
+      schema: { path: '' },
+    } as Options
   ) {
-
     this.schema.setConfig({
-      path: options.schema?.path
+      path: options.schema?.path,
     });
-    const attribute = attr;
     const { xslt, customTags = {} } = options;
     this.xslt = xslt;
     this.tags = new Structure(customTags);
     this.tc = this.tags.tagXml('cfdi:Comprobante');
     this.restartCfdi();
-    this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
-    this.addSchemaLocation(attribute.schemaLocation || this.locations);
-    if (attribute.xmlns) {
-      delete attribute.xmlns;
-    }
-    attribute.schemaLocation && delete attribute.schemaLocation;
-    this.xml['cfdi:Comprobante']._attributes = {
-      ...this.xml[this.tc]._attributes,
-      ...{ Version: this.version },
-      ...attribute,
-      SubTotal: Number(attribute.SubTotal),
-      Descuento: Number(attribute.Descuento),
-      Total: Number(attribute.Total)
-    };
   }
-
 
   /**
    *xmlns
@@ -127,20 +113,44 @@ export class Comprobante {
     };
   }
 
-  /** @Deprecated* */
-  /**
-   *setAttributesComprobantes
-   *
-   * @param attribute
-   * Comprobante
-   */
-  public setAttributesComprobantes(attribute: Comprobante): void {
-    this.xml[this.tc]._attributes = {
+  public setAttributes(attr: CFDIAttributes): void {
+    const attribute = attr;
+    this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
+    this.addSchemaLocation(attribute.schemaLocation || this.locations);
+    if (attribute.xmlns) {
+      delete attribute.xmlns;
+    }
+    attribute.schemaLocation && delete attribute.schemaLocation;
+    this.xml['cfdi:Comprobante']._attributes = {
       ...this.xml[this.tc]._attributes,
       ...{ Version: this.version },
       ...attribute,
+      SubTotal: Number(attribute.SubTotal),
+      Descuento: Number(attribute.Descuento),
+      Total: Number(attribute.Total),
     };
+    const comprobante = this.schema.cfdi.comprobante;
+
+    ['Sello', 'NoCertificado', 'Certificado'].forEach((prop) => {
+      const index = comprobante.schema.required.find((d) => d === prop);
+      if (index !== -1) {
+        comprobante.schema.required.splice(index, 1);
+        comprobante.schemaEnv.schema.required.splice(index, 1);
+      }
+    });
+    comprobante.schema.properties.NoCertificado = {
+      description: '',
+      type: 'string',
+    };
+    comprobante.schemaEnv.schema.properties.NoCertificado = {
+      description: '',
+      type: 'string',
+    };
+
+    comprobante.schemaEnv.validate(this.xml['cfdi:Comprobante']._attributes);
+    console.log('ss', comprobante.schemaEnv.validate?.errors);
   }
+
   /**
    *informacionGlobal
    *

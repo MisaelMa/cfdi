@@ -51,6 +51,8 @@ export const general = async (config: any): Promise<CFDI> => {
       path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
     },
   });
+  cfd.certificar(cer);
+
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
   cfd.informacionGlobal({
@@ -119,7 +121,6 @@ export const general = async (config: any): Promise<CFDI> => {
   });
   cfd.impuesto(impuesto);
 
-  await cfd.certificar(cer);
   //await cfd.sellar(key, '12345678a');
   return cfd;
 };
