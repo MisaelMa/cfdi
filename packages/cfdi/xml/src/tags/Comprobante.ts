@@ -130,25 +130,16 @@ export class Comprobante {
       Total: Number(attribute.Total),
     };
     const comprobante = this.schema.cfdi.comprobante;
-
-    ['Sello', 'NoCertificado', 'Certificado'].forEach((prop) => {
-      const index = comprobante.schema.required.find((d) => d === prop);
-      if (index !== -1) {
-        comprobante.schema.required.splice(index, 1);
-        comprobante.schemaEnv.schema.required.splice(index, 1);
-      }
-    });
-    comprobante.schema.properties.NoCertificado = {
-      description: '',
-      type: 'string',
-    };
-    comprobante.schemaEnv.schema.properties.NoCertificado = {
-      description: '',
-      type: 'string',
-    };
-
-    comprobante.schemaEnv.validate(this.xml['cfdi:Comprobante']._attributes);
-    console.log('ss', comprobante.schemaEnv.validate?.errors);
+    console.log(
+      'comprobante',
+      comprobante.validate(this.xml['cfdi:Comprobante']._attributes)
+    );
+    console.log('comprobante', comprobante.errors);
+    console.log(
+      'comprobante init',
+      comprobante.validateInit(this.xml['cfdi:Comprobante']._attributes)
+    );
+    console.log('comprobante init', comprobante.errorsInit);
   }
 
   /**

@@ -1,21 +1,19 @@
 import Ajv, { ValidateFunction } from 'ajv';
+import { AnySchema, AnyValidateFunction } from 'ajv/dist/types';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 
-import { AnyValidateFunction } from 'ajv/dist/types';
+import { Comprobante } from './tags/comprobante';
+import { JSV } from './JSV';
 import { JTDDataType } from 'ajv/dist/types/jtd-schema';
 import { Schemakey } from './types/key-schema';
 
 export default class Schema {
   private static instance: Schema;
-  private ajv: Ajv;
+  private ajv: JSV = JSV.of();
   private isLoad = false;
-  private validate!: ValidateFunction;
   private pathSchema = '';
   private schemaKeys: string[] = [];
-  constructor() {
-    this.ajv = new Ajv({ strict: false, strictRequired: false });
-    this.ajv.opts.strictRequired = false;
-  }
+  constructor() {}
 
   public static of(): Schema {
     if (!Schema.instance) {
@@ -62,16 +60,13 @@ export default class Schema {
     });
   }
 
-  private getAjv() {
-    return this.ajv;
-  }
   private getSchema(key: Schemakey): AnyValidateFunction {
-    return this.getAjv().getSchema(key) as AnyValidateFunction;
+    return this.ajv.getSchema(key);
   }
 
   public get cfdi() {
     return {
-      comprobante: this.getSchema(Schemakey.COMPROBANTE),
+      comprobante: new Comprobante(this.getSchema(Schemakey.COMPROBANTE)),
       informacionGlobal: this.getSchema(Schemakey.INFORMACIONGLOBAL),
       emisor: this.getSchema(Schemakey.EMISOR),
       receptor: this.getSchema(Schemakey.RECEPTOR),

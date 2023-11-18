@@ -32,7 +32,7 @@ export const general = async (config: any): Promise<CFDI> => {
     condicionesDePago: 'Contado',
     SubTotal: 16148.04,
     Descuento: '645.92',
-    Moneda: 'Moneda',
+    Moneda: 'MXN',
     Total: '17207.35',
     TipoDeComprobante: 'I',
     MetodoPago: 'PUE',
