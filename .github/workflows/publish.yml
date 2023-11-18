@@ -7,21 +7,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Cdfi
         uses: actions/checkout@v3
 
-      - name: schema
+      - name: Schema
         uses: actions/checkout@v3
         with:
           repository: MisaelMa/cfdi-schema
           path: packages/cfdi/schema
           token: ${{ secrets.PAT_GITHUB }}
-
-      - name: show
-        run: |
-         ls -la packages
-         ls -la packages/cfdi
-        working-directory: .  # Ubicación raíz del proyecto
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
