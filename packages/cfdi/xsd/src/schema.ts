@@ -6,6 +6,7 @@ import { Comprobante } from './tags/comprobante';
 import { JSV } from './JSV';
 import { JTDDataType } from 'ajv/dist/types/jtd-schema';
 import { Schemakey } from './types/key-schema';
+import { ValidateXSD } from './tags/validate';
 
 export default class Schema {
   private static instance: Schema;
@@ -66,12 +67,12 @@ export default class Schema {
 
   public get cfdi() {
     return {
-      comprobante: new Comprobante(this.getSchema(Schemakey.COMPROBANTE)),
-      informacionGlobal: this.getSchema(Schemakey.INFORMACIONGLOBAL),
+      comprobante: Comprobante.of(Schemakey.COMPROBANTE),
+      informacionGlobal: ValidateXSD.of(Schemakey.INFORMACIONGLOBAL),
       emisor: this.getSchema(Schemakey.EMISOR),
       receptor: this.getSchema(Schemakey.RECEPTOR),
-      relacionado: this.getSchema(Schemakey.CFDIRELACIONADOS_CFDIRELACIONADO),
-      relacionados: this.getSchema(Schemakey.CFDIRELACIONADOS),
+      relacionado: ValidateXSD.of(Schemakey.CFDIRELACIONADOS_CFDIRELACIONADO),
+      relacionados: ValidateXSD.of(Schemakey.CFDIRELACIONADOS),
       impuestos: this.getSchema(Schemakey.IMPUESTOS),
       traslado: this.getSchema(Schemakey.IMPUESTOS_TRASLADOS_TRASLADO),
       retencion: this.getSchema(Schemakey.IMPUESTOS_RETENCIONES_RETENCION),

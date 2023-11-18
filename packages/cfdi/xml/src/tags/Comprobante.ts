@@ -130,16 +130,7 @@ export class Comprobante {
       Total: Number(attribute.Total),
     };
     const comprobante = this.schema.cfdi.comprobante;
-    console.log(
-      'comprobante',
-      comprobante.validate(this.xml['cfdi:Comprobante']._attributes)
-    );
-    console.log('comprobante', comprobante.errors);
-    console.log(
-      'comprobante init',
-      comprobante.validateInit(this.xml['cfdi:Comprobante']._attributes)
-    );
-    console.log('comprobante init', comprobante.errorsInit);
+    comprobante.validateInit(this.xml['cfdi:Comprobante']._attributes);
   }
 
   /**
@@ -159,6 +150,7 @@ export class Comprobante {
     Meses: string;
     Año: string;
   }): void {
+    this.schema.cfdi.informacionGlobal.validate(payload);
     this.xml[this.tc] = {
       'cfdi:InformacionGlobal': {
         _attributes: payload,

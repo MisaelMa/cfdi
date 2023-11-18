@@ -1,45 +1,49 @@
 import { AnyValidateFunction, SchemaObject } from 'ajv/dist/core';
 
 import { JSV } from '../JSV';
+import { Schemakey } from '../types/key-schema';
+import { ValidateXSD } from './validate';
 
-export class Comprobante {
-  private comprobante: AnyValidateFunction;
+export class Comprobante extends ValidateXSD {
+  protected static instance: Comprobante;
   private comprobanteInit!: AnyValidateFunction;
-  private schema: SchemaObject = {};
   private keyInitSchema = 'comprobante-init.json';
   private override_required = ['Sello', 'NoCertificado', 'Certificado'];
-  constructor(comprobante: AnyValidateFunction) {
-    this.comprobante = comprobante;
-    this.schema = { ...(comprobante.schema as unknown as any) };
-    this.schemaInit();
-  }
-  get errors() {
-    return this.comprobante.errors;
+  constructor(key: Schemakey) {
+    super(key);
+    const schemaInit = { ...(this.schema.schema as unknown as any) };
+    this.schemaInitBuild(schemaInit);
   }
 
+  public static of(key: Schemakey): Comprobante {
+    if (!Comprobante.instance) {
+      Comprobante.instance = new Comprobante(key);
+    }
+    return Comprobante.instance;
+  }
   get errorsInit() {
     return this.comprobanteInit.errors;
   }
-  public validate(data: Record<string, any>) {
-    return this.comprobante(data);
-  }
 
   public validateInit(data: Record<string, any>) {
-    return this.comprobanteInit(data);
+    const valid = this.comprobanteInit(data);
+    console.log(`[KEY] => ${this.key}`, this.errors);
+
+    return valid;
   }
-  private schemaInit() {
-    this.schema.$id = this.keyInitSchema;
+  private schemaInitBuild(schemaInit: Record<string, any>) {
+    schemaInit.$id = this.keyInitSchema;
     this.override_required.forEach((item) => {
-      const index = this.schema.required.find((p: string) => p === item);
+      const index = schemaInit.required.find((p: string) => p === item);
       if (index !== -1) {
-        this.schema.required.splice(index, 1);
+        schemaInit.required.splice(index, 1);
       }
     });
-    this.schema.properties.NoCertificado = {
+    schemaInit.properties.NoCertificado = {
       description: '',
       type: 'string',
     };
-    JSV.of().addSchema(this.schema, this.keyInitSchema);
+    JSV.of().addSchema(schemaInit, this.keyInitSchema);
     this.comprobanteInit = JSV.of().getSchema(this.keyInitSchema);
   }
 }

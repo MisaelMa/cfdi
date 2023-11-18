@@ -27,7 +27,7 @@ export class JSV {
     if (!this.getSchema(key)) {
       return this.ajv.addSchema(schema, key, _meta, _validateSchema);
     }
-    console.log('[ADD_SCHEMA]: KEY EXIST');
+    console.log(`[ADD_SCHEMA]: KEY EXIST ${key}`);
 
     return this.ajv;
   }

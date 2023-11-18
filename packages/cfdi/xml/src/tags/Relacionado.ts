@@ -1,5 +1,7 @@
 import { XmlRelacionados, XmlRelacionadosAttributes } from '../types';
 
+import { Schema } from '@cfdi/xsd';
+
 /**
  *
  */
@@ -14,6 +16,7 @@ export class Relacionado {
    */
   constructor(typeRelation: XmlRelacionadosAttributes) {
     this.relacionada._attributes = typeRelation;
+    Schema.of().cfdi.relacionados.validate(typeRelation);
   }
 
   /**

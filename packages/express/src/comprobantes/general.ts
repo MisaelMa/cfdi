@@ -57,7 +57,7 @@ export const general = async (config: any): Promise<CFDI> => {
 
   cfd.informacionGlobal({
     Periodicidad: '01',
-    Meses: '01',
+    Meses: '02',
     Año: 2021,
   });
   const relation = new Relacionado({ TipoRelacion: '01' });
