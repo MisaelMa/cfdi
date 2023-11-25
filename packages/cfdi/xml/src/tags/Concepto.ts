@@ -12,6 +12,7 @@ import {
 } from '../types';
 
 import { Impuestos } from './Impuestos';
+import { Schema } from '@cfdi/xsd';
 
 /**
  *
@@ -54,8 +55,18 @@ export class Concepto {
    * XmlConceptoAttributes
    */
   constructor(concepto: XmlConceptoAttributes) {
+    const cloneConcept = {
+      ...concepto,
+      Cantidad: Number(concepto.Cantidad),
+      ValorUnitario: Number(concepto.ValorUnitario),
+      Importe: Number(concepto.ValorUnitario),
+    };
+    if (concepto.Descuento) {
+      cloneConcept.Descuento = Number(concepto.Descuento);
+    }
     this.existComplemnt = false;
-    this.concepto._attributes = concepto;
+    Schema.of().concepto.concepto.validate(cloneConcept);
+    this.concepto._attributes = cloneConcept;
   }
 
   /**

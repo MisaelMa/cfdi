@@ -5,8 +5,8 @@ export interface XmlImpuestos {
 }
 
 export interface XmlImpuestosTrasladados {
-  TotalImpuestosRetenidos?: string;
-  TotalImpuestosTrasladados?: string;
+  TotalImpuestosRetenidos?: number | string;
+  TotalImpuestosTrasladados?: number | string;
 }
 
 export interface XmlTranslado {

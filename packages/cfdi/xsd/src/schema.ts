@@ -69,20 +69,20 @@ export default class Schema {
     return {
       comprobante: Comprobante.of(Schemakey.COMPROBANTE),
       informacionGlobal: ValidateXSD.of(Schemakey.INFORMACIONGLOBAL),
-      emisor: this.getSchema(Schemakey.EMISOR),
-      receptor: this.getSchema(Schemakey.RECEPTOR),
+      emisor: ValidateXSD.of(Schemakey.EMISOR),
+      receptor: ValidateXSD.of(Schemakey.RECEPTOR),
       relacionado: ValidateXSD.of(Schemakey.CFDIRELACIONADOS_CFDIRELACIONADO),
       relacionados: ValidateXSD.of(Schemakey.CFDIRELACIONADOS),
-      impuestos: this.getSchema(Schemakey.IMPUESTOS),
-      traslado: this.getSchema(Schemakey.IMPUESTOS_TRASLADOS_TRASLADO),
-      retencion: this.getSchema(Schemakey.IMPUESTOS_RETENCIONES_RETENCION),
-      addenda: this.getSchema(Schemakey.ADDENDA),
+      impuestos: ValidateXSD.of(Schemakey.IMPUESTOS),
+      traslado: ValidateXSD.of(Schemakey.IMPUESTOS_TRASLADOS_TRASLADO),
+      retencion: ValidateXSD.of(Schemakey.IMPUESTOS_RETENCIONES_RETENCION),
+      addenda: ValidateXSD.of(Schemakey.ADDENDA),
     };
   }
 
-  public concepto() {
+  public get concepto() {
     return {
-      concepto: this.getSchema(Schemakey.CONCEPTO),
+      concepto: ValidateXSD.of(Schemakey.CONCEPTO),
       parte: this.getSchema(Schemakey.CONCEPTO_PARTE),
       parteInformacionAduanera: this.getSchema(
         Schemakey.CONCEPTO_PARTE_INFORMACIONADUANERA

@@ -61,8 +61,8 @@ export const general = async (config: any): Promise<CFDI> => {
     Año: 2021,
   });
   const relation = new Relacionado({ TipoRelacion: '01' });
-  relation.addRelation('asdasd-3234-asdasd-2332-asdas');
-  relation.addRelation('asdasd-3234-asdasd-2332-asdas');
+  relation.addRelation('e19ca9ba-0d25-46df-bb09-f3745d187a05');
+  relation.addRelation('e19ca9ba-0d25-46df-bb09-f3745d187a05');
   cfd.relacionados(relation);
 
   const emisor = new Emisor({
@@ -105,6 +105,7 @@ export const general = async (config: any): Promise<CFDI> => {
   const iedu = new Iedu(ieduObject);
   concepto.complemento(iedu);
   cfd.concepto(concepto);
+
   const impuesto: Impuestos = new Impuestos({
     TotalImpuestosRetenidos: '1000',
   });

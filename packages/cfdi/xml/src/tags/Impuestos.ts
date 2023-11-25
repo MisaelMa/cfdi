@@ -1,12 +1,15 @@
 import {
+  XmlImpuestos,
+  XmlImpuestosTrasladados,
+  XmlRetencionAttributes,
+  XmlRetenciones,
+  XmlTranRentAttributesProperties,
   XmlTranslado,
   XmlTransladoAttributes,
-  XmlTranRentAttributesProperties,
-  XmlRetencionAttributes,
-  XmlImpuestos,
-  XmlRetenciones,
-  XmlImpuestosTrasladados,
 } from '../types';
+
+import { Schema } from '@cfdi/xsd';
+import { stringObjToNumerico } from '../utils/number.utils';
 
 /**
  *
@@ -32,7 +35,9 @@ export class Impuestos {
     TotalImpuestos: XmlImpuestosTrasladados = {} as XmlImpuestosTrasladados
   ) {
     if (Object.keys(TotalImpuestos).length !== 0) {
-      this.impuesto._attributes = TotalImpuestos;
+      const TI = stringObjToNumerico(TotalImpuestos);
+      Schema.of().cfdi.impuestos.validate(TI);
+      this.impuesto._attributes = TI;
     }
   }
 
@@ -54,6 +59,7 @@ export class Impuestos {
     const atrributos: XmlTransladoAttributes = {
       _attributes: traslado,
     } as XmlTransladoAttributes;
+    Schema.of().cfdi.traslado.validate(atrributos);
     this.impuesto['cfdi:Traslados']['cfdi:Traslado'].push(atrributos); // = traslado;
     // para tener por separado los traslado del tag de impuesto solo para consulta
     this.translado['cfdi:Traslado'].push(atrributos);

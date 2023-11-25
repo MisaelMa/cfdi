@@ -14,7 +14,7 @@ export class ValidateXSD {
     this.setSchema(key);
   }
 
-  setSchema(key: Schemakey) {
+  protected setSchema(key: Schemakey) {
     this.key = key;
     this.schema = JSV.of().getSchema(key);
   }
@@ -35,9 +35,10 @@ export class ValidateXSD {
 
   public validate(data: Record<string, any>, dataCxt?: DataValidationCxt) {
     const valid = this.schema(data, dataCxt);
-    console.log(`[KEY] => ${this.key}`, data, this.errors);
     if (!valid) {
-      console.log(`[KEY] => ${this.key}`, this.errors);
+      console.log(`[KEY] => ${this.key}`, data, this.errors);
+    } else {
+      console.log(`[PASS] => ${this.key}`);
     }
     return valid;
   }
