@@ -11,13 +11,14 @@ import {
   XmlTranRentAttributesProperties,
 } from '../types';
 
+import { BaseImpuestos } from './BaseImpuestos';
 import { Impuestos } from './Impuestos';
 import { Schema } from '@cfdi/xsd';
 
 /**
  *
  */
-export class Concepto {
+export class Concepto extends BaseImpuestos {
   // private conceptComplemnets: any = [
   //   {
   //     key: 'aerolineas:Aerolineas',
@@ -46,8 +47,6 @@ export class Concepto {
 
   private concepto: XmlConceptoProperties = {} as XmlConceptoProperties;
 
-  private impuesto: Impuestos = new Impuestos();
-
   /**
    *constructor
    *
@@ -55,6 +54,7 @@ export class Concepto {
    * XmlConceptoAttributes
    */
   constructor(concepto: XmlConceptoAttributes) {
+    super();
     const cloneConcept = {
       ...concepto,
       Cantidad: Number(concepto.Cantidad),
@@ -154,8 +154,8 @@ export class Concepto {
   traslado(
     traslado: XmlTranRentAttributesProperties & { Base: string | number }
   ): Concepto {
-    this.concepto['cfdi:Impuestos'] =
-      this.impuesto.traslados(traslado).impuesto; // = traslado;
+    this.setTraslado(traslado);
+    this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;
   }
 
@@ -172,8 +172,8 @@ export class Concepto {
       Importe: string | number;
     }
   ): Concepto {
-    this.concepto['cfdi:Impuestos'] =
-      this.impuesto.retenciones(retencion).impuesto; // = traslado;
+    this.setRetencion(retencion);
+    this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;
   }
 

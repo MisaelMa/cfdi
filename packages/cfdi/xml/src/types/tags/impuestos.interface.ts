@@ -27,8 +27,8 @@ export interface XmlRetencionAttributes {
 
 export interface XmlTranRentAttributesProperties {
   Base?: string | number;
-  Impuesto: string;
+  Impuesto: string | number;
   TipoFactor: string;
-  TasaOCuota?: string;
-  Importe?: string;
+  TasaOCuota?: string | number;
+  Importe?: string | number;
 }

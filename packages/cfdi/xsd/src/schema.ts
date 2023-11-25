@@ -29,6 +29,8 @@ export default class Schema {
   }
 
   private getContentFile(file: string) {
+    if (!existsSync(file))
+      return { catalogos: [], comprobante: [], complementos: [] };
     const data = JSON.parse(readFileSync(file, 'utf8'));
     return data;
   }
