@@ -30,13 +30,18 @@ export class ValidateXSD {
   }
 
   get errors() {
-    return this.schema.errors;
+    return this.schema?.errors;
   }
 
   public validate(data: Record<string, any>, dataCxt?: DataValidationCxt) {
+    if (!this.schema) return true;
     const valid = this.schema(data, dataCxt);
     if (!valid) {
-      console.log(`[KEY] => ${this.key}`, data, this.errors);
+      console.log(
+        `[KEY] => ${this.key}`,
+        data,
+        JSON.stringify(this.errors, null, 2)
+      );
     } else {
       console.log(`[PASS] => ${this.key}`);
     }

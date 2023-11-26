@@ -11,7 +11,8 @@ export class Comprobante extends ValidateXSD {
   private override_required = ['Sello', 'NoCertificado', 'Certificado'];
   constructor(key: Schemakey) {
     super(key);
-    const schemaInit = { ...(this.schema.schema as unknown as any) };
+    const schema = this.schema?.schema as unknown as any;
+    const schemaInit = { required: [], properties: {}, ...schema };
     this.schemaInitBuild(schemaInit);
   }
 

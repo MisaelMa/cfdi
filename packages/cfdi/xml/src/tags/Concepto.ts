@@ -152,8 +152,14 @@ export class Concepto extends BaseImpuestos {
    * XmlTranRentAttributesProperties
    */
   traslado(
-    traslado: XmlTranRentAttributesProperties & { Base: string | number }
+    payload: XmlTranRentAttributesProperties & { Base: string | number }
   ): Concepto {
+    const traslado = {
+      ...payload,
+      TasaOCuota: Number(payload.TasaOCuota),
+      Importe: Number(payload.Importe),
+    };
+    Schema.of().concepto.traslado.validate(traslado);
     this.setTraslado(traslado);
     this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;
@@ -166,12 +172,18 @@ export class Concepto extends BaseImpuestos {
    * XmlTranRentAttributesProperties
    */
   retencion(
-    retencion: XmlTranRentAttributesProperties & {
+    payload: XmlTranRentAttributesProperties & {
       Base: string | number;
       TasaOCuota: string | number;
       Importe: string | number;
     }
   ): Concepto {
+    const retencion = {
+      ...payload,
+      Importe: Number(payload.Importe),
+    };
+    Schema.of().concepto.retencion.validate(retencion);
+
     this.setRetencion(retencion);
     this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;

@@ -94,6 +94,21 @@ export const general = async (config: any): Promise<CFDI> => {
     ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto,
   });
 
+  concepto.traslado({
+    Base: 1,
+    Impuesto: '002',
+    TipoFactor: 'Tasa',
+    TasaOCuota: '002',
+    Importe: '59.17',
+  });
+  concepto.retencion({
+    Impuesto: '002',
+    Importe: '59.17',
+    Base: 2,
+    TasaOCuota: 2,
+    TipoFactor: 'Tasa',
+  });
+
   const ieduObject: XmlIeduAttribute = {
     version: '1.0',
     autRVOE: '201587PRIM',

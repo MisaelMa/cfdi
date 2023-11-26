@@ -93,8 +93,8 @@ export default class Schema {
       informacionAduanera: this.getSchema(
         Schemakey.CONCEPTO_INFORMACIONADUANERA
       ),
-      traslado: this.getSchema(Schemakey.CONCEPTO_IMPUESTOS_TRASLADOS_TRASLADO),
-      retencion: this.getSchema(
+      traslado: ValidateXSD.of(Schemakey.CONCEPTO_IMPUESTOS_TRASLADOS_TRASLADO),
+      retencion: ValidateXSD.of(
         Schemakey.CONCEPTO_IMPUESTOS_RETENCIONES_RETENCION
       ),
     };

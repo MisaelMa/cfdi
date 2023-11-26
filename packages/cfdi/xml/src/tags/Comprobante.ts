@@ -148,7 +148,7 @@ export class Comprobante {
   public informacionGlobal(payload: {
     Periodicidad: string;
     Meses: string;
-    Año: string;
+    Año: string | number;
   }): void {
     this.schema.cfdi.informacionGlobal.validate(payload);
     this.xml[this.tc] = {
