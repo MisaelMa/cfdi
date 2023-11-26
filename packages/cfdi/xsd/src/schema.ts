@@ -10,6 +10,7 @@ import { ValidateXSD } from './tags/validate';
 
 export default class Schema {
   private static instance: Schema;
+  private debug: boolean = false;
   private ajv: JSV = JSV.of();
   private isLoad = false;
   private pathSchema = '';
@@ -23,14 +24,16 @@ export default class Schema {
     return Schema.instance;
   }
   setConfig(options: any) {
-    const { path } = options;
+    const { path, debug } = options;
     this.pathSchema = path;
+    this.debug = debug;
     this.loadFiles();
   }
 
   private getContentFile(file: string) {
-    if (!existsSync(file))
+    if (!existsSync(file)) {
       return { catalogos: [], comprobante: [], complementos: [] };
+    }
     const data = JSON.parse(readFileSync(file, 'utf8'));
     return data;
   }

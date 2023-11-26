@@ -5,6 +5,7 @@ import { Schema } from '../src'; // Reemplaza con la ruta correcta a tu clase Sc
 // Configura la instancia de Schema
 const validate = Schema.of();
 validate.setConfig({
+  debug: false,
   path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
 });
 
@@ -20,11 +21,7 @@ describe('Validación del esquema del Receptor', () => {
       RegimenFiscalReceptor: '123',
       UsoCFDI: 'G01',
     };
-    console.log('amir');
-
-    console.log(receptor(objetoReceptorValido));
-
-    expect(receptor(objetoReceptorValido)).toBe(false);
+    expect(receptor.validate(objetoReceptorValido)).toBe(false);
   });
 
   // Prueba 2: Debería rechazar un objeto de Receptor con valores vacíos
@@ -37,7 +34,7 @@ describe('Validación del esquema del Receptor', () => {
       UsoCFDI: '',
     };
 
-    expect(receptor(objetoReceptorVacio)).toBe(false);
+    expect(receptor.validate(objetoReceptorVacio)).toBe(false);
   });
 
   // Prueba 3: Debería rechazar un objeto de Receptor con un RFC inválido
@@ -50,7 +47,7 @@ describe('Validación del esquema del Receptor', () => {
       UsoCFDI: 'G01',
     };
 
-    expect(receptor(objetoReceptorRfcInvalido)).toBe(false);
+    expect(receptor.validate(objetoReceptorRfcInvalido)).toBe(false);
   });
 
   // Prueba 4: Debería rechazar un objeto de Receptor con un código postal incorrecto
@@ -63,7 +60,7 @@ describe('Validación del esquema del Receptor', () => {
       UsoCFDI: 'G01',
     };
 
-    expect(receptor(objetoReceptorCodigoPostalInvalido)).toBe(false);
+    expect(receptor.validate(objetoReceptorCodigoPostalInvalido)).toBe(false);
   });
 
   // Prueba 5: Debería validar un objeto de Receptor con atributo condicional (NumRegIdTrib)
@@ -72,12 +69,12 @@ describe('Validación del esquema del Receptor', () => {
       Rfc: 'LAN7008173R59',
       Nombre: 'amir',
       DomicilioFiscalReceptor: '12345',
-      RegimenFiscalReceptor: '123',
+      RegimenFiscalReceptor: '601',
       UsoCFDI: 'G01',
       NumRegIdTrib: '1234567890',
     };
 
-    expect(receptor(objetoReceptorConAtributoCondicional)).toBe(true);
+    expect(receptor.validate(objetoReceptorConAtributoCondicional)).toBe(true);
   });
 
   // Prueba 6: Debería rechazar un objeto de Receptor con atributo condicional inválido (NumRegIdTrib)
@@ -91,7 +88,9 @@ describe('Validación del esquema del Receptor', () => {
       NumRegIdTrib: 'ABC', // No cumple con el patrón
     };
 
-    expect(receptor(objetoReceptorConAtributoCondicionalInvalido)).toBe(false);
+    expect(
+      receptor.validate(objetoReceptorConAtributoCondicionalInvalido)
+    ).toBe(false);
   });
 
   // Agrega más pruebas según sea necesario para cubrir otros casos de uso o escenarios del esquema del Receptor

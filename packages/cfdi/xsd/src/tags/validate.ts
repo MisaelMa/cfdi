@@ -6,7 +6,7 @@ import { Schemakey } from '../types/key-schema';
 
 export class ValidateXSD {
   private static instances: Map<Schemakey, ValidateXSD> = new Map();
-
+  private debug: boolean = false;
   protected schema!: AnyValidateFunction;
   protected key!: Schemakey;
 
@@ -37,13 +37,14 @@ export class ValidateXSD {
     if (!this.schema) return true;
     const valid = this.schema(data, dataCxt);
     if (!valid) {
-      console.log(
-        `[KEY] => ${this.key}`,
-        data,
-        JSON.stringify(this.errors, null, 2)
-      );
+      if (this.debug)
+        console.log(
+          `[KEY] => ${this.key}`,
+          data,
+          JSON.stringify(this.errors, null, 2)
+        );
     } else {
-      console.log(`[PASS] => ${this.key}`);
+      if (this.debug) console.log(`[PASS] => ${this.key}`);
     }
     return valid;
   }
