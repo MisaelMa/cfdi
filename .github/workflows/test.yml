@@ -17,6 +17,13 @@
         - name: Checkout
           uses: actions/checkout@v3
 
+        - name: Schema
+          uses: actions/checkout@v3
+          with:
+            repository: MisaelMa/cfdi-schema
+            path: packages/cfdi/schema
+            token: ${{ secrets.PAT_GITHUB }}
+
         - name: Cache dependencies
           uses: ./.github/actions/cache
 
