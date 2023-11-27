@@ -26,7 +26,8 @@
     "@cfdi/csd": "workspace:*",
     "@cfdi/csf": "workspace:*",
     "@clir/openssl": "workspace:*",
-    "@cfdi/utils": "workspace:*"
+    "@cfdi/utils": "workspace:*",
+    "@clir/saxon-he": "workspace:*"
   },
   "devDependencies": {
     "@recreando/eslint-settings": "workspace:*",
