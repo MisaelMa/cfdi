@@ -1,2 +1,2 @@
-export * from './Transform';
-export * from './Query';
+export * from './transform';
+export * from './query';

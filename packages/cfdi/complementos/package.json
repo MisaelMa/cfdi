@@ -62,17 +62,7 @@
     }
   ],
   "dependencies": {
-    "@cfdi/catalogos": "workspace:*",
-    "@cfdi/csd": "workspace:*",
-    "@clir/saxon-he": "workspace:*",
-    "moment": "^2.29.4",
-    "moment-timezone": "^0.5.27",
-    "xml-js": "^1.6.11",
-    "node_modules-path": "2.0.6",
-    "@signati/saxon": "^0.0.4",
-    "saxon-js": "^2.4.0",
-    "xslt3": "^2.4.0",
-    "@esm2cjs/execa": "^6.1.1-cjs.1"
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

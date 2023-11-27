@@ -2,13 +2,13 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
-import { Transform, saxon } from '@signati/saxon';
 import { cer, key } from '@cfdi/csd';
 
 import { CFDIAttributes } from './types/tags/comprobante.interface';
 import { Comprobante } from './tags/Comprobante';
 import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
+import { Transform } from '@clir/saxon-he';
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
 import { getOriginalString } from './utils/XmlHelp';
 import { js2xml } from 'xml-js';
@@ -34,7 +34,7 @@ export class CFDI extends Comprobante {
     options: Options = { debug: false, xslt: { xslt3: false } } as Options
   ) {
     super(options);
-    this.setAttributes(attr)
+    this.setAttributes(attr);
     const { debug = false } = options;
     this.debug = debug;
     this._cadenaOriginal = '';
@@ -84,7 +84,7 @@ export class CFDI extends Comprobante {
    *getJsonCdfi
    */
   public getJsonCdfi(): XmlCdfi {
-    return this.xml
+    return this.xml;
   }
 
   /**

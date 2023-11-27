@@ -57,16 +57,11 @@ importers:
 
   ../../packages/cfdi/complementos:
     specifiers:
-      '@cfdi/catalogos': workspace:*
-      '@cfdi/csd': workspace:*
-      '@clir/saxon-he': workspace:*
-      '@esm2cjs/execa': ^6.1.1-cjs.1
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
       '@rushstack/eslint-config': ^2.6.0
       '@rushstack/heft': ^0.45.1
-      '@signati/saxon': ^0.0.4
       '@size-limit/preset-small-lib': ^7.0.8
       '@testing-library/dom': ^8.19.0
       '@testing-library/jest-dom': ^5.16.1
@@ -79,11 +74,7 @@ importers:
       eslint: ^8.26.0
       husky: ^8.0.1
       jest: ^28.1.2
-      moment: ^2.29.4
-      moment-timezone: ^0.5.27
-      node_modules-path: 2.0.6
       rimraf: ^5.0.0
-      saxon-js: ^2.4.0
       size-limit: ^7.0.8
       tsdx: ^0.14.1
       tslib: ^2.4.0
@@ -91,19 +82,8 @@ importers:
       vite-tsconfig-paths: ~4.2.1
       vitest: ~0.34.6
       xml-js: ^1.6.11
-      xslt3: ^2.4.0
     dependencies:
-      '@cfdi/catalogos': link:../catalogos
-      '@cfdi/csd': link:../csd
-      '@clir/saxon-he': link:../../clir/saxon-he
-      '@esm2cjs/execa': 6.1.1-cjs.1
-      '@signati/saxon': 0.0.4
-      moment: 2.29.4
-      moment-timezone: 0.5.43
-      node_modules-path: 2.0.6
-      saxon-js: 2.5.0
       xml-js: 1.6.11
-      xslt3: 2.5.0
     devDependencies:
       '@recreando/eslint-settings': link:../../../rigs/eslint
       '@recreando/jest': link:../../../rigs/jest
@@ -812,6 +792,7 @@ importers:
       '@cfdi/xml': workspace:*
       '@cfdi/xsd': workspace:*
       '@clir/openssl': workspace:*
+      '@clir/saxon-he': workspace:*
       '@recreando/eslint-settings': workspace:*
       '@recreando/jest': workspace:*
       '@recreando/typescript-settings': workspace:*
@@ -841,6 +822,7 @@ importers:
       '@cfdi/xml': link:../cfdi/xml
       '@cfdi/xsd': link:../cfdi/xsd
       '@clir/openssl': link:../clir/openssl
+      '@clir/saxon-he': link:../clir/saxon-he
       ajv: 8.12.0
       next: 12.3.4_biqbaboplfbrettd7655fr4n2y
       pdf-parse: 1.1.1
@@ -1707,7 +1689,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.21.4_supports-color@9.3.1
+      '@babel/core': 7.21.4
       '@babel/helper-plugin-utils': 7.20.2
 
   /@babel/plugin-transform-arrow-functions/7.20.7_@babel+core@7.21.4:
