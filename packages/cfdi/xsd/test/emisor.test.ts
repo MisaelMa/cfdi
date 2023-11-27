@@ -1,11 +1,25 @@
 import { describe, expect, it, test } from 'vitest';
 
 import { Schema } from '../src'; // Reemplaza con la ruta correcta a tu clase Schema
+import path from 'path';
 
 // Configura la instancia de Schema
 const schema = Schema.of();
+const files = path.join(
+  path.resolve(
+    __dirname,
+    '..',
+    '..',
+    '..',
+    'cfdi',
+    'schema',
+    'src',
+    'files',
+    'schema'
+  )
+);
 schema.setConfig({
-  path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
+  path: files,
 });
 
 const emisor = schema.cfdi.emisor;

@@ -1,15 +1,29 @@
 import { describe, expect, it, test } from 'vitest';
 
 import { Schema } from '../src'; // Reemplaza con la ruta correcta a tu clase Schema
+import path from 'path';
 
 // Configura la instancia de Schema
-const validate = Schema.of();
-validate.setConfig({
+const schema = Schema.of();
+const files = path.join(
+  path.resolve(
+    __dirname,
+    '..',
+    '..',
+    '..',
+    'cfdi',
+    'schema',
+    'src',
+    'files',
+    'schema'
+  )
+);
+schema.setConfig({
   debug: false,
-  path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
+  path: files,
 });
 
-const receptor = validate.cfdi.receptor;
+const receptor = schema.cfdi.receptor;
 // Describe el conjunto de pruebas para el esquema del Receptor
 describe('Validación del esquema del Receptor', () => {
   // Prueba 1: Debería validar un objeto de Receptor válido
