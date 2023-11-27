@@ -18,7 +18,6 @@ const files = path.join(
     'schema'
   )
 );
-console.log('files', files);
 
 schema.setConfig({
   path: files,
