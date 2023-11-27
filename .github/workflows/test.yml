@@ -44,7 +44,7 @@
         - name: Run tests in affected packages
           id: tests
           if: always() && steps.install.outcome == 'success'
-          run: node common/scripts/install-run-rush.js test:ci ${{ steps.set-rush-args.outputs.RUSH_ARGS }}
+          run: node common/scripts/install-run-rush.js test:ci
 
         - name: Store code coverage reports
           if: always() && steps.tests.outcome == 'failure'
