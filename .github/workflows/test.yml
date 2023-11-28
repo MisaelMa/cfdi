@@ -23,15 +23,9 @@
             repository: MisaelMa/cfdi-schema
             path: packages/cfdi/schema
             token: ${{ secrets.PAT_GITHUB }}
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node-version }}
-        - name: Rush CLI
-          run: npm install -g @microsoft/rush@5.82.1
 
-        #- name: Cache dependencies
-        #  uses: ./.github/actions/cache
+        - name: Cache dependencies
+          uses: ./.github/actions/cache
 
         - name: Set Rush arguments
           id: set-rush-args
