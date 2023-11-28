@@ -1,2 +1,2 @@
-export { Transform } from './transform';
-export { Query } from './query';
+export { Transform } from './2-transform';
+export { Query } from './2query';
