@@ -26,7 +26,7 @@ export default async function loginRoute(
     res.send({
       mio,
       // saxon,
-      //xml: json,
+      xml: json,
     });
   }
 }

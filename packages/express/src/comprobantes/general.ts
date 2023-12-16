@@ -93,7 +93,24 @@ export const general = async (config: any): Promise<CFDI> => {
     Descuento: '00.0',
     ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto,
   });
+  concepto.parte({
+    Cantidad: '2',
+    Unidad: 'Pieza',
+    Descripcion: 'audifonos',
+    ValorUnitario: '1000',
+    Importe: '2000',
+    ClaveProdServ: '001',
+    NoIdentificacion: 'sdds',
+  });
 
+  concepto.setParteInformacionAduanera('22  05  1234  9876543');
+  concepto.terceros({
+    RfcACuentaTerceros: 'TCM970625MB1',
+    NombreACuentaTerceros: 'Empresa ACuentaTerceros S.A. de C.V.',
+    RegimenFiscalACuentaTerceros: '601',
+    DomicilioFiscalACuentaTerceros: '12345',
+  });
+  concepto.predial('Cuenta12345ABC6789XYZ');
   concepto.traslado({
     Base: 1,
     Impuesto: '002',

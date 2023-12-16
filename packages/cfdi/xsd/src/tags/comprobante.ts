@@ -9,16 +9,16 @@ export class Comprobante extends ValidateXSD {
   private comprobanteInit!: AnyValidateFunction;
   private keyInitSchema = 'comprobante-init.json';
   private override_required = ['Sello', 'NoCertificado', 'Certificado'];
-  constructor(key: Schemakey) {
-    super(key);
+  constructor(key: Schemakey, debug: boolean = false) {
+    super(key, debug);
     const schema = this.schema?.schema as unknown as any;
     const schemaInit = { required: [], properties: {}, ...schema };
     this.schemaInitBuild(schemaInit);
   }
 
-  public static of(key: Schemakey): Comprobante {
+  public static of(key: Schemakey, debug: boolean = false): Comprobante {
     if (!Comprobante.instance) {
-      Comprobante.instance = new Comprobante(key);
+      Comprobante.instance = new Comprobante(key, debug);
     }
     return Comprobante.instance;
   }
@@ -27,10 +27,7 @@ export class Comprobante extends ValidateXSD {
   }
 
   public validateInit(data: Record<string, any>) {
-    const valid = this.comprobanteInit(data);
-    console.log(`[KEY] => ${this.key}`, this.errors);
-
-    return valid;
+    return this.validateSchema(this.comprobanteInit, data);
   }
   private schemaInitBuild(schemaInit: Record<string, any>) {
     schemaInit.$id = this.keyInitSchema;

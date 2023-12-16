@@ -1,4 +1,5 @@
 import { Attributes, ElementCompact } from 'xml-js';
+
 import { XmlComplementsConcepts } from '@cfdi/complementos';
 import { XmlImpuestos } from '.';
 
@@ -15,6 +16,7 @@ export interface XmlConceptoTercerosAttributes {
 
 export interface XmlConceptoParte {
   _attributes: XmlConceptParteAttributes;
+  'cfdi:InformacionAduanera'?: InformacionAduanera[];
 }
 export interface XmlConceptParteAttributes {
   ClaveProdServ: string | number;
@@ -25,11 +27,18 @@ export interface XmlConceptParteAttributes {
   ValorUnitario?: string | number;
   Importe?: string | number;
 }
+export interface InformacionAduanera {
+  _attributes: XmlInformacionAduaneraAttributes;
+}
+export interface XmlInformacionAduaneraAttributes {
+  NumeroPedimento: string;
+}
 export interface XmlConceptoProperties extends ElementCompact {
   _attributes: XmlConceptoAttributes;
   'cfdi:Impuestos': XmlImpuestos;
   'cfdi:ComplementoConcepto': XmlComplementsConcepts;
   'cfdi:Parte'?: XmlConceptoParte;
+  'cfdi:InformacionAduanera'?: InformacionAduanera[];
 }
 
 export type ObjetoImp = '01' | '02' | '03';

@@ -10,8 +10,9 @@ export class ValidateXSD {
   protected schema!: AnyValidateFunction;
   protected key!: Schemakey;
 
-  constructor(key: Schemakey) {
+  constructor(key: Schemakey, debug: boolean = false) {
     this.setSchema(key);
+    this.debug = debug;
   }
 
   protected setSchema(key: Schemakey) {
@@ -19,13 +20,12 @@ export class ValidateXSD {
     this.schema = JSV.of().getSchema(key);
   }
 
-  public static of(key: Schemakey): ValidateXSD {
+  public static of(key: Schemakey, debug: boolean = false): ValidateXSD {
     if (!ValidateXSD.instances.has(key)) {
-      ValidateXSD.instances.set(key, new ValidateXSD(key));
+      ValidateXSD.instances.set(key, new ValidateXSD(key, debug));
     }
     const instance = ValidateXSD.instances.get(key)!;
     instance.setSchema(key);
-
     return instance;
   }
 
@@ -35,7 +35,15 @@ export class ValidateXSD {
 
   public validate(data: Record<string, any>, dataCxt?: DataValidationCxt) {
     if (!this.schema) return true;
-    const valid = this.schema(data, dataCxt);
+    return this.validateSchema(this.schema, data, dataCxt);
+  }
+
+  public validateSchema(
+    schema: AnyValidateFunction,
+    data: Record<string, any>,
+    dataCxt?: DataValidationCxt
+  ) {
+    const valid = schema(data, dataCxt);
     if (!valid) {
       if (this.debug)
         console.log(

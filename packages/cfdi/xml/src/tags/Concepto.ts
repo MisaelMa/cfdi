@@ -4,6 +4,7 @@ import {
   XmlComplementsConcepts,
 } from '@cfdi/complementos';
 import {
+  InformacionAduanera,
   XmlConceptParteAttributes,
   XmlConceptoAttributes,
   XmlConceptoProperties,
@@ -96,6 +97,7 @@ export class Concepto extends BaseImpuestos {
    * XmlConceptoTercerosAttributes
    */
   terceros(cuenta: XmlConceptoTercerosAttributes): Concepto {
+    Schema.of().concepto.terceros.validate(cuenta);
     this.concepto['cfdi:ACuentaTerceros'] = {
       _attributes: cuenta,
     };
@@ -106,13 +108,15 @@ export class Concepto extends BaseImpuestos {
    *predial
    *
    * @param cuenta
-   * number | string
+   *  string
    */
-  predial(cuenta: number | string): Concepto {
+  predial(cuenta: string): Concepto {
+    const pre = {
+      Numero: cuenta,
+    }
+    Schema.of().concepto.predial.validate(pre);
     this.concepto['cfdi:CuentaPredial'] = {
-      _attributes: {
-        Numero: cuenta,
-      },
+      _attributes: pre
     };
     return this;
   }
@@ -124,9 +128,42 @@ export class Concepto extends BaseImpuestos {
    * XmlConceptParteAttributes
    */
   parte(parte: XmlConceptParteAttributes): Concepto {
-    this.concepto['cfdi:Parte'] = {
-      _attributes: parte,
+    const cloneParte = {
+      ...parte,
+      Cantidad: Number(parte.Cantidad),
+      ValorUnitario: Number(parte.ValorUnitario),
+      Importe: Number(parte.ValorUnitario),
     };
+
+    Schema.of().concepto.parte.validate(cloneParte);
+    this.concepto['cfdi:Parte'] = {
+      _attributes: cloneParte,
+    };
+    return this;
+  }
+
+  private aduana(pedimento: string): InformacionAduanera {
+    const InformacionAduanera = {
+      NumeroPedimento: pedimento,
+    };
+
+    Schema.of().concepto.informacionAduanera.validate(InformacionAduanera);
+    return {
+      _attributes: InformacionAduanera,
+    };
+  }
+
+  setParteInformacionAduanera(pedimento: string): Concepto {
+    if (!this.concepto['cfdi:Parte']) {
+      console.log('utilize primero parte');
+      return this;
+    }
+    if (!this.concepto['cfdi:Parte']['cfdi:InformacionAduanera']) {
+      this.concepto['cfdi:Parte']['cfdi:InformacionAduanera'] = [];
+    }
+    this.concepto['cfdi:Parte']['cfdi:InformacionAduanera'].push(
+      this.aduana(pedimento)
+    );
     return this;
   }
 
@@ -136,12 +173,12 @@ export class Concepto extends BaseImpuestos {
    * @param pedimento
    * number | string
    */
-  aduana(pedimento: number | string): Concepto {
-    this.concepto['cfdi:InformacionAduanera'] = {
-      _attributes: {
-        NumeroPedimento: pedimento,
-      },
-    };
+  InformacionAduanera(pedimento: string): Concepto {
+    if (!this.concepto['cfdi:InformacionAduanera']) {
+      this.concepto['cfdi:InformacionAduanera'] = [];
+    }
+
+    this.concepto['cfdi:InformacionAduanera'].push(this.aduana(pedimento));
     return this;
   }
 

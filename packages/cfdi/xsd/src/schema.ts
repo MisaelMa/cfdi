@@ -54,7 +54,8 @@ export default class Schema {
       this.schemaKeys.push(schema.key);
       if (
         !this.ajv.getSchema(schema.key) &&
-        schema.key !== 'COMPROBANTE_CONCEPTOS_CONCEPTO_INFORMACIONADUANERA'
+        schema.key !==
+          'COMPROBANTE_CONCEPTOS_CONCEPTO_PARTE_INFORMACIONADUANERA'
       ) {
         this.ajv.addSchema(
           this.getContentFile(
@@ -72,33 +73,56 @@ export default class Schema {
 
   public get cfdi() {
     return {
-      comprobante: Comprobante.of(Schemakey.COMPROBANTE),
-      informacionGlobal: ValidateXSD.of(Schemakey.INFORMACIONGLOBAL),
-      emisor: ValidateXSD.of(Schemakey.EMISOR),
-      receptor: ValidateXSD.of(Schemakey.RECEPTOR),
-      relacionado: ValidateXSD.of(Schemakey.CFDIRELACIONADOS_CFDIRELACIONADO),
-      relacionados: ValidateXSD.of(Schemakey.CFDIRELACIONADOS),
-      impuestos: ValidateXSD.of(Schemakey.IMPUESTOS),
-      traslado: ValidateXSD.of(Schemakey.IMPUESTOS_TRASLADOS_TRASLADO),
-      retencion: ValidateXSD.of(Schemakey.IMPUESTOS_RETENCIONES_RETENCION),
-      addenda: ValidateXSD.of(Schemakey.ADDENDA),
+      comprobante: Comprobante.of(Schemakey.COMPROBANTE, this.debug),
+      informacionGlobal: ValidateXSD.of(
+        Schemakey.INFORMACIONGLOBAL,
+        this.debug
+      ),
+      emisor: ValidateXSD.of(Schemakey.EMISOR, this.debug),
+      receptor: ValidateXSD.of(Schemakey.RECEPTOR, this.debug),
+      relacionado: ValidateXSD.of(
+        Schemakey.CFDIRELACIONADOS_CFDIRELACIONADO,
+        this.debug
+      ),
+      relacionados: ValidateXSD.of(Schemakey.CFDIRELACIONADOS, this.debug),
+      impuestos: ValidateXSD.of(Schemakey.IMPUESTOS, this.debug),
+      traslado: ValidateXSD.of(
+        Schemakey.IMPUESTOS_TRASLADOS_TRASLADO,
+        this.debug
+      ),
+      retencion: ValidateXSD.of(
+        Schemakey.IMPUESTOS_RETENCIONES_RETENCION,
+        this.debug
+      ),
+      addenda: ValidateXSD.of(Schemakey.ADDENDA, this.debug),
     };
   }
 
   public get concepto() {
     return {
-      concepto: ValidateXSD.of(Schemakey.CONCEPTO),
-      parte: this.getSchema(Schemakey.CONCEPTO_PARTE),
-      parteInformacionAduanera: this.getSchema(
-        Schemakey.CONCEPTO_PARTE_INFORMACIONADUANERA
+      concepto: ValidateXSD.of(Schemakey.CONCEPTO, this.debug),
+      parte: ValidateXSD.of(Schemakey.CONCEPTO_PARTE, this.debug),
+      parteInformacionAduanera: ValidateXSD.of(
+        Schemakey.CONCEPTO_PARTE_INFORMACIONADUANERA,
+        this.debug
       ),
-      cuentaPredial: this.getSchema(Schemakey.CONCEPTO_CUENTAPREDIAL),
-      informacionAduanera: this.getSchema(
-        Schemakey.CONCEPTO_INFORMACIONADUANERA
+      predial: ValidateXSD.of(Schemakey.CONCEPTO_CUENTAPREDIAL, this.debug),
+      terceros: ValidateXSD.of(Schemakey.CONCEPTO_ACUENTATERCEROS, this.debug),
+      cuentaPredial: ValidateXSD.of(
+        Schemakey.CONCEPTO_CUENTAPREDIAL,
+        this.debug
       ),
-      traslado: ValidateXSD.of(Schemakey.CONCEPTO_IMPUESTOS_TRASLADOS_TRASLADO),
+      informacionAduanera: ValidateXSD.of(
+        Schemakey.CONCEPTO_INFORMACIONADUANERA,
+        this.debug
+      ),
+      traslado: ValidateXSD.of(
+        Schemakey.CONCEPTO_IMPUESTOS_TRASLADOS_TRASLADO,
+        this.debug
+      ),
       retencion: ValidateXSD.of(
-        Schemakey.CONCEPTO_IMPUESTOS_RETENCIONES_RETENCION
+        Schemakey.CONCEPTO_IMPUESTOS_RETENCIONES_RETENCION,
+        this.debug
       ),
     };
   }

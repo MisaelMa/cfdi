@@ -43,6 +43,7 @@ export class Comprobante {
     } as Options
   ) {
     this.schema.setConfig({
+      debug: options.debug,
       path: options.schema?.path,
     });
     const { xslt, customTags = {} } = options;
