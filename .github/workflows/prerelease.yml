@@ -1,0 +1,48 @@
+name: publish prerelease
+on:
+  pull_request:
+    branches:
+      - next
+      - beta
+      - alpha
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cdfi
+        uses: actions/checkout@v3
+
+      - name: Schema
+        uses: actions/checkout@v3
+        with:
+          repository: MisaelMa/cfdi-schema
+          path: packages/cfdi/schema
+          token: ${{ secrets.PAT_GITHUB }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Rush CLI
+        run: npm install -g @microsoft/rush@5.82.1
+
+      - name: Rush Update
+        run: |
+          git config user.name MisaelMa
+          git config user.email amisael.amir.misael@gmail.com
+          rush update
+      - name: Script
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require('./common/scripts/github-actions.js')
+            await script({github, context, core})
+      - name: Publish
+        run: |
+          echo "amir"
+          rush publish -p -b main --include-all --set-access-level=public
+          git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
+          git push
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
