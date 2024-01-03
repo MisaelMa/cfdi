@@ -1,4 +1,4 @@
-name: prebublish
+name: pre publish
 on:
   pull_request:
 

@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+      - next
+      - beta
+      - alpha
+      - dev
+  pull_request:
+
 jobs:
   build:
     runs-on: ubuntu-latest
