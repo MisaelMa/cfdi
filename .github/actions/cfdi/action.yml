@@ -41,6 +41,4 @@
           script: |
             console.log('Running script');
             const script = require('./common/scripts/github-actions.js')
-            console.log('GitHub context: script', script);
-
             await script({github, context, core})

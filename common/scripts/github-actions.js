@@ -100,15 +100,18 @@ function getScopes(commits = []) {
 module.exports = async ({ github, context, core }) => {
   const commits = context.payload.commits || [];
   const scopes =  getScopes(commits);
-
+  console.log("commits", commits);
   for (var i = 0; i < scopes.length; i++) {
     const scope = scopes[i];
-    const data = await execa('rush', [
+    const comands = [
       'version',
       '--version-policy',
       scope,
       '--bump',
-    ]);
+    ]
+    console.log(scope, data);
+
+    const data = await execa('rush', comands );
     console.log(scope, data);
   }
 };
