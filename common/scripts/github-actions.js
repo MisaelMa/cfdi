@@ -1,4 +1,6 @@
-async function execa(command, params) {
+const execa = require('execa')
+
+async function execa2(command, params) {
   const { spawn } = require('child_process');
   const child = spawn(command, params);
 
@@ -100,7 +102,10 @@ function getScopes(commits = []) {
 module.exports = async ({ github, context, core }) => {
   const commits = context.payload.commits || [];
   const scopes =  getScopes(commits);
+  console.log("github", JSON.stringify(github));
   console.log("commits", commits);
+  console.log("core", JSON.stringify(core));
+
   for (var i = 0; i < scopes.length; i++) {
     const scope = scopes[i];
     const comands = [
