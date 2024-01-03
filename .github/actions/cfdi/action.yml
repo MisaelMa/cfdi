@@ -17,9 +17,11 @@
           node-version: ${{ matrix.node-version }}
 
       - name: Rush CLI
+        shell: bash
         run: npm install -g @microsoft/rush@5.82.1
 
       - name: Rush Update
+        shell: bash
         run: |
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com

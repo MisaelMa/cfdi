@@ -12,8 +12,6 @@ jobs:
 
       - name: CFDI dependencies
         uses: ./.github/actions/cfdi
-        with:
-          shell: bash
 
       - name: Additional Step
         run: echo "Executing additional step"
