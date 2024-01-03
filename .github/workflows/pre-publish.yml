@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Cdfi
+        uses: actions/checkout@v3
+
       - name: CFDI dependencies
         uses: ./.github/actions/cfdi
 
