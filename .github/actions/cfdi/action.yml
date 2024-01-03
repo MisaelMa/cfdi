@@ -40,6 +40,7 @@
           debug: true
           script: |
             console.log('Running script');
-            console.log('GitHub context:', context);
             const script = require('./common/scripts/github-actions.js')
+            console.log('GitHub context: script', script);
+
             await script({github, context, core})
