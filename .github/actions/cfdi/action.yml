@@ -37,6 +37,7 @@
         uses: actions/github-script@v6
         with:
           github-token: ${{ inputs.token }}
+          debug: true
           script: |
             const script = require('./common/scripts/github-actions.js')
             await script({github, context, core})
