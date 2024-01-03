@@ -32,10 +32,10 @@
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
           rush update
+          ls -la
       - name: Script
         uses: actions/github-script@v6
         with:
           script: |
-            ls -la
             const script = require('./common/scripts/github-actions.js')
             await script({github, context, core})
