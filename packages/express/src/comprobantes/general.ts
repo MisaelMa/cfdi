@@ -93,6 +93,7 @@ export const general = async (config: any): Promise<CFDI> => {
     Descuento: '00.0',
     ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto,
   });
+
   concepto.parte({
     Cantidad: '2',
     Unidad: 'Pieza',
@@ -104,6 +105,7 @@ export const general = async (config: any): Promise<CFDI> => {
   });
 
   concepto.setParteInformacionAduanera('22  05  1234  9876543');
+  concepto.InformacionAduanera('22  05  1234  9876543');
   concepto.terceros({
     RfcACuentaTerceros: 'TCM970625MB1',
     NombreACuentaTerceros: 'Empresa ACuentaTerceros S.A. de C.V.',

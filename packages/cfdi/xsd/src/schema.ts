@@ -51,12 +51,12 @@ export default class Schema {
 
   private loadData(schemas: Record<string, any>[]) {
     schemas.forEach((schema) => {
-      this.schemaKeys.push(schema.key);
       if (
         !this.ajv.getSchema(schema.key) &&
         schema.key !==
           'COMPROBANTE_CONCEPTOS_CONCEPTO_PARTE_INFORMACIONADUANERA'
       ) {
+        this.schemaKeys.push(schema.key);
         this.ajv.addSchema(
           this.getContentFile(
             `${this.pathSchema}/${schema.path}/${schema.name}.json`
@@ -94,7 +94,7 @@ export default class Schema {
         Schemakey.IMPUESTOS_RETENCIONES_RETENCION,
         this.debug
       ),
-      addenda: ValidateXSD.of(Schemakey.ADDENDA, this.debug),
+      //addenda: ValidateXSD.of(Schemakey.ADDENDA, this.debug),
     };
   }
 
@@ -102,10 +102,10 @@ export default class Schema {
     return {
       concepto: ValidateXSD.of(Schemakey.CONCEPTO, this.debug),
       parte: ValidateXSD.of(Schemakey.CONCEPTO_PARTE, this.debug),
-      parteInformacionAduanera: ValidateXSD.of(
+      /*  parteInformacionAduanera: ValidateXSD.of(
         Schemakey.CONCEPTO_PARTE_INFORMACIONADUANERA,
         this.debug
-      ),
+      ), */
       predial: ValidateXSD.of(Schemakey.CONCEPTO_CUENTAPREDIAL, this.debug),
       terceros: ValidateXSD.of(Schemakey.CONCEPTO_ACUENTATERCEROS, this.debug),
       cuentaPredial: ValidateXSD.of(
@@ -134,11 +134,11 @@ export default class Schema {
       const line = `${this.nameConst(key)} = '${key}',`;
       text.push(line);
     });
-    /* console.log(`
+    console.log(`
     export enum Schemakey {
       ${text.join('\n')}
     }
-    `); */
+    `);
   }
 
   private nameConst(text: string) {
