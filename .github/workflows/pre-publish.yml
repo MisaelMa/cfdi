@@ -6,8 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    needs: common-cfdi
-
     steps:
+      - name: CFDI dependencies
+        uses: ./.github/actions/cache
+
       - name: Additional Step
         run: echo "Executing additional step"

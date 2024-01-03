@@ -1,17 +1,7 @@
-name: common-cfdi
-on:
-  push:
-    branches:
-      - main
-      - next
-      - beta
-      - alpha
-      - dev
-  pull_request:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
+  name: 'CFDI'
+  description: 'Cache Rush and pnpm dependencies'
+  runs:
+    using: 'composite'
     steps:
       - name: Cdfi
         uses: actions/checkout@v3
