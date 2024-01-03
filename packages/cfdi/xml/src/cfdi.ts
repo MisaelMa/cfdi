@@ -156,7 +156,7 @@ export class CFDI extends Comprobante {
           //console.timeEnd('saxon');
         } else {
           const transform = new Transform();
-          //console.time('saxon cli');
+          //console.time('saxon cli 2');
           cadena = transform
             .s(fullPath)
             .xsl(String(this.xslt.path))
