@@ -17,6 +17,7 @@
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Rush CLI
         run: npm install -g @microsoft/rush@5.82.1
 

@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: CFDI dependencies
-        uses: ./.github/actions/cache
+        uses: ./.github/actions/cfdi
 
       - name: Additional Step
         run: echo "Executing additional step"
