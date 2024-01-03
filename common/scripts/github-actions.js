@@ -1,6 +1,5 @@
-const execa = require('execa')
 
-async function execa2(command, params) {
+async function execa(command, params) {
   const { spawn } = require('child_process');
   const child = spawn(command, params);
 
