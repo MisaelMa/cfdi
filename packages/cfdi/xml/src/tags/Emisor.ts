@@ -8,6 +8,8 @@ import {
   XmlEmisorRFAttributes,
 } from '../types';
 
+import { Schema } from '@cfdi/xsd';
+
 /**
  *
  */
@@ -21,6 +23,8 @@ export class Emisor {
    * XmlEmisorAttribute
    */
   constructor(emisor: XmlEmisorAttribute) {
+    Schema.of().cfdi.emisor.validate(emisor);
+
     this.emisor._attributes = emisor;
     // return this;
   }

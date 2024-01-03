@@ -1,6 +1,5 @@
+import { CliShare } from './cli-share';
 import { platform } from 'os';
-
-import { CliShare } from './cliShare';
 
 /**
  *

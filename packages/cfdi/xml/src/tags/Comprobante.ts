@@ -17,47 +17,40 @@ import { Emisor } from './Emisor';
 import { Impuestos } from './Impuestos';
 import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
+import { Schema } from '@cfdi/xsd';
 import { Structure } from '../utils/structure';
-import { schema } from '../utils/XmlHelp';
+import { schemaBuild } from '../utils/XmlHelp';
 
 export class Comprobante {
   protected xml: XmlCdfi = {} as XmlCdfi;
   protected tc: TagComprobante = 'cfdi:Comprobante';
   protected version = '4.0';
-
   protected tags: Structure;
-
   protected XMLSchema = 'http://www.w3.org/2001/XMLSchema-instance';
-
   protected cfd = 'http://www.sat.gob.mx/cfd/4';
-
   protected locations = [
     'http://www.sat.gob.mx/cfd/4',
     'http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
   ];
 
   protected xslt: XsltSheet;
+  schema = Schema.of();
   constructor(
-    attr: CFDIAttributes,
-    options: Options = { debug: false, xslt: { xslt3: false } } as Options
+    options: Options = {
+      debug: false,
+      xslt: { xslt3: false },
+      schema: { path: '' },
+    } as Options
   ) {
-    const attribute = attr;
+    this.schema.setConfig({
+      debug: options.debug,
+      path: options.schema?.path,
+    });
     const { xslt, customTags = {} } = options;
     this.xslt = xslt;
     this.tags = new Structure(customTags);
     this.tc = this.tags.tagXml('cfdi:Comprobante');
     this.restartCfdi();
-    this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
-    this.addSchemaLocation(attribute.schemaLocation || this.locations);
-    if (attribute.xmlns) {
-      delete attribute.xmlns;
-    }
-    attribute.schemaLocation && delete attribute.schemaLocation;
-    this.xml['cfdi:Comprobante']._attributes = {
-      ...this.xml[this.tc]._attributes,
-      ...{ Version: this.version },
-      ...attribute,
-    };
   }
 
   /**
@@ -102,7 +95,7 @@ export class Comprobante {
     if (!this.xml[this.tc]._attributes['xsi:schemaLocation']) {
       this.xml[this.tc]._attributes['xsi:schemaLocation'] = '';
     }
-    const schemaLocation = schema(locations);
+    const schemaLocation = schemaBuild(locations);
     this.xml[this.tc]._attributes['xsi:schemaLocation'] += ` ${schemaLocation}`;
   }
 
@@ -121,20 +114,26 @@ export class Comprobante {
     };
   }
 
-  /** @Deprecated* */
-  /**
-   *setAttributesComprobantes
-   *
-   * @param attribute
-   * Comprobante
-   */
-  public setAttributesComprobantes(attribute: Comprobante): void {
-    this.xml[this.tc]._attributes = {
+  public setAttributes(attr: CFDIAttributes): void {
+    const attribute = attr;
+    this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
+    this.addSchemaLocation(attribute.schemaLocation || this.locations);
+    if (attribute.xmlns) {
+      delete attribute.xmlns;
+    }
+    attribute.schemaLocation && delete attribute.schemaLocation;
+    this.xml['cfdi:Comprobante']._attributes = {
       ...this.xml[this.tc]._attributes,
       ...{ Version: this.version },
       ...attribute,
+      SubTotal: Number(attribute.SubTotal),
+      Descuento: Number(attribute.Descuento),
+      Total: Number(attribute.Total),
     };
+    const comprobante = this.schema.cfdi.comprobante;
+    comprobante.validateInit(this.xml['cfdi:Comprobante']._attributes);
   }
+
   /**
    *informacionGlobal
    *
@@ -150,8 +149,9 @@ export class Comprobante {
   public informacionGlobal(payload: {
     Periodicidad: string;
     Meses: string;
-    Año: string;
+    Año: string | number;
   }): void {
+    this.schema.cfdi.informacionGlobal.validate(payload);
     this.xml[this.tc] = {
       'cfdi:InformacionGlobal': {
         _attributes: payload,

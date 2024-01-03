@@ -1,9 +1,11 @@
 import {
+  XmlDomiciolioAttributes,
   XmlReceptor,
   XmlReceptorAttribute,
   XmlReceptorDomicilio,
-  XmlDomiciolioAttributes,
 } from '../types';
+
+import { Schema } from '@cfdi/xsd';
 
 /**
  *
@@ -18,6 +20,7 @@ export class Receptor {
    * XmlReceptorAttribute
    */
   constructor(receptor: XmlReceptorAttribute) {
+    Schema.of().cfdi.receptor.validate(receptor);
     this.receptor._attributes = receptor;
   }
 

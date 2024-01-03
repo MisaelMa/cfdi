@@ -1,8 +1,3 @@
-import {
-  XmlComplementsAttributes,
-  XmlnsComplementsLinks,
-  XmlComplements,
-} from '@cfdi/complementos';
 import { AnyKey, XmlConcepto, XmlEmisor, XmlImpuestos, XmlReceptor } from '.';
 import {
   ExportacionEnum,
@@ -14,6 +9,11 @@ import {
   TipoComprobante,
   TypeComprobante,
 } from '@cfdi/catalogos';
+import {
+  XmlComplements,
+  XmlComplementsAttributes,
+  XmlnsComplementsLinks,
+} from '@cfdi/complementos';
 
 export interface XmlComprobante {
   _attributes: XmlComprobanteAttributes;
@@ -62,11 +62,11 @@ export interface CFDIAttributes {
   FormaPago?: FormaPago | FormaPagoType;
   NoCertificado: string;
   condicionesDePago?: string;
-  SubTotal: string;
-  Descuento?: string;
+  SubTotal: string | number;
+  Descuento?: string | number;
   Moneda: string;
   TipoCambio?: string;
-  Total: string;
+  Total: string | number;
   TipoDeComprobante: TipoComprobante | TypeComprobante;
   Exportacion: ExportacionEnum | ExportacionType | string;
   MetodoPago?: MetodoPago | MetodoPagoType;

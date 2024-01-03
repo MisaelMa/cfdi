@@ -30,7 +30,7 @@ export const general = async (config: any): Promise<CFDI> => {
     NoCertificado: '',
     Certificado: '',
     condicionesDePago: 'Contado',
-    SubTotal: '16148.04',
+    SubTotal: 16148.04,
     Descuento: '645.92',
     Moneda: 'MXN',
     Total: '17207.35',
@@ -47,17 +47,22 @@ export const general = async (config: any): Promise<CFDI> => {
     xslt: {
       path: styleSheet,
     },
+    schema: {
+      path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
+    },
   });
+  cfd.certificar(cer);
+
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
 
   cfd.informacionGlobal({
     Periodicidad: '01',
-    Meses: '01',
+    Meses: '02',
     Año: 2021,
   });
   const relation = new Relacionado({ TipoRelacion: '01' });
-  relation.addRelation('asdasd-3234-asdasd-2332-asdas');
-  relation.addRelation('asdasd-3234-asdasd-2332-asdas');
+  relation.addRelation('e19ca9ba-0d25-46df-bb09-f3745d187a05');
+  relation.addRelation('e19ca9ba-0d25-46df-bb09-f3745d187a05');
   cfd.relacionados(relation);
 
   const emisor = new Emisor({
@@ -89,6 +94,40 @@ export const general = async (config: any): Promise<CFDI> => {
     ObjetoImp: ObjetoImpEnum.NoobjetoDeimpuesto,
   });
 
+  concepto.parte({
+    Cantidad: '2',
+    Unidad: 'Pieza',
+    Descripcion: 'audifonos',
+    ValorUnitario: '1000',
+    Importe: '2000',
+    ClaveProdServ: '001',
+    NoIdentificacion: 'sdds',
+  });
+
+  concepto.setParteInformacionAduanera('22  05  1234  9876543');
+  concepto.InformacionAduanera('22  05  1234  9876543');
+  concepto.terceros({
+    RfcACuentaTerceros: 'TCM970625MB1',
+    NombreACuentaTerceros: 'Empresa ACuentaTerceros S.A. de C.V.',
+    RegimenFiscalACuentaTerceros: '601',
+    DomicilioFiscalACuentaTerceros: '12345',
+  });
+  concepto.predial('Cuenta12345ABC6789XYZ');
+  concepto.traslado({
+    Base: 1,
+    Impuesto: '002',
+    TipoFactor: 'Tasa',
+    TasaOCuota: '002',
+    Importe: '59.17',
+  });
+  concepto.retencion({
+    Impuesto: '002',
+    Importe: '59.17',
+    Base: 2,
+    TasaOCuota: 2,
+    TipoFactor: 'Tasa',
+  });
+
   const ieduObject: XmlIeduAttribute = {
     version: '1.0',
     autRVOE: '201587PRIM',
@@ -100,6 +139,7 @@ export const general = async (config: any): Promise<CFDI> => {
   const iedu = new Iedu(ieduObject);
   concepto.complemento(iedu);
   cfd.concepto(concepto);
+
   const impuesto: Impuestos = new Impuestos({
     TotalImpuestosRetenidos: '1000',
   });
@@ -116,7 +156,6 @@ export const general = async (config: any): Promise<CFDI> => {
   });
   cfd.impuesto(impuesto);
 
-  await cfd.certificar(cer);
-  await cfd.sellar(key, '12345678a');
+  //await cfd.sellar(key, '12345678a');
   return cfd;
 };

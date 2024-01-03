@@ -13,7 +13,7 @@ import xslt3 from 'xslt3';
  *
  * @param locations
  */
-export const schema = (locations: string[]): string => {
+export const schemaBuild = (locations: string[]): string => {
   const schemaL = locations.join(' ');
   return ` ${schemaL}`;
 };

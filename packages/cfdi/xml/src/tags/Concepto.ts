@@ -4,6 +4,7 @@ import {
   XmlComplementsConcepts,
 } from '@cfdi/complementos';
 import {
+  InformacionAduanera,
   XmlConceptParteAttributes,
   XmlConceptoAttributes,
   XmlConceptoProperties,
@@ -11,12 +12,14 @@ import {
   XmlTranRentAttributesProperties,
 } from '../types';
 
+import { BaseImpuestos } from './BaseImpuestos';
 import { Impuestos } from './Impuestos';
+import { Schema } from '@cfdi/xsd';
 
 /**
  *
  */
-export class Concepto {
+export class Concepto extends BaseImpuestos {
   // private conceptComplemnets: any = [
   //   {
   //     key: 'aerolineas:Aerolineas',
@@ -45,8 +48,6 @@ export class Concepto {
 
   private concepto: XmlConceptoProperties = {} as XmlConceptoProperties;
 
-  private impuesto: Impuestos = new Impuestos();
-
   /**
    *constructor
    *
@@ -54,8 +55,19 @@ export class Concepto {
    * XmlConceptoAttributes
    */
   constructor(concepto: XmlConceptoAttributes) {
+    super();
+    const cloneConcept = {
+      ...concepto,
+      Cantidad: Number(concepto.Cantidad),
+      ValorUnitario: Number(concepto.ValorUnitario),
+      Importe: Number(concepto.ValorUnitario),
+    };
+    if (concepto.Descuento) {
+      cloneConcept.Descuento = Number(concepto.Descuento);
+    }
     this.existComplemnt = false;
-    this.concepto._attributes = concepto;
+    Schema.of().concepto.concepto.validate(cloneConcept);
+    this.concepto._attributes = cloneConcept;
   }
 
   /**
@@ -85,6 +97,7 @@ export class Concepto {
    * XmlConceptoTercerosAttributes
    */
   terceros(cuenta: XmlConceptoTercerosAttributes): Concepto {
+    Schema.of().concepto.terceros.validate(cuenta);
     this.concepto['cfdi:ACuentaTerceros'] = {
       _attributes: cuenta,
     };
@@ -95,13 +108,15 @@ export class Concepto {
    *predial
    *
    * @param cuenta
-   * number | string
+   *  string
    */
-  predial(cuenta: number | string): Concepto {
+  predial(cuenta: string): Concepto {
+    const pre = {
+      Numero: cuenta,
+    }
+    Schema.of().concepto.predial.validate(pre);
     this.concepto['cfdi:CuentaPredial'] = {
-      _attributes: {
-        Numero: cuenta,
-      },
+      _attributes: pre
     };
     return this;
   }
@@ -113,9 +128,42 @@ export class Concepto {
    * XmlConceptParteAttributes
    */
   parte(parte: XmlConceptParteAttributes): Concepto {
-    this.concepto['cfdi:Parte'] = {
-      _attributes: parte,
+    const cloneParte = {
+      ...parte,
+      Cantidad: Number(parte.Cantidad),
+      ValorUnitario: Number(parte.ValorUnitario),
+      Importe: Number(parte.ValorUnitario),
     };
+
+    Schema.of().concepto.parte.validate(cloneParte);
+    this.concepto['cfdi:Parte'] = {
+      _attributes: cloneParte,
+    };
+    return this;
+  }
+
+  private aduana(pedimento: string): InformacionAduanera {
+    const InformacionAduanera = {
+      NumeroPedimento: pedimento,
+    };
+
+    Schema.of().concepto.informacionAduanera.validate(InformacionAduanera);
+    return {
+      _attributes: InformacionAduanera,
+    };
+  }
+
+  setParteInformacionAduanera(pedimento: string): Concepto {
+    if (!this.concepto['cfdi:Parte']) {
+      console.log('utilize primero parte');
+      return this;
+    }
+    if (!this.concepto['cfdi:Parte']['cfdi:InformacionAduanera']) {
+      this.concepto['cfdi:Parte']['cfdi:InformacionAduanera'] = [];
+    }
+    this.concepto['cfdi:Parte']['cfdi:InformacionAduanera'].push(
+      this.aduana(pedimento)
+    );
     return this;
   }
 
@@ -125,12 +173,12 @@ export class Concepto {
    * @param pedimento
    * number | string
    */
-  aduana(pedimento: number | string): Concepto {
-    this.concepto['cfdi:InformacionAduanera'] = {
-      _attributes: {
-        NumeroPedimento: pedimento,
-      },
-    };
+  InformacionAduanera(pedimento: string): Concepto {
+    if (!this.concepto['cfdi:InformacionAduanera']) {
+      this.concepto['cfdi:InformacionAduanera'] = [];
+    }
+
+    this.concepto['cfdi:InformacionAduanera'].push(this.aduana(pedimento));
     return this;
   }
 
@@ -141,10 +189,16 @@ export class Concepto {
    * XmlTranRentAttributesProperties
    */
   traslado(
-    traslado: XmlTranRentAttributesProperties & { Base: string | number }
+    payload: XmlTranRentAttributesProperties & { Base: string | number }
   ): Concepto {
-    this.concepto['cfdi:Impuestos'] =
-      this.impuesto.traslados(traslado).impuesto; // = traslado;
+    const traslado = {
+      ...payload,
+      TasaOCuota: Number(payload.TasaOCuota),
+      Importe: Number(payload.Importe),
+    };
+    Schema.of().concepto.traslado.validate(traslado);
+    this.setTraslado(traslado);
+    this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;
   }
 
@@ -155,14 +209,20 @@ export class Concepto {
    * XmlTranRentAttributesProperties
    */
   retencion(
-    retencion: XmlTranRentAttributesProperties & {
+    payload: XmlTranRentAttributesProperties & {
       Base: string | number;
       TasaOCuota: string | number;
       Importe: string | number;
     }
   ): Concepto {
-    this.concepto['cfdi:Impuestos'] =
-      this.impuesto.retenciones(retencion).impuesto; // = traslado;
+    const retencion = {
+      ...payload,
+      Importe: Number(payload.Importe),
+    };
+    Schema.of().concepto.retencion.validate(retencion);
+
+    this.setRetencion(retencion);
+    this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;
   }
 

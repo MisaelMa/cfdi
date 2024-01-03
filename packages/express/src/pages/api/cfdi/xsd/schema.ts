@@ -16,7 +16,12 @@ export default async function loginRoute(
       cfdi: `${patch}cfdv40.xsd`,
       catalogos: `${patch}catCFDI.xsd`,
       tipoDatos: `${patch}tdCFDI.xsd`,
-      complementos: [],
+      complementos: [
+        {
+          name: 'iedu',
+          path: `${patch}complementos/iedu.xsd`,
+        },
+      ],
     },
   });
   const xsd = await comprobanteXsd.processAll();
