@@ -1,4 +1,4 @@
-name: CFDI
+name: common-cfdi
 on:
   push:
     branches:
