@@ -1,5 +1,11 @@
   name: 'CFDI'
   description: 'Cache Rush and pnpm dependencies'
+
+  inputs:
+    token:
+      description: 'token of github'
+      required: true
+
   runs:
     using: 'composite'
     steps:
@@ -9,7 +15,7 @@
         with:
           repository: MisaelMa/cfdi-schema
           path: packages/cfdi/schema
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ inputs.token }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1

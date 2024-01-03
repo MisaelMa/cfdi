@@ -12,6 +12,8 @@ jobs:
 
       - name: CFDI dependencies
         uses: ./.github/actions/cfdi
+        with:
+          token: ${{ secrets.PAT_GITHUB }}
 
       - name: Additional Step
         run: echo "Executing additional step"
