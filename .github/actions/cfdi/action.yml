@@ -42,17 +42,5 @@
           debug: true
           script: |
 
-            const eventName = context.eventName
-            const pull_number = context.payload.pull_request.number
-
-            const commits = await github.rest.repos.listCommits({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pull_number,
-
-            })
-
-             console.log('Running script',SHA, commits);
-
             const script = require('./common/scripts/github-actions.js')
             await script({github, context, core})

@@ -98,8 +98,36 @@ function getScopes(commits = []) {
   }
   return Object.keys(scopes);
 }
+async function getCommitsPR(url) {
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error get list prices');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`ERROR => ${url}`, error);
+    return [];
+  }
+
+}
 module.exports = async ({ github, context, core }) => {
-  const commits = context.payload.commits || [];
+  const eventName = context.eventName
+  let commits = context.payload.commits || [];
+
+  if(eventName==='pull_request'){
+    const commits_url = context.payload.pull_request.commits_url
+    const commits_local = await getCommitsPR(commits_url)
+    console.log(commits_local);
+    commits = commits_local.map(({commit})=>commit)
+  }
   const scopes =  getScopes(commits);
   console.log("github", JSON.stringify(github));
   console.log("commits", commits);
