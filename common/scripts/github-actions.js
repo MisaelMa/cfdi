@@ -138,9 +138,8 @@ module.exports = async ({ github, context, core }) => {
       scope,
       '--bump',
     ]
-    console.log(scope, data);
-
-    const data = await execa('rush', comands );
+    console.log(scope);
+    const data = await execa('rush', comands);
     console.log(scope, data);
   }
 };
