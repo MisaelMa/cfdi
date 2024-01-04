@@ -125,7 +125,6 @@ module.exports = async ({ github, context, core }) => {
   if(eventName==='pull_request'){
     const commits_url = context.payload.pull_request.commits_url
     const commits_local = await getCommitsPR(commits_url)
-    console.log(commits_local);
     commits = commits_local.map(({commit})=>commit)
   }
   const scopes =  getScopes(commits);
