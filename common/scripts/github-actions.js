@@ -128,9 +128,7 @@ module.exports = async ({ github, context, core }) => {
     commits = commits_local.map(({commit})=>commit)
   }
   const scopes =  getScopes(commits);
-  console.log("github", JSON.stringify(github));
   console.log("commits", commits);
-  console.log("core", JSON.stringify(core));
 
   for (var i = 0; i < scopes.length; i++) {
     const scope = scopes[i];
