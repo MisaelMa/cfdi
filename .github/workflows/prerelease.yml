@@ -18,5 +18,7 @@ jobs:
       - name: Publish
         run: |
           echo $BRANCH_NAME
+          echo $GIT
         env:
           BRANCH_NAME: ${{ github.ref_name }}
+          GIT: ${{ github.ref_name }}
