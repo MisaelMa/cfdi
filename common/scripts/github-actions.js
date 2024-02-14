@@ -5,12 +5,12 @@ async function execa(command, params) {
 
   let data = '';
   for await (const chunk of child.stdout) {
-    console.log('stdout chunk: ' + chunk);
+    //console.log('stdout chunk: ' + chunk);
     data += chunk;
   }
   let error = '';
   for await (const chunk of child.stderr) {
-    console.error('stderr chunk: ' + chunk);
+    //console.error('stderr chunk: ' + chunk);
     error += chunk;
   }
   const exitCode = await new Promise((resolve, reject) => {
@@ -138,8 +138,8 @@ module.exports = async ({ github, context, core }) => {
       scope,
       '--bump',
     ]
-    console.log(scope);
+    console.log(comands);
     const data = await execa('rush', comands);
-    console.log(scope, data);
+    console.log(data);
   }
 };
