@@ -1,4 +1,4 @@
-name: pre publish
+name: pre realease
 on:
   pull_request:
 
