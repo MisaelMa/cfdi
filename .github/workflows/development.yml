@@ -21,10 +21,10 @@ jobs:
 
       - name: Publish
         run: |
-          echo $BRACH_NAME
-          rush publish -p -b main -t  $BRACH_NAME  --include-all --set-access-level=public
+          echo $BRANCH_NAME
+          rush publish -p -b main -t  $BRANCH_NAME  --include-all --set-access-level=public
           git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
           git push
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          BRACH_NAME: ${{ github.ref }}
+          BRANCH_NAME: $(basename ${{ github.ref }})
