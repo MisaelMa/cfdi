@@ -1,0 +1,30 @@
+name: pre publish
+on:
+  push:
+    branches:
+      - next
+      - beta
+      - alpha
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cdfi
+        uses: actions/checkout@v3
+
+      - name: CFDI dependencies
+        uses: ./.github/actions/cfdi
+        with:
+          token: ${{ secrets.PAT_GITHUB }}
+
+      - name: Publish
+        run: |
+          echo "amir"
+          branch_name=$(echo $GITHUB_REF | awk 'BEGIN{FS="/"} {print $3}')
+          rush publish -p -b main -t  $branch_name  --include-all --set-access-level=public
+          git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
+          git push
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,37 +1,46 @@
-name: common-cfdi
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build:
-    runs-on: ubuntu-latest
+  name: 'CFDI'
+  description: 'Cache Rush and pnpm dependencies'
+
+  inputs:
+    token:
+      description: 'token of github'
+      required: true
+
+  runs:
+    using: 'composite'
     steps:
-      - name: Cdfi
-        uses: actions/checkout@v3
 
       - name: Schema
         uses: actions/checkout@v3
         with:
           repository: MisaelMa/cfdi-schema
           path: packages/cfdi/schema
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ inputs.token }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Rush CLI
+        shell: bash
         run: npm install -g @microsoft/rush@5.82.1
 
       - name: Rush Update
+        shell: bash
         run: |
           git config user.name MisaelMa
           git config user.email amisael.amir.misael@gmail.com
           rush update
+          ls -la
+      #- name: execa
+      #  shell: bash
+      #  run: npm install execa
       - name: Script
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
+          debug: true
           script: |
+
             const script = require('./common/scripts/github-actions.js')
             await script({github, context, core})

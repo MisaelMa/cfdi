@@ -1,15 +1,16 @@
+
 async function execa(command, params) {
   const { spawn } = require('child_process');
   const child = spawn(command, params);
 
   let data = '';
   for await (const chunk of child.stdout) {
-    console.log('stdout chunk: ' + chunk);
+    //console.log('stdout chunk: ' + chunk);
     data += chunk;
   }
   let error = '';
   for await (const chunk of child.stderr) {
-    console.error('stderr chunk: ' + chunk);
+    //console.error('stderr chunk: ' + chunk);
     error += chunk;
   }
   const exitCode = await new Promise((resolve, reject) => {
@@ -97,18 +98,48 @@ function getScopes(commits = []) {
   }
   return Object.keys(scopes);
 }
+async function getCommitsPR(url) {
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Error get list prices');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`ERROR => ${url}`, error);
+    return [];
+  }
+
+}
 module.exports = async ({ github, context, core }) => {
-  const commits = context.payload.commits || [];
+  const eventName = context.eventName
+  let commits = context.payload.commits || [];
+
+  if(eventName==='pull_request'){
+    const commits_url = context.payload.pull_request.commits_url
+    const commits_local = await getCommitsPR(commits_url)
+    commits = commits_local.map(({commit})=>commit)
+  }
   const scopes =  getScopes(commits);
+  console.log("commits", scopes);
 
   for (var i = 0; i < scopes.length; i++) {
     const scope = scopes[i];
-    const data = await execa('rush', [
+    const comands = [
       'version',
       '--version-policy',
       scope,
       '--bump',
-    ]);
-    console.log(scope, data);
+    ]
+    console.log(comands);
+    const data = await execa('rush', comands);
+    console.log(data);
   }
 };

@@ -1,9 +1,0 @@
-name: prebublish
-on:
-  pull_request:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    needs: common-cfdi
