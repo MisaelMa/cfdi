@@ -15,3 +15,8 @@ jobs:
         with:
           token: ${{ secrets.PAT_GITHUB }}
 
+      - name: Publish
+        run: |
+          echo $BRANCH_NAME
+        env:
+          BRANCH_NAME: $(basename ${{ github.ref }})
