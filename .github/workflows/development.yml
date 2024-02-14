@@ -23,7 +23,9 @@ jobs:
       - name: Publish
         run: |
           echo $BRANCH_NAME
-          echo ${BRANCH_NAME}
-          echo "amir"
+          rush publish -p -b $BRANCH_NAME --include-all --set-access-level=public
+          git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
+          git push origin $BRANCH_NAME
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
