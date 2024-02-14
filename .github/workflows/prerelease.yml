@@ -41,7 +41,8 @@ jobs:
       - name: Publish
         run: |
           echo "amir"
-          rush publish -p -b main -t beta --include-all --set-access-level=public
+          branch_name=$(echo $GITHUB_REF | awk 'BEGIN{FS="/"} {print $3}')
+          rush publish -p -b main -t  $branch_name  --include-all --set-access-level=public
           git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
           git push
         env:
