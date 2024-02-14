@@ -19,4 +19,4 @@ jobs:
         run: |
           echo $BRANCH_NAME
         env:
-          BRANCH_NAME: $(basename ${{ github.ref }})
+          BRANCH_NAME: ${{ github.ref_name }}
