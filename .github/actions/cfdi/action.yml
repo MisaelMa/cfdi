@@ -43,4 +43,4 @@
           script: |
 
             const script = require('./common/scripts/github-actions.js')
-            await script({github, context, core, branch: $LAST_NAME})
+            await script({github, context, core, branch: $BRANCH_NAME})
