@@ -35,7 +35,6 @@
       #- name: execa
       #  shell: bash
       #  run: npm install execa
-      - uses: nelonoel/branch-name@v1.0.1
       - name: Script
         uses: actions/github-script@v7
         with:
@@ -43,4 +42,4 @@
           script: |
 
             const script = require('./common/scripts/github-actions.js')
-            await script({github, context, core, branch: $BRANCH_NAME})
+            await script({github, context, core})
