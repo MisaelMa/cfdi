@@ -119,7 +119,9 @@ async function getCommitsPR(url) {
 
 }
 module.exports = async ({ github, context, core }) => {
-  console.log("context", github, context, core);
+  const branch = context.ref.split('/').slice(2).join('/')
+
+  const branchs =  ['next','beta', 'alpha','dev']
   const eventName = context.eventName
   let commits = context.payload.commits || [];
 
@@ -139,6 +141,12 @@ module.exports = async ({ github, context, core }) => {
       scope,
       '--bump',
     ]
+    if (branchs.includes(branch)) {
+      comands.push('--override-bump');
+      comands.push('prerelease');
+      comands.push('--override-prerelease-id');
+      comands.push(branch);
+    }
     console.log(comands);
     const data = await execa('rush', comands);
     console.log(data);
