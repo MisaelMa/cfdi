@@ -76,7 +76,10 @@
       "projectFolder": "packages/cfdi/xsd",
       "versionPolicyName": "xsd",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@cfdi/schema",
