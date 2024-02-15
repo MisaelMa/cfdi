@@ -119,6 +119,7 @@ async function getCommitsPR(url) {
 
 }
 module.exports = async ({ github, context, core }) => {
+  console.log("context", github, context, core);
   const eventName = context.eventName
   let commits = context.payload.commits || [];
 
