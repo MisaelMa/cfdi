@@ -23,7 +23,7 @@ jobs:
       - name: Publish
         run: |
           echo $BRANCH_NAME
-          rush publish --publish --tag $BRANCH_NAME --include-all --set-access-level=public
+          rush publish --publish --tag $BRANCH_NAME --include-all --set-access-level=public --apply
           git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
           git push origin $BRANCH_NAME
         env:
