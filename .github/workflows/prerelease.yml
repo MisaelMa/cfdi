@@ -10,7 +10,11 @@ jobs:
       - name: Cdfi
         uses: actions/checkout@v3
 
-      - name: CFDI dependencies
-        uses: ./.github/actions/cfdi
+      - name: Script
+        uses: actions/github-script@v7
         with:
-          token: ${{ secrets.PAT_GITHUB }}
+          debug: true
+          script: |
+
+            const script = require('./common/scripts/github-actions.js')
+            await script({github, context, core})

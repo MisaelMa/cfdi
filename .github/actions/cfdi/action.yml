@@ -9,7 +9,7 @@
   runs:
     using: 'composite'
     steps:
-
+      - uses: nelonoel/branch-name@v1.0.1
       - name: Schema
         uses: actions/checkout@v3
         with:
@@ -43,4 +43,4 @@
           script: |
 
             const script = require('./common/scripts/github-actions.js')
-            await script({github, context, core})
+            await script({github, context, core, branch: ${LAST_NAME}})
