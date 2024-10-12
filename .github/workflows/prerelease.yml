@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Cdfi
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: CFDI dependencies
         uses: ./.github/actions/cfdi

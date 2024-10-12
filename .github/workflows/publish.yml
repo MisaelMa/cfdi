@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cdfi
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Schema
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: MisaelMa/cfdi-schema
           path: packages/cfdi/schema
