@@ -18,7 +18,7 @@ jobs:
       - name: CFDI dependencies
         uses: ./.github/actions/cfdi
         with:
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Publish
         run: |

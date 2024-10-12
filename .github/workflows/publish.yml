@@ -10,31 +10,11 @@ jobs:
       - name: Cdfi
         uses: actions/checkout@v4
 
-      - name: Schema
-        uses: actions/checkout@v4
+      - name: CFDI dependencies
+        uses: ./.github/actions/cfdi
         with:
-          repository: MisaelMa/cfdi-schema
-          path: packages/cfdi/schema
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Rush CLI
-        run: npm install -g @microsoft/rush@5.82.1
-
-      - name: Rush Update
-        run: |
-          git config user.name MisaelMa
-          git config user.email amisael.amir.misael@gmail.com
-          rush update
-      - name: Script
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const script = require('./common/scripts/github-actions.js')
-            await script({github, context, core})
       - name: Publish
         run: |
           echo "amir"

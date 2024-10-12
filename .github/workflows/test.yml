@@ -22,7 +22,7 @@ jobs:
         with:
           repository: MisaelMa/cfdi-schema
           path: packages/cfdi/schema
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Cache dependencies
         uses: ./.github/actions/cache
