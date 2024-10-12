@@ -15,6 +15,7 @@ runs:
         repository: MisaelMa/cfdi-schema
         path: packages/cfdi/schema
         token: ${{ inputs.token }}
+        branch: main
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
