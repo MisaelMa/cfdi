@@ -8,7 +8,7 @@ export default async function loginRoute(
   res: NextApiResponse
 ) {
   const patch =
-    '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/';
+    '/Users/amir/Documents/proyectos/amir/node/cfdi/packages/cfdi/schema/src/files/';
 
   const comprobanteXsd = CfdiSchema.of();
   comprobanteXsd.setConfig({
@@ -25,7 +25,7 @@ export default async function loginRoute(
     },
   });
   const xsd = await comprobanteXsd.processAll();
-  await comprobanteXsd.save(`${patch}schema/`);
+  //await comprobanteXsd.save(`${patch}schema/`);
 
   /*   const cfdi = CfdiProcess.of();
   cfdi.setConfig({ path: `${patch}cfdv40.xsd` });
