@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": ["./common/autoinstallers/rush-commitlint/node_modules/@commitlint/config-conventional/index.js"],
+  "extends": ["./common/autoinstallers/rush-commitlint/node_modules/@commitlint/config-conventional/lib/index.js"],
     rules: {
         // https://commitlint.js.org/#/reference-rules
         // Level [0..2]: 0 disables the rule. For 1 it will be considered a warning for 2 an error.
