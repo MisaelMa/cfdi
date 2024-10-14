@@ -1,4 +1,4 @@
-import { CFDI, CFDIAttributes, Emisor, Receptor, Relacionado } from '@cfdi/xml';
+import { CFDI, CFDIComprobante, Emisor, Receptor, Relacionado } from '@cfdi/xml';
 import { NextApiRequest, NextApiResponse } from 'next';
 import {
   Pago20,
@@ -34,7 +34,7 @@ export default async function loginRoute(
   const key = `${files}/certificados/LAN7008173R5.key`;
   const cer = `${files}/certificados/LAN7008173R5.cer`;
 
-  const comprobanteAttribute: CFDIAttributes = {
+  const comprobante: CFDIComprobante = {
     Serie: 'E',
     // eslint-disable-next-line
     Folio: 'ACACUN-27',
@@ -63,7 +63,7 @@ export default async function loginRoute(
     },
   });
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
-  cfd.setAttributes(comprobanteAttribute);
+  cfd.comprobante(comprobante);
   cfd.informacionGlobal({
     Periodicidad: 'amir',
     Meses: '1',
