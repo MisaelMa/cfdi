@@ -3,8 +3,7 @@ import { SyncOptions, execaCommandSync } from '@esm2cjs/execa';
 import path from 'path';
 // @ts-ignore
 import pathModule from 'node_modules-path';
-// @ts-ignore
-import saxon from 'saxon-js';
+
 // @ts-ignore
 import xslt3 from 'xslt3';
 

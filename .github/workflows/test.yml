@@ -48,7 +48,7 @@ jobs:
 
       - name: Store code coverage reports
         if: always() && steps.tests.outcome == 'failure'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: code-coverage-reports
           path: packages/*/coverage/lcov-report/

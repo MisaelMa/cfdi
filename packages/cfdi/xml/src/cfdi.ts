@@ -30,11 +30,9 @@ export class CFDI extends Comprobante {
    *Options;
    */
   constructor(
-    attr: CFDIAttributes,
     options: Options = { debug: false, xslt: { xslt3: false } } as Options
   ) {
     super(options);
-    this.setAttributes(attr);
     const { debug = false } = options;
     this.debug = debug;
     this._cadenaOriginal = '';
@@ -227,5 +225,9 @@ export class CFDI extends Comprobante {
 
   public get cadenaOriginal(): string {
     return this._cadenaOriginal;
+  }
+
+  public setDebug(debug: boolean): void {
+    this.debug = debug;
   }
 }

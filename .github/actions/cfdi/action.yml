@@ -13,9 +13,9 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: MisaelMa/cfdi-schema
+        branch: main
         path: packages/cfdi/schema
         token: ${{ inputs.token }}
-        branch: main
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -24,7 +24,7 @@ runs:
 
     - name: Rush CLI
       shell: bash
-      run: npm install -g @microsoft/rush@5.82.1
+      run: npm install -g @microsoft/rush@5.138.0
 
     - name: Rush Update
       shell: bash
