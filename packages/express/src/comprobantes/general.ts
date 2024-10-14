@@ -42,7 +42,7 @@ export const general = async (config: any): Promise<CFDI> => {
   // const custom = {
   //   'cfdi:Comprobante': 'comprobante',
   // };
-  const cfd = new CFDI(comprobanteAttribute, {
+  const cfd = new CFDI({
     debug: true,
     xslt: {
       path: styleSheet,
@@ -54,7 +54,7 @@ export const general = async (config: any): Promise<CFDI> => {
   cfd.certificar(cer);
 
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
-
+  cfd.setAttributes(comprobanteAttribute);
   cfd.informacionGlobal({
     Periodicidad: '01',
     Meses: '02',

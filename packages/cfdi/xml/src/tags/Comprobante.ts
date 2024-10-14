@@ -22,7 +22,9 @@ import { Structure } from '../utils/structure';
 import { schemaBuild } from '../utils/XmlHelp';
 
 export class Comprobante {
-  protected xml: XmlCdfi = {} as XmlCdfi;
+  protected xml: XmlCdfi = {
+     _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } } 
+  } as XmlCdfi;
   protected tc: TagComprobante = 'cfdi:Comprobante';
   protected version = '4.0';
   protected tags: Structure;

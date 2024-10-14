@@ -45,12 +45,13 @@ export default async function loginRoute(
     Exportacion: '01',
   };
 
-  const cfd = new CFDI(comprobanteAttribute, {
+  const cfd = new CFDI({
     debug: true,
     xslt: {
       path: styleSheet,
     },
   });
+  cfd.setAttributes(comprobanteAttribute);
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
   const emisor = new Emisor({
     Rfc: 'TCM970625MB1',

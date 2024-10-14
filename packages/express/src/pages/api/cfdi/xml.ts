@@ -30,6 +30,7 @@ export default async function loginRoute(
   const cer = `${files}/certificados/LAN7008173R5.cer`;
 
   const comprobanteAttribute: CFDIAttributes = {
+
     Serie: 'E',
     // eslint-disable-next-line
     Folio: 'ACACUN-27',
@@ -51,14 +52,15 @@ export default async function loginRoute(
   // const custom = {
   //   'cfdi:Comprobante': 'comprobante',
   // };
-  const cfd = new CFDI(comprobanteAttribute, {
+  const cfd = new CFDI({
     debug: false,
     xslt: {
       path: styleSheet,
     },
   });
+  
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
-
+  cfd.setAttributes(comprobanteAttribute)
   cfd.informacionGlobal({
     Periodicidad: 'amir',
     Meses: '1',
