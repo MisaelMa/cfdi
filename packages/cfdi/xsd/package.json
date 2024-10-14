@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/xsd",
-  "version": "0.0.15",
+  "version": "4.0.14-beta.3",
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -17,6 +17,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "vitest",
+    "test:ci": "vitest run",
     "lint": "tsdx lint",
     "prepare": "echo 'Realizando build...'",
     "size": "size-limit",
@@ -29,7 +30,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "tag": "latest",
     "access": "public"
   },
   "repository": {

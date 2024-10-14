@@ -2,6 +2,9 @@ export interface Options {
   debug: boolean;
   compact?: boolean;
   customTags?: any;
+  schema?: {
+    path: string;
+  },
   xslt: XsltSheet // @  Extensible Stylesheet Language Transformation
 }
 export interface XsltSheet {

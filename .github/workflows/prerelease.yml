@@ -1,0 +1,16 @@
+name: pre realease
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cdfi
+        uses: actions/checkout@v4
+
+      - name: CFDI dependencies
+        uses: ./.github/actions/cfdi
+        with:
+          token: ${{ secrets.PAT_TOKEN }}

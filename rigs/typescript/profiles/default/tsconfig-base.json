@@ -57,6 +57,9 @@
       "@cfdi/xsd": [
         "./node_modules/@cfdi/xsd/src"
       ],
+      "@cfdi/xsd/*": [
+        "./node_modules/@cfdi/xsd/src/*"
+      ],
       "@cfdi/csf": [
         "./node_modules/@cfdi/csf/src"
       ],

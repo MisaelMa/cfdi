@@ -1,7 +1,6 @@
+import { CliShare } from './cli-share';
 import { existsSync } from 'fs';
 import { platform } from 'os';
-
-import { CliShare } from './cliShare';
 
 /**
  *

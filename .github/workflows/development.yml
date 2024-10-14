@@ -1,12 +1,17 @@
-name: publish
+name: development
 on:
   push:
     branches:
-      - main
+      - next
+      - beta
+      - alpha
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      - uses: nelonoel/branch-name@v1.0.1
       - name: Cdfi
         uses: actions/checkout@v4
 
@@ -17,9 +22,9 @@ jobs:
 
       - name: Publish
         run: |
-          echo "amir"
-          rush publish -p -b main --include-all --set-access-level=public
+          echo $BRANCH_NAME
+          rush publish --publish --tag $BRANCH_NAME --include-all --set-access-level=public --apply
           git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
-          git push
+          git push origin $BRANCH_NAME
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

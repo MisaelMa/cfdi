@@ -5,8 +5,8 @@ export interface XmlImpuestos {
 }
 
 export interface XmlImpuestosTrasladados {
-  TotalImpuestosRetenidos?: string;
-  TotalImpuestosTrasladados?: string;
+  TotalImpuestosRetenidos?: number | string;
+  TotalImpuestosTrasladados?: number | string;
 }
 
 export interface XmlTranslado {
@@ -27,8 +27,8 @@ export interface XmlRetencionAttributes {
 
 export interface XmlTranRentAttributesProperties {
   Base?: string | number;
-  Impuesto: string;
+  Impuesto: string | number;
   TipoFactor: string;
-  TasaOCuota?: string;
-  Importe?: string;
+  TasaOCuota?: string | number;
+  Importe?: string | number;
 }

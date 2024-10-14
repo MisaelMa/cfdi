@@ -1,6 +1,6 @@
 import {
   CFDI,
-  CFDIAttributes,
+  CFDIComprobante,
   Concepts,
   Emisor,
   ObjetoImpEnum,
@@ -25,7 +25,7 @@ export default async function loginRoute(
   const key = `${files}/certificados/LAN7008173R5.key`;
   const cer = `${files}/certificados/LAN7008173R5.cer`;
 
-  const comprobanteAttribute: CFDIAttributes = {
+  const comprobante: CFDIComprobante = {
     Serie: 'E',
     // eslint-disable-next-line
     Folio: 'ACACUN-27',
@@ -45,12 +45,13 @@ export default async function loginRoute(
     Exportacion: '01',
   };
 
-  const cfd = new CFDI(comprobanteAttribute, {
+  const cfd = new CFDI({
     debug: true,
     xslt: {
       path: styleSheet,
     },
   });
+  cfd.comprobante(comprobante);
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
   const emisor = new Emisor({
     Rfc: 'TCM970625MB1',
