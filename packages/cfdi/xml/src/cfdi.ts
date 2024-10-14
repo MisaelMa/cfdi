@@ -4,7 +4,6 @@ import * as path from 'path';
 
 import { cer, key } from '@cfdi/csd';
 
-import { CFDIAttributes } from './types/tags/comprobante.interface';
 import { Comprobante } from './tags/Comprobante';
 import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
