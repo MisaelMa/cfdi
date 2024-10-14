@@ -1,5 +1,6 @@
 import {
-  CFDIAttributes,
+  CFDIComprobante,
+  ComprobanteAttributes,
   Options,
   TagComprobante,
   XmlCdfi,
@@ -116,7 +117,7 @@ export class Comprobante {
     };
   }
 
-  public setAttributes(attr: CFDIAttributes): void {
+  public setAttributes(attr: ComprobanteAttributes): void {
     const attribute = attr;
     this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
     this.addSchemaLocation(attribute.schemaLocation || this.locations);
@@ -124,6 +125,9 @@ export class Comprobante {
       delete attribute.xmlns;
     }
     attribute.schemaLocation && delete attribute.schemaLocation;
+  }
+
+  public comprobante(attribute: CFDIComprobante): void {
     this.xml['cfdi:Comprobante']._attributes = {
       ...this.xml[this.tc]._attributes,
       ...{ Version: this.version },
@@ -135,7 +139,6 @@ export class Comprobante {
     const comprobante = this.schema.cfdi.comprobante;
     comprobante.validateInit(this.xml['cfdi:Comprobante']._attributes);
   }
-
   /**
    *informacionGlobal
    *

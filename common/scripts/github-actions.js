@@ -68,7 +68,9 @@ function getDependences(scope) {
       rfc: true,
     },
     xsd: {
-      xsd: true
+      xsd: true,
+      xml: true,
+      complementos: true,
     }
   };
   return dependencies[scope] || {};

@@ -21,6 +21,7 @@ const files = path.join(
 
 schema.setConfig({
   path: files,
+  
 });
 
 const emisor = schema.cfdi.emisor;

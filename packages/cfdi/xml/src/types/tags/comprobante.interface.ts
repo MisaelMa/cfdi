@@ -45,16 +45,18 @@ export interface XmlRelacionadoAttributes {
 
 export interface XmlComprobanteAttributes
   extends XmlComplementsAttributes,
-    CFDIAttributes,
+  CFDIComprobante,
     AnyKey {
   'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
   'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
   'xsi:schemaLocation'?: string;
 }
 
-export interface CFDIAttributes {
+export interface ComprobanteAttributes {
   xmlns?: XmlnsLinks;
   schemaLocation?: string[];
+}
+export interface CFDIComprobante {
   Version?: string;
   Serie?: string;
   Folio?: string;

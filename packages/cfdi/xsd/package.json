@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/xsd",
-  "version": "0.0.20-beta.11",
+  "version": "4.0.14-beta.2",
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

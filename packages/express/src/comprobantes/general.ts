@@ -1,6 +1,6 @@
 import {
   CFDI,
-  CFDIAttributes,
+  CFDIComprobante,
   Concepts,
   Emisor,
   Impuestos,
@@ -20,7 +20,7 @@ import { XmlIeduAttribute } from '@cfdi/complementos';
 
 export const general = async (config: any): Promise<CFDI> => {
   const { cer, key, styleSheet } = config;
-  const comprobanteAttribute: CFDIAttributes = {
+  const comprobante: CFDIComprobante = {
     Serie: 'E',
     // eslint-disable-next-line
     Folio: 'ACACUN-27',
@@ -54,7 +54,7 @@ export const general = async (config: any): Promise<CFDI> => {
   cfd.certificar(cer);
 
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
-  cfd.setAttributes(comprobanteAttribute);
+  cfd.comprobante(comprobante);
   cfd.informacionGlobal({
     Periodicidad: '01',
     Meses: '02',
