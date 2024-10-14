@@ -74,7 +74,7 @@
   {
     "policyName": "xsd",
     "definitionName": "lockStepVersion",
-    "version": "0.0.20-beta.11",
+    "version": "4.0.14-beta.2",
     "nextBump": "patch"
   }
 ]

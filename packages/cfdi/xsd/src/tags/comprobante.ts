@@ -3,7 +3,13 @@ import { AnyValidateFunction, SchemaObject } from 'ajv/dist/core';
 import { JSV } from '../JSV';
 import { Schemakey } from '../types/key-schema';
 import { ValidateXSD } from './validate';
-
+/**
+ * 
+ * @class Comprobante
+ * override_required properties
+ * 'Sello', 'NoCertificado', 'Certificado'
+ * we make them unnecessary
+ */
 export class Comprobante extends ValidateXSD {
   protected static instance: Comprobante;
   private comprobanteInit!: AnyValidateFunction;
