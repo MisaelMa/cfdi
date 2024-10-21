@@ -28,9 +28,10 @@ export class Relacionado {
     if (!this.relacionada['cfdi:CfdiRelacionado']) {
       this.relacionada['cfdi:CfdiRelacionado'] = [];
     }
-    Schema.of().cfdi.relacionado.validate({ UUID: uuid });
+    const relation = { UUID: uuid };
+    Schema.of().cfdi.relacionado.validate(relation);
     this.relacionada['cfdi:CfdiRelacionado'].push({
-      _attributes: { UUID: uuid },
+      _attributes: relation
     });
   }
 
@@ -38,6 +39,10 @@ export class Relacionado {
    *getRelation
    */
   getRelation(): XmlRelacionados {
+    return this.relacionada;
+  }
+
+  toJson(): XmlRelacionados {
     return this.relacionada;
   }
 }

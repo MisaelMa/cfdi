@@ -1,12 +1,4 @@
-import {
-  XmlDomiciolioAttributes,
-  XmlEmisor,
-  XmlEmisorAttribute,
-  XmlEmisorDomicilioF,
-  XmlEmisorExpedidoEn,
-  XmlEmisorRF,
-  XmlEmisorRFAttributes,
-} from '../types';
+import { XmlEmisor, XmlEmisorAttribute } from '../types';
 
 import { Schema } from '@cfdi/xsd';
 
@@ -14,8 +6,13 @@ import { Schema } from '@cfdi/xsd';
  *
  */
 export class Emisor {
-  public emisor: XmlEmisor = {} as XmlEmisor;
-
+  public emisor: XmlEmisor = {
+    _attributes: {
+      Rfc: '',
+      Nombre: '',
+      RegimenFiscal: '',
+    },
+  } as XmlEmisor;
   /**
    *constructor
    *
@@ -24,47 +21,31 @@ export class Emisor {
    */
   constructor(emisor: XmlEmisorAttribute) {
     Schema.of().cfdi.emisor.validate(emisor);
-
     this.emisor._attributes = emisor;
-    // return this;
   }
 
-  /**
-   *addDomicilioFiscal
-   *
-   * @param domicilio
-   * XmlDomiciolioAttributes
-   */
-  public addDomicilioFiscal(domicilio: XmlDomiciolioAttributes): Emisor {
-    this.emisor['cfdi:DomicilioFiscal'] = {
-      _attributes: domicilio,
-    } as XmlEmisorDomicilioF;
-    return this;
+  setRfc(rfc: string): void {
+    this.emisor._attributes.Rfc = rfc;
   }
 
-  /**
-   *addExpedidoEn
-   *
-   * @param expedido
-   * XmlDomiciolioAttributes
-   */
-  public addExpedidoEn(expedido: XmlDomiciolioAttributes): Emisor {
-    this.emisor['cfdi:ExpedidoEn'] = {
-      _attributes: expedido,
-    } as XmlEmisorExpedidoEn;
-    return this;
+  setNombre(nombre: string): void {
+    this.emisor._attributes.Nombre = nombre;
   }
 
+  setRegimenFiscal(regimenFiscal: string | number): void {
+    this.emisor._attributes.RegimenFiscal = regimenFiscal;
+  }
+
+  setFacAtrAdquirente(facAtrAdquirente: string | number): void {
+    this.emisor._attributes.FacAtrAdquirente = facAtrAdquirente;
+  }
   /**
-   *addRegimenFiscal
+   *toJson
    *
-   * @param regimefiscal
-   * XmlEmisorRFAttributes
+   * @returns XmlEmisor
    */
-  public addRegimenFiscal(regimefiscal: XmlEmisorRFAttributes): Emisor {
-    this.emisor['cfdi:RegimenFiscal'] = {
-      _attributes: regimefiscal,
-    } as XmlEmisorRF;
-    return this;
+  public toJson(): XmlEmisor {
+    Schema.of().cfdi.emisor.validate(this.emisor._attributes);
+    return this.emisor;
   }
 }

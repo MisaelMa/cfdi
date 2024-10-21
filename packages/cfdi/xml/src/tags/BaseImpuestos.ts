@@ -81,4 +81,16 @@ export class BaseImpuestos {
     this.impuesto['cfdi:Retenciones']['cfdi:Retencion'].push(atrributos);
     return this;
   }
+
+  getTotalImpuestos(): XmlImpuestosTrasladados {
+    return this.impuesto._attributes;
+  }
+
+  getRetenciones(): XmlRetencionAttributes[] {
+    return this.impuesto['cfdi:Retenciones']['cfdi:Retencion'];
+  }
+
+  getTraslados(): XmlTransladoAttributes[] {
+    return this.impuesto['cfdi:Traslados']['cfdi:Traslado'];
+  }
 }
