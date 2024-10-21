@@ -2,10 +2,14 @@
   "name": "@cfdi/xsd",
   "version": "4.0.14-beta.3",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "module": "./dist/xsd.esm.js",
   "source": "./src/index.ts",
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "beta"
+    ]
+  },
   "files": [
     "dist",
     "src"
@@ -15,11 +19,11 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/xsd.cjs.development.* && npm run cp",
+    "cp": "cp ./config/index.js ./dist",
     "test": "vitest",
-    "test:ci": "vitest run",
     "lint": "tsdx lint",
-    "prepare": "echo 'Realizando build...'",
+    "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -64,6 +68,7 @@
     "xslt": "^0.9.1"
   },
   "devDependencies": {
+    "rimraf": "^5.0.0",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",

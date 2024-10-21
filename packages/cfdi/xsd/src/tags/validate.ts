@@ -34,6 +34,7 @@ export class ValidateXSD {
   }
 
   public validate(data: Record<string, any>, dataCxt?: DataValidationCxt) {
+    console.log('aqui validate',data);
     if (!this.schema) return true;
     return this.validateSchema(this.schema, data, dataCxt);
   }
