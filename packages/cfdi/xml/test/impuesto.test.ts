@@ -8,10 +8,19 @@ import {
 
 describe('Impuestos', () => {
   it('debería crear una instancia de Impuestos con los atributos dados', () => {
+    const validateSpy = vi.spyOn(Schema.of().cfdi.impuestos, 'validate');
+
     const totalImpuestos: XmlImpuestosTrasladados = {
       TotalImpuestosTrasladados: '100.1024',
     };
     const impuestos = new Impuestos(totalImpuestos);
+   
+    expect(validateSpy).toHaveBeenCalledWith({
+      TotalImpuestosTrasladados: 100.1024,
+    });
+
+    validateSpy.mockRestore();
+
     expect(impuestos.getTotalImpuestos()).toEqual({
       TotalImpuestosTrasladados: 100.1024,
     });
