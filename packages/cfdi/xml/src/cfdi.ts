@@ -4,7 +4,7 @@ import * as path from 'path';
 
 import { cer, key } from '@cfdi/csd';
 
-import { Comprobante } from './tags/Comprobante';
+import { Comprobante } from './elements/Comprobante';
 import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
 import { Transform } from '@clir/saxon-he';
@@ -146,10 +146,10 @@ export class CFDI extends Comprobante {
 
         if (this.xslt.xslt3) {
           //console.time('saxon');
-          cadena = (await getOriginalString(
+          cadena = await getOriginalString(
             fullPath,
             String(this.xslt.path)
-          )) as string;
+          )
           //console.timeEnd('saxon');
         } else {
           const transform = new Transform();
@@ -224,6 +224,10 @@ export class CFDI extends Comprobante {
 
   public get cadenaOriginal(): string {
     return this._cadenaOriginal;
+  }
+
+  get isBebug(): boolean {
+    return this.debug;
   }
 
   public setDebug(debug: boolean): void {

@@ -17,6 +17,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@cfdi/xsd': resolve(__dirname, '../xsd/src'),
+      '@cfdi/complementos': resolve(__dirname, '../complementos/src'),
+      '@cfdi/csd': resolve(__dirname, '../csd/src'),
+      '@clir/saxon-he': resolve(__dirname, '../../clir/saxon-he/src'),
     },
   },
 });

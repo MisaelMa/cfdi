@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Receptor } from '../src/tags/Receptor';
-import { XmlReceptorAttribute } from '../src/types';
+import { Receptor } from '../../src/elements/Receptor';
+import { XmlReceptorAttribute } from '../../src/types';
 
 describe('Receptor', () => {
   it('debería crear una instancia de Receptor con los atributos dados', () => {

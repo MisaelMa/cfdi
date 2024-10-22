@@ -13,7 +13,6 @@ import {
 } from '../types';
 
 import { BaseImpuestos } from './BaseImpuestos';
-import { Impuestos } from './Impuestos';
 import { Schema } from '@cfdi/xsd';
 
 /**

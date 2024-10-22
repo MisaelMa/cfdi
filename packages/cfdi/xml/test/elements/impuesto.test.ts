@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
-import { Impuestos } from '../src/tags/Impuestos';
+import { Impuestos } from '../../src/elements/Impuestos';
 import { Schema } from '@cfdi/xsd';
 import {
   XmlImpuestosTrasladados,
   XmlTranRentAttributesProperties,
-} from '../src/types';
+} from '../../src/types';
 
 describe('Impuestos', () => {
   it('debería crear una instancia de Impuestos con los atributos dados', () => {

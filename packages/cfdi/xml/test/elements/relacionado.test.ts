@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Relacionado } from '../src/tags/Relacionado';
-import { XmlRelacionadosAttributes } from '../src/types';
+import { Relacionado } from '../../src/elements/Relacionado';
+import { XmlRelacionadosAttributes } from '../../src/types';
 
 describe('Relacionado', () => {
   it('debería crear una instancia de Relacionado con los atributos dados', () => {

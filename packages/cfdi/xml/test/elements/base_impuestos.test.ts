@@ -1,13 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
-import { BaseImpuestos } from '../src/tags/BaseImpuestos';
+import { BaseImpuestos } from '../../src/elements/BaseImpuestos';
 import {
   XmlImpuestosTrasladados,
   XmlTranRentAttributesProperties,
   XmlRetencionAttributes,
   XmlTransladoAttributes,
-} from '../src/types';
+} from '../../src/types';
 import { Schema } from '@cfdi/xsd';
-import { stringObjToNumerico } from '../utils/number.utils';
+import { stringObjToNumerico } from '../../src/utils/number.utils';
 
 /* vi.mock('@cfdi/xsd', () => ({
   Schema: {

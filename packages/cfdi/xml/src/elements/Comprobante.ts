@@ -52,7 +52,6 @@ export class Comprobante {
     const { xslt, customTags = {} } = options;
     this.xslt = xslt;
     this.tags = new Structure(customTags);
-    this.tc = this.tags.tagXml('cfdi:Comprobante');
     this.restartCfdi();
   }
 
@@ -85,7 +84,7 @@ export class Comprobante {
    * string
    */
   protected addXmlns(xmlnsKey: string, xmlns: string): void {
-    this.xml[this.tc]._attributes[`xmlns:${xmlnsKey}`] = xmlns;
+    this.xml['cfdi:Comprobante']._attributes[`xmlns:${xmlnsKey}`] = xmlns;
   }
 
   /**
@@ -95,11 +94,11 @@ export class Comprobante {
    * string[]
    */
   protected addSchemaLocation(locations: string[]): void {
-    if (!this.xml[this.tc]._attributes['xsi:schemaLocation']) {
-      this.xml[this.tc]._attributes['xsi:schemaLocation'] = '';
+    if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
+      this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
     }
     const schemaLocation = schemaBuild(locations);
-    this.xml[this.tc]._attributes['xsi:schemaLocation'] += ` ${schemaLocation}`;
+    this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += `${schemaLocation}`;
   }
 
   /**
@@ -129,7 +128,7 @@ export class Comprobante {
 
   public comprobante(attribute: CFDIComprobante): void {
     this.xml['cfdi:Comprobante']._attributes = {
-      ...this.xml[this.tc]._attributes,
+      ...this.xml['cfdi:Comprobante']._attributes,
       ...{ Version: this.version },
       ...attribute,
       SubTotal: Number(attribute.SubTotal),
@@ -157,11 +156,11 @@ export class Comprobante {
     Año: string | number;
   }): void {
     this.schema.cfdi.informacionGlobal.validate(payload);
-    this.xml[this.tc] = {
+    this.xml['cfdi:Comprobante'] = {
       'cfdi:InformacionGlobal': {
         _attributes: payload,
       },
-      ...this.xml[this.tc],
+      ...this.xml['cfdi:Comprobante'],
     };
   }
 
@@ -172,9 +171,9 @@ export class Comprobante {
    * Relacionado
    */
   public relacionados(relationCfdi: Relacionado): void {
-    this.xml[this.tc] = {
+    this.xml['cfdi:Comprobante'] = {
       'cfdi:CfdiRelacionados': relationCfdi.getRelation(),
-      ...this.xml[this.tc],
+      ...this.xml['cfdi:Comprobante'],
     };
   }
 
@@ -185,7 +184,7 @@ export class Comprobante {
    * Emisor
    */
   public emisor(emisor: Emisor): void {
-    this.xml[this.tc]['cfdi:Emisor'] = emisor.emisor;
+    this.xml['cfdi:Comprobante']['cfdi:Emisor'] = emisor.emisor;
   }
 
   /**
@@ -195,7 +194,7 @@ export class Comprobante {
    * Receptor
    */
   public receptor(receptor: Receptor): void {
-    this.xml[this.tc]['cfdi:Receptor'] = receptor.receptor;
+    this.xml['cfdi:Comprobante']['cfdi:Receptor'] = receptor.receptor;
   }
 
   /**
@@ -210,17 +209,20 @@ export class Comprobante {
       this.addXmlns(properties.xmlnskey, properties.xmlns);
       this.addSchemaLocation(properties.schemaLocation);
     }
+
+    if (!this.xml['cfdi:Comprobante']['cfdi:Conceptos']) {
+      this.xml['cfdi:Comprobante']['cfdi:Conceptos'] = {
+        'cfdi:Concepto': [],
+      };
+    }
+    
     if (this.tags.isActive) {
-      if (!this.xml[this.tc]['cfdi:Conceptos']) {
-        this.xml[this.tc]['cfdi:Conceptos'] = {
-          'cfdi:Concepto': [],
-        };
-      }
-      this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(
+     
+      this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(
         concept.getConcept()
       );
     } else {
-      this.xml[this.tc]['cfdi:Conceptos']['cfdi:Concepto'].push(
+      this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(
         concept.getConcept()
       );
     }
@@ -233,7 +235,7 @@ export class Comprobante {
    * Impuestos
    */
   public impuesto(impuesto: Impuestos): void {
-    this.xml[this.tc]['cfdi:Impuestos'] = impuesto.impuesto;
+    this.xml['cfdi:Comprobante']['cfdi:Impuestos'] = impuesto.impuesto;
   }
 
   /**
@@ -243,8 +245,8 @@ export class Comprobante {
    * ComlementType
    */
   public async complemento(complements: ComlementType): Promise<void> {
-    if (!this.xml[this.tc]['cfdi:Complemento']) {
-      this.xml[this.tc]['cfdi:Complemento'] = {} as XmlComplements;
+    if (!this.xml['cfdi:Comprobante']['cfdi:Complemento']) {
+      this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
     }
     const complement = await complements.getComplement();
     this.addXmlns(complement.xmlnskey, complement.xmlns);
@@ -267,7 +269,7 @@ export class Comprobante {
         },
       },
     } as XmlCdfi;
-    this.xml[this.tc] = {
+    this.xml['cfdi:Comprobante'] = {
       _attributes: {} as XmlComprobanteAttributes,
       'cfdi:Emisor': {},
       'cfdi:Receptor': {},

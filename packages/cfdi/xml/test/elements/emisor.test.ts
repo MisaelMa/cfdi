@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Emisor } from '../src/tags/Emisor';
-import {  XmlEmisorAttribute } from '../src/types'
+import { Emisor } from '../../src/elements/Emisor';
+import {  XmlEmisorAttribute } from '../../src/types'
 import { Schema } from '@cfdi/xsd/src'
 
 describe('Emisor', () => {
