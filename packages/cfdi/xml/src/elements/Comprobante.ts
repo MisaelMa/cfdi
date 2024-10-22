@@ -215,9 +215,8 @@ export class Comprobante {
         'cfdi:Concepto': [],
       };
     }
-    
-    if (this.tags.isActive) {
-     
+
+    if (this.tags.isActive) { 
       this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(
         concept.getConcept()
       );

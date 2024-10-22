@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
@@ -120,14 +120,12 @@ export class CFDI extends Comprobante {
     }
   }
 
-  /**
-   *restartCfdi
-   */
+  
 
   /**
    *getCadenaOriginal
    */
-  private async generarCadenaOriginal(): Promise<string> {
+  async generarCadenaOriginal(): Promise<string> {
     if (!this.xslt) {
       throw new Error(
         '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
@@ -135,12 +133,10 @@ export class CFDI extends Comprobante {
     }
     return new Promise<string>(async (resolve, reject) => {
       try {
-        const fullPath = path.join(
-          os.tmpdir(),
-          `${FileSystem.generateNameTemp()}.xml`
-        );
+        const fullPath = FileSystem.getTmpFullPath(FileSystem.generateNameTemp());
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const result = js2xml(this.xml, options);
+   
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = '';
 

@@ -2,20 +2,36 @@ import { describe, it, expect, vi } from 'vitest';
 import { CFDI } from '../src/CFDI';
 import { Options } from '../src/types/types';
 import { js2xml } from 'xml-js';
-import * as fs from 'fs';
-import { getOriginalString } from '../src/utils/XmlHelp';
+import fs from 'fs';
 import path from 'path';
 import { cer, key } from '@cfdi/csd';
+import { FileSystem } from '../src/utils/FileSystem';
+import { getOriginalString } from '../src/utils/XmlHelp';
 
+vi.mock('@clir/saxon-he', () => ({
+  Transform: vi.fn().mockImplementation(() => ({
+    s: vi.fn().mockReturnThis(),
+    xsl: vi.fn().mockReturnThis(),
+    warnings: vi.fn().mockReturnThis(),
+    run: vi.fn().mockReturnValue('CADENA_ORIGINAL'),
+  })),
+}));
 
-const files = path.resolve(__dirname,  '..', '..','..','files')
+vi.mock('../src/utils/FileSystem', () => ({
+  FileSystem: {
+    getTmpFullPath: vi.fn().mockReturnValue('/tmp/tempfile.xml'),
+    generateNameTemp: vi.fn().mockReturnValue('tempfile'),
+  },
+}));
 
+const files = path.resolve(__dirname, '..', '..', '..', 'files');
 
 const cer_path = `${files}/certificados/LAN7008173R5.cer`;
+const xslt_path = `${files}/4.0/cadenaoriginal.xslt`;
 
 describe('CFDI', () => {
   it('debería crear una instancia de CFDI con los atributos dados', () => {
-    const options: Options = { debug: true, xslt: {  path: 'path/to/xslt' } };
+    const options: Options = { debug: true, xslt: { path: 'path/to/xslt' } };
     const cfdi = new CFDI(options);
     expect(cfdi).toBeInstanceOf(CFDI);
     expect(cfdi.isBebug).toBe(true);
@@ -26,23 +42,48 @@ describe('CFDI', () => {
 
     const cfdi = new CFDI();
     cfdi.certificar(cer_path);
-    
+
     expect(validateSpy).toHaveBeenCalledWith(cer_path);
     validateSpy.mockRestore();
     const cfdiJson = cfdi.getJsonCdfi();
-    expect(cfdiJson['cfdi:Comprobante']._attributes.NoCertificado).toBe('20001000000300022815');
-    expect(cfdiJson['cfdi:Comprobante']._attributes.Certificado).contain('MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwDQYJKoZIhvcN')
+    expect(cfdiJson['cfdi:Comprobante']._attributes.NoCertificado).toBe(
+      '20001000000300022815'
+    );
+    expect(cfdiJson['cfdi:Comprobante']._attributes.Certificado).contain(
+      'MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwDQYJKoZIhvcN'
+    );
   });
 
- /*  it('debería generar la cadena original', async () => {
-    const cfdi = new CFDI({ xslt: { xslt3: false, path: 'path/to/xslt' } });
+  it('debería generar la cadena original', async () => {
+    const validateSpyFsWrite = vi.spyOn(fs, 'writeFileSync');
+    const validateSpyUnlinkSync = vi.spyOn(fs, 'unlinkSync');
+    //const validateSpy = vi.spyOn(cer, 'setFile');
+    //const validateSpy = vi.spyOn(cer, 'setFile');
+
+    const cfdi = new CFDI({ xslt: { xslt3: false, path: xslt_path } });
     const cadenaOriginal = await cfdi.generarCadenaOriginal();
-    expect(fs.writeFileSync).toHaveBeenCalledWith('/tmp/tempfile.xml', '<xml>mocked</xml>', 'utf8');
-    expect(getOriginalString).toHaveBeenCalledWith('/tmp/tempfile.xml', 'path/to/xslt');
-    expect(cadenaOriginal).toBe('CADENA_ORIGINAL');
-    expect(fs.unlinkSync).toHaveBeenCalledWith('/tmp/tempfile.xml');
-  });
+    const xml = `<?xml version="1.0" encoding="utf-8"?>
+<cfdi:Comprobante>
+    <cfdi:Emisor/>
+    <cfdi:Receptor/>
+    <cfdi:Conceptos>
+    </cfdi:Conceptos>
+</cfdi:Comprobante>`;
+    expect(validateSpyFsWrite).toBeCalled();
+    expect(validateSpyFsWrite).toHaveBeenCalledWith(
+      '/tmp/tempfile.xml',
+      xml,
+      'utf8'
+    );
+    expect(FileSystem.getTmpFullPath).toHaveBeenCalled();
+    expect(FileSystem.generateNameTemp).toHaveBeenCalled();
+    validateSpyFsWrite.mockRestore();
 
+    expect(cadenaOriginal).toBe('CADENA_ORIGINAL');
+    expect(validateSpyUnlinkSync).toHaveBeenCalledWith('/tmp/tempfile.xml');
+    validateSpyUnlinkSync.mockRestore();
+  });
+  /*
   it('debería generar el sello', async () => {
     const cfdi = new CFDI();
     const sello = await cfdi.generarSello('CADENA_ORIGINAL', 'path/to/key.key', 'password');

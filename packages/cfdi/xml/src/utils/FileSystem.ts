@@ -1,5 +1,6 @@
-import * as fs from 'fs';
-
+import  fs from 'fs';
+import  os from 'os';
+import  path from 'path';
 /**
  *
  */
@@ -59,5 +60,9 @@ export class FileSystem {
    */
   public static readFileSync(file: string): any {
     return fs.readFileSync(file, 'utf8');
+  }
+
+  public static getTmpFullPath(name: string): string {
+    return path.join(os.tmpdir(), `${name}.xml`);
   }
 }
