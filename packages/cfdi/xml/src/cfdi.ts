@@ -10,7 +10,7 @@ import { Options } from './types/types';
 import { Transform } from '@clir/saxon-he';
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
 import { getOriginalString } from './utils/XmlHelp';
-import { js2xml } from 'xml-js';
+import xmlJS  from 'xml-js';
 
 /**
  *
@@ -91,7 +91,7 @@ export class CFDI extends Comprobante {
     return new Promise(async (resolve, reject) => {
       try {
         const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const cfdi = await js2xml({ ...this.xml }, options);
+        const cfdi = await xmlJS.js2xml({ ...this.xml }, options);
         this.restartCfdi();
         resolve(cfdi);
       } catch (e) {
@@ -135,7 +135,7 @@ export class CFDI extends Comprobante {
       try {
         const fullPath = FileSystem.getTmpFullPath(FileSystem.generateNameTemp());
         const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const result = js2xml(this.xml, options);
+        const result = xmlJS.js2xml(this.xml, options);
    
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = '';
