@@ -3,6 +3,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { resolve } from 'path';
 export default defineConfig({
   test: {
+    reporters: ['html']
+     /* reporters: ['html', 'default'],
+     outputFile: './test-output.json' */
     // Aquí puedes incluir configuraciones específicas para Vitest
   },
   plugins: [

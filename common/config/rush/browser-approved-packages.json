@@ -291,6 +291,14 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@vitest/coverage-v8",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@vitest/ui",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "2captcha",
       "allowedCategories": [ "libraries" ]
     },
