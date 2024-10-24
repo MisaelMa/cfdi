@@ -1,26 +1,21 @@
 import {
+  XmlImpuestos,
+  XmlImpuestosTrasladados,
+  XmlRetencionAttributes,
+  XmlRetenciones,
+  XmlTranRentAttributesProperties,
   XmlTranslado,
   XmlTransladoAttributes,
-  XmlTranRentAttributesProperties,
-  XmlRetencionAttributes,
-  XmlImpuestos,
-  XmlRetenciones,
-  XmlImpuestosTrasladados,
 } from '../types';
+
+import { Schema } from '@cfdi/xsd';
+import { stringObjToNumerico } from '../utils/number.utils';
 
 /**
  *
  */
-export class Impuestos {
+export class BaseImpuestos {
   public impuesto: XmlImpuestos = {} as XmlImpuestos;
-
-  private translado: XmlTranslado = {
-    'cfdi:Traslado': [],
-  } as XmlTranslado;
-
-  private retencion: XmlRetenciones = {
-    'cfdi:Retencion': [],
-  } as XmlRetenciones;
 
   /**
    *constructor
@@ -32,7 +27,9 @@ export class Impuestos {
     TotalImpuestos: XmlImpuestosTrasladados = {} as XmlImpuestosTrasladados
   ) {
     if (Object.keys(TotalImpuestos).length !== 0) {
-      this.impuesto._attributes = TotalImpuestos;
+      const TI = stringObjToNumerico(TotalImpuestos);
+      Schema.of().cfdi.impuestos.validate(TI);
+      this.impuesto._attributes = TI;
     }
   }
 
@@ -42,11 +39,10 @@ export class Impuestos {
    * @param traslado
    * XmlTranRentAttributesProperties
    */
-  traslados(
+  setTraslado(
     traslado: XmlTranRentAttributesProperties & { Base: string | number }
-  ): Impuestos {
+  ): this {
     if (!this.impuesto['cfdi:Traslados']) {
-      // = traslado;
       this.impuesto['cfdi:Traslados'] = {
         'cfdi:Traslado': [],
       } as XmlTranslado;
@@ -54,9 +50,8 @@ export class Impuestos {
     const atrributos: XmlTransladoAttributes = {
       _attributes: traslado,
     } as XmlTransladoAttributes;
-    this.impuesto['cfdi:Traslados']['cfdi:Traslado'].push(atrributos); // = traslado;
-    // para tener por separado los traslado del tag de impuesto solo para consulta
-    this.translado['cfdi:Traslado'].push(atrributos);
+
+    this.impuesto['cfdi:Traslados']['cfdi:Traslado'].push(atrributos);
     return this;
   }
 
@@ -69,12 +64,12 @@ export class Impuestos {
       'Base' | 'TipoFactor' | 'TasaOCuota'
     >
    */
-  retenciones(
+  setRetencion(
     retencion: Omit<
       XmlTranRentAttributesProperties,
       'Base' | 'TipoFactor' | 'TasaOCuota'
     >
-  ): Impuestos {
+  ): this {
     if (!this.impuesto['cfdi:Retenciones']) {
       this.impuesto['cfdi:Retenciones'] = {
         'cfdi:Retencion': [],
@@ -83,9 +78,19 @@ export class Impuestos {
     const atrributos: XmlRetencionAttributes = {
       _attributes: retencion,
     } as XmlRetencionAttributes;
-    this.impuesto['cfdi:Retenciones']['cfdi:Retencion'].push(atrributos); // = traslado;
-    // para tener por separado las retenciones del tag de impuesto solo para consulta
-    this.retencion['cfdi:Retencion'].push(atrributos);
+    this.impuesto['cfdi:Retenciones']['cfdi:Retencion'].push(atrributos);
     return this;
+  }
+
+  getTotalImpuestos(): XmlImpuestosTrasladados {
+    return this.impuesto._attributes;
+  }
+
+  getRetenciones(): XmlRetencionAttributes[] {
+    return this.impuesto['cfdi:Retenciones']['cfdi:Retencion'];
+  }
+
+  getTraslados(): XmlTransladoAttributes[] {
+    return this.impuesto['cfdi:Traslados']['cfdi:Traslado'];
   }
 }

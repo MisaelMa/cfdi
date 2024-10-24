@@ -1,8 +1,3 @@
-import {
-  XmlComplementsAttributes,
-  XmlnsComplementsLinks,
-  XmlComplements,
-} from '@cfdi/complementos';
 import { AnyKey, XmlConcepto, XmlEmisor, XmlImpuestos, XmlReceptor } from '.';
 import {
   ExportacionEnum,
@@ -14,6 +9,11 @@ import {
   TipoComprobante,
   TypeComprobante,
 } from '@cfdi/catalogos';
+import {
+  XmlComplements,
+  XmlComplementsAttributes,
+  XmlnsComplementsLinks,
+} from '@cfdi/complementos';
 
 export interface XmlComprobante {
   _attributes: XmlComprobanteAttributes;
@@ -45,16 +45,18 @@ export interface XmlRelacionadoAttributes {
 
 export interface XmlComprobanteAttributes
   extends XmlComplementsAttributes,
-    CFDIAttributes,
+  CFDIComprobante,
     AnyKey {
   'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
   'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
   'xsi:schemaLocation'?: string;
 }
 
-export interface CFDIAttributes {
+export interface ComprobanteAttributes {
   xmlns?: XmlnsLinks;
   schemaLocation?: string[];
+}
+export interface CFDIComprobante {
   Version?: string;
   Serie?: string;
   Folio?: string;
@@ -62,11 +64,11 @@ export interface CFDIAttributes {
   FormaPago?: FormaPago | FormaPagoType;
   NoCertificado: string;
   condicionesDePago?: string;
-  SubTotal: string;
-  Descuento?: string;
+  SubTotal: string | number;
+  Descuento?: string | number;
   Moneda: string;
   TipoCambio?: string;
-  Total: string;
+  Total: string | number;
   TipoDeComprobante: TipoComprobante | TypeComprobante;
   Exportacion: ExportacionEnum | ExportacionType | string;
   MetodoPago?: MetodoPago | MetodoPagoType;

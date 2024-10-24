@@ -1,10 +1,7 @@
 import { XmlDomiciolioAttributes } from '.';
 
 export interface XmlEmisor {
-  _attributes?: XmlEmisorAttribute;
-  'cfdi:DomicilioFiscal'?: XmlEmisorDomicilioF;
-  'cfdi:ExpedidoEn'?: XmlEmisorExpedidoEn;
-  'cfdi:RegimenFiscal'?: XmlEmisorRF;
+  _attributes: XmlEmisorAttribute;
 }
 
 export interface XmlEmisorAttribute {
@@ -12,20 +9,4 @@ export interface XmlEmisorAttribute {
   Nombre: string;
   RegimenFiscal: string | number;
   FacAtrAdquirente?: string | number;
-}
-
-export interface XmlEmisorDomicilioF {
-  _attributes?: XmlDomiciolioAttributes;
-}
-
-export interface XmlEmisorExpedidoEn {
-  _attributes?: XmlDomiciolioAttributes;
-}
-
-export interface XmlEmisorRF {
-  _attributes?: XmlEmisorRFAttributes;
-}
-
-export interface XmlEmisorRFAttributes {
-  Regimen: string;
 }

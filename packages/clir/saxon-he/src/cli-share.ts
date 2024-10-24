@@ -24,7 +24,7 @@ export class CliShare {
    * @param filenames
    * string
    */
-  public catalog(filenames: string): CliShare {
+  public catalog(filenames: string): this {
     this.commandline += ` -catalog:${filenames}`;
     this.commandlineArray.push(`-catalog:${filenames}`);
     return this;
@@ -36,7 +36,7 @@ export class CliShare {
    * @param options
    * 'on' | 'off' | 'recover'
    */
-  public dtd(options: 'on' | 'off' | 'recover'): CliShare {
+  public dtd(options: 'on' | 'off' | 'recover'): this {
     this.commandline += ` -dtd:${options}`;
     this.commandlineArray.push(`-dtd:${options}`);
     return this;
@@ -48,7 +48,7 @@ export class CliShare {
    * @param options
    *  'on' | 'off'
    */
-  public expand(options: 'on' | 'off'): CliShare {
+  public expand(options: 'on' | 'off'): this {
     this.commandline += ` -expand:${options}`;
     this.commandlineArray.push(`-expand:${options}`);
     return this;
@@ -60,7 +60,7 @@ export class CliShare {
    * @param options
    * 'on' | 'off
    */
-  public ext(options: 'on' | 'off'): CliShare {
+  public ext(options: 'on' | 'off'): this {
     this.commandline += ` -ext:${options}`;
     this.commandlineArray.push(`-ext:${options}`);
     return this;
@@ -72,7 +72,7 @@ export class CliShare {
    * @param initializer
    *string
    */
-  public init(initializer: string): CliShare {
+  public init(initializer: string): this {
     this.commandline += ` -init:${initializer}`;
     this.commandlineArray.push(`-init:${initializer}`);
     return this;
@@ -84,7 +84,7 @@ export class CliShare {
    * @param options
    * on' | 'off'
    */
-  public l(options: 'on' | 'off'): CliShare {
+  public l(options: 'on' | 'off'): this {
     this.commandline += ` -l:${options}`;
     this.commandlineArray.push(`-l:${options}`);
     return this;
@@ -96,7 +96,7 @@ export class CliShare {
    * @param format
    * string
    */
-  public now(format: string): CliShare {
+  public now(format: string): this {
     this.commandline += ` -now:${format}`;
     this.commandlineArray.push(`-now:${format}`);
     return this;
@@ -108,7 +108,7 @@ export class CliShare {
    * @param filename
    * filename
    */
-  public o(filename: string): CliShare {
+  public o(filename: string): this {
     this.commandline += ` -o:${filename}`;
     this.commandlineArray.push(`-o:${filename}`);
     return this;
@@ -138,7 +138,7 @@ export class CliShare {
       | 'v'
       | 'w'
       | 'x'
-  ): CliShare {
+  ): this {
     this.commandline += ` -opt:-${flags}`;
     this.commandlineArray.push(`-opt:-${flags}`);
     return this;
@@ -150,7 +150,7 @@ export class CliShare {
    * @param options
    * 'recover' | 'fatal'
    */
-  public outval(options: 'recover' | 'fatal'): CliShare {
+  public outval(options: 'recover' | 'fatal'): this {
     this.commandline += ` -outval:${options}`;
     this.commandlineArray.push(`-outval:${options}`);
     return this;
@@ -162,7 +162,7 @@ export class CliShare {
    * @param options
    * 'on' | 'off
    */
-  public p(options: 'on' | 'off'): CliShare {
+  public p(options: 'on' | 'off'): this {
     this.commandline += ` -p:${options}`;
     this.commandlineArray.push(`-p:${options}`);
     return this;
@@ -174,7 +174,7 @@ export class CliShare {
    * @param options
    * 'on' | 'off'
    */
-  public quit(options: 'on' | 'off'): CliShare {
+  public quit(options: 'on' | 'off'): this {
     this.commandline += ` -quit:${options}`;
     this.commandlineArray.push(`-quit:${options}`);
     return this;
@@ -186,7 +186,7 @@ export class CliShare {
    * @param classname
    * string
    */
-  public r(classname: string): CliShare {
+  public r(classname: string): this {
     this.commandline += ` -r:${classname}`;
     this.commandlineArray.push(`-r:${classname}`);
     return this;
@@ -198,7 +198,7 @@ export class CliShare {
    * @param integer
    * number
    */
-  public repeat(integer: number): CliShare {
+  public repeat(integer: number): this {
     this.commandline += ` -repeat:${integer}`;
     this.commandlineArray.push(`-repeat:${integer}`);
     return this;
@@ -210,7 +210,7 @@ export class CliShare {
    * @param filename
    * string
    */
-  public s(filename: string): CliShare {
+  public s(filename: string): this {
     if (!existsSync(filename)) {
       throw new Error('No se puede encontrar el xml processar.');
     }
@@ -222,7 +222,7 @@ export class CliShare {
   /**
    *sa
    */
-  public sa(): CliShare {
+  public sa(): this {
     this.commandline += ` -sa`;
     this.commandlineArray.push(`-sa`);
     return this;
@@ -234,7 +234,7 @@ export class CliShare {
    * @param filename
    * string
    */
-  public scmin(filename: string): CliShare {
+  public scmin(filename: string): this {
     this.commandline += ` -scmin:${filename}`;
     this.commandlineArray.push(`-scmin:${filename}`);
     return this;
@@ -246,7 +246,7 @@ export class CliShare {
    * @param options
    *  'all' | 'none' | 'ignorable'
    */
-  public strip(options: 'all' | 'none' | 'ignorable'): CliShare {
+  public strip(options: 'all' | 'none' | 'ignorable'): this {
     this.commandline += ` -relocate:${options}`;
     this.commandlineArray.push(`-relocate:${options}`);
     return this;
@@ -255,7 +255,7 @@ export class CliShare {
   /**
    *t
    */
-  public t(): CliShare {
+  public t(): this {
     this.commandline += ` -t`;
     this.commandlineArray.push(`-t`);
     return this;
@@ -267,7 +267,7 @@ export class CliShare {
    * @param classname
    * string
    */
-  public T(classname: string): CliShare {
+  public T(classname: string): this {
     this.commandline += ` -T:${classname}`;
     this.commandlineArray.push(`-T:${classname}`);
     return this;
@@ -279,7 +279,7 @@ export class CliShare {
    * @param filename
    * filename
    */
-  public TB(filename: string): CliShare {
+  public TB(filename: string): this {
     this.commandline += ` -TB:${filename}`;
     this.commandlineArray.push(`-TB:${filename}`);
     return this;
@@ -288,7 +288,7 @@ export class CliShare {
   /**
    *TJ
    */
-  public TJ(): CliShare {
+  public TJ(): this {
     this.commandline += ` -TJ`;
     this.commandlineArray.push(`-TJ`);
     return this;
@@ -300,7 +300,7 @@ export class CliShare {
    * @param level
    *  'none' | 'low' | 'normal' | 'high'
    */
-  public Tlevel(level: 'none' | 'low' | 'normal' | 'high'): CliShare {
+  public Tlevel(level: 'none' | 'low' | 'normal' | 'high'): this {
     this.commandline += ` -Tlevel:${level}`;
     this.commandlineArray.push(`-Tlevel:${level}`);
     return this;
@@ -312,7 +312,7 @@ export class CliShare {
    * @param filename
    * string
    */
-  public Tout(filename: string): CliShare {
+  public Tout(filename: string): this {
     this.commandline += ` -Tout:${filename}`;
     this.commandlineArray.push(`-Tout:${filename}`);
     return this;
@@ -324,7 +324,7 @@ export class CliShare {
    * @param filename
    * string
    */
-  public TP(filename: string): CliShare {
+  public TP(filename: string): this {
     this.commandline += ` -TP:${filename}`;
     this.commandlineArray.push(`-TP:${filename}`);
     return this;
@@ -336,7 +336,7 @@ export class CliShare {
    * @param filename
    * string
    */
-  public traceout(filename: string): CliShare {
+  public traceout(filename: string): this {
     this.commandline += ` -traceout:${filename}`;
     this.commandlineArray.push(`-traceout:${filename}`);
     return this;
@@ -348,7 +348,7 @@ export class CliShare {
    * @param level
    * 'linked' | 'tiny' | 'tinyc'
    */
-  public tree(level: 'linked' | 'tiny' | 'tinyc'): CliShare {
+  public tree(level: 'linked' | 'tiny' | 'tinyc'): this {
     this.commandline += ` -tree:${level}`;
     this.commandlineArray.push(`-tree:${level}`);
     return this;
@@ -357,7 +357,7 @@ export class CliShare {
   /**
    *u
    */
-  public u(): CliShare {
+  public u(): this {
     this.commandline += ` -u`;
     this.commandlineArray.push(`-u`);
     return this;
@@ -369,7 +369,7 @@ export class CliShare {
    * @param validation
    * 'strict' | 'lax'
    */
-  public val(validation: 'strict' | 'lax'): CliShare {
+  public val(validation: 'strict' | 'lax'): this {
     this.commandline += ` -val:${validation}`;
     this.commandlineArray.push(`-val:${validation}`);
     return this;
@@ -381,7 +381,7 @@ export class CliShare {
    * @param classname
    * string
    */
-  public x(classname: string): CliShare {
+  public x(classname: string): this {
     this.commandline += ` -x:${classname}`;
     this.commandlineArray.push(`-x:${classname}`);
     return this;
@@ -393,7 +393,7 @@ export class CliShare {
    * @param options
    * 'on' | 'off'
    */
-  public xi(options: 'on' | 'off'): CliShare {
+  public xi(options: 'on' | 'off'): this {
     this.commandline += ` -xi:${options}`;
     this.commandlineArray.push(`-xi:${options}`);
     return this;
@@ -405,7 +405,7 @@ export class CliShare {
    * @param options
    * '1.0' | '1.1'
    */
-  public xmlversion(options: '1.0' | '1.1'): CliShare {
+  public xmlversion(options: '1.0' | '1.1'): this {
     this.commandline += ` -xmlversion:${options}`;
     this.commandlineArray.push(`-xmlversion:${options}`);
     return this;
@@ -417,7 +417,7 @@ export class CliShare {
    * @param file
    * string
    */
-  public xsd(file: string): CliShare {
+  public xsd(file: string): this {
     this.commandline += ` -xsd:${file}`;
     this.commandlineArray.push(`-xsd:${file}`);
     return this;
@@ -429,7 +429,7 @@ export class CliShare {
    * @param options
    * '1.0' | '1.1'
    */
-  public xsdversion(options: '1.0' | '1.1'): CliShare {
+  public xsdversion(options: '1.0' | '1.1'): this {
     this.commandline += ` -xsdversion:${options}`;
     this.commandlineArray.push(`-xsdversion:${options}`);
     return this;
@@ -441,7 +441,7 @@ export class CliShare {
    * @param options
    * 'on' | 'off'
    */
-  public xsiloc(options: 'on' | 'off'): CliShare {
+  public xsiloc(options: 'on' | 'off'): this {
     this.commandline += ` -xsiloc:${options}`;
     this.commandlineArray.push(`-xsiloc:${options}`);
     return this;
@@ -453,7 +453,7 @@ export class CliShare {
    * @param value
    * string
    */
-  public feature(value: string): CliShare {
+  public feature(value: string): this {
     this.commandline += ` --feature:${value}`;
     this.commandlineArray.push(`--feature:${value}`);
     return this;

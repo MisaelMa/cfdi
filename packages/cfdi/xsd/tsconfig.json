@@ -9,6 +9,7 @@
     // output .js.map sourcemap files for consumers
     "sourceMap": true,
     "noUnusedLocals": false,
+    "strict": true,
     "noUnusedParameters": false,
   }
 }

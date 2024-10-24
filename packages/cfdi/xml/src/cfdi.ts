@@ -1,18 +1,16 @@
-import * as fs from 'fs';
+import fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
-import { Transform, saxon } from '@signati/saxon';
 import { cer, key } from '@cfdi/csd';
 
-import { CFDIAttributes } from './types/tags/comprobante.interface';
-import { Comprobante } from './tags/Comprobante';
+import { Comprobante } from './elements/Comprobante';
 import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
+import { Transform } from '@clir/saxon-he';
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
 import { getOriginalString } from './utils/XmlHelp';
-// import * as cer from "@cfdi/csd/cer"
-import { js2xml } from 'xml-js';
+import xmlJS  from 'xml-js';
 
 /**
  *
@@ -31,10 +29,9 @@ export class CFDI extends Comprobante {
    *Options;
    */
   constructor(
-    attr: CFDIAttributes,
     options: Options = { debug: false, xslt: { xslt3: false } } as Options
   ) {
-    super(attr, options);
+    super(options);
     const { debug = false } = options;
     this.debug = debug;
     this._cadenaOriginal = '';
@@ -83,14 +80,8 @@ export class CFDI extends Comprobante {
   /**
    *getJsonCdfi
    */
-  public async getJsonCdfi(): Promise<XmlCdfi> {
-    return new Promise((resolve, reject) => {
-      try {
-        resolve(this.xml);
-      } catch (e) {
-        reject(e);
-      }
-    });
+  public getJsonCdfi(): XmlCdfi {
+    return this.xml;
   }
 
   /**
@@ -100,7 +91,7 @@ export class CFDI extends Comprobante {
     return new Promise(async (resolve, reject) => {
       try {
         const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const cfdi = await js2xml({ ...this.xml }, options);
+        const cfdi = await xmlJS.js2xml({ ...this.xml }, options);
         this.restartCfdi();
         resolve(cfdi);
       } catch (e) {
@@ -129,14 +120,12 @@ export class CFDI extends Comprobante {
     }
   }
 
-  /**
-   *restartCfdi
-   */
+  
 
   /**
    *getCadenaOriginal
    */
-  private async generarCadenaOriginal(): Promise<string> {
+  async generarCadenaOriginal(): Promise<string> {
     if (!this.xslt) {
       throw new Error(
         '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
@@ -144,25 +133,23 @@ export class CFDI extends Comprobante {
     }
     return new Promise<string>(async (resolve, reject) => {
       try {
-        const fullPath = path.join(
-          os.tmpdir(),
-          `${FileSystem.generateNameTemp()}.xml`
-        );
+        const fullPath = FileSystem.getTmpFullPath(FileSystem.generateNameTemp());
         const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const result = js2xml(this.xml, options);
+        const result = xmlJS.js2xml(this.xml, options);
+   
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = '';
 
         if (this.xslt.xslt3) {
           //console.time('saxon');
-          cadena = (await getOriginalString(
+          cadena = await getOriginalString(
             fullPath,
             String(this.xslt.path)
-          )) as string;
+          )
           //console.timeEnd('saxon');
         } else {
           const transform = new Transform();
-          //console.time('saxon cli');
+          //console.time('saxon cli 2');
           cadena = transform
             .s(fullPath)
             .xsl(String(this.xslt.path))
@@ -233,5 +220,13 @@ export class CFDI extends Comprobante {
 
   public get cadenaOriginal(): string {
     return this._cadenaOriginal;
+  }
+
+  get isBebug(): boolean {
+    return this.debug;
+  }
+
+  public setDebug(debug: boolean): void {
+    this.debug = debug;
   }
 }

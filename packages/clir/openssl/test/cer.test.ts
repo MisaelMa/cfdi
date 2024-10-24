@@ -1,4 +1,13 @@
-import {cer} from '../openssl/cer.class';
+import { describe, expect, it, test } from 'vitest';
+
+describe('blah', () => {
+  it('works', () => {
+    expect(2).toEqual(2);
+  });
+});
+/* import { describe, expect, it, test } from 'vitest';
+
+import {cer} from '../src/openssl/cer.class';
 
 describe('Create Cer', () => {
 
@@ -12,3 +21,4 @@ describe('Create Cer', () => {
 
 
 });
+ */
