@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { CFDI } from '../src/CFDI';
+import { CFDI } from '../src';
 import { Options } from '../src/types/types';
 import xmlJS from 'xml-js';
 import fs from 'fs';
