@@ -17,6 +17,8 @@
     "build": "tsdx build",
     "test": "vitest",
     "test:ci": "vitest run",
+    "test:coverage": "vitest --coverage run",
+    "test:ui": "vitest --ui",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
