@@ -292,11 +292,11 @@
     },
     {
       "name": "@vitest/coverage-v8",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "@vitest/ui",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "2captcha",
