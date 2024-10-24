@@ -33,7 +33,7 @@ jobs:
 
       - name: Install Rush and dependencies
         id: install
-        run: node common/scripts/install-run-rush.js install
+        run: node common/scripts/install-run-rush.js update
 
       - name: Check for dependency mismatches
         run: node common/scripts/install-run-rush.js check

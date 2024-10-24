@@ -13,8 +13,7 @@ import xslt3 from 'xslt3';
  * @param locations
  */
 export const schemaBuild = (locations: string[]): string => {
-  const schemaL = locations.join(' ');
-  return ` ${schemaL}`;
+  return locations.join(' ');
 };
 
 export const getOriginalString = async (

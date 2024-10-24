@@ -1,8 +1,7 @@
 import { XmlDomiciolioAttributes } from '.';
 
 export interface XmlReceptor {
-  _attributes?: XmlReceptorAttribute;
-  'cfdi:Domicilio'?: XmlReceptorDomicilio;
+  _attributes: XmlReceptorAttribute;
 }
 
 export interface XmlReceptorAttribute {
@@ -15,6 +14,3 @@ export interface XmlReceptorAttribute {
   RegimenFiscalReceptor: string;
 }
 
-export interface XmlReceptorDomicilio {
-  _attributes?: XmlDomiciolioAttributes;
-}

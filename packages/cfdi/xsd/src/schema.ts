@@ -134,11 +134,11 @@ export default class Schema {
       const line = `${this.nameConst(key)} = '${key}',`;
       text.push(line);
     });
-    console.log(`
+    /* console.log(`
     export enum Schemakey {
       ${text.join('\n')}
     }
-    `);
+    `); */
   }
 
   private nameConst(text: string) {

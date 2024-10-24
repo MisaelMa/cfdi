@@ -1,16 +1,16 @@
-import * as fs from 'fs';
+import fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
 import { cer, key } from '@cfdi/csd';
 
-import { Comprobante } from './tags/Comprobante';
+import { Comprobante } from './elements/Comprobante';
 import { FileSystem } from './utils/FileSystem';
 import { Options } from './types/types';
 import { Transform } from '@clir/saxon-he';
 import { XmlCdfi } from './types/tags/xmlCdfi.interface';
 import { getOriginalString } from './utils/XmlHelp';
-import { js2xml } from 'xml-js';
+import xmlJS  from 'xml-js';
 
 /**
  *
@@ -91,7 +91,7 @@ export class CFDI extends Comprobante {
     return new Promise(async (resolve, reject) => {
       try {
         const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const cfdi = await js2xml({ ...this.xml }, options);
+        const cfdi = await xmlJS.js2xml({ ...this.xml }, options);
         this.restartCfdi();
         resolve(cfdi);
       } catch (e) {
@@ -120,14 +120,12 @@ export class CFDI extends Comprobante {
     }
   }
 
-  /**
-   *restartCfdi
-   */
+  
 
   /**
    *getCadenaOriginal
    */
-  private async generarCadenaOriginal(): Promise<string> {
+  async generarCadenaOriginal(): Promise<string> {
     if (!this.xslt) {
       throw new Error(
         '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
@@ -135,21 +133,19 @@ export class CFDI extends Comprobante {
     }
     return new Promise<string>(async (resolve, reject) => {
       try {
-        const fullPath = path.join(
-          os.tmpdir(),
-          `${FileSystem.generateNameTemp()}.xml`
-        );
+        const fullPath = FileSystem.getTmpFullPath(FileSystem.generateNameTemp());
         const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const result = js2xml(this.xml, options);
+        const result = xmlJS.js2xml(this.xml, options);
+   
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = '';
 
         if (this.xslt.xslt3) {
           //console.time('saxon');
-          cadena = (await getOriginalString(
+          cadena = await getOriginalString(
             fullPath,
             String(this.xslt.path)
-          )) as string;
+          )
           //console.timeEnd('saxon');
         } else {
           const transform = new Transform();
@@ -224,6 +220,10 @@ export class CFDI extends Comprobante {
 
   public get cadenaOriginal(): string {
     return this._cadenaOriginal;
+  }
+
+  get isBebug(): boolean {
+    return this.debug;
   }
 
   public setDebug(debug: boolean): void {

@@ -1,5 +1,5 @@
 export interface Options {
-  debug: boolean;
+  debug?: boolean;
   compact?: boolean;
   customTags?: any;
   schema?: {

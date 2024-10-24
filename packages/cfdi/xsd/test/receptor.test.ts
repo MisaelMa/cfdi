@@ -1,27 +1,6 @@
 import { describe, expect, it, test } from 'vitest';
 
-import { Schema } from '../src'; // Reemplaza con la ruta correcta a tu clase Schema
-import path from 'path';
-
-const schema = Schema.of();
-const files = path.join(
-  path.resolve(
-    __dirname,
-    '..',
-    '..',
-    '..',
-    'cfdi',
-    'schema',
-    'src',
-    'files',
-    'schema'
-  )
-);
-schema.setConfig({
-  debug: false,
-  path: files,
-});
-
+import { schema } from './config';
 const receptor = schema.cfdi.receptor;
 // Describe el conjunto de pruebas para el esquema del Receptor
 describe('Validación del esquema del Receptor', () => {

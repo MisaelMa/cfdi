@@ -34,6 +34,7 @@ export class Impuestos extends BaseImpuestos {
     this.setTraslado(traslado);
     return this;
   }
+  
   retenciones(
     payload: Omit<
       XmlTranRentAttributesProperties,
