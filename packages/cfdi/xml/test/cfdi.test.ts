@@ -6,7 +6,6 @@ import fs from 'fs';
 import path from 'path';
 import { cer, key } from '@cfdi/csd';
 import { FileSystem } from '../src/utils/FileSystem';
-import { getOriginalString } from '../src/utils/XmlHelp';
 
 vi.mock('@clir/saxon-he', () => ({
   Transform: vi.fn().mockImplementation(() => ({
@@ -46,6 +45,8 @@ describe('CFDI', () => {
 
     expect(validateSpy).toHaveBeenCalledWith(cer_path);
     validateSpy.mockRestore();
+    validateSpy.mockReset();
+    validateSpy.mockClear();
     const cfdiJson = cfdi.getJsonCdfi();
     expect(cfdiJson['cfdi:Comprobante']._attributes.NoCertificado).toBe(
       '20001000000300022815'
@@ -55,13 +56,31 @@ describe('CFDI', () => {
     );
   });
 
+  it('debería retornar un error al certificar el CFDI', () => {
+    cer.setFile('error.cer');
+
+    const cfdi = new CFDI();
+    cfdi.setDebug(true);
+
+    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const result = cfdi.certificar('path/to/cer');
+
+    expect(result).toBeInstanceOf(Error);
+    expect(consoleSpy).toBeCalledWith({
+      error: expect.any(Error),
+      method: 'certificar',
+    });
+
+    consoleSpy.mockRestore();
+  });
+
   it('debería generar la cadena original', async () => {
     const validateSpyFsWrite = vi.spyOn(fs, 'writeFileSync');
     const validateSpyUnlinkSync = vi.spyOn(fs, 'unlinkSync');
     //const validateSpy = vi.spyOn(cer, 'setFile');
     //const validateSpy = vi.spyOn(cer, 'setFile');
 
-    const cfdi = new CFDI({ xslt: { xslt3: false, path: xslt_path } });
+    const cfdi = new CFDI({ xslt: { path: xslt_path } });
     const cadenaOriginal = await cfdi.generarCadenaOriginal();
     const xml = `<?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante>
@@ -85,6 +104,35 @@ describe('CFDI', () => {
     validateSpyUnlinkSync.mockRestore();
   });
 
+  it('debería generar el sello correctamente', async () => {
+    const cfdi = new CFDI();
+    cfdi.setDebug(true);
+    const generarSello = (cfdi as any).generarSello;
+
+    const cadenaOriginal = 'CADENA_ORIGINAL';
+
+    const sello = await generarSello(cadenaOriginal, key_path, '12345678a');
+    expect(sello).toBeDefined();
+    expect(typeof sello).toBe('string');
+  });
+
+  it('debería retornar un error al generar el sello', async () => {
+    const cfdi = new CFDI({ debug: true, xslt: { path: xslt_path } });
+    
+    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    const cadenaOriginal = 'CADENA_ORIGINAL';
+
+    const sello = await cfdi.generarSello(cadenaOriginal, 'error.key', '12345678a');
+    expect(sello).toBeInstanceOf(Error);
+    
+    expect(consoleSpy).toBeCalledWith({
+      error: expect.any(Error),
+      method: 'getSello',
+    });
+
+
+    consoleSpy.mockRestore();
+  });
 
   it('debería sellar el CFDI', async () => {
     const cfdi = new CFDI();
@@ -101,6 +149,17 @@ describe('CFDI', () => {
     expect(cfdiJson['cfdi:Comprobante']._attributes.Sello).toBe(
       'SIGNATURE_HEX'
     );
+    vi.restoreAllMocks();
+  });
+
+  it('debería retornar un error al generarCadenaOriginal', async () => {
+    const cfdi = new CFDI();
+    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+
+    await expect(cfdi.generarCadenaOriginal()).rejects.toThrowError(
+      '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
+    );
+   
   });
 
   it('debería retornar el JSON del CFDI', () => {
@@ -157,5 +216,11 @@ describe('CFDI', () => {
     });
     const result = cfdi.saveFile('fileContent', '/path/to/save/', 'filename');
     expect(result).toBe(false);
+  });
+
+  it('debería cambiar al modo debug', () => {
+    const cfdi = new CFDI();
+    cfdi.setDebug(true);
+    expect(cfdi.isBebug).toBe(true);
   });
 });

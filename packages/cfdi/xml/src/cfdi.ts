@@ -6,19 +6,19 @@ import { cer, key } from '@cfdi/csd';
 
 import { Comprobante } from './elements/Comprobante';
 import { FileSystem } from './utils/FileSystem';
-import { Options } from './types/types';
+import { Options, XsltSheet } from './types/types';
 import { Transform } from '@clir/saxon-he';
-import { XmlCdfi } from './types/tags/xmlCdfi.interface';
-import { getOriginalString } from './utils/XmlHelp';
-import xmlJS  from 'xml-js';
+import { XmlCdfi } from './types/xmlCdfi.interface';
+import xmlJS from 'xml-js';
 
 /**
  *
  */
 export class CFDI extends Comprobante {
-  private debug = false;
   private _sello: string = '';
   private _cadenaOriginal: string = '';
+  protected xslt?: XsltSheet | null = null;
+  private debug = false;
 
   /**
    *constructor
@@ -28,14 +28,12 @@ export class CFDI extends Comprobante {
    * @param options
    *Options;
    */
-  constructor(
-    options: Options = { debug: false, xslt: { xslt3: false } } as Options
-  ) {
+  constructor(options?: Options) {
     super(options);
-    const { debug = false } = options;
-    this.debug = debug;
+    this.xslt = options?.xslt;
     this._cadenaOriginal = '';
     this._sello = '';
+    this.setDebug(Boolean(options?.debug));
   }
 
   /**
@@ -47,8 +45,10 @@ export class CFDI extends Comprobante {
   public certificar(cerpath: string): CFDI | any {
     try {
       cer.setFile(cerpath);
-      this.xml[this.tc]._attributes.NoCertificado = cer.getNoCer();
-      this.xml[this.tc]._attributes.Certificado = cer.getPem({ begin: true });
+      this.xml['cfdi:Comprobante']._attributes.NoCertificado = cer.getNoCer();
+      this.xml['cfdi:Comprobante']._attributes.Certificado = cer.getPem({
+        begin: true,
+      });
       return this;
     } catch (e) {
       if (this.debug) {
@@ -88,16 +88,10 @@ export class CFDI extends Comprobante {
    *getXmlCdfi
    */
   public async getXmlCdfi(): Promise<string> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const options = { compact: true, ignoreComment: true, spaces: 4 };
-        const cfdi = await xmlJS.js2xml({ ...this.xml }, options);
-        this.restartCfdi();
-        resolve(cfdi);
-      } catch (e) {
-        reject(e);
-      }
-    });
+    const options = { compact: true, ignoreComment: true, spaces: 4 };
+    const cfdi = await xmlJS.js2xml({ ...this.xml }, options);
+    this.restartCfdi();
+    return cfdi;
   }
 
   /**
@@ -120,52 +114,40 @@ export class CFDI extends Comprobante {
     }
   }
 
-  
-
   /**
    *getCadenaOriginal
    */
   async generarCadenaOriginal(): Promise<string> {
+  
     if (!this.xslt) {
       throw new Error(
         '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
       );
     }
-    return new Promise<string>(async (resolve, reject) => {
       try {
         const fullPath = FileSystem.getTmpFullPath(FileSystem.generateNameTemp());
         const options = { compact: true, ignoreComment: true, spaces: 4 };
         const result = xmlJS.js2xml(this.xml, options);
-   
+
         fs.writeFileSync(fullPath, result, 'utf8');
         let cadena: string = '';
 
-        if (this.xslt.xslt3) {
-          //console.time('saxon');
-          cadena = await getOriginalString(
-            fullPath,
-            String(this.xslt.path)
-          )
-          //console.timeEnd('saxon');
-        } else {
-          const transform = new Transform();
-          //console.time('saxon cli 2');
-          cadena = transform
-            .s(fullPath)
-            .xsl(String(this.xslt.path))
-            .warnings('silent')
-            .run();
-          //console.timeEnd('saxon cli');
-        }
+        const transform = new Transform();
+        //console.time('saxon cli 2');
+        cadena = transform
+          .s(fullPath)
+          .xsl(String(this.xslt.path))
+          .warnings('silent')
+          .run();
+        //console.timeEnd('saxon cli');
 
         if (this.debug) {
           console.log('xslt =>', this.xslt);
           console.log('cadena original =>', cadena);
         }
         fs.unlinkSync(fullPath);
-        // @ts-ignore
-        resolve(cadena);
-      } catch (e) {
+        return cadena;
+      } catch (e: any) {
         if (this.debug) {
           console.log({
             method: 'getCadenaOriginal',
@@ -173,9 +155,9 @@ export class CFDI extends Comprobante {
             error: e.message || e || 'error desconosido',
           });
         }
-        reject(e);
+      return e.message || e || 'error desconosido';
       }
-    });
+    
   }
 
   /**
@@ -188,30 +170,29 @@ export class CFDI extends Comprobante {
    * @param password
    * string
    */
-  private generarSello(
+  public generarSello(
     cadenaOriginal: string,
     keyfile: string,
     password: string
-  ): Promise<string> {
-    return new Promise(async (resolve, reject) => {
+  ): string | any {
       try {
         // const key = pem.toString('utf8');
         // openssl dgst -sha256 -sign account.key -out signature.sha256 signature.b64
         key.setFile(keyfile, password);
-        const sello = key.signatureHexForge(cadenaOriginal);
-        resolve(sello);
+        const sello =  key.signatureHexForge(cadenaOriginal);
+        return sello;
         //await sign.update(cadenaOriginal);
         // resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
       } catch (e) {
-        if (this.debug) {
+         if (this.debug) {
           console.log({
             method: 'getSello',
             error: e,
           });
         }
-        reject(e);
+        return e 
       }
-    });
+    
   }
 
   public get sello(): string {

@@ -9,7 +9,6 @@ export interface Options {
 }
 export interface XsltSheet {
   path: string;
-  xslt3?: boolean;
 }
 
 export enum InvoiceType {

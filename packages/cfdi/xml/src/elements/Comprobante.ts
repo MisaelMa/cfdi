@@ -19,16 +19,14 @@ import { Impuestos } from './Impuestos';
 import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
 import { Schema } from '@cfdi/xsd';
-import { Structure } from '../utils/structure';
 import { schemaBuild } from '../utils/XmlHelp';
 
 export class Comprobante {
   protected xml: XmlCdfi = {
-     _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } } 
+    _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } },
   } as XmlCdfi;
   protected tc: TagComprobante = 'cfdi:Comprobante';
   protected version = '4.0';
-  protected tags: Structure;
   protected XMLSchema = 'http://www.w3.org/2001/XMLSchema-instance';
   protected cfd = 'http://www.sat.gob.mx/cfd/4';
   protected locations = [
@@ -36,22 +34,13 @@ export class Comprobante {
     'http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
   ];
 
-  protected xslt: XsltSheet;
   schema = Schema.of();
-  constructor(
-    options: Options = {
-      debug: false,
-      xslt: { xslt3: false },
-      schema: { path: '' },
-    } as Options
-  ) {
+  constructor(options?: Options) {
+    const { debug, schema } = options || { debug: false };
     this.schema.setConfig({
-      debug: options.debug,
-      path: options.schema?.path,
+      debug: debug,
+      path: schema?.path,
     });
-    const { xslt, customTags = {} } = options;
-    this.xslt = xslt;
-    this.tags = new Structure(customTags);
     this.restartCfdi();
   }
 
@@ -98,7 +87,9 @@ export class Comprobante {
       this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
     }
     const schemaLocation = schemaBuild(locations);
-    this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] += `${schemaLocation}`;
+    this.xml['cfdi:Comprobante']._attributes[
+      'xsi:schemaLocation'
+    ] += `${schemaLocation}`;
   }
 
   /**
@@ -216,15 +207,9 @@ export class Comprobante {
       };
     }
 
-    if (this.tags.isActive) { 
-      this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(
-        concept.getConcept()
-      );
-    } else {
-      this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(
-        concept.getConcept()
-      );
-    }
+    this.xml['cfdi:Comprobante']['cfdi:Conceptos']['cfdi:Concepto'].push(
+      concept.getConcept()
+    );
   }
 
   /**

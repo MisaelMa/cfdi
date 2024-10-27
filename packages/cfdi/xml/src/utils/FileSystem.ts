@@ -5,42 +5,9 @@ import  path from 'path';
  *
  */
 export class FileSystem {
-  /**
-   *manageDirectoryTemp
-   *
-   * @param action
-   * string
-   */
-  public static manageDirectoryTemp(action: string): void {
-    const dir = './tmp';
-    if (!fs.existsSync(dir)) {
-      if (action === 'create') {
-        fs.mkdirSync(dir);
-      }
-    } else if (action === 'delete') {
-      this.deleteFolderRecursive(dir);
-    }
-  }
 
-  /**
-   *deleteFolderRecursive
-   *
-   * @param path
-   * string
-   */
-  public static deleteFolderRecursive(path: string): void {
-    if (fs.existsSync(path)) {
-      fs.readdirSync(path).forEach(file => {
-        const curPath = `${path}/${file}`;
-        if (fs.lstatSync(curPath).isDirectory()) {
-          this.deleteFolderRecursive(curPath);
-        } else {
-          fs.unlinkSync(curPath);
-        }
-      });
-      fs.rmdirSync(path);
-    }
-  }
+
+ 
 
   /**
    *generateNameTemp
