@@ -155,7 +155,7 @@ export class CFDI extends Comprobante {
             error: e.message || e || 'error desconosido',
           });
         }
-      return e.message || e || 'error desconosido';
+        return e
       }
     
   }

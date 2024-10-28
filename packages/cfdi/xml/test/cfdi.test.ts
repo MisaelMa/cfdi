@@ -74,13 +74,21 @@ describe('CFDI', () => {
     consoleSpy.mockRestore();
   });
 
+  it('debería lanzar un error al generar la cadena original', async () => {
+    const cfdi = new CFDI();
+
+    await expect(cfdi.generarCadenaOriginal()).rejects.toThrowError(
+      '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
+    );
+  });
+
   it('debería generar la cadena original', async () => {
     const validateSpyFsWrite = vi.spyOn(fs, 'writeFileSync');
     const validateSpyUnlinkSync = vi.spyOn(fs, 'unlinkSync');
-    //const validateSpy = vi.spyOn(cer, 'setFile');
-    //const validateSpy = vi.spyOn(cer, 'setFile');
+    const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 
     const cfdi = new CFDI({ xslt: { path: xslt_path } });
+    cfdi.setDebug(true);
     const cadenaOriginal = await cfdi.generarCadenaOriginal();
     const xml = `<?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante>
@@ -97,12 +105,38 @@ describe('CFDI', () => {
     );
     expect(FileSystem.getTmpFullPath).toHaveBeenCalled();
     expect(FileSystem.generateNameTemp).toHaveBeenCalled();
-    validateSpyFsWrite.mockRestore();
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('xslt =>', { path: xslt_path });
+    expect(consoleLogSpy).toHaveBeenCalledWith('cadena original =>', 'CADENA_ORIGINAL');
+
 
     expect(cadenaOriginal).toBe('CADENA_ORIGINAL');
     expect(validateSpyUnlinkSync).toHaveBeenCalledWith('/tmp/tempfile.xml');
+    
+    validateSpyFsWrite.mockRestore();
     validateSpyUnlinkSync.mockRestore();
+    consoleLogSpy.mockRestore();
   });
+
+  it('debería retornar un error al generar la cadena original', async () => {
+
+    const cfdi = new CFDI({ xslt: { path: 'error.xslt' } });
+    cfdi.setDebug(true);
+
+    const consoleSpy = vi.spyOn(console, 'log') //.mockImplementation(() => {});
+
+    const cadenaOriginal = await cfdi.generarCadenaOriginal();
+    expect(cadenaOriginal).toBeInstanceOf(Error);
+    
+    expect(consoleSpy).toBeCalledWith({
+      error: expect.any(Error),
+      method: 'getCadenaOriginal',
+    });
+
+    consoleSpy.mockRestore();
+  });
+
+  
 
   it('debería generar el sello correctamente', async () => {
     const cfdi = new CFDI();
@@ -150,16 +184,6 @@ describe('CFDI', () => {
       'SIGNATURE_HEX'
     );
     vi.restoreAllMocks();
-  });
-
-  it('debería retornar un error al generarCadenaOriginal', async () => {
-    const cfdi = new CFDI();
-    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-
-    await expect(cfdi.generarCadenaOriginal()).rejects.toThrowError(
-      '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
-    );
-   
   });
 
   it('debería retornar el JSON del CFDI', () => {
