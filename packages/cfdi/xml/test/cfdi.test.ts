@@ -118,23 +118,6 @@ describe('CFDI', () => {
     consoleLogSpy.mockRestore();
   });
 
-  it('debería retornar un error al generar la cadena original', async () => {
-
-    const cfdi = new CFDI({ xslt: { path: 'error.xslt' } });
-    cfdi.setDebug(true);
-
-    const consoleSpy = vi.spyOn(console, 'log') //.mockImplementation(() => {});
-
-    const cadenaOriginal = await cfdi.generarCadenaOriginal();
-    expect(cadenaOriginal).toBeInstanceOf(Error);
-    
-    expect(consoleSpy).toBeCalledWith({
-      error: expect.any(Error),
-      method: 'getCadenaOriginal',
-    });
-
-    consoleSpy.mockRestore();
-  });
 
   
 

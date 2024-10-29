@@ -152,7 +152,7 @@ export class CFDI extends Comprobante {
           console.log({
             method: 'getCadenaOriginal',
             // @ts-ignore
-            error: e.message || e || 'error desconosido',
+            error: e.message
           });
         }
         return e
