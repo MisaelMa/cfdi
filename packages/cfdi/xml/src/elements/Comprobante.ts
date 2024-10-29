@@ -102,19 +102,13 @@ export class Comprobante {
     const { version = '1.0', encoding = 'utf-8' } = attr;
     this.xml._declaration._attributes = {
       version,
-      // eslint-disable-next-line sort-keys
       encoding,
     };
   }
 
-  public setAttributes(attr: ComprobanteAttributes): void {
-    const attribute = attr;
-    this.xmlns(attribute.xmlns || { cfdi: this.cfd, xsi: this.XMLSchema });
-    this.addSchemaLocation(attribute.schemaLocation || this.locations);
-    if (attribute.xmlns) {
-      delete attribute.xmlns;
-    }
-    attribute.schemaLocation && delete attribute.schemaLocation;
+  public setAttributes({xmlns, schemaLocation}: ComprobanteAttributes): void {
+    this.xmlns(xmlns || {});
+    this.addSchemaLocation(schemaLocation || this.locations);
   }
 
   public comprobante(attribute: CFDIComprobante): void {
@@ -259,8 +253,12 @@ export class Comprobante {
       'cfdi:Receptor': {},
     } as XmlComprobante;
 
-    this.xml['cfdi:Comprobante']['cfdi:Conceptos'] = {
+   /*  this.xml['cfdi:Comprobante']['cfdi:Conceptos'] = {
       'cfdi:Concepto': [],
-    } as XmlConcepto;
+    } as XmlConcepto; */
+  }
+  
+  get xmlObject(): XmlCdfi {
+    return this.xml;
   }
 }

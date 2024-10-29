@@ -7,7 +7,7 @@ export function stringObjToNumerico<T>(
     if (obj.hasOwnProperty(propiedad)) {
       const valor = obj[propiedad];
       resultado[propiedad] =
-        typeof valor === 'string' ? Number(valor) : valor;
+        typeof valor === 'string' ? parseFloat(valor) : valor;
     }
   }
 

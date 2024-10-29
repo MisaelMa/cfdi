@@ -201,6 +201,28 @@ describe('Concepto', () => {
     });
   });
 
+  it('debería agregar información aduanera a una parte', () => {
+    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+
+    const conceptoAttributes: XmlConceptoAttributes = {
+      ClaveProdServ: '01010101',
+      NoIdentificacion: '12345',
+      Cantidad: '1',
+      ClaveUnidad: 'H87',
+      Unidad: 'Pieza',
+      Descripcion: 'Producto de prueba',
+      ValorUnitario: '100.00',
+      Importe: '100.00',
+      ObjetoImp: ObjetoImpEnum.SíObjetoDeImpuestoYNobligadoAlDesglose,
+    };
+    const concepto = new Concepto(conceptoAttributes);
+    concepto.setParteInformacionAduanera('15  48  0301 0001234');
+   
+    expect(consoleSpy).toBeCalledWith("utilize primero parte");
+
+    consoleSpy.mockRestore();
+  });
+
   it('debería agregar información aduanera', () => {
     const conceptoAttributes: XmlConceptoAttributes = {
       ClaveProdServ: '01010101',
