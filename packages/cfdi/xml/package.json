@@ -35,7 +35,7 @@
     "cp": "cp ./config/index.js ./dist",
     "test": "vitest",
     "test:ci": "vitest run",
-    "test:coverage": "vitest --coverage",
+    "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
     "prepare": "npm run build",
@@ -78,13 +78,8 @@
     "@rushstack/eslint-config": "^2.6.0",
     "@rushstack/heft": "^0.45.1",
     "@size-limit/preset-small-lib": "^7.0.8",
-    "@testing-library/dom": "^8.19.0",
-    "@types/deep-freeze": "^0.1.2",
     "@types/node": "^18.11.3",
-    "chalk": "^4.0.0",
-    "chokidar": "^3.5.2",
     "eslint": "^8.26.0",
-    "husky": "^8.0.1",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
@@ -126,7 +121,7 @@
     {
       "name": "Amir Misael Marin Coh",
       "email": "amisael.amir.misae@gmail.com",
-      "url": "https://misael.signati.app/"
+      "url": "https://cfdi.recreando.dev"
     },
     {
       "name": "Jose Alberto Marin Coh",
