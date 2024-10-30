@@ -1,4 +1,3 @@
-import { XmlDomiciolioAttributes } from '.';
 
 export interface XmlEmisor {
   _attributes: XmlEmisorAttribute;

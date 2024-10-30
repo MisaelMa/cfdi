@@ -35,7 +35,7 @@
     "cp": "cp ./config/index.js ./dist",
     "test": "vitest",
     "test:ci": "vitest run",
-    "test:coverage": "vitest --coverage run",
+    "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
     "prepare": "npm run build",
@@ -69,10 +69,7 @@
     "@cfdi/xsd": "workspace:*",
     "@cfdi/complementos": "workspace:*",
     "@clir/saxon-he": "workspace:*",
-    "xml-js": "^1.6.11",
-    "node_modules-path": "2.0.6",
-    "xslt3": "^2.4.0",
-    "@esm2cjs/execa": "^6.1.1-cjs.1"
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

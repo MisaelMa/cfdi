@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { cer, key } from '@cfdi/csd';
 import { FileSystem } from '../src/utils/FileSystem';
-import { getOriginalString } from '../src/utils/XmlHelp';
+import { Logger } from '../src/utils/Logger';
 
 vi.mock('@clir/saxon-he', () => ({
   Transform: vi.fn().mockImplementation(() => ({
@@ -46,6 +46,8 @@ describe('CFDI', () => {
 
     expect(validateSpy).toHaveBeenCalledWith(cer_path);
     validateSpy.mockRestore();
+    validateSpy.mockReset();
+    validateSpy.mockClear();
     const cfdiJson = cfdi.getJsonCdfi();
     expect(cfdiJson['cfdi:Comprobante']._attributes.NoCertificado).toBe(
       '20001000000300022815'
@@ -55,20 +57,26 @@ describe('CFDI', () => {
     );
   });
 
+  it('debería retornar un error al certificar el CFDI', () => {
+    cer.setFile('error.cer');
+    const cfdi = new CFDI();
+    cfdi.setDebug(true);    
+    expect(() => cfdi.certificar('path/to/cer')).toThrow();   
+
+  });
+
   it('debería generar la cadena original', async () => {
     const validateSpyFsWrite = vi.spyOn(fs, 'writeFileSync');
     const validateSpyUnlinkSync = vi.spyOn(fs, 'unlinkSync');
-    //const validateSpy = vi.spyOn(cer, 'setFile');
-    //const validateSpy = vi.spyOn(cer, 'setFile');
+    const consoleLogSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 
-    const cfdi = new CFDI({ xslt: { xslt3: false, path: xslt_path } });
+    const cfdi = new CFDI({ xslt: { path: xslt_path } });
+    cfdi.setDebug(true);
     const cadenaOriginal = await cfdi.generarCadenaOriginal();
     const xml = `<?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante>
     <cfdi:Emisor/>
     <cfdi:Receptor/>
-    <cfdi:Conceptos>
-    </cfdi:Conceptos>
 </cfdi:Comprobante>`;
     expect(validateSpyFsWrite).toBeCalled();
     expect(validateSpyFsWrite).toHaveBeenCalledWith(
@@ -78,13 +86,50 @@ describe('CFDI', () => {
     );
     expect(FileSystem.getTmpFullPath).toHaveBeenCalled();
     expect(FileSystem.generateNameTemp).toHaveBeenCalled();
-    validateSpyFsWrite.mockRestore();
+
+    expect(consoleLogSpy).toHaveBeenCalledWith('xslt =>', { path: xslt_path });
+    expect(consoleLogSpy).toHaveBeenCalledWith('cadena original =>', 'CADENA_ORIGINAL');
+
 
     expect(cadenaOriginal).toBe('CADENA_ORIGINAL');
     expect(validateSpyUnlinkSync).toHaveBeenCalledWith('/tmp/tempfile.xml');
+    
+    validateSpyFsWrite.mockRestore();
     validateSpyUnlinkSync.mockRestore();
+    consoleLogSpy.mockRestore();
   });
 
+
+  
+
+  it('debería generar el sello correctamente', async () => {
+    const cfdi = new CFDI();
+    cfdi.setDebug(true);
+    const generarSello = (cfdi as any).generarSello;
+
+    const cadenaOriginal = 'CADENA_ORIGINAL';
+
+    const sello = await generarSello(cadenaOriginal, key_path, '12345678a');
+    expect(sello).toBeDefined();
+    expect(typeof sello).toBe('string');
+  });
+
+  it('debería retornar un error al generar el sello', async () => {
+     const cfdi = new CFDI();
+    
+    //const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const cadenaOriginal = 'CADENA_ORIGINAL';
+    expect(()=>  cfdi.generarSello(cadenaOriginal, 'error.key', '123456a')).toThrow('openssl pkcs8');
+
+    
+  /*   expect(consoleSpy).toBeCalledWith({
+      error: expect.any(Error),
+      method: 'getSello',
+    }); */
+
+
+    //consoleSpy.mockRestore(); 
+  });
 
   it('debería sellar el CFDI', async () => {
     const cfdi = new CFDI();
@@ -101,6 +146,7 @@ describe('CFDI', () => {
     expect(cfdiJson['cfdi:Comprobante']._attributes.Sello).toBe(
       'SIGNATURE_HEX'
     );
+    vi.restoreAllMocks();
   });
 
   it('debería retornar el JSON del CFDI', () => {
@@ -111,8 +157,7 @@ describe('CFDI', () => {
       'cfdi:Comprobante': {
         _attributes: {},
         'cfdi:Emisor': {},
-        'cfdi:Receptor': {},
-        'cfdi:Conceptos': { 'cfdi:Concepto': [] },
+        'cfdi:Receptor': {}
       },
     });
   });
@@ -131,8 +176,6 @@ describe('CFDI', () => {
 <cfdi:Comprobante>
     <cfdi:Emisor/>
     <cfdi:Receptor/>
-    <cfdi:Conceptos>
-    </cfdi:Conceptos>
 </cfdi:Comprobante>`);
   });
 
@@ -157,5 +200,11 @@ describe('CFDI', () => {
     });
     const result = cfdi.saveFile('fileContent', '/path/to/save/', 'filename');
     expect(result).toBe(false);
+  });
+
+  it('debería cambiar al modo debug', () => {
+    const cfdi = new CFDI();
+    cfdi.setDebug(true);
+    expect(cfdi.isBebug).toBe(true);
   });
 });

@@ -49,8 +49,7 @@ export const getPem = (options = { begin: false }) => {
   } catch (e) {
     // console.log(e)
     const cerPem = cli.cli();
-    console.log(cli.cli());
-    throw new Error(cerPem);
+    throw new Error('CLI: ' + cerPem);
   }
 };
 

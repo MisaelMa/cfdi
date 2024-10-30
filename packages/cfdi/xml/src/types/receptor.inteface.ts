@@ -1,4 +1,3 @@
-import { XmlDomiciolioAttributes } from '.';
 
 export interface XmlReceptor {
   _attributes: XmlReceptorAttribute;
