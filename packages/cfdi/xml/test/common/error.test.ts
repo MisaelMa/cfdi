@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { Logger } from '../../src/utils/logger';
+import { Logger } from '../../src/utils/Logger';
 import { XmlError, CFDIError } from '../../src/common/error';
 
 
