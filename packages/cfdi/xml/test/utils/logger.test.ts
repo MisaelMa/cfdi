@@ -1,5 +1,5 @@
 import { describe, it, vi, expect, afterEach } from 'vitest';
-import { Logger } from '../../src/utils/logger';
+import { Logger } from '../../src/utils/Logger';
 
 describe('Logger', () => {
   afterEach(() => {
