@@ -115,21 +115,20 @@ describe('CFDI', () => {
   });
 
   it('debería retornar un error al generar el sello', async () => {
-   /*  const cfdi = new CFDI({ debug: true, xslt: { path: xslt_path } });
+     const cfdi = new CFDI();
     
-    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    //const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const cadenaOriginal = 'CADENA_ORIGINAL';
+    expect(()=>  cfdi.generarSello(cadenaOriginal, 'error.key', '123456a')).toThrow('openssl pkcs8');
 
-    const sello = await cfdi.generarSello(cadenaOriginal, 'error.key', '12345678a');
-    expect(sello).toBeInstanceOf(Error);
     
-    expect(consoleSpy).toBeCalledWith({
+  /*   expect(consoleSpy).toBeCalledWith({
       error: expect.any(Error),
       method: 'getSello',
-    });
+    }); */
 
 
-    consoleSpy.mockRestore(); */
+    //consoleSpy.mockRestore(); 
   });
 
   it('debería sellar el CFDI', async () => {

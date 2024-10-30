@@ -178,13 +178,12 @@ export class CFDI extends Comprobante {
       //await sign.update(cadenaOriginal);
       // resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
     } catch (e) {
-      if (this.debug) {
-        console.log({
-          method: 'getSello',
-          error: e,
-        });
-      }
-      throw CFDIError({ e });
+      throw CFDIError({ 
+        e,
+        method: 'getSello',
+        debug: this.debug,
+        name: '@cfdi/xml => @cfdi/csd',
+      });
     }
   }
 

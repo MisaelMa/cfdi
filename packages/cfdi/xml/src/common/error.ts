@@ -72,6 +72,6 @@ export function CFDIError({
     name,
     method,
   });
-    debug && Logger.error(error.toString());
+  debug && Logger.error(error.toString());
   return error;
 }
