@@ -123,7 +123,7 @@ describe('general', () => {
   });
 
   it('debe omitir el test en CI', () => {
-     console.log(process.env)
+      console.log(process.env)
       expect(true).toBe(true); // Esto solo se ejecutará si no estamos en CI
     }
   );
