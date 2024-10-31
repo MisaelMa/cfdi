@@ -83,16 +83,18 @@ export class Comprobante {
    * string[]
    */
   protected addSchemaLocation(locations: string[]): void {
-    if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
-      this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
-    }
     const SCHEMA_LOCATION = 'xsi:schemaLocation';
 
-    const currentLocations =
-      this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION].split(' ');
+    if (!this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION]) {
+      this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION] = '';
+    }
+
+    const currentLocations = this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION] || '';
+    
+    const listLocations = currentLocations.split(' ');
 
     const uniqueLocations = Array.from(
-      new Set([...currentLocations, ...locations].filter(Boolean))
+      new Set([...listLocations, ...locations].filter(Boolean))
     );
 
     const schemaLocation = schemaBuild(uniqueLocations);
