@@ -218,9 +218,11 @@ export class Concepto extends BaseImpuestos {
       ...payload,
       Importe: Number(payload.Importe),
     };
-    Schema.of().concepto.retencion.validate(retencion);
+    console.log(retencion);
+    //Schema.of().concepto.retencion.validate(retencion);
 
     this.setRetencion(retencion);
+    console.log(this.impuesto['cfdi:Retenciones']['cfdi:Retencion']);
     this.concepto['cfdi:Impuestos'] = this.impuesto;
     return this;
   }

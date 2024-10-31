@@ -73,12 +73,13 @@ export class BaseImpuestos {
       'Base' | 'TipoFactor' | 'TasaOCuota'
     >
   ): this {
+    console.log(retencion,'retencion');
     if (!this.impuesto['cfdi:Retenciones']) {
       this.impuesto['cfdi:Retenciones'] = {
         'cfdi:Retencion': [],
       } as XmlRetenciones;
     }
-    const sortRetencion = sortObject(retencion, ['Impuesto', 'Importe']);
+    const sortRetencion = sortObject(retencion, ['Base', 'Impuesto', 'TipoFactor', 'TasaOCuota', 'Importe',]);
     const atrributos: XmlRetencionAttributes = {
       _attributes: sortRetencion,
     } as XmlRetencionAttributes;
