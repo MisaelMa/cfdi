@@ -467,7 +467,7 @@ export class CliShare {
       const saxonProc = execaCommandSync(this.commandline).stdout;
       return saxonProc;
     } catch (e) {
-      throw new Error('saxon');
+      throw new Error('CLI Saxon Error =>' + this.commandline);
     }
   }
 }
