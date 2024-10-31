@@ -10,6 +10,7 @@ import {
 
 import { Schema } from '@cfdi/xsd';
 import { stringObjToNumerico } from '../utils/number.utils';
+import { sortObject } from 'src/utils/Map';
 
 /**
  *
@@ -29,7 +30,8 @@ export class BaseImpuestos {
     if (Object.keys(TotalImpuestos).length !== 0) {
       const TI = stringObjToNumerico(TotalImpuestos);
       Schema.of().cfdi.impuestos.validate(TI);
-      this.impuesto._attributes = TI;
+      const sortTotalImpuestos = sortObject(TI, ['TotalImpuestosRetenidos', 'TotalImpuestosTrasladados']);
+      this.impuesto._attributes = sortTotalImpuestos;
     }
   }
 
@@ -47,8 +49,9 @@ export class BaseImpuestos {
         'cfdi:Traslado': [],
       } as XmlTranslado;
     }
+    const sortTraslado = sortObject(traslado, ['Base', 'Impuesto', 'TipoFactor', 'TasaOCuota','Importe']);
     const atrributos: XmlTransladoAttributes = {
-      _attributes: traslado,
+      _attributes: sortTraslado,
     } as XmlTransladoAttributes;
 
     this.impuesto['cfdi:Traslados']['cfdi:Traslado'].push(atrributos);
@@ -75,8 +78,9 @@ export class BaseImpuestos {
         'cfdi:Retencion': [],
       } as XmlRetenciones;
     }
+    const sortRetencion = sortObject(retencion, ['Impuesto', 'Importe']);
     const atrributos: XmlRetencionAttributes = {
-      _attributes: retencion,
+      _attributes: sortRetencion,
     } as XmlRetencionAttributes;
     this.impuesto['cfdi:Retenciones']['cfdi:Retencion'].push(atrributos);
     return this;

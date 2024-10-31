@@ -20,6 +20,7 @@ import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
 import { Schema } from '@cfdi/xsd';
 import { schemaBuild } from '../utils/XmlHelp';
+import { sortObject } from 'src/utils/Map';
 
 export class Comprobante {
   protected xml: XmlCdfi = {
@@ -106,21 +107,49 @@ export class Comprobante {
     };
   }
 
-  public setAttributes({xmlns, schemaLocation}: ComprobanteAttributes): void {
+  public setAttributes({ xmlns, schemaLocation }: ComprobanteAttributes): void {
     this.xmlns(xmlns || {});
     this.addSchemaLocation(schemaLocation || this.locations);
   }
 
   public comprobante(attribute: CFDIComprobante): void {
-    this.xml['cfdi:Comprobante']._attributes = {
-      ...this.xml['cfdi:Comprobante']._attributes,
-      ...{ Version: this.version },
-      ...attribute,
-      SubTotal: Number(attribute.SubTotal),
-      Descuento: Number(attribute.Descuento),
-      Total: Number(attribute.Total),
-    };
+    const order = [
+      'Version',
+      'Serie',
+      'Folio',
+      'Fecha',
+      'Sello',
+      'FormaPago',
+      'NoCertificado',
+      'Certificado',
+      'CondicionesDePago',
+      'SubTotal',
+      'Descuento',
+      'Moneda',
+      'TipoCambio',
+      'Total',
+      'TipoDeComprobante',
+      'Exportacion',
+      'MetodoPago',
+      'LugarExpedicion',
+      'Confirmacion',
+    ];
+    const sortComprobante = sortObject(
+      {
+        ...this.xml['cfdi:Comprobante']._attributes,
+        ...{ Version: this.version },
+        ...attribute,
+        SubTotal: attribute.SubTotal,
+        Descuento: attribute.Descuento,
+        Total: attribute.Total,
+      },
+      order
+    );
+    this.xml['cfdi:Comprobante']._attributes =
+      sortComprobante as CFDIComprobante;
+
     const comprobante = this.schema.cfdi.comprobante;
+
     comprobante.validateInit(this.xml['cfdi:Comprobante']._attributes);
   }
   /**
@@ -252,12 +281,8 @@ export class Comprobante {
       'cfdi:Emisor': {},
       'cfdi:Receptor': {},
     } as XmlComprobante;
-
-   /*  this.xml['cfdi:Comprobante']['cfdi:Conceptos'] = {
-      'cfdi:Concepto': [],
-    } as XmlConcepto; */
   }
-  
+
   get xmlObject(): XmlCdfi {
     return this.xml;
   }

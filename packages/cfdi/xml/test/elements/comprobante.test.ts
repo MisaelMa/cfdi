@@ -56,7 +56,7 @@ describe('Comprobante', () => {
       FormaPago: '01',
       NoCertificado: '',
       Certificado: '',
-      condicionesDePago: 'Contado',
+      CondicionesDePago: 'Contado',
       SubTotal: '0',
       Descuento: '645.92',
       Moneda: 'MXN',

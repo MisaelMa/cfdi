@@ -16,9 +16,9 @@ describe('stringObjToNumerico', () => {
   });
 
   it('debería ignorar propiedades que no son strings ni numbers', () => {
-    const obj = { a: '1', b: true, c: { nested: 'value' }, d: '2' };
+    const obj = { a: '1.00', b: true, c: { nested: 'value' }, d: '2' };
     const resultado = stringObjToNumerico(obj);
-    expect(resultado).toEqual({ a: 1, b: true, c: { nested: 'value' }, d: 2 });
+    expect(resultado).toEqual({ a: 1.00, b: true, c: { nested: 'value' }, d: 2 });
   });
 
   it('debería devolver un objeto vacío si la entrada es un objeto vacío', () => {
