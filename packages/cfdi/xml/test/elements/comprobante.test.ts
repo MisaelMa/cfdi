@@ -70,10 +70,11 @@ describe('Comprobante', () => {
     const xml = comprobante.xmlObject;
     expect(xml['cfdi:Comprobante']._attributes).toEqual({
       ...payload,
-      SubTotal: 0,
-      Descuento: 645.92,
-      Total: 17207.35,
       Version: '4.0',
+      'xmlns:cfdi': 'http://www.sat.gob.mx/cfd/4',
+      'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+      'xsi:schemaLocation':
+        'http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
     });
   });
 
@@ -160,15 +161,15 @@ describe('Comprobante', () => {
     expect(conceptoXml).toEqual([
       {
         _attributes: {
-          Cantidad: 1,
+          Cantidad: '1',
           ClaveProdServ: '01010101',
           ClaveUnidad: 'H87',
           Descripcion: 'Producto de prueba',
-          Importe: 100,
+          Importe: '100.00',
           NoIdentificacion: '12345',
           ObjetoImp: '01',
           Unidad: 'Pieza',
-          ValorUnitario: 100,
+          ValorUnitario: '100.00',
         },
       },
     ]);
@@ -205,15 +206,15 @@ describe('Comprobante', () => {
     expect(conceptoXml).toEqual([
       {
         _attributes: {
-          Cantidad: 1,
+          Cantidad: '1',
           ClaveProdServ: '01010101',
           ClaveUnidad: 'H87',
           Descripcion: 'Producto de prueba',
-          Importe: 100,
+          Importe: '100.00',
           NoIdentificacion: '12345',
           ObjetoImp: '01',
           Unidad: 'Pieza',
-          ValorUnitario: 100,
+          ValorUnitario: '100.00',
         },
         'cfdi:ComplementoConcepto': {
           'iedu:instEducativas': {

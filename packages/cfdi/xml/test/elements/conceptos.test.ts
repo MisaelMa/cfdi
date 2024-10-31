@@ -55,11 +55,7 @@ describe('Concepto', () => {
     };
     const concepto = new Concepto(conceptoAttributes);
     expect(concepto.getConcept()._attributes).toEqual({
-      ...conceptoAttributes,
-      Cantidad: 1,
-      ValorUnitario: 100,
-      Importe: 100,
-      Descuento: 10,
+      ...conceptoAttributes
     });
   });
 

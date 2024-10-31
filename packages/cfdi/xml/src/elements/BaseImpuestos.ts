@@ -28,7 +28,7 @@ export class BaseImpuestos {
     TotalImpuestos: XmlImpuestosTrasladados = {} as XmlImpuestosTrasladados
   ) {
     if (Object.keys(TotalImpuestos).length !== 0) {
-      const TI = stringObjToNumerico(TotalImpuestos);
+      const TI = TotalImpuestos // stringObjToNumerico(TotalImpuestos);
       Schema.of().cfdi.impuestos.validate(TI);
       const sortTotalImpuestos = sortObject(TI, ['TotalImpuestosRetenidos', 'TotalImpuestosTrasladados']);
       this.impuesto._attributes = sortTotalImpuestos;
@@ -73,7 +73,6 @@ export class BaseImpuestos {
       'Base' | 'TipoFactor' | 'TasaOCuota'
     >
   ): this {
-    console.log(retencion,'retencion');
     if (!this.impuesto['cfdi:Retenciones']) {
       this.impuesto['cfdi:Retenciones'] = {
         'cfdi:Retencion': [],

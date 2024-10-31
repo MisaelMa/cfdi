@@ -94,11 +94,12 @@ export class Comprobante {
     const uniqueLocations = Array.from(
       new Set([...currentLocations, ...locations].filter(Boolean))
     );
+
     const schemaLocation = schemaBuild(uniqueLocations);
 
     this.xml['cfdi:Comprobante']._attributes[
       SCHEMA_LOCATION
-    ] += `${schemaLocation}`;
+    ] = schemaLocation; 
   }
 
   /**

@@ -60,9 +60,8 @@ describe('CFDI', () => {
   it('debería retornar un error al certificar el CFDI', () => {
     cer.setFile('error.cer');
     const cfdi = new CFDI();
-    cfdi.setDebug(true);    
-    expect(() => cfdi.certificar('path/to/cer')).toThrow();   
-
+    cfdi.setDebug(true);
+    expect(() => cfdi.certificar('path/to/cer')).toThrow();
   });
 
   it('debería generar la cadena original', async () => {
@@ -74,7 +73,7 @@ describe('CFDI', () => {
     cfdi.setDebug(true);
     const cadenaOriginal = await cfdi.generarCadenaOriginal();
     const xml = `<?xml version="1.0" encoding="utf-8"?>
-<cfdi:Comprobante>
+<cfdi:Comprobante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd">
     <cfdi:Emisor/>
     <cfdi:Receptor/>
 </cfdi:Comprobante>`;
@@ -88,19 +87,18 @@ describe('CFDI', () => {
     expect(FileSystem.generateNameTemp).toHaveBeenCalled();
 
     expect(consoleLogSpy).toHaveBeenCalledWith('xslt =>', { path: xslt_path });
-    expect(consoleLogSpy).toHaveBeenCalledWith('cadena original =>', 'CADENA_ORIGINAL');
-
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      'cadena original =>',
+      'CADENA_ORIGINAL'
+    );
 
     expect(cadenaOriginal).toBe('CADENA_ORIGINAL');
     expect(validateSpyUnlinkSync).toHaveBeenCalledWith('/tmp/tempfile.xml');
-    
+
     validateSpyFsWrite.mockRestore();
     validateSpyUnlinkSync.mockRestore();
     consoleLogSpy.mockRestore();
   });
-
-
-  
 
   it('debería generar el sello correctamente', async () => {
     const cfdi = new CFDI();
@@ -115,20 +113,20 @@ describe('CFDI', () => {
   });
 
   it('debería retornar un error al generar el sello', async () => {
-     const cfdi = new CFDI();
-    
+    const cfdi = new CFDI();
+
     //const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const cadenaOriginal = 'CADENA_ORIGINAL';
-    expect(()=>  cfdi.generarSello(cadenaOriginal, 'error.key', '123456a')).toThrow('openssl pkcs8');
+    expect(() =>
+      cfdi.generarSello(cadenaOriginal, 'error.key', '123456a')
+    ).toThrow('openssl pkcs8');
 
-    
-  /*   expect(consoleSpy).toBeCalledWith({
+    /*   expect(consoleSpy).toBeCalledWith({
       error: expect.any(Error),
       method: 'getSello',
     }); */
 
-
-    //consoleSpy.mockRestore(); 
+    //consoleSpy.mockRestore();
   });
 
   it('debería sellar el CFDI', async () => {
@@ -155,9 +153,14 @@ describe('CFDI', () => {
     expect(jsonCdfi).toEqual({
       _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } },
       'cfdi:Comprobante': {
-        _attributes: {},
+        _attributes: {
+          'xmlns:cfdi': 'http://www.sat.gob.mx/cfd/4',
+          'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+          'xsi:schemaLocation':
+            'http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd',
+        },
         'cfdi:Emisor': {},
-        'cfdi:Receptor': {}
+        'cfdi:Receptor': {},
       },
     });
   });
@@ -173,7 +176,7 @@ describe('CFDI', () => {
       spaces: 4,
     });
     expect(xmlCdfi).toBe(`<?xml version="1.0" encoding="utf-8"?>
-<cfdi:Comprobante>
+<cfdi:Comprobante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd">
     <cfdi:Emisor/>
     <cfdi:Receptor/>
 </cfdi:Comprobante>`);

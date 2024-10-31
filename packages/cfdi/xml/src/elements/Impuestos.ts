@@ -27,8 +27,6 @@ export class Impuestos extends BaseImpuestos {
   ) {
     const traslado = {
       ...payload,
-      TasaOCuota: Number(payload.TasaOCuota),
-      Importe: Number(payload.Importe),
     };
     Schema.of().cfdi.traslado.validate(traslado);
     this.setTraslado(traslado);
@@ -42,8 +40,7 @@ export class Impuestos extends BaseImpuestos {
     >
   ) {
     const retencion = {
-      ...payload,
-      Importe: Number(payload.Importe),
+      ...payload
     };
     Schema.of().cfdi.retencion.validate(retencion);
     this.setRetencion(retencion);
