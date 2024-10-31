@@ -60,7 +60,6 @@ export class Comprobante {
     }
 
     for (const xmln in xmlns) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       this.addXmlns(xmln, xmlns[xmln]);
     }
   }
@@ -87,9 +86,18 @@ export class Comprobante {
     if (!this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation']) {
       this.xml['cfdi:Comprobante']._attributes['xsi:schemaLocation'] = '';
     }
-    const schemaLocation = schemaBuild(locations);
+    const SCHEMA_LOCATION = 'xsi:schemaLocation';
+
+    const currentLocations =
+      this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION].split(' ');
+
+    const uniqueLocations = Array.from(
+      new Set([...currentLocations, ...locations].filter(Boolean))
+    );
+    const schemaLocation = schemaBuild(uniqueLocations);
+
     this.xml['cfdi:Comprobante']._attributes[
-      'xsi:schemaLocation'
+      SCHEMA_LOCATION
     ] += `${schemaLocation}`;
   }
 
@@ -107,13 +115,15 @@ export class Comprobante {
     };
   }
 
-  public setAttributes({ xmlns, schemaLocation }: ComprobanteAttributes): void {
+  public setAttributes(atrr: ComprobanteAttributes = {}): void {
+    const { xmlns, schemaLocation } = atrr || {};
     this.xmlns(xmlns || {});
     this.addSchemaLocation(schemaLocation || this.locations);
   }
 
   public comprobante(attribute: CFDIComprobante): void {
     const order = [
+      'xsi:schemaLocation',
       'Version',
       'Serie',
       'Folio',
@@ -133,6 +143,8 @@ export class Comprobante {
       'MetodoPago',
       'LugarExpedicion',
       'Confirmacion',
+      'xmlns:cfdi',
+      'xmlns:xsi',
     ];
     const sortComprobante = sortObject(
       {
@@ -281,6 +293,7 @@ export class Comprobante {
       'cfdi:Emisor': {},
       'cfdi:Receptor': {},
     } as XmlComprobante;
+    this.setAttributes();
   }
 
   get xmlObject(): XmlCdfi {
