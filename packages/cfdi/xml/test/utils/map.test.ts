@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sortObject } from "../../src/utils/map";
+import { sortObject } from "../../src/utils/Map";
 
 describe("sortObject", () => {
   it("ordena correctamente según el orden dado", () => {
