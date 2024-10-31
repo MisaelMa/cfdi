@@ -2,9 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { CFDI, Concepto, Emisor, Impuestos, Receptor } from '../../src';
 import { json2xml } from 'xml-js';
 const expectedXml = `<?xml version="1.0" encoding="utf-8"?>
-<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="SW" Folio="123456" Fecha="2024-04-29T00:00:00" Sello="" FormaPago="01" NoCertificado="" Certificado="" CondicionesDePago="Contado" SubTotal="10.00" Descuento="0.00" Moneda="MXN" Total="10.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="45610"
-    xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="SW" Folio="123456" Fecha="2024-04-29T00:00:00" Sello="" FormaPago="01" NoCertificado="" Certificado="" CondicionesDePago="Contado" SubTotal="10.00" Descuento="0.00" Moneda="MXN" Total="10.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="45610" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="603"/>
     <cfdi:Receptor Rfc="XAXX010101000" Nombre="CLIENTE" DomicilioFiscalReceptor="45610" RegimenFiscalReceptor="616" UsoCFDI="S01"/>
     <cfdi:Conceptos>
@@ -30,7 +28,9 @@ const expectedXml = `<?xml version="1.0" encoding="utf-8"?>
 </cfdi:Comprobante>`
 describe('general', () => {
   it('debe generar una factura general con xslt', () => {
+    console.log(process.env)
     const cfdi = new CFDI();
+    
     cfdi.comprobante({
       Version: '4.0',
       FormaPago: '01',
@@ -119,7 +119,6 @@ describe('general', () => {
     cfdi.impuesto(impuestos);
 
     const jsonToXml = cfdi.getXmlCdfi()
-     
     expect(jsonToXml.trim()).toBe(expectedXml.trim());
   });
 
