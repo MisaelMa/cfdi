@@ -78,11 +78,11 @@
       "@clir/openssl": [
         "./node_modules/@clir/openssl/src"
       ],
-      "@clir/saxon-he": [
-        "./node_modules/@clir/saxon-he/src"
+      "@saxon-he/cli": [
+        "./node_modules/@saxon-he/cli/src"
       ],
-      "@clir/saxon-he/*": [
-        "./node_modules/@clir/saxon-he/src/*"
+      "@saxon-he/cli/*": [
+        "./node_modules/@saxon-he/cli/src/*"
       ]
 
     }

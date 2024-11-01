@@ -1,7 +1,7 @@
 {
   "version": "0.0.15",
   "license": "MIT",
-  "name": "@clir/saxon-he",
+  "name": "@saxon-he/cli",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "module": "./dist/saxon-he.esm.js",

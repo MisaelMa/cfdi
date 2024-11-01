@@ -75,7 +75,7 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "@clir/saxon-he",
+      "name": "@saxon-he/cli",
       "allowedCategories": [ "libraries" ]
     },
     {
