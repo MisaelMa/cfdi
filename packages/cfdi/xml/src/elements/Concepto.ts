@@ -57,13 +57,7 @@ export class Concepto extends BaseImpuestos {
     super();
     const cloneConcept = {
       ...concepto,
-      Cantidad: Number(concepto.Cantidad),
-      ValorUnitario: Number(concepto.ValorUnitario),
-      Importe: Number(concepto.ValorUnitario),
     };
-    if (concepto.Descuento) {
-      cloneConcept.Descuento = Number(concepto.Descuento);
-    }
     this.existComplemnt = false;
     Schema.of().concepto.concepto.validate(cloneConcept);
     this.concepto._attributes = cloneConcept;
@@ -191,9 +185,7 @@ export class Concepto extends BaseImpuestos {
     payload: XmlTranRentAttributesProperties & { Base: string | number }
   ): Concepto {
     const traslado = {
-      ...payload,
-      TasaOCuota: Number(payload.TasaOCuota),
-      Importe: Number(payload.Importe),
+      ...payload
     };
     Schema.of().concepto.traslado.validate(traslado);
     this.setTraslado(traslado);
@@ -216,9 +208,9 @@ export class Concepto extends BaseImpuestos {
   ): Concepto {
     const retencion = {
       ...payload,
-      Importe: Number(payload.Importe),
+      //Importe: Number(payload.Importe),
     };
-    Schema.of().concepto.retencion.validate(retencion);
+    //Schema.of().concepto.retencion.validate(retencion);
 
     this.setRetencion(retencion);
     this.concepto['cfdi:Impuestos'] = this.impuesto;

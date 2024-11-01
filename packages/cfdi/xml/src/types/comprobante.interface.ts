@@ -61,9 +61,9 @@ export interface CFDIComprobante {
   Serie?: string;
   Folio?: string;
   Fecha: string;
-  FormaPago?: FormaPago | FormaPagoType;
+  FormaPago?: FormaPago | FormaPagoType | number
   NoCertificado: string;
-  condicionesDePago?: string;
+  CondicionesDePago?: string;
   SubTotal: string | number;
   Descuento?: string | number;
   Moneda: string;

@@ -10,6 +10,6 @@ export interface XmlReceptorAttribute {
   DomicilioFiscalReceptor: string;
   ResidenciaFiscal?: string;
   NumRegIdTrib?: string;
-  RegimenFiscalReceptor: string;
+  RegimenFiscalReceptor: string | number;
 }
 

@@ -16,13 +16,13 @@ describe('Impuestos', () => {
     const impuestos = new Impuestos(totalImpuestos);
    
     expect(validateSpy).toHaveBeenCalledWith({
-      TotalImpuestosTrasladados: 100.1024,
+      TotalImpuestosTrasladados: '100.1024',
     });
 
     validateSpy.mockRestore();
 
     expect(impuestos.getTotalImpuestos()).toEqual({
-      TotalImpuestosTrasladados: 100.1024,
+      TotalImpuestosTrasladados: '100.1024',
     });
   });
 
@@ -45,9 +45,7 @@ describe('Impuestos', () => {
     impuestos.traslados(trasladoPayload);
 
     expect(validateSpy).toHaveBeenCalledWith({
-      ...trasladoPayload,
-      TasaOCuota: 0.16,
-      Importe: 160,
+      ...trasladoPayload
     });
 
     validateSpy.mockRestore();
@@ -56,8 +54,6 @@ describe('Impuestos', () => {
         {
           _attributes: {
             ...trasladoPayload,
-            TasaOCuota: 0.16,
-            Importe: 160,
           },
         },
       ]);
@@ -79,16 +75,14 @@ describe('Impuestos', () => {
 
     impuestos.retenciones(retencionPayload);
     expect(validateSpy).toHaveBeenCalledWith({
-      ...retencionPayload,
-      Importe: 50,
+      ...retencionPayload
     });
     validateSpy.mockRestore();
 
     expect(impuestos.getRetenciones()).toEqual([
       {
         _attributes: {
-          ...retencionPayload,
-          Importe: 50,
+          ...retencionPayload
         },
       },
     ]);

@@ -84,9 +84,9 @@ export class CFDI extends Comprobante {
   /**
    *getXmlCdfi
    */
-  public async getXmlCdfi(): Promise<string> {
+  public  getXmlCdfi(): string {
     const options = { compact: true, ignoreComment: true, spaces: 4 };
-    const cfdi = await xmlJS.js2xml({ ...this.xml }, options);
+    const cfdi =  xmlJS.js2xml({ ...this.xml }, options);
     this.restartCfdi();
     return cfdi;
   }

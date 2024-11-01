@@ -34,11 +34,11 @@ describe('BaseImpuestos', () => {
     };
     const baseImpuestos = new BaseImpuestos(totalImpuestos);
     expect(baseImpuestos.getTotalImpuestos()).toEqual({
-        TotalImpuestosTrasladados: 100
+        TotalImpuestosTrasladados: '100.00',
     });
 
     expect(validateSpy).toHaveBeenCalledWith({
-        TotalImpuestosTrasladados: 100,
+        TotalImpuestosTrasladados: '100.00',
       });
   
       validateSpy.mockRestore();
@@ -84,7 +84,7 @@ describe('BaseImpuestos', () => {
     };
     const baseImpuestos = new BaseImpuestos(totalImpuestos);
     expect(baseImpuestos.getTotalImpuestos()).toEqual({
-        TotalImpuestosTrasladados: 100
+        TotalImpuestosTrasladados: '100.00'
     });
   });
 
