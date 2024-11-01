@@ -10,7 +10,7 @@ import {
 
 import { Schema } from '@cfdi/xsd';
 import { stringObjToNumerico } from '../utils/number.utils';
-import { sortObject } from 'src/utils/Map';
+import { sortObject } from '../utils/Map';
 
 /**
  *

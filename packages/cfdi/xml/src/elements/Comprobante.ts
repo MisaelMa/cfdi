@@ -20,7 +20,7 @@ import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
 import { Schema } from '@cfdi/xsd';
 import { schemaBuild } from '../utils/XmlHelp';
-import { sortObject } from 'src/utils/Map';
+import { sortObject } from '../utils/Map';
 
 export class Comprobante {
   protected xml: XmlCdfi = {

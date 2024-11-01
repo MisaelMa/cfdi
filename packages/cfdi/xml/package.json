@@ -68,7 +68,7 @@
     "@cfdi/csd": "workspace:*",
     "@cfdi/xsd": "workspace:*",
     "@cfdi/complementos": "workspace:*",
-    "@clir/saxon-he": "workspace:*",
+    "@saxon-he/cli": "workspace:*",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
