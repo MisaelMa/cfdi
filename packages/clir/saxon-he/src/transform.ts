@@ -273,7 +273,6 @@ export class Transform extends CliShare {
     }
     if (platform() === 'darwin') {
       return 'transform';
-      // var chilkat = require('@chilkat/ck-node11-macosx');
     }
     return 'transform';
   }

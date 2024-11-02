@@ -137,7 +137,6 @@ export class Query extends CliShare {
     }
     if (platform() === 'darwin') {
       return 'saxon-xquery';
-      // var chilkat = require('@chilkat/ck-node11-macosx');
     }
     return 'saxon-xquery';
   }

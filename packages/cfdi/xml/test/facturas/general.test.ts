@@ -127,10 +127,10 @@ describe('general', () => {
     cfdi.impuesto(impuestos);
     
     cfdi.certificar(cer_path);
-    cfdi.setDebug(true);
-    //await cfdi.sellar(key_path, '12345678a');
+    //cfdi.setDebug(true);
+    await cfdi.sellar(key_path, '12345678a');
 
     const jsonToXml = cfdi.getXmlCdfi()
-   // expect(jsonToXml.trim()).toBe(expectedXml.trim());
+    expect(jsonToXml.trim()).toBe(expectedXml.trim());
   });
 });

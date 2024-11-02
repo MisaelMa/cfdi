@@ -47,9 +47,7 @@
     }
   ],
   "dependencies": {
-    "@esm2cjs/execa": "^6.1.1-cjs.1",
-    "immutable": "^4.0.0-rc.12",
-    "moment": "^2.29.4"
+    "@esm2cjs/execa": "^6.1.1-cjs.1"
   },
   "devDependencies": {
     "@recreando/eslint-settings": "workspace:*",
@@ -58,17 +56,8 @@
     "@rushstack/eslint-config": "^2.6.0",
     "@rushstack/heft": "^0.45.1",
     "@size-limit/preset-small-lib": "^7.0.8",
-    "@testing-library/dom": "^8.19.0",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@types/deep-freeze": "^0.1.2",
-    "@types/jest": "^27.5.0",
     "@types/node": "^18.11.3",
-    "@types/testing-library__jest-dom": "^5.9.1",
-    "chalk": "^4.0.0",
-    "chokidar": "^3.5.2",
     "eslint": "^8.26.0",
-    "husky": "^8.0.1",
-    "jest": "^28.1.2",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
