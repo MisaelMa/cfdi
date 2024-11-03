@@ -268,12 +268,7 @@ export class Transform extends CliShare {
     if (platform() === 'win32') {
       return 'transform.exe';
     }
-    if (platform() === 'linux') {
-      return 'saxon-xslt';
-    }
-    if (platform() === 'darwin') {
-      return 'transform';
-    }
+    
     return 'transform';
   }
 }
