@@ -37,20 +37,18 @@ jobs:
       - name: Unzip Saxon
         run: |
           unzip SaxonHE12-5J.zip -d saxon
-          mv saxon /usr/local/lib/saxon
-
+          
       - name: Make Saxon available as command
         run: |
-          echo '#!/bin/bash' > /usr/local/bin/transform
-          echo 'java -cp /usr/local/lib/saxon/saxon-he-12.5.jar net.sf.saxon.Transform  "$@"' >> /usr/local/bin/transform
-          chmod +x /usr/local/bin/transform
-       
+          echo '#!/bin/bash' > $GITHUB_WORKSPACE/saxon/transform
+          echo 'java -cp $GITHUB_WORKSPACE/saxon/saxon-he-12.5.jar net.sf.saxon.Transform "$@"' >> $GITHUB_WORKSPACE/saxon/transform
+          chmod +x $GITHUB_WORKSPACE/saxon/transform
+
+      - name: Add transform to PATH
+        run: echo "$GITHUB_WORKSPACE/saxon" >> "$GITHUB_PATH"
+
       - name: Cache dependencies
         uses: ./.github/actions/cache
-
-      - name: Set Rush arguments
-        id: set-rush-args
-        run: echo "::set-output name=RUSH_ARGS::${{ github.event_name == 'pull_request' && '--to git:HEAD~1' || format('--from {0}', inputs.target-package) }}"
 
       - name: Install Rush and dependencies
         id: install
