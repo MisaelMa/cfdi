@@ -2,7 +2,7 @@
   {
     "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "4.0.14-beta.8",
+    "version": "4.0.14-beta.9",
     "nextBump": "patch"
   },
   {
@@ -20,7 +20,7 @@
   {
     "policyName": "catalogs",
     "definitionName": "lockStepVersion",
-    "version": "0.0.12",
+    "version": "0.0.13-beta.0",
     "nextBump": "patch"
   },
   {
@@ -68,7 +68,7 @@
   {
     "policyName": "saxon",
     "definitionName": "lockStepVersion",
-    "version": "0.0.16-beta.0",
+    "version": "0.0.16-beta.1",
     "nextBump": "patch"
   },
   {
