@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { CFDI, Concepto, Emisor, Impuestos, Receptor } from '../../src';
+import { CFDI, Concepto, Emisor, Impuestos, ObjetoImpEnum, Receptor } from '../../src';
 import path from 'path';
+import { FormaPago, MetodoPago, TipoComprobante, ExportacionEnum, UsoCFDI, Impuesto } from '@cfdi/catalogos/src';
 
 const files = path.resolve(__dirname, '..', '..', '..', '..', 'files');
 
@@ -41,21 +42,18 @@ describe('general', () => {
     });
     
     cfdi.comprobante({
-      FormaPago: '01',
+      FormaPago: FormaPago.EFECTIVO,
       Serie: 'RC',
       Folio: '123456',
       Fecha: '2024-04-29T00:00:00',
-      MetodoPago: 'PUE',
-      Sello: '',
-      NoCertificado: '',
-      Certificado: '',
+      MetodoPago: MetodoPago.PAGO_EN_UNA_EXHIBICION,
       CondicionesDePago: 'Contado',
       SubTotal: '10.00',
       Descuento: '0.00',
       Moneda: 'MXN',
       Total: '10.00',
-      TipoDeComprobante: 'I',
-      Exportacion: '01',
+      TipoDeComprobante: TipoComprobante.INGRESO,
+      Exportacion: ExportacionEnum.NoAplica,
       LugarExpedicion: '45610',
     });
 
@@ -71,7 +69,7 @@ describe('general', () => {
       Nombre: 'CLIENTE',
       DomicilioFiscalReceptor: '45610',
       RegimenFiscalReceptor: '616',
-      UsoCFDI: 'S01',
+      UsoCFDI: UsoCFDI.SIN_EFECTOS_FISCALES,
     });
 
     const concepto = new Concepto({
@@ -84,13 +82,13 @@ describe('general', () => {
       ValorUnitario: '10.00',
       Importe: '10.00',
       Descuento: '0.00',
-      ObjetoImp: '02',
+      ObjetoImp: ObjetoImpEnum.SíObjetoDeImpuesto
     });
 
     concepto.traslado({
       Base: '1',
       Importe: '1',
-      Impuesto: '002',
+      Impuesto: Impuesto.IVA,
       TasaOCuota: '0.160000',
       TipoFactor: 'Tasa',
     });
@@ -98,7 +96,7 @@ describe('general', () => {
     concepto.retencion({
       Base: '1',
       Importe: '1',
-      Impuesto: '002',
+      Impuesto: Impuesto.IVA,
       TasaOCuota: '0.040000',
       TipoFactor: 'Tasa',
     });
@@ -110,13 +108,13 @@ describe('general', () => {
 
     impuestos.retenciones({
       Importe: '1.00',
-      Impuesto: '002',
+      Impuesto: Impuesto.IVA
     });
 
     impuestos.traslados({
       Base: '1.00',
       Importe: '1.00',
-      Impuesto: '002',
+      Impuesto: Impuesto.IVA,
       TasaOCuota: '0.160000',
       TipoFactor: 'Tasa',
     });

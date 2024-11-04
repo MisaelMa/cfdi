@@ -1,5 +1,5 @@
 /* eslint sort-keys: 0 */
-export enum UseCFDI {
+export enum UsoCFDI {
   ADQUISICION_MERCANCIAS = 'G01',
   DEVOLUCIONES_DESCUENTOS_BONIFICACIONES = 'G02',
   GASTOS_EN_GENERAL = 'G03',
@@ -22,6 +22,9 @@ export enum UseCFDI {
   CUENTAS_AHORRO_PENSIONES = 'D09',
   SERVICIOS_EDUCATIVOS = 'D10',
   POR_DEFINIR = 'P01',
+  SIN_EFECTOS_FISCALES= 'S01',
+  PAGOS = 'CP01',
+  NOMINA = 'CN01'
 }
 
 export type UseCFDIType =
