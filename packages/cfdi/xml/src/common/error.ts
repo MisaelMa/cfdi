@@ -1,4 +1,4 @@
-import { Logger } from "src/utils/Logger";
+import { Logger } from "../utils/Logger";
 
 interface XmlErrorParams {
   message: string;

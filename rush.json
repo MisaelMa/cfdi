@@ -154,7 +154,7 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@clir/saxon-he",
+      "packageName": "@saxon-he/cli",
       "projectFolder": "packages/clir/saxon-he",
       "versionPolicyName": "saxon",
       "reviewCategory": "libraries",

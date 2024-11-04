@@ -8,13 +8,7 @@ import {
   Receptor,
   Relacionado,
 } from '@cfdi/xml';
-import {
-  Destruccion,
-  Iedu,
-  Pago10,
-  Pago10Impuestos,
-  Pago10Relacionado,
-} from '@cfdi/complementos';
+import {  Iedu } from '@cfdi/complementos';
 
 import { XmlIeduAttribute } from '@cfdi/complementos';
 
@@ -29,7 +23,7 @@ export const general = async (config: any): Promise<CFDI> => {
     FormaPago: '01',
     NoCertificado: '',
     Certificado: '',
-    condicionesDePago: 'Contado',
+    CondicionesDePago: 'Contado',
     SubTotal: 16148.04,
     Descuento: '645.92',
     Moneda: 'MXN',

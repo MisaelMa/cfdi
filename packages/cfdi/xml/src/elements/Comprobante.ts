@@ -20,7 +20,7 @@ import { Receptor } from './Receptor';
 import { Relacionado } from './Relacionado';
 import { Schema } from '@cfdi/xsd';
 import { schemaBuild } from '../utils/XmlHelp';
-import { sortObject } from 'src/utils/Map';
+import { sortObject } from '../utils/Map';
 
 export class Comprobante {
   protected xml: XmlCdfi = {
@@ -124,7 +124,7 @@ export class Comprobante {
     this.addSchemaLocation(schemaLocation || this.locations);
   }
 
-  public comprobante(attribute: CFDIComprobante): void {
+  public comprobante(attribute: Omit<CFDIComprobante, 'Version' | 'Sello' | 'NoCertificado'| 'Certificado'>): void {
     const order = [
       'xsi:schemaLocation',
       'Version',
@@ -154,6 +154,9 @@ export class Comprobante {
         ...this.xml['cfdi:Comprobante']._attributes,
         ...{ Version: this.version },
         ...attribute,
+        Sello: '',
+        NoCertificado: '',
+        Certificado: '',
         SubTotal: attribute.SubTotal,
         Descuento: attribute.Descuento,
         Total: attribute.Total,
