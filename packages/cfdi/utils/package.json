@@ -60,7 +60,7 @@
     }
   ],
   "dependencies": {
-    "@signati/core": "4.0.2",
+    "@cfdi/xml": "workspace:*",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
