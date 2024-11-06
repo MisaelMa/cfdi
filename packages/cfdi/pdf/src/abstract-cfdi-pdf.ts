@@ -2,17 +2,17 @@ import * as Pd from 'pdfmake/build/pdfmake';
 
 import { BufferOptions, TDocumentDefinitions } from 'pdfmake/interfaces';
 import {
-  Comprobante,
+  CFDIComprobante,
   XmlCdfi,
   XmlConcepto,
   XmlEmisor,
   XmlImpuestos,
   XmlReceptor,
-} from '@signati/core';
+} from '@cfdi/xml'
 import { TCreatedPdf, createPdf } from 'pdfmake/build/pdfmake';
 
 import { OptionsPdf } from './types';
-import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
+import { XmlTfd } from '@cfdi/complementos/types/complements/tfd/tfd.com'
 import { XmlToJson } from '@cfdi/utils';
 import path from 'path';
 // import PdfPrinter from 'pdfmake';
@@ -44,12 +44,12 @@ export abstract class RPDF {
     this.docDefinition = body;
   }
   protected abstract addLogo(): void;
-  protected abstract addFolio(c: Comprobante): void;
+  protected abstract addFolio(c: CFDIComprobante): void;
   protected abstract addEmisorData(emisor: XmlEmisor, expedido: string): void;
   protected abstract addDate(date: string): void;
   protected abstract addReceptor(receptor: XmlReceptor): void;
   protected abstract fechaTimbrado(tfd: XmlTfd): void;
-  protected abstract addCatidad(comprobante: Comprobante): void;
+  protected abstract addCatidad(comprobante: CFDIComprobante): void;
   protected abstract addImpuesto(impuesto: XmlImpuestos): void;
   protected abstract addNumberToLetter(total: number): void;
   protected abstract addCSDEmisor(NoCertificado: string): void;
@@ -113,7 +113,7 @@ export abstract class RPDF {
           tfd,
           this.xml['cfdi:Comprobante']['cfdi:Emisor'],
           this.xml['cfdi:Comprobante']['cfdi:Receptor'],
-          this.xml['cfdi:Comprobante']._attributes.Total
+          this.xml['cfdi:Comprobante']._attributes.Total as string
         );
       }
     }

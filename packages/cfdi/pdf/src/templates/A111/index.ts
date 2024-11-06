@@ -1,19 +1,19 @@
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
 import {
-  Comprobante,
+  CFDIComprobante,
   XmlCdfi,
   XmlConcepto,
   XmlEmisor,
   XmlImpuestos,
   XmlReceptor,
-} from '@signati/core';
+} from '@cfdi/xml'
 import { XmlToJson } from '@cfdi/utils';
 // import { logo } from '@cfdi/utils';
 import { createPdf, TCreatedPdf } from 'pdfmake/build/pdfmake';
 import { RPDF } from '../../abstract-cfdi-pdf';
 import { A111SKELETON } from './A111.skelton';
 import { OptionsPdf } from '../../types';
-import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
+import { XmlTfd } from '@cfdi/complementos/types/complements/tfd/tfd.com'
 export class A111 extends RPDF {
   constructor(xml: string, options: OptionsPdf = {} as OptionsPdf) {
     super(xml, options);
@@ -23,7 +23,7 @@ export class A111 extends RPDF {
   protected addLogo(): void {
     // throw new Error('Method not implemented.');
   }
-  protected addFolio(c: Comprobante): void {
+  protected addFolio(c: CFDIComprobante): void {
     //throw new Error('Method not implemented.');
   }
   protected addEmisorData(emisor: XmlEmisor, expedido: string): void {
@@ -38,7 +38,7 @@ export class A111 extends RPDF {
   protected fechaTimbrado(tfd: XmlTfd): void {
     //throw new Error('Method not implemented.');
   }
-  protected addCatidad(comprobante: Comprobante): void {
+  protected addCatidad(comprobante: CFDIComprobante): void {
     //throw new Error('Method not implemented.');
   }
   protected addImpuesto(impuesto: XmlImpuestos): void {

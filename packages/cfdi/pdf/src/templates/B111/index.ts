@@ -1,28 +1,30 @@
 import {
-  Comprobante,
+  CFDIComprobante,
+  XmlComprobanteAttributes,
   XmlConcepto,
   XmlEmisor,
   XmlImpuestos,
   XmlReceptor,
-} from '@signati/core';
+  XmlConceptoProperties
+} from '@cfdi/xml'
 
 import { B111ESKELETON } from './B111.skeleton';
 import { OptionsPdf } from '../../types';
 import { RPDF } from '../../abstract-cfdi-pdf';
-import { XmlConceptoProperties } from '@signati/core/lib/signati/types/Tags/concepts.interface';
-import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
+import { XmlTfd } from '@cfdi/complementos/types/complements/tfd/tfd.com'
+
 import { ContentText } from 'pdfmake/interfaces';
 
 export class B111 extends RPDF {
   protected addLogo(): void {
     // throw new Error('Method not implemented.');
   }
-  protected addFolio(c: Comprobante): void {
+  protected addFolio(c: XmlComprobanteAttributes ): void {
     console.log(c);
     const data = { text: c.Folio, alignment: 'center',color:"red" };
     
     const arr = this.docDefinition.content[0].table.body[0][2].table.body[3];
-    this.docDefinition.content[0].table.body[0][2].table.body[5].text=c.NoCertificado;
+    this.docDefinition.content[0].table.body[0][2].table.body[5].text=c.NoCertificado as string
     
     arr.push(data);
     //  this.docDefinition.content[0].table.body[0][2].table.body[3].push(data);
@@ -49,7 +51,7 @@ export class B111 extends RPDF {
   protected fechaTimbrado(tfd: XmlTfd): void {
     // throw new Error('Method not implemented.');
   }
-  protected addCatidad(comprobante: Comprobante): void {
+  protected addCatidad(comprobante: CFDIComprobante): void {
     //throw new Error('Method not implemented.');
   }
   protected addImpuesto(impuesto: XmlImpuestos): void {
