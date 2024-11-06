@@ -30,11 +30,8 @@ export default async function loginRoute(
     // eslint-disable-next-line
     Folio: 'ACACUN-27',
     Fecha: '2014-07-08T12:16:50',
-    Sello: '',
     FormaPago: '01',
-    NoCertificado: '',
-    Certificado: '',
-    condicionesDePago: 'Contado',
+    CondicionesDePago: 'Contado',
     SubTotal: '0',
     Descuento: '645.92',
     Moneda: 'MXN',
