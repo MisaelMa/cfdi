@@ -12,7 +12,6 @@ import { CFDIError } from './common/error';
  *
  */
 export class CFDI extends Comprobante {
-  private _sello: string = '';
   private _cadenaOriginal: string = '';
   protected xslt?: XsltSheet | null = null;
   private debug = false;
@@ -29,7 +28,6 @@ export class CFDI extends Comprobante {
     super(options);
     this.xslt = options?.xslt;
     this._cadenaOriginal = '';
-    this._sello = '';
     this.setDebug(Boolean(options?.debug));
   }
 
@@ -42,10 +40,9 @@ export class CFDI extends Comprobante {
   public certificar(cerpath: string): CFDI {
     try {
       cer.setFile(cerpath);
-      this.xml['cfdi:Comprobante']._attributes.NoCertificado = cer.getNoCer();
-      this.xml['cfdi:Comprobante']._attributes.Certificado = cer.getPem({
-        begin: true,
-      });
+
+      this.setNoCertificado(cer.getNoCer());
+      this.setCertificado(cer.getPem({ begin: true }));
       return this;
     } catch (e) {
       const error = CFDIError({
@@ -70,8 +67,7 @@ export class CFDI extends Comprobante {
     const cadena = await this.generarCadenaOriginal();
     const sello = await this.generarSello(cadena, keyfile, password);
     this._cadenaOriginal = cadena;
-    this._sello = sello;
-    this.xml['cfdi:Comprobante']._attributes.Sello = sello;
+    this.setSello(sello);
   }
 
   /**
@@ -84,9 +80,9 @@ export class CFDI extends Comprobante {
   /**
    *getXmlCdfi
    */
-  public  getXmlCdfi(): string {
+  public getXmlCdfi(): string {
     const options = { compact: true, ignoreComment: true, spaces: 4 };
-    const cfdi =  xmlJS.js2xml({ ...this.xml }, options);
+    const cfdi = xmlJS.js2xml({ ...this.xml }, options);
     this.restartCfdi();
     return cfdi;
   }
@@ -114,7 +110,7 @@ export class CFDI extends Comprobante {
   /**
    *getCadenaOriginal
    */
-   generarCadenaOriginal(): string {
+  generarCadenaOriginal(): string {
     if (!this.xslt) {
       throw new Error(
         '¡Ups! Direcction Not Found Extensible Stylesheet Language Transformation'
@@ -178,7 +174,7 @@ export class CFDI extends Comprobante {
       //await sign.update(cadenaOriginal);
       // resolve(sign.sign(keyPem.privateKeyPem, 'base64'));
     } catch (e) {
-      throw CFDIError({ 
+      throw CFDIError({
         e,
         method: 'getSello',
         debug: this.debug,
@@ -188,7 +184,8 @@ export class CFDI extends Comprobante {
   }
 
   public get sello(): string {
-    return this._sello;
+    const comprobante = this.xml['cfdi:Comprobante'];
+    return comprobante?._attributes?.Sello || '';
   }
 
   public get cadenaOriginal(): string {

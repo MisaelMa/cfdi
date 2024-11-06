@@ -6,10 +6,8 @@ import {
   XmlCdfi,
   XmlComprobante,
   XmlComprobanteAttributes,
-  XmlConcepto,
   XmlVersion,
   XmlnsLinks,
-  XsltSheet,
 } from '../types';
 import { ComlementType, XmlComplements } from '@cfdi/complementos';
 
@@ -89,8 +87,9 @@ export class Comprobante {
       this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION] = '';
     }
 
-    const currentLocations = this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION] || '';
-    
+    const currentLocations =
+      this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION] || '';
+
     const listLocations = currentLocations.split(' ');
 
     const uniqueLocations = Array.from(
@@ -99,9 +98,7 @@ export class Comprobante {
 
     const schemaLocation = schemaBuild(uniqueLocations);
 
-    this.xml['cfdi:Comprobante']._attributes[
-      SCHEMA_LOCATION
-    ] = schemaLocation; 
+    this.xml['cfdi:Comprobante']._attributes[SCHEMA_LOCATION] = schemaLocation;
   }
 
   /**
@@ -124,7 +121,7 @@ export class Comprobante {
     this.addSchemaLocation(schemaLocation || this.locations);
   }
 
-  public comprobante(attribute: Omit<CFDIComprobante, 'Version' | 'Sello' | 'NoCertificado'| 'Certificado'>): void {
+  public comprobante(attribute: CFDIComprobante): void {
     const order = [
       'xsi:schemaLocation',
       'Version',
@@ -164,7 +161,7 @@ export class Comprobante {
       order
     );
     this.xml['cfdi:Comprobante']._attributes =
-      sortComprobante as CFDIComprobante;
+      sortComprobante as XmlComprobanteAttributes;
 
     const comprobante = this.schema.cfdi.comprobante;
 
@@ -283,6 +280,24 @@ export class Comprobante {
       this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] =
         complement.complement;
     }
+  }
+
+  public setCertificado(certificado: string): void {
+    if (!certificado) return;
+
+    this.xml['cfdi:Comprobante']._attributes.Certificado = certificado;
+  }
+
+  public setNoCertificado(noCertificado: string): void {
+    if (!noCertificado) return;
+
+    this.xml['cfdi:Comprobante']._attributes.NoCertificado = noCertificado;
+  }
+
+  public setSello(sello: string): void {
+    if (!sello) return;
+
+    this.xml['cfdi:Comprobante']._attributes.Sello = sello;
   }
 
   protected restartCfdi(): void {

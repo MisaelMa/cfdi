@@ -52,10 +52,7 @@ describe('Comprobante', () => {
       Serie: 'E',
       Folio: 'ACACUN-27',
       Fecha: '2014-07-08T12:16:50',
-      Sello: '',
       FormaPago: '01',
-      NoCertificado: '',
-      Certificado: '',
       CondicionesDePago: 'Contado',
       SubTotal: '0',
       Descuento: '645.92',
@@ -70,6 +67,9 @@ describe('Comprobante', () => {
     const xml = comprobante.xmlObject;
     expect(xml['cfdi:Comprobante']._attributes).toEqual({
       ...payload,
+      Certificado: '',
+      NoCertificado: "",
+      Sello: "",
       Version: '4.0',
       'xmlns:cfdi': 'http://www.sat.gob.mx/cfd/4',
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',

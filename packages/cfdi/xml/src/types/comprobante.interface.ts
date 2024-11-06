@@ -45,7 +45,7 @@ export interface XmlRelacionadoAttributes {
 
 export interface XmlComprobanteAttributes
   extends XmlComplementsAttributes,
-  CFDIComprobante,
+  CFDIComprobante, ComprobanteSignature,
     AnyKey {
   'xmlns:xsi'?: string; // http://www.w3.org/2001/XMLSchema-instance
   'xmlns:xs'?: string; // http://www.w3.org/2001/XMLSchema
@@ -56,13 +56,18 @@ export interface ComprobanteAttributes {
   xmlns?: XmlnsLinks;
   schemaLocation?: string[];
 }
+
+export interface ComprobanteSignature {
+  NoCertificado: string;
+  Certificado?: string;
+  Sello?: string;
+}
 export interface CFDIComprobante {
   Version?: string;
   Serie?: string;
   Folio?: string;
   Fecha: string;
   FormaPago?: FormaPago | FormaPagoType | number
-  NoCertificado: string;
   CondicionesDePago?: string;
   SubTotal: string | number;
   Descuento?: string | number;
@@ -74,8 +79,7 @@ export interface CFDIComprobante {
   MetodoPago?: MetodoPago | MetodoPagoType;
   LugarExpedicion: string;
   Confirmacion?: string;
-  Certificado?: string;
-  Sello?: string;
+  
 }
 
 export interface XmlnsLinks extends XmlnsComplementsLinks, AnyKey {
