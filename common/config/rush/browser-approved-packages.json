@@ -231,18 +231,6 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
-      "name": "@signati/core",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@signati/openssl",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@signati/saxon",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "@size-limit/preset-small-lib",
       "allowedCategories": [ "libraries", "private" ]
     },
