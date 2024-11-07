@@ -39,6 +39,7 @@ describe('general', () => {
   it('debe generar una factura general con xslt', async () => {
     const cfdi = new CFDI({
       xslt: { path: xslt_path },
+     // saxon: { binary: 'java  -jar /opt/homebrew/Cellar/saxon/12.5/libexec/saxon-he-12.5.jar '}
     });
     
     cfdi.comprobante({

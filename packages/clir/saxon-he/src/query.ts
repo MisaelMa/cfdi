@@ -1,6 +1,4 @@
 import { CliShare } from './cli-share';
-import { platform } from 'os';
-
 /**
  *
  */
@@ -14,9 +12,10 @@ export class Query extends CliShare {
   /**
    *constructor
    */
-  constructor() {
+  constructor(options: {binary?: string}) {
     super();
-    this.saxonBin = this.getOS();
+    const { binary } = options || {}
+    this.saxonBin =  binary || this.getOS();
     this.commandline = this.saxonBin;
   }
 
@@ -128,11 +127,7 @@ export class Query extends CliShare {
   /**
    *getOS
    */
-  private getOS(): string {
-    if (platform() === 'win32') {
-      return 'query.exe';
-    }
-    
+  private getOS(): string {  
     return 'query';
   }
 }

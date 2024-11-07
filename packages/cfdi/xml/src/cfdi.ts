@@ -3,7 +3,7 @@ import { cer, key } from '@cfdi/csd';
 
 import { Comprobante } from './elements/Comprobante';
 import { FileSystem } from './utils/FileSystem';
-import { Options, XsltSheet } from './types/types';
+import { Config, SaxonHe, XsltSheet } from './types/types';
 import { Transform } from '@saxon-he/cli';
 import { XmlCdfi } from './types/xmlCdfi.interface';
 import xmlJS from 'xml-js';
@@ -13,6 +13,7 @@ import { CFDIError } from './common/error';
  */
 export class CFDI extends Comprobante {
   private _cadenaOriginal: string = '';
+  protected saxon?: SaxonHe | undefined = undefined
   protected xslt?: XsltSheet | null = null;
   private debug = false;
 
@@ -24,9 +25,10 @@ export class CFDI extends Comprobante {
    * @param options
    *Options;
    */
-  constructor(options?: Options) {
+  constructor(options?: Config) {
     super(options);
     this.xslt = options?.xslt;
+    this.saxon = options?.saxon
     this._cadenaOriginal = '';
     this.setDebug(Boolean(options?.debug));
   }
@@ -122,17 +124,14 @@ export class CFDI extends Comprobante {
       const result = xmlJS.js2xml(this.xml, options);
 
       fs.writeFileSync(fullPath, result, 'utf8');
-      let cadena: string = '';
-
-      const transform = new Transform();
-      //console.time('saxon cli 2');
-      cadena = transform
+      
+      const transform = new Transform(this.saxon)
+      const cadena = transform
         .s(fullPath)
         .xsl(String(this.xslt.path))
         .warnings('silent')
         .run();
-      //console.timeEnd('saxon cli');
-
+      
       if (this.debug) {
         console.log('xslt =>', this.xslt);
         console.log('cadena original =>', cadena);
