@@ -1,7 +1,7 @@
 import {
   CFDIComprobante,
   ComprobanteAttributes,
-  Options,
+  Config,
   TagComprobante,
   XmlCdfi,
   XmlComprobante,
@@ -34,7 +34,7 @@ export class Comprobante {
   ];
 
   schema = Schema.of();
-  constructor(options?: Options) {
+  constructor(options?: Config) {
     const { debug, schema } = options || { debug: false };
     this.schema.setConfig({
       debug: debug,
