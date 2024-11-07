@@ -124,17 +124,14 @@ export class CFDI extends Comprobante {
       const result = xmlJS.js2xml(this.xml, options);
 
       fs.writeFileSync(fullPath, result, 'utf8');
-      let cadena: string = '';
-
+      
       const transform = new Transform(this.saxon)
-      //console.time('saxon cli 2');
-      cadena = transform
+      const cadena = transform
         .s(fullPath)
         .xsl(String(this.xslt.path))
         .warnings('silent')
         .run();
-      //console.timeEnd('saxon cli');
-
+      
       if (this.debug) {
         console.log('xslt =>', this.xslt);
         console.log('cadena original =>', cadena);
