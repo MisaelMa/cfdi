@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: nelonoel/branch-name@v1.0.1
       - name: Cdfi
         uses: actions/checkout@v4
 
