@@ -91,6 +91,7 @@
   },
   "keywords": [
     "CFDI 3.3.",
+    "CFDI 4.0.",
     "Factura Electronica",
     "Factura Electronica Mexico",
     "Sellar Xml",
@@ -100,6 +101,7 @@
     "cfdi",
     "sat",
     "3.3",
+    "4.0",
     "factura",
     "mexico",
     "pdf",
@@ -111,7 +113,8 @@
     "terceros",
     "pagos",
     "ine",
-    "transform"
+    "transform",
+    "sello"
   ],
   "author": {
     "name": "Amir Misael Marin Coh, Signati",
