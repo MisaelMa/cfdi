@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# nvm use --silent
+
+# After the entire commit process is completed, the post-commit hook runs.
+# It doesn’t take any parameters, but you can easily get the last commit by running git log -1 HEAD.
+# Generally, this script is used for notification or something similar.
+
+# node common/scripts/install-run-rush.js --quiet changefiles
+
+

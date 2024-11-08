@@ -2,27 +2,135 @@
   "name": "@cfdi/xml",
   "entries": [
     {
-      "version": "0.0.12",
-      "tag": "@cfdi/xml_v0.0.12",
-      "date": "Wed, 10 Aug 2022 15:31:32 GMT",
+      "version": "4.0.14",
+      "tag": "@cfdi/xml_v4.0.14",
+      "date": "Fri, 08 Nov 2024 00:48:36 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.13",
+      "tag": "@cfdi/xml_v4.0.13",
+      "date": "Mon, 08 May 2023 23:09:27 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.12",
+      "tag": "@cfdi/xml_v4.0.12",
+      "date": "Sat, 06 May 2023 18:20:41 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.11",
+      "tag": "@cfdi/xml_v4.0.11",
+      "date": "Sat, 06 May 2023 17:50:52 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.10",
+      "tag": "@cfdi/xml_v4.0.10",
+      "date": "Fri, 05 May 2023 17:50:53 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.9",
+      "tag": "@cfdi/xml_v4.0.9",
+      "date": "Fri, 05 May 2023 14:50:42 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.8",
+      "tag": "@cfdi/xml_v4.0.8",
+      "date": "Fri, 05 May 2023 01:55:04 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.7",
+      "tag": "@cfdi/xml_v4.0.7",
+      "date": "Sun, 30 Apr 2023 22:22:24 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.6",
+      "tag": "@cfdi/xml_v4.0.6",
+      "date": "Mon, 03 Apr 2023 22:58:52 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.5",
+      "tag": "@cfdi/xml_v4.0.5",
+      "date": "Mon, 06 Mar 2023 22:48:01 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.4",
+      "tag": "@cfdi/xml_v4.0.4",
+      "date": "Mon, 06 Mar 2023 21:47:04 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.3",
+      "tag": "@cfdi/xml_v4.0.3",
+      "date": "Fri, 03 Mar 2023 22:53:55 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.2",
+      "tag": "@cfdi/xml_v4.0.2",
+      "date": "Fri, 03 Mar 2023 19:12:21 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.19",
+      "tag": "@cfdi/xml_v0.0.19",
+      "date": "Sat, 28 Jan 2023 21:20:46 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.18",
+      "tag": "@cfdi/xml_v0.0.18",
+      "date": "Sat, 03 Dec 2022 20:48:36 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.17",
+      "tag": "@cfdi/xml_v0.0.17",
+      "date": "Sat, 03 Dec 2022 19:23:48 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.16",
+      "tag": "@cfdi/xml_v0.0.16",
+      "date": "Fri, 02 Dec 2022 22:12:55 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.15",
+      "tag": "@cfdi/xml_v0.0.15",
+      "date": "Fri, 02 Dec 2022 17:23:44 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.14",
+      "tag": "@cfdi/xml_v0.0.14",
+      "date": "Sun, 27 Nov 2022 17:36:29 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.13",
+      "tag": "@cfdi/xml_v0.0.13",
+      "date": "Sun, 27 Nov 2022 03:35:07 GMT",
       "comments": {}
     },
     {
       "version": "0.0.11",
       "tag": "@cfdi/xml_v0.0.11",
-      "date": "Wed, 10 Aug 2022 15:23:54 GMT",
-      "comments": {
-        "none": [
-          {
-            "comment": "creacion de pdf"
-          }
-        ]
-      }
+      "date": "Wed, 19 Oct 2022 23:50:11 GMT",
+      "comments": {}
     },
     {
       "version": "0.0.10",
       "tag": "@cfdi/xml_v0.0.10",
-      "date": "Tue, 09 Aug 2022 17:08:57 GMT",
+      "date": "Tue, 09 Aug 2022 17:08:57 GMTa",
       "comments": {}
     }
   ]

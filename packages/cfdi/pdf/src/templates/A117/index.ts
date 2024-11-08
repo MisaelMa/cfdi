@@ -1,14 +1,11 @@
-import { Comprobante, XmlConcepto, XmlEmisor } from '@signati/core';
-import { XmlReceptor } from '@signati/core/lib/signati/types/Tags/receptor.inteface';
+import { CFDIComprobante, XmlConcepto, XmlEmisor, XmlReceptor, XmlImpuestos, XmlConceptoProperties } from '@cfdi/xml'
 import {
   FormaPagoList,
   MetodoPagoList,
   RegimenFiscalList,
   TipoComprobanteList,
-} from '@signati/core/lib/signati/types/Catalogs';
-import { XmlTfd } from '@signati/core/lib/signati/types/Complements/tfd/tfd.com';
-import { XmlImpuestos } from '@signati/core/lib/signati/types/Tags/impuestos.interface';
-import { XmlConceptoProperties } from '@signati/core/lib/signati/types/Tags/concepts.interface';
+} from '@cfdi/catalogos'
+import { XmlTfd } from '@cfdi/complementos/types/complements/tfd/tfd.com'
 import { ContentText } from 'pdfmake/interfaces';
 import { logo, NumeroALetras } from '@cfdi/utils';
 // @ts-ignore
@@ -49,7 +46,7 @@ export class A117 extends RPDF {
     }
   }
 
-  protected addFolio(c: Comprobante) {
+  protected addFolio(c: CFDIComprobante) {
     const data = [
       {
         text: c.Serie + ' - ' + c.Folio,
@@ -211,7 +208,7 @@ export class A117 extends RPDF {
     };
   }
 
-  protected addCatidad(comprobante: Comprobante) {
+  protected addCatidad(comprobante: CFDIComprobante) {
     this.docDefinition.content[3].table.body[0][1].text[1] = {
       text: '$' + comprobante.SubTotal + '\n',
     };
@@ -228,7 +225,7 @@ export class A117 extends RPDF {
       // tslint:disable-next-line:no-unused-expression
       let impues = '0.00';
       if (impuesto._attributes.TotalImpuestosTrasladados) {
-        impues = impuesto._attributes.TotalImpuestosTrasladados;
+        impues = impuesto._attributes.TotalImpuestosTrasladados as string
       }
       this.docDefinition.content[3].table.body[0][1].text[5] = {
         text: '$' + impues + '\n',
@@ -332,7 +329,7 @@ export class A117 extends RPDF {
     const rfcEmisor = emisor!._attributes!.Rfc;
     const rfcReceptor = receptor!._attributes!.Rfc;
     const sello = tfd._attributes.SelloCFD.substr(-8);
-    const totalSplit = total.split('.');
+    const totalSplit = total.split('.') as any;
     const totalStart = totalSplit[0].padStart(18, '0');
     const totalEnd = totalSplit[1]
       ? totalSplit[1].padEnd(6, '0')

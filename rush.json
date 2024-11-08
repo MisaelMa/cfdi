@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
-  "rushVersion": "5.70.0",
-  "pnpmVersion": "7.1.0",
+  "rushVersion": "5.138.0",
+  "pnpmVersion": "9.9.0",
   "pnpmOptions": {
     "strictPeerDependencies": false,
     "useWorkspaces": true
@@ -11,13 +11,17 @@
   "approvedPackagesPolicy": {
     "reviewCategories": [
       "production",
-      "libraries"
+      "libraries",
+      "private"
     ],
     "ignoredNpmScopes": [
       "@types"
     ]
   },
-  "gitPolicy": {},
+  "gitPolicy": {
+    "versionBumpCommitMessage": "chore: Bump versions [skip ci]",
+    "changeLogUpdateCommitMessage": "chore: Update changelogs [skip ci]"
+  },
   "repository": {
     "url": "https://github.com/MisaelMa/recreando",
     "defaultBranch": "main",
@@ -31,6 +35,9 @@
   },
   "variants": [],
   "telemetryEnabled": false,
+  "allowedProjectTags": [
+    "beta"
+  ],
   "projects": [
     {
       "packageName": "@recreando/typescript-settings",
@@ -53,69 +60,109 @@
     {
       "packageName": "@cfdi/xml",
       "projectFolder": "packages/cfdi/xml",
-      "versionPolicyName": "cfdiXml",
+      "versionPolicyName": "xml",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
+      "packageName": "@cfdi/complementos",
+      "projectFolder": "packages/cfdi/complementos",
+      "versionPolicyName": "complementos",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/xsd",
+      "projectFolder": "packages/cfdi/xsd",
+      "versionPolicyName": "xsd",
+      "reviewCategory": "libraries",
+      "shouldPublish": true,
+      "tags": [
+        "beta"
+      ]
+    },
+    {
+      "packageName": "@cfdi/schema",
+      "projectFolder": "packages/cfdi/schema",
+      "reviewCategory": "private",
+      "shouldPublish": false,
+      "skipRushCheck": true
+    },
+    {
       "packageName": "@cfdi/csd",
       "projectFolder": "packages/cfdi/csd",
-      "versionPolicyName": "cfdiCsd",
+      "versionPolicyName": "csd",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/csf",
+      "projectFolder": "packages/cfdi/csf",
+      "versionPolicyName": "csf",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/catalogos",
       "projectFolder": "packages/cfdi/catalogos",
-      "versionPolicyName": "cfdiCatalogos",
+      "versionPolicyName": "catalogs",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/pdf",
       "projectFolder": "packages/cfdi/pdf",
-      "versionPolicyName": "cfdiPdf",
+      "versionPolicyName": "pdf",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": false,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@cfdi/utils",
       "projectFolder": "packages/cfdi/utils",
-      "versionPolicyName": "cfdiUtils",
+      "versionPolicyName": "utils",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
       "packageName": "@cfdi/curp",
       "projectFolder": "packages/cfdi/curp",
-      "versionPolicyName": "cfdiCurp",
+      "versionPolicyName": "curp",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@cfdi/rfc",
       "projectFolder": "packages/cfdi/rfc",
-      "versionPolicyName": "cfdiRfc",
+      "versionPolicyName": "rfc",
       "reviewCategory": "libraries",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "tags": [
+        "beta"
+      ]
     },
     {
       "packageName": "@clir/openssl",
       "projectFolder": "packages/clir/openssl",
-      "versionPolicyName": "clirOpenssl",
+      "versionPolicyName": "openssl",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
-      "packageName": "@clir/saxon-he",
+      "packageName": "@saxon-he/cli",
       "projectFolder": "packages/clir/saxon-he",
-      "versionPolicyName": "clirSaxon-he",
+      "versionPolicyName": "saxon",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },
     {
-      "packageName": "@recreando/server",
-      "projectFolder": "packages/server",
+      "packageName": "@recreando/express",
+      "projectFolder": "packages/express",
       "reviewCategory": "libraries",
       "shouldPublish": false
     }

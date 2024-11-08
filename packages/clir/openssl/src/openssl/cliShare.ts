@@ -1,6 +1,6 @@
-import * as execa from 'execa';
-import { commandSync } from 'execa';
+import * as execa from '@esm2cjs/execa';
 
+import { execaCommandSync } from '@esm2cjs/execa';
 import { getOsComandBin } from '../utils';
 
 /**
@@ -97,9 +97,10 @@ export class CliShare {
    */
   public run(options?: execa.SyncOptions): string {
     try {
-      const cli = this.commandline.join(' ');
+      const cli = [...this.commandline].join(' ');
+      // @ts-ignore
       this.commandline = [this.commandline[0], this.commandline[1]];
-      const openssl = commandSync(cli, options).stdout;
+      const openssl = execaCommandSync(cli, options).stdout;
       return openssl;
     } catch (e) {
       throw new Error('run');
@@ -111,7 +112,8 @@ export class CliShare {
    */
   public cli(): string {
     try {
-      const cli = this.commandline.join(' ');
+      const cli = [...this.commandline].join(' ');
+      // @ts-ignore
       this.commandline = [this.commandline[0], this.commandline[1]];
       return cli;
     } catch (e) {

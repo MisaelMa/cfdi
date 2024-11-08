@@ -4,9 +4,10 @@
     "types": [
       "node",
       "jest",
+      "@testing-library/jest-dom"
     ],
     "outDir": "./dist",
-    "rootDir": "./src",
+    // "rootDir": "./src",
     "jsx": "preserve",
     "importHelpers": true,
     // output .d.ts declaration files for consumers

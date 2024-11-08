@@ -2,6 +2,48 @@
   "name": "@cfdi/csd",
   "entries": [
     {
+      "version": "0.0.20",
+      "tag": "@cfdi/csd_v0.0.20",
+      "date": "Mon, 06 Mar 2023 22:48:00 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.19",
+      "tag": "@cfdi/csd_v0.0.19",
+      "date": "Mon, 06 Mar 2023 21:47:03 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.18",
+      "tag": "@cfdi/csd_v0.0.18",
+      "date": "Sat, 03 Dec 2022 20:48:35 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.17",
+      "tag": "@cfdi/csd_v0.0.17",
+      "date": "Sat, 03 Dec 2022 19:23:52 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.16",
+      "tag": "@cfdi/csd_v0.0.16",
+      "date": "Fri, 02 Dec 2022 22:12:54 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.15",
+      "tag": "@cfdi/csd_v0.0.15",
+      "date": "Sun, 27 Nov 2022 17:29:42 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.14",
+      "tag": "@cfdi/csd_v0.0.14",
+      "date": "Sun, 27 Nov 2022 03:35:05 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.11",
       "tag": "@cfdi/csd_v0.0.11",
       "date": "Fri, 12 Aug 2022 18:33:44 GMT",

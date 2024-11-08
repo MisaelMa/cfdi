@@ -1,0 +1,10 @@
+{
+  "name": "rush-commitlint",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@types/node": "^22.7.5"
+  }
+}

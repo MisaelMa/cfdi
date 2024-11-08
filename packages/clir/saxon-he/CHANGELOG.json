@@ -1,9 +1,51 @@
 {
-  "name": "@clir/saxon-he",
+  "name": "@saxon-he/cli",
   "entries": [
     {
+      "version": "12.5.0",
+      "tag": "@saxon-he/cli_v12.5.0",
+      "date": "Fri, 08 Nov 2024 00:48:38 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.15",
+      "tag": "saxon-he/cli_v0.0.15",
+      "date": "Sat, 03 Dec 2022 20:48:38 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.14",
+      "tag": "@saxon-he/cli_v0.0.14",
+      "date": "Sat, 03 Dec 2022 19:23:53 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.13",
+      "tag": "@saxon-he/cli_v0.0.13",
+      "date": "Sun, 27 Nov 2022 18:43:12 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.12",
+      "tag": "@saxon-he/cli_v0.0.12",
+      "date": "Sun, 27 Nov 2022 17:45:40 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.11",
+      "tag": "@saxon-he/cli_v0.0.11",
+      "date": "Sun, 27 Nov 2022 17:29:46 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "sao"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.10",
-      "tag": "@clir/saxon-he_v0.0.10",
+      "tag": "@saxon-he/cli_v0.0.10",
       "date": "Tue, 09 Aug 2022 17:08:57 GMT",
       "comments": {}
     }

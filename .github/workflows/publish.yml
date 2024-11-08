@@ -1,0 +1,26 @@
+name: publish
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cdfi
+        uses: actions/checkout@v4
+
+      - name: CFDI dependencies
+        uses: ./.github/actions/cfdi
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Publish
+        run: |
+          echo "amir"
+          rush publish -p -b main --include-all --set-access-level=public
+          git commit -a -m 'npm(publish): new releases' || echo "No changes to commit"
+          git push
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

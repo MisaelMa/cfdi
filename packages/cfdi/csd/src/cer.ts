@@ -1,176 +1,175 @@
-import { readFileSync } from 'fs';
-
-import pkg from 'node-forge';
-const { pki } = pkg;
-import moment from 'moment';
-import { x509 } from '@clir/openssl';
 import console from 'console';
+import moment from 'moment';
+import pkg from 'node-forge';
+import { readFileSync } from 'fs';
+import { x509 } from '@clir/openssl';
+
+const { pki } = pkg;
 // @ts-ignore
 // import * as rfc from "validate-rfc"
 // import { AnyKey } from '../interface/certificate.interface';
 // import { readFileSync } from '../utils';
 
-
-let isCert = false
-let allowedFiles = [".cer", ".pem"];
-let file = ''
-let regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+let isCert = false;
+let allowedFiles = ['.cer', '.pem'];
+let file = '';
+let regex = new RegExp(
+  '([a-zA-Z0-9s_\\.-:])+(' + allowedFiles.join('|') + ')$'
+);
 export const setFile = (filePath: string) => {
-
-  const typeFile = filePath.match(/\.[0-9a-z]+$/i)
+  const typeFile = filePath.match(/\.[0-9a-z]+$/i);
   if (typeFile && typeFile.length > 0) {
     if (regex.test(filePath.toLowerCase())) {
-      file = filePath
-      console.log("typeFile", typeFile[0])
+      file = filePath;
+      console.log('typeFile', typeFile[0]);
       if (typeFile[0] === '.cer') {
-        isCert = true
+        isCert = true;
       }
     } else {
-      console.log("files not suported")
+      console.log('files not suported');
     }
   }
-}
+};
 
 export const getPem = (options = { begin: false }) => {
   const cli = x509.inform('DER').in(file).outform('PEM');
-  console.log(cli.cli())
   try {
-    const { begin } = options
-    let pem = ''
-    console.log("isCert", isCert)
+    const { begin } = options;
+    let pem = '';
     if (isCert) {
       pem = cli.run();
     } else {
-      pem = readFileSync(file, 'ascii')
+      pem = readFileSync(file, 'ascii');
     }
     if (begin) {
-      return pem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '')
+      return pem.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '');
     } else {
-      return pem
+      return pem;
     }
   } catch (e) {
     // console.log(e)
     const cerPem = cli.cli();
-    console.log(cli.cli())
-    throw new Error(cerPem);
+    throw new Error('CLI: ' + cerPem);
   }
-}
+};
 
 export const getData = (): any => {
   return pki.certificateFromPem(getPem());
-}
+};
 
 export const version = (): number => {
-  return getData().version
-}
+  return getData().version;
+};
 
 /**
  *getNoCer
  */
 export const getNoCer = (): string => {
   const { serialNumber = '' } = getData();
-  const nom = serialNumber.match(/.{1,2}/g) as string[]
-  return nom.map((v: string) => {
-    return String.fromCharCode(parseInt(v, 16));
-  }).join('');
-}
+  const nom = serialNumber.match(/.{1,2}/g) as string[];
+  return nom
+    .map((v: string) => {
+      return String.fromCharCode(parseInt(v, 16));
+    })
+    .join('');
+};
 /**
-  *text
-  *
-  * @param cerFile
-  * string
-  */
+ *text
+ *
+ * @param cerFile
+ * string
+ */
 export const text = (): string => {
-  const cli = x509.inform('DER').in(file).noout().text()
+  const cli = x509.inform('DER').in(file).noout().text();
   try {
     return cli.run();
   } catch (e) {
     throw new Error(cli.cli());
   }
-}
+};
 
 /**
-   *pubkey
-   *
-   * @param cerFile
-   * string
-   */
+ *pubkey
+ *
+ * @param cerFile
+ * string
+ */
 export const pubkey = (options = { begin: false }): string => {
-  const { begin = false } = options
-  const cli = x509.inform('DER').in(file).noout().pubkey();
-  try {
-    // const result = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -pubkey`).stdout;
-    const data = cli.run()
-    return begin ? data.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '') : data;
-  } catch (error) {
-    throw new Error(cli.cli())
-  }
-}
+  const { begin = false } = options;
 
+  try {
+    // const cli = x509.inform('DER').in(file).noout().pubkey();
+    // const result = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -pubkey`).stdout;
+    // const data = cli.run();
+    const data = pki.publicKeyToPem(getData().publicKey);
+    return data
+    // return begin ? data.replace(/(-+[^-]+-+)/g, '').replace(/\s+/g, '') : data;
+  } catch (error) {
+    console.log(error)
+    throw new Error();
+  }
+};
 
 /**
  *
  * @param cerFile
  */
 export const modulu = (): string => {
-  const cli = x509.inform('DER').in(file).noout().modulus();
+  // const cli = x509.inform('DER').in(file).noout().modulus();
   try {
     // const result = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -modulus`).stdout
-    const data = cli.run();
+    // const data = cli.run();
+    let data = '';
     return data
       .replace('Modulus=', '')
       .replace(/^\s+/g, '')
-      .replace(/\s+$/g, '')
-
+      .replace(/\s+$/g, '');
   } catch (e) {
-    throw new Error(cli.cli())
+    return ""
+   // throw new Error(cli.cli());
   }
-}
-
+};
 
 /**
-  *
-  * @param cerFile
-  */
+ *
+ * @param cerFile
+ */
 export const serial = (): string => {
   try {
-    return getData().serialNumber
+    return getData().serialNumber;
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
-
+};
 
 /**
  *
  * @param cerFile
  */
 export const subjectHash = (): string => {
-  const cli = x509.inform('DER').in(file).noout().subject_hash()
+  const cli = x509.inform('DER').in(file).noout().subject_hash();
   try {
     return cli.run();
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -subject_hash`).stdout
   } catch (e) {
-    throw new Error(cli.cli())
+    throw new Error(cli.cli());
   }
-}
-
+};
 
 /**
-*
-* @param cerFile
-*/
+ *
+ * @param cerFile
+ */
 export const issuerHash = (): string => {
-  const cli = x509.inform('DER').in(file).noout().issuer_hash()
+  const cli = x509.inform('DER').in(file).noout().issuer_hash();
   try {
     return cli.run();
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -issuer_hash`).stdout
   } catch (e) {
-    throw new Error(cli.cli())
+    throw new Error(cli.cli());
   }
-}
-
+};
 
 /**
  *
@@ -182,9 +181,9 @@ export const ocspid = () => {
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -ocspid`).stdout
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
@@ -196,9 +195,9 @@ export const hash = (): string => {
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -hash`).stdout
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
@@ -210,9 +209,9 @@ export const subjectHashOld = (): string => {
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -subject_hash_old`).stdout
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
@@ -224,35 +223,35 @@ export const issuerHashOld = (): string => {
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -issuer_hash_old`).stdout
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
  * @param cerFile
  */
 export const issuer = () => {
-  const obj: any = {}
+  const obj: any = {};
 
-  const attributes = getData().issuer.attributes
+  const attributes = getData().issuer.attributes;
   for (const attr of attributes) {
     // @ts-ignore
-    obj[attr.name] = attr.value
+    obj[attr.name] = attr.value;
   }
-  return obj
-}
+  return obj;
+};
 
 export const subject = () => {
-  const obj: any = {}
+  const obj: any = {};
 
-  const attributes = getData().subject.attributes
+  const attributes = getData().subject.attributes;
   for (const attr of attributes) {
-    const validate = ''
-    const nameField = attr.name || validate
+    const validate = '';
+    const nameField = attr.name || validate;
     if (attr.name) {
       // @ts-ignore
-      obj[attr.name] = attr.value
+      obj[attr.name] = attr.value;
     }
     //else {
     // if (rfc(attr.value)) {
@@ -265,21 +264,22 @@ export const subject = () => {
     //}
   }
 
-  return obj
-}
-
+  return obj;
+};
 
 /**
-  *
-  * @param file
-  * @param format
-  */
-export const date = (format = 'DD/MM/YYYY HH:mm:ss.SSS'): { startDate: string; endDate: string } => {
+ *
+ * @param file
+ * @param format
+ */
+export const date = (
+  format = 'DD/MM/YYYY HH:mm:ss.SSS'
+): { startDate: string; endDate: string } => {
   try {
     // let startDateCer = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -startdate`).stdout
     /// const DateCer = //x509.inform('DER').in(file).noout().startdate().enddate().run();
-    let sDate = getData().validity.notBefore // data[0].replace('notBefore=', '').replace('  ', '');
-    let eDate = getData().validity.notAfter  // data[1].replace('notAfter=', '').replace('  ', '');
+    let sDate = getData().validity.notBefore; // data[0].replace('notBefore=', '').replace('  ', '');
+    let eDate = getData().validity.notAfter; // data[1].replace('notAfter=', '').replace('  ', '');
 
     let startDate = moment(sDate).format(format);
     let endDate = moment(eDate).format(format);
@@ -290,9 +290,9 @@ export const date = (format = 'DD/MM/YYYY HH:mm:ss.SSS'): { startDate: string; e
     };
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
@@ -304,19 +304,13 @@ export const checkend = (seconds: string | number) => {
     // Certificate will expire El certificado caducará
     // Certificate will not expire El certificado no caducará
     // const check = commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -checkend ${seconds}`).stdout
-    const check = x509
-      .inform('DER')
-      .in(file)
-      .noout()
-      .checkend(seconds)
-      .run();
+    const check = x509.inform('DER').in(file).noout().checkend(seconds).run();
     return check;
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
-
+};
 
 /**
  *
@@ -328,9 +322,9 @@ export const ocspUri = (): string => {
     // return commandSync(`${getOsComandBin()} x509 -inform der -in ${cer} -noout -ocsp_uri`).stdout
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
@@ -340,8 +334,8 @@ export const validity = (): {
   notBefore: Date;
   notAfter: Date;
 } => {
-  return getData().validity
-}
+  return getData().validity;
+};
 
 /**
  *
@@ -353,9 +347,9 @@ export const fingerPrint = (): string => {
     return x509.inform('DER').in(file).noout().fingerprint().run();
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
+};
 
 /**
  *
@@ -369,67 +363,62 @@ export const C = (): string => {
     return x509.inform('DER').in(file).noout().C().run();
   } catch (e) {
     // @ts-ignore
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
-}
-  // /**
-  //  *agetCerPem
-  //  *
-  //  * @param cerpempath
-  //  * string
-  //  */
-  // public agetCerPem(cerpempath: string): string {
-  //   return cerpempath;
-  // }
+};
+// /**
+//  *agetCerPem
+//  *
+//  * @param cerpempath
+//  * string
+//  */
+// public agetCerPem(cerpempath: string): string {
+//   return cerpempath;
+// }
 
-  // /**
-  //  *getCerFile
-  //  *
-  //  * @param cerfile
-  //  * string
-  //  */
-  // public getCerFile(cerfile: string): string {
-  //   return cerfile;
-  // }
-  // /**
-  //  *
-  //  */
-  // public async getFechaVigencia() {
-  //   return 1;
-  // }
+// /**
+//  *getCerFile
+//  *
+//  * @param cerfile
+//  * string
+//  */
+// public getCerFile(cerfile: string): string {
+//   return cerfile;
+// }
+// /**
+//  *
+//  */
+// public async getFechaVigencia() {
+//   return 1;
+// }
 
+// /**
+//  *
+//  */
+// public async validarCertificado() {
+//   return 1;
+// }
 
-  // /**
-  //  *
-  //  */
-  // public async validarCertificado() {
-  //   return 1;
-  // }
+// /**
+//  *
+//  */
+// public async generaPFX() {
+//   return 1;
+// }
 
-  // /**
-  //  *
-  //  */
-  // public async generaPFX() {
-  //   return 1;
-  // }
+// /**
+//  *
+//  */
+// public async pareja() {
+//   return 1;
+// }
 
-  // /**
-  //  *
-  //  */
-  // public async pareja() {
-  //   return 1;
-  // }
+// /**
+//  *
+//  * @param nombreCer
+//  */
+// public async certificadoBase64(nombreCer: any) {
+//   return 1;
+// }
 
-  // /**
-  //  *
-  //  * @param nombreCer
-  //  */
-  // public async certificadoBase64(nombreCer: any) {
-  //   return 1;
-  // }
-
-  //
-
-
-
-
+//

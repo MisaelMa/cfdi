@@ -1,45 +1,13 @@
-import * as fs from 'fs';
-
+import  fs from 'fs';
+import  os from 'os';
+import  path from 'path';
 /**
  *
  */
 export class FileSystem {
-  /**
-   *manageDirectoryTemp
-   *
-   * @param action
-   * string
-   */
-  public static manageDirectoryTemp(action: string): void {
-    const dir = './tmp';
-    if (!fs.existsSync(dir)) {
-      if (action === 'create') {
-        fs.mkdirSync(dir);
-      }
-    } else if (action === 'delete') {
-      this.deleteFolderRecursive(dir);
-    }
-  }
 
-  /**
-   *deleteFolderRecursive
-   *
-   * @param path
-   * string
-   */
-  public static deleteFolderRecursive(path: string): void {
-    if (fs.existsSync(path)) {
-      fs.readdirSync(path).forEach(file => {
-        const curPath = `${path}/${file}`;
-        if (fs.lstatSync(curPath).isDirectory()) {
-          this.deleteFolderRecursive(curPath);
-        } else {
-          fs.unlinkSync(curPath);
-        }
-      });
-      fs.rmdirSync(path);
-    }
-  }
+
+ 
 
   /**
    *generateNameTemp
@@ -59,5 +27,9 @@ export class FileSystem {
    */
   public static readFileSync(file: string): any {
     return fs.readFileSync(file, 'utf8');
+  }
+
+  public static getTmpFullPath(name: string): string {
+    return path.join(os.tmpdir(), `${name}.xml`);
   }
 }

@@ -1,56 +1,80 @@
 [
   {
-    "policyName": "cfdiXml",
+    "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10-dev.3",
+    "version": "4.0.14",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiCatalogos",
+    "policyName": "complementos",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
+    "version": "4.0.14",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiCsd",
+    "policyName": "transform",
     "definitionName": "lockStepVersion",
-    "version": "0.0.11",
+    "version": "0.0.1-beta.0",
+    "nextBump": "prerelease"
+  },
+  {
+    "policyName": "catalogs",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.13-beta.0",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiPdf",
+    "policyName": "csd",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
+    "version": "0.0.21-beta.1",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiCurp",
+    "policyName": "csf",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
+    "version": "0.0.1-beta.2",
+    "nextBump": "prerelease"
+  },
+  {
+    "policyName": "pdf",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10-beta.2",
+    "nextBump": "prerelease"
+  },
+  {
+    "policyName": "curp",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10-beta.2",
+    "nextBump": "prerelease"
+  },
+  {
+    "policyName": "rfc",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.10-beta.2",
+    "nextBump": "prerelease"
+  },
+  {
+    "policyName": "utils",
+    "definitionName": "lockStepVersion",
+    "version": "0.0.13",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiRfc",
+    "policyName": "openssl",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
+    "version": "0.0.16",
     "nextBump": "patch"
   },
   {
-    "policyName": "cfdiUtils",
+    "policyName": "saxon",
     "definitionName": "lockStepVersion",
-    "version": "0.0.12",
+    "version": "12.5.0",
     "nextBump": "patch"
   },
   {
-    "policyName": "clirOpenssl",
+    "policyName": "xsd",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10",
-    "nextBump": "patch"
-  },
-  {
-    "policyName": "clirSaxon-he",
-    "definitionName": "lockStepVersion",
-    "version": "0.0.10",
+    "version": "4.0.14",
     "nextBump": "patch"
   }
 ]

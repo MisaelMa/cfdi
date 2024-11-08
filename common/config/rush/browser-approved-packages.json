@@ -3,6 +3,22 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
   "packages": [
     {
+      "name": "@ammc/components",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@ammc/eslint-settings",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@ammc/jest",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@ammc/typescript-settings",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@babel/core",
       "allowedCategories": [ "libraries" ]
     },
@@ -15,7 +31,15 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/complementos",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/csd",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@cfdi/csf",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -31,6 +55,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/schema",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/utils",
       "allowedCategories": [ "libraries" ]
     },
@@ -39,7 +67,35 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "@cfdi/xsd",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@clir/openssl",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@saxon-he/cli",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/cache",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/react",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/server",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@emotion/styled",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@esm2cjs/execa",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -63,6 +119,30 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@hapi/joi",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mdi/js",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mdi/react",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mui/icons-material",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@mui/material",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs-modules/mailer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/cli",
       "allowedCategories": [ "libraries" ]
     },
@@ -71,7 +151,19 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/config",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/core",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/jwt",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/passport",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -79,7 +171,15 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/schedule",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@nestjs/schematics",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjs/swagger",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -87,43 +187,55 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@nestjs/typeorm",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjsx/crud",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@nestjsx/crud-typeorm",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@recreando/eslint-settings",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@recreando/jest",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
+    },
+    {
+      "name": "@recreando/tss",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@recreando/typescript-settings",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
+    },
+    {
+      "name": "@reduxjs/toolkit",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@rushstack/eslint-config",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@rushstack/heft",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@rushstack/heft-jest-plugin",
       "allowedCategories": [ "libraries", "production" ]
     },
     {
-      "name": "@signati/core",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@signati/openssl",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@signati/saxon",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "@size-limit/preset-small-lib",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "@swc/cli",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -131,16 +243,24 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@swc/helpers",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@swc/jest",
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@swc/register",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@testing-library/dom",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@testing-library/jest-dom",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "@testing-library/react",
@@ -159,8 +279,20 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@vitest/coverage-v8",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "@vitest/ui",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
       "name": "2captcha",
       "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "ajv",
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "axios",
@@ -175,11 +307,39 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "chalk",
+      "name": "bcrypt",
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "bcryptjs",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "chalk",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
       "name": "chokidar",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "class-transformer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "class-validator",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "cookie",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "cookies-next",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "cpy-cli",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -188,7 +348,7 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "eslint-config-airbnb",
@@ -200,6 +360,10 @@
     },
     {
       "name": "eslint-config-airbnb-typescript",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "eslint-config-next",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -263,6 +427,14 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "formik",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "get-mexican-data-by-curp",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "graphql",
       "allowedCategories": [ "libraries" ]
     },
@@ -271,8 +443,12 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "husky",
+      "name": "helmet",
       "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "husky",
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "identity-obj-proxy",
@@ -283,8 +459,12 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "iron-session",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "jest",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
       "name": "jest-environment-jsdom",
@@ -311,6 +491,18 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "jose",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "jsonwebtoken",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "material-ui-popup-state",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "moment",
       "allowedCategories": [ "libraries" ]
     },
@@ -319,7 +511,15 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "mysql2",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "next",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "next-redux-wrapper",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -327,20 +527,64 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "node_modules-path",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "node-forge",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "nodemailer",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "nodemon",
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "passport",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "passport-jwt",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "passport-local",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "pdf-parse",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "pdf-text",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "pdfmake",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "pg",
       "allowedCategories": [ "libraries" ]
     },
     {
       "name": "prettier",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "puppeteer",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "puppeteer-extra",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "puppeteer-extra-plugin-recaptcha",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "qrcode",
@@ -363,11 +607,31 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "redux",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "redux-logger",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "redux-persist",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "reflect-metadata",
       "allowedCategories": [ "libraries" ]
     },
     {
       "name": "rimraf",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "rollup",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "rollup-plugin-swc",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -379,12 +643,12 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "semantic-release",
+      "name": "saxon-js",
       "allowedCategories": [ "libraries" ]
     },
     {
       "name": "size-limit",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "source-map-support",
@@ -440,11 +704,11 @@
     },
     {
       "name": "tsdx",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "tslib",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "tslint",
@@ -455,12 +719,36 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
+      "name": "typeorm",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "typescript",
-      "allowedCategories": [ "libraries", "production" ]
+      "allowedCategories": [ "libraries", "private", "production" ]
+    },
+    {
+      "name": "underscore",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "validate-rfc",
       "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "vite",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "vite-plugin-node",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "vite-tsconfig-paths",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "vitest",
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "webpack",
@@ -468,6 +756,30 @@
     },
     {
       "name": "xml-js",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "xsd2json",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "xsd2jsonschema",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "xslt",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "xslt-processor",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "xslt3",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "yup",
       "allowedCategories": [ "libraries" ]
     }
   ]

@@ -1,0 +1,44 @@
+{
+  "name": "@recreando/express",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^12.3.1",
+    "pdf-parse": "^1.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "xslt3": "^2.4.0",
+    "ajv": "^8.12.0",
+    "@cfdi/pdf": "workspace:*",
+    "@cfdi/curp": "workspace:*",
+    "@cfdi/xml": "workspace:*",
+    "@cfdi/schema": "workspace:*",
+    "@cfdi/xsd": "workspace:*",
+    "@cfdi/complementos": "workspace:*",
+    "@cfdi/csd": "workspace:*",
+    "@cfdi/csf": "workspace:*",
+    "@clir/openssl": "workspace:*",
+    "@cfdi/utils": "workspace:*",
+    "@saxon-he/cli": "workspace:*"
+  },
+  "devDependencies": {
+    "@recreando/eslint-settings": "workspace:*",
+    "@recreando/jest": "workspace:*",
+    "@recreando/typescript-settings": "workspace:*",
+    "@types/pdf-parse": "^1.1.1",
+    "@types/node": "^18.11.3",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "^8.26.0",
+    "eslint-config-next": "^12.3.1",
+    "typescript": "^4.8.4"
+  }
+}

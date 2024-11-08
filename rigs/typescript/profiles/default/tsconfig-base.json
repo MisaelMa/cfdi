@@ -40,37 +40,49 @@
     "types": [],
     "paths": {
       "@cfdi/xml": [
-        "./node_modules/@cfdi/xml/src/index"
+        "./node_modules/@cfdi/xml/src"
       ],
-      "@cfdi/xml/*": [
-        "./node_modules/@cfdi/xml/src/*"
+      "@cfdi/complementos": [
+        "./node_modules/@cfdi/complementos/src"
       ],
-      "@cfdi/csd/*": [
-        "./node_modules/@cfdi/csd/src/*"
+      "@cfdi/complementos/*": [
+        "./node_modules/@cfdi/complementos/src/*"
       ],
-      "@cfdi/catalogos": [
-        "./node_modules/@cfdi/catalogos/src/index"
+      "@cfdi/csd": [
+        "./node_modules/@cfdi/csd/src"
+      ],
+      "@cfdi/schema": [
+        "./node_modules/@cfdi/schema/src"
+      ],
+      "@cfdi/xsd": [
+        "./node_modules/@cfdi/xsd/src"
+      ],
+      "@cfdi/xsd/*": [
+        "./node_modules/@cfdi/xsd/src/*"
+      ],
+      "@cfdi/csf": [
+        "./node_modules/@cfdi/csf/src"
       ],
       "@cfdi/catalogos/*": [
         "./node_modules/@cfdi/catalogos/src/*"
       ],
-      "@cfdi/pdf": [
-        "./node_modules/@cfdi/pdf/src/index"
+      "@cfdi/catalogos": [
+        "./node_modules/@cfdi/catalogos/src"
       ],
-      "@cfdi/pdf/*": [
-        "./node_modules/@cfdi/pdf/src/*"
+      "@cfdi/pdf": [
+        "./node_modules/@cfdi/pdf/src"
       ],
       "@cfdi/curp": [
         "./node_modules/@cfdi/curp/src"
       ],
-      "@cfdi/curp/*": [
-        "./node_modules/@cfdi/curp/src/*"
-      ],
       "@clir/openssl": [
-        "./node_modules/@clir/openssl/src/index"
+        "./node_modules/@clir/openssl/src"
       ],
-      "@clir/openssl/*": [
-        "./node_modules/@clir/openssl/src/*"
+      "@saxon-he/cli": [
+        "./node_modules/@saxon-he/cli/src"
+      ],
+      "@saxon-he/cli/*": [
+        "./node_modules/@saxon-he/cli/src/*"
       ]
 
     }
@@ -83,7 +95,15 @@
     "../../../../../node_modules/@recreando/**/src/**/*.ts",
     "../../../../../node_modules/@recreando/**/src/**/*.tsx",
     "../../../../../node_modules/@recreando/**/src/**/*.d.ts",
-    "../../../../../node_modules/@recreando/**/src/**/*.json"
+    "../../../../../node_modules/@recreando/**/src/**/*.json",
+    "../../../../../node_modules/@cfdi/**/src/**/*.ts",
+    "../../../../../node_modules/@cfdi/**/src/**/*.tsx",
+    "../../../../../node_modules/@cfdi/**/src/**/*.d.ts",
+    "../../../../../node_modules/@cfdi/**/src/**/*.json",
+    "../../../../../node_modules/@clir/**/src/**/*.ts",
+    "../../../../../node_modules/@clir/**/src/**/*.tsx",
+    "../../../../../node_modules/@clir/**/src/**/*.d.ts",
+    "../../../../../node_modules/@clir/**/src/**/*.json"
 
   ],
   "exclude": [

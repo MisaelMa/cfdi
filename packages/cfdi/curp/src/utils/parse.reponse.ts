@@ -29,7 +29,7 @@ export const ensure = (code: string) => {
 }
 
 export const parseResponse = (payload: Renapo): Mexican => {
-  const register = payload.registros[0];
+  const register = payload.registros[0] as any;
   return {
     curp: register.curp,
     fatherName: register.primerApellido,

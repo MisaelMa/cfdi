@@ -2,17 +2,34 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
   "commands": [
     {
-      "name": "publish:cfdi:xml",
+      "name": "commitlint",
       "commandKind": "global",
-      "summary": "Build webapp for deployment",
-      "shellCommand": "cd packages/cfdi/xml && rushx semantic-release"
+      "summary": "Runs commitlint on the commit messages.",
+      "description": "Used by the commit-msg Git hook. This command invokes commitlint to ensure that the commit messages meet the conventional commit format",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-commitlint",
+      "shellCommand": "commitlint"
     },
     {
-      "name": "publish:cfdi:catalogos",
-      "commandKind": "global",
-      "summary": "Build webapp for deployment",
-      "shellCommand": "cd packages/cfdi/xml && rushx semantic-release"
+      "commandKind": "bulk",
+      "name": "test:ci",
+      "summary": "Test all packages in CI mode",
+      "enableParallelism": true,
+      "ignoreMissingScript": true,
+      "safeForSimultaneousRushProcesses": true,
+      "ignoreDependencyOrder": true,
+      "allowWarningsInSuccessfulBuild": true
     }
   ],
-  "parameters": []
+  "parameters": [
+    {
+      "parameterKind": "string",
+      "argumentName": "MESSAGE",
+      "longName": "--edit",
+      "description": "",
+      "associatedCommands": [
+        "commitlint"
+      ]
+    }
+  ]
 }

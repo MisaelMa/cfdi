@@ -1,4 +1,4 @@
-import { XmlCdfi } from '@signati/core';
+import { XmlCdfi } from '@cfdi/xml';
 import { readFileSync } from 'fs';
 import { xml2js } from 'xml-js';
 
@@ -23,5 +23,5 @@ export function XmlToJson(xmlPath: string): XmlCdfi {
      }*/
   };
   const json = xml2js(stringXml, options) as unknown;
-  return json as XmlCdfi
+  return json as XmlCdfi;
 }

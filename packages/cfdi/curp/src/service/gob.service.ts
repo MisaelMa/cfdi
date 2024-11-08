@@ -4,7 +4,7 @@ import { Renapo, TypeFinde, WithCurp, WithData } from '../types/gob.types';
 import { Mexican } from '../types/mexican.types';
 import { ensure, parseResponse } from '../utils/parse.reponse';
 import { captchaSolver } from '../utils/recaptach';
-import { api } from './api';
+import { apiBase } from './api';
 
 interface ConsutalWithData extends WithData, TypeFinde {
   fechaNacimiento: string
@@ -18,7 +18,7 @@ const constulta = async (data: ConsutalWithData | ConsutalWithCurpt): Promise<Re
     'https://www.gob.mx/curp'
   );
 
-  return api.post<Renapo>('renapoCURP/consulta', {
+  return apiBase.post<Renapo>('renapoCURP/consulta', {
     ...data,
     ip: '127.0.0.1',
     response: captchaSolution,
@@ -57,7 +57,7 @@ export const findByData = async (data: WithData) => {
 
 export const getBase64Pdf = (params: string) => {
   // 'data:application/pdf;base64,'
-  api.get(`https://consultas.curp.gob.mx/CurpSP/pdfgobmx${params}`).then((res) => res.data)
+  apiBase.get(`https://consultas.curp.gob.mx/CurpSP/pdfgobmx${params}`).then((res) => res.data)
 }
 export const savePDF = (options: {
   file: string,

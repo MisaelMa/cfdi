@@ -2,6 +2,24 @@
   "name": "@cfdi/catalogos",
   "entries": [
     {
+      "version": "0.0.12",
+      "tag": "@cfdi/catalogos_v0.0.12",
+      "date": "Sun, 27 Nov 2022 17:29:41 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.0.11",
+      "tag": "@cfdi/catalogos_v0.0.11",
+      "date": "Sat, 26 Nov 2022 20:14:50 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "catalogos del sat separados"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.10",
       "tag": "@cfdi/catalogos_v0.0.10",
       "date": "Tue, 09 Aug 2022 17:08:57 GMT",

@@ -1,0 +1,78 @@
+name: Test
+on:
+  pull_request:
+
+  workflow_call:
+    inputs:
+      target-package:
+        type: string
+        description: Rush package to run the tests for (e.g. 'app')
+        required: true
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Schema
+        uses: actions/checkout@v4
+        with:
+          repository: MisaelMa/cfdi-schema
+          path: packages/cfdi/schema
+          token: ${{ secrets.PAT_TOKEN }}
+      
+      - name: Set up Java 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Download Saxon ZIP
+        run: |
+          curl -L -o SaxonHE12-5J.zip https://github.com/Saxonica/Saxon-HE/raw/main/12/Java/SaxonHE12-5J.zip
+
+      - name: Unzip Saxon
+        run: |
+          unzip SaxonHE12-5J.zip -d saxon
+          
+      - name: Make Saxon available as command
+        run: |
+          echo '#!/bin/bash' > $GITHUB_WORKSPACE/saxon/transform
+          echo 'java -cp $GITHUB_WORKSPACE/saxon/saxon-he-12.5.jar net.sf.saxon.Transform "$@"' >> $GITHUB_WORKSPACE/saxon/transform
+          chmod +x $GITHUB_WORKSPACE/saxon/transform
+
+      - name: Add transform to PATH
+        run: echo "$GITHUB_WORKSPACE/saxon" >> "$GITHUB_PATH"
+
+      - name: Cache dependencies
+        uses: ./.github/actions/cache
+
+      - name: Set Rush arguments
+        id: set-rush-args
+        run: echo "::set-output name=RUSH_ARGS::${{ github.event_name == 'pull_request' && '--to git:HEAD~1' || format('--from {0}', inputs.target-package) }}"
+
+      - name: Install Rush and dependencies
+        id: install
+        run: node common/scripts/install-run-rush.js update
+
+      - name: Check for dependency mismatches
+        run: node common/scripts/install-run-rush.js check
+
+      # - name: Run linter in affected packages
+      #  run: node common/scripts/install-run-rush.js lint ${{ steps.set-rush-args.outputs.RUSH_ARGS }}
+
+      - name: Run tests in affected packages
+        id: tests
+        if: always() && steps.install.outcome == 'success'
+        run: node common/scripts/install-run-rush.js test:ci
+
+      - name: Store code coverage reports
+        if: always() && steps.tests.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-reports
+          path: packages/*/coverage/lcov-report/
+          retention-days: 3
