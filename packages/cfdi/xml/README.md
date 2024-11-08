@@ -19,6 +19,7 @@
 
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
   <a href="https://www.npmjs.com/package/@cfdi/transform">
+<<<<<<< Updated upstream
     <code class="css-1ht163b">@cfdi/transform</code>
   </a>
 </li>
@@ -29,6 +30,12 @@
   </a>
 </li>
 
+=======
+    <code class="css-1ht163b">@cfdi/types</code>
+  </a>
+</li>
+
+>>>>>>> Stashed changes
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="2"><input type="checkbox" checked="">
  <a href="https://www.npmjs.com/package/@cfdi/catalogos">
     <code class="css-1ht163b">@cfdi/catalogos</code>

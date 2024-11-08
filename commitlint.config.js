@@ -27,14 +27,17 @@ module.exports = {
             'saxon',
             'publish',
             'xsd',
-            'schema'
+            'schema',
+            'transform',
+            'types',
+            'elements'
           ]
       ],
       'type-enum': [
         2,
         'always',
         [
-          'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'revert', 'content', 'npm', // For articles, tutorials, etc...
+          'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'revert', 'content', 'npm', 'chore' // For articles, tutorials, etc...
         ],
       ],
     }
