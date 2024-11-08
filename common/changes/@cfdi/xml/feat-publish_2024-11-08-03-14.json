@@ -1,0 +1,12 @@
+{
+  "changes": [
+    {
+      "changeType": 0,
+      "newVersion": "4.0.13",
+      "packageName": "@cfdi/xml",
+      "comment": ""
+    }
+  ],
+  "packageName": "@cfdi/xml",
+  "email": "amisael.amir.misael@gmail.com"
+}

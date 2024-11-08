@@ -23,7 +23,7 @@
     "changeLogUpdateCommitMessage": "chore: Update changelogs [skip ci]"
   },
   "repository": {
-    "url": "https://github.com/MisaelMa/recreando",
+    "url": "https://github.com/MisaelMa/cfdi",
     "defaultBranch": "main",
     "defaultRemote": "origin"
   },
