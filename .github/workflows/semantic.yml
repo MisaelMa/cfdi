@@ -51,3 +51,5 @@ jobs:
             transform
             types
             elements
+            expresiones
+            xml2json

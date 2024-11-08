@@ -36,7 +36,9 @@
   "variants": [],
   "telemetryEnabled": false,
   "allowedProjectTags": [
-    "beta"
+    "main",
+    "beta",
+    "dev"
   ],
   "projects": [
     {
@@ -157,6 +159,41 @@
       "packageName": "@saxon-he/cli",
       "projectFolder": "packages/clir/saxon-he",
       "versionPolicyName": "saxon",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/types",
+      "projectFolder": "packages/cfdi/types",
+      "versionPolicyName": "types",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/transform",
+      "projectFolder": "packages/cfdi/transform",
+      "versionPolicyName": "transform",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/xml2json",
+      "projectFolder": "packages/cfdi/xml2json",
+      "versionPolicyName": "xml2json",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/expresiones",
+      "projectFolder": "packages/cfdi/expresiones",
+      "versionPolicyName": "expresiones",
+      "reviewCategory": "libraries",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@cfdi/elements",
+      "projectFolder": "packages/cfdi/elements",
+      "versionPolicyName": "elements",
       "reviewCategory": "libraries",
       "shouldPublish": true
     }

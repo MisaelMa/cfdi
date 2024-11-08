@@ -88,5 +88,17 @@
     "definitionName": "lockStepVersion",
     "version": "4.0.13",
     "nextBump": "patch"
+  },
+  {
+    "policyName": "expresiones",
+    "definitionName": "lockStepVersion",
+    "version": "4.0.13",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "xml2json",
+    "definitionName": "lockStepVersion",
+    "version": "4.0.13",
+    "nextBump": "patch"
   }
 ]

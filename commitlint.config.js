@@ -30,7 +30,9 @@ module.exports = {
             'schema',
             'transform',
             'types',
-            'elements'
+            'elements',
+            'expresiones',
+            'xml2json'
           ]
       ],
       'type-enum': [
