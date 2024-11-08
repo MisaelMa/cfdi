@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/xml",
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "Libreria para crear y sellar xml cfdi V4.0",
   "homepage": "https://cfdi.recreando.dev",
   "license": "MIT",
@@ -91,6 +91,7 @@
   },
   "keywords": [
     "CFDI 3.3.",
+    "CFDI 4.0.",
     "Factura Electronica",
     "Factura Electronica Mexico",
     "Sellar Xml",
@@ -100,6 +101,7 @@
     "cfdi",
     "sat",
     "3.3",
+    "4.0",
     "factura",
     "mexico",
     "pdf",
@@ -110,7 +112,9 @@
     "exterior",
     "terceros",
     "pagos",
-    "ine"
+    "ine",
+    "transform",
+    "sello"
   ],
   "author": {
     "name": "Amir Misael Marin Coh, Signati",
