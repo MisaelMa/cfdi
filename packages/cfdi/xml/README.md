@@ -3,14 +3,69 @@
 <p align="center">
   <a href="https://cfdi.recreando.dev/" target="blank">
   <img src="https://cfdi.recreando.dev/site/favicon.ico" width="32" alt="Nest Logo" /></a>
+  <img src="https://ik.imagekit.io/gky5zgkgy/article/amir_SICaWOIVa" width="32" alt="Nest Logo" /></a>
 </p>
 <ul direction="ltr" format="" indent="0" type="list" version="1" listtype="check" start="1" tag="ul">
-<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked=""><a href="https://www.npmjs.com/package/@cfdi/xml"><code class="css-1ht163b">@cfdi/xml</code></a></li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/xml">
+    <code class="css-1ht163b">@cfdi/xml</code>
+  </a>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/types">
+    <code class="css-1ht163b">@cfdi/types</code>
+  </a>
+</li>
 
-<li direction="ltr" format="" indent="0" type="listitem" version="1" value="2"><input type="checkbox" checked=""><a href="https://"><code class="css-1ht163b">@cfdi/catalogos</code></a></li><li direction="ltr" format="" indent="0" type="listitem" version="1" value="3"><input type="checkbox" checked=""><a href="https://www.npmjs.com/package/@cfdi/csd"><code class="css-1ht163b">@cfdi/csd</code></a></li><li direction="ltr" format="" indent="0" type="listitem" version="1" value="4"><input type="checkbox" checked=""><a href="https://"><code class="css-1ht163b">@cfdi/utils</code></a></li><li direction="ltr" format="" indent="0" type="listitem" version="1" value="5"><input type="checkbox"><span>@cfdi/pdf</span></li><li direction="ltr" format="" indent="0" type="listitem" version="1" value="6"><input type="checkbox"><span>@cfdi/curp</span>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/transform">
+    <code class="css-1ht163b">@cfdi/transform</code>
+  </a>
+</li>
 
-</li><li direction="ltr" format="" indent="0" type="listitem" version="1" value="7"><input type="checkbox"><span>@cfdi/csf</span></li>
-</li><li direction="ltr" format="" indent="0" type="listitem" version="1" value="7"><input type="checkbox"><span>@cfdi/rfc</span></li></ul>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/elements">
+    <code class="css-1ht163b">@cfdi/elements</code>
+  </a>
+</li>
+
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="2"><input type="checkbox" checked="">
+ <a href="https://www.npmjs.com/package/@cfdi/catalogos">
+    <code class="css-1ht163b">@cfdi/catalogos</code>
+  </a>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="3"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/csd">
+    <code class="css-1ht163b">@cfdi/csd</code>
+  </a>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="7">
+  <a href="https://www.npmjs.com/package/@cfdi/csf">
+  <input type="checkbox" checked>
+  <code>@cfdi/csf</code>
+  </a>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="4">
+<input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/utils">
+  <code class="css-1ht163b">@cfdi/utils</code>
+</a>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="5">
+<input type="checkbox">
+  <span>@cfdi/pdf</span>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="6">
+<input type="checkbox"><span>@cfdi/curp</span>
+</li>
+
+</li>
+  <li direction="ltr" format="" indent="0" type="listitem" version="1" value="7">
+  <input type="checkbox">
+  <span>@cfdi/rfc</span>
+  </li>
+  
+</ul>
 <a href="https://cfdi.recreando.dev/">Documentacion</a>
 <p align="center">
     Este módulo genera un CFDI a partir de clases lo que facilita la creacion de XMl y sellarlo sin nigun problema de compatibilidad de las versiones 2.0 del xml de complementos.

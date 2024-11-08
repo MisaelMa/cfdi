@@ -75,7 +75,7 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "@clir/saxon-he",
+      "name": "@saxon-he/cli",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -231,18 +231,6 @@
       "allowedCategories": [ "libraries", "production" ]
     },
     {
-      "name": "@signati/core",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@signati/openssl",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@signati/saxon",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "@size-limit/preset-small-lib",
       "allowedCategories": [ "libraries", "private" ]
     },
@@ -289,6 +277,14 @@
     {
       "name": "@typescript-eslint/parser",
       "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@vitest/coverage-v8",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
+      "name": "@vitest/ui",
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "2captcha",
@@ -748,11 +744,11 @@
     },
     {
       "name": "vite-tsconfig-paths",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "vitest",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "webpack",

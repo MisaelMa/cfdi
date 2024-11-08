@@ -1,6 +1,6 @@
 import {
   CFDI,
-  CFDIAttributes,
+  CFDIComprobante,
   Concepts,
   Emisor,
   ObjetoImpEnum,
@@ -25,16 +25,13 @@ export default async function loginRoute(
   const key = `${files}/certificados/LAN7008173R5.key`;
   const cer = `${files}/certificados/LAN7008173R5.cer`;
 
-  const comprobanteAttribute: CFDIAttributes = {
+  const comprobante: CFDIComprobante = {
     Serie: 'E',
     // eslint-disable-next-line
     Folio: 'ACACUN-27',
     Fecha: '2014-07-08T12:16:50',
-    Sello: '',
     FormaPago: '01',
-    NoCertificado: '',
-    Certificado: '',
-    condicionesDePago: 'Contado',
+    CondicionesDePago: 'Contado',
     SubTotal: '0',
     Descuento: '645.92',
     Moneda: 'MXN',
@@ -45,13 +42,14 @@ export default async function loginRoute(
     Exportacion: '01',
   };
 
-  const cfd = new CFDI(comprobanteAttribute, {
+  const cfd = new CFDI({
     debug: false,
     xslt: {
       path: styleSheet,
     },
   });
   cfd.setAttributesXml({ version: '1.0', encoding: 'utf-8' });
+  cfd.comprobante(comprobante);
   const emisor = new Emisor({
     Rfc: 'TCM970625MB1',
     Nombre: 'RECREANDO SA DE CV',

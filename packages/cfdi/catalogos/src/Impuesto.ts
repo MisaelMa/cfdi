@@ -1,8 +1,10 @@
 export enum Impuesto {
-  IVA = 'IVA',
-  IEPS = 'IEPS',
-  ISR = 'ISR',
+  ISR = '001',
+  IVA = '002',
+  IEPS = '003',
 }
+
+
 
 export const ImpuestoList = [
   {

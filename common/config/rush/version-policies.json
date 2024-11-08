@@ -2,13 +2,13 @@
   {
     "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "4.0.13",
+    "version": "4.0.14-beta.10",
     "nextBump": "patch"
   },
   {
     "policyName": "complementos",
     "definitionName": "lockStepVersion",
-    "version": "4.0.13",
+    "version": "4.0.14-beta.1",
     "nextBump": "patch"
   },
   {
@@ -20,13 +20,13 @@
   {
     "policyName": "catalogs",
     "definitionName": "lockStepVersion",
-    "version": "0.0.12",
+    "version": "0.0.13-beta.0",
     "nextBump": "patch"
   },
   {
     "policyName": "csd",
     "definitionName": "lockStepVersion",
-    "version": "0.0.20",
+    "version": "0.0.21-beta.1",
     "nextBump": "patch"
   },
   {
@@ -68,13 +68,13 @@
   {
     "policyName": "saxon",
     "definitionName": "lockStepVersion",
-    "version": "0.0.15",
+    "version": "12.5.0-beta.2",
     "nextBump": "patch"
   },
   {
     "policyName": "xsd",
     "definitionName": "lockStepVersion",
-    "version": "0.0.15",
+    "version": "4.0.14-beta.4",
     "nextBump": "patch"
   }
 ]

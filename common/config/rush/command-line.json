@@ -9,6 +9,16 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "rush-commitlint",
       "shellCommand": "commitlint"
+    },
+    {
+      "commandKind": "bulk",
+      "name": "test:ci",
+      "summary": "Test all packages in CI mode",
+      "enableParallelism": true,
+      "ignoreMissingScript": true,
+      "safeForSimultaneousRushProcesses": true,
+      "ignoreDependencyOrder": true,
+      "allowWarningsInSuccessfulBuild": true
     }
   ],
   "parameters": [

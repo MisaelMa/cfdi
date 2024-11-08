@@ -1,13 +1,24 @@
-export interface Options {
-  debug: boolean;
-  compact?: boolean;
-  customTags?: any;
-  xslt: XsltSheet // @  Extensible Stylesheet Language Transformation
+export interface Schema {
+  path: string;
 }
+
+export interface SaxonHe {
+  binary: string;
+}
+
 export interface XsltSheet {
   path: string;
-  xslt3?: boolean;
 }
+
+export interface Config {
+  debug?: boolean;
+  compact?: boolean;
+  customTags?: any;
+  schema?: Schema
+  saxon?: SaxonHe
+  xslt?: XsltSheet // @  Extensible Stylesheet Language Transformation
+}
+
 
 export enum InvoiceType {
   INGRESO = 'I',

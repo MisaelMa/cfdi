@@ -1,5 +1,5 @@
 import { TDocumentDefinitions } from "pdfmake/interfaces";
-import { XmlCdfi } from "@signati/core";
+import { XmlCdfi } from "@cfdi/xml";
 import { XmlToJson } from "@cfdi/utils";
 import { logo } from '@cfdi/utils';
 import { createPdf, TCreatedPdf } from "pdfmake/build/pdfmake";

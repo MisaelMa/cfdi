@@ -1,11 +1,15 @@
 {
   "name": "@cfdi/xsd",
-  "version": "0.0.15",
+  "version": "4.0.14-beta.4",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "module": "./dist/xsd.esm.js",
   "source": "./src/index.ts",
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "beta"
+    ]
+  },
   "files": [
     "dist",
     "src"
@@ -15,10 +19,14 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/xsd.cjs.development.* && npm run cp",
+    "cp": "cp ./config/index.js ./dist",
     "test": "vitest",
+    "test:ci": "vitest run",
+    "test:coverage": "vitest --coverage run",
+    "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "echo 'Realizando build...'",
+    "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -29,7 +37,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "tag": "latest",
     "access": "public"
   },
   "repository": {
@@ -64,6 +71,7 @@
     "xslt": "^0.9.1"
   },
   "devDependencies": {
+    "rimraf": "^5.0.0",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
@@ -85,7 +93,9 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.8.4",
-    "vitest": "~0.34.6",
-    "vite-tsconfig-paths": "~4.2.1"
+    "vitest": "2.1.3",
+    "vite-tsconfig-paths": "~4.2.1",
+    "@vitest/coverage-v8": "2.1.3",
+    "@vitest/ui": "2.1.3"
   }
 }

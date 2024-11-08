@@ -1,14 +1,7 @@
 import { describe, expect, it, test } from 'vitest';
+import { schema } from './config';
 
-import { Schema } from '../src'; // Reemplaza con la ruta correcta a tu clase Schema
-
-// Configura la instancia de Schema
-const validate = Schema.of();
-validate.setConfig({
-  path: '/Users/amir/Documents/proyectos/amir/cfdi/packages/cfdi/schema/src/files/schema',
-});
-
-const emisor = validate.cfdi.emisor;
+const emisor = schema.cfdi.emisor;
 describe('Emisor', () => {
   it('Debería validar un objeto de Emisor válido', () => {
     const objetoEmisorValido = {
@@ -17,7 +10,7 @@ describe('Emisor', () => {
       RegimenFiscal: '601',
     };
 
-    expect(emisor(objetoEmisorValido)).toBe(true);
+    expect(emisor.validate(objetoEmisorValido)).toBe(true);
   });
 
   it('Debería rechazar un objeto de Emisor inválido', () => {
@@ -27,7 +20,7 @@ describe('Emisor', () => {
       RegimenFiscal: '699',
     };
 
-    expect(emisor(objetoEmisorInvalido)).toBe(false);
+    expect(emisor.validate(objetoEmisorInvalido)).toBe(false);
   });
 
   it('Debería rechazar un objeto con valores vacíos', () => {
@@ -37,7 +30,7 @@ describe('Emisor', () => {
       RegimenFiscal: '',
     };
 
-    expect(emisor(objetoEmisorVacio)).toBe(false);
+    expect(emisor.validate(objetoEmisorVacio)).toBe(false);
   });
 
   // Prueba 2: Debería rechazar un objeto con un RFC inválido
@@ -48,7 +41,7 @@ describe('Emisor', () => {
       RegimenFiscal: '699',
     };
 
-    expect(emisor(objetoEmisorRfcInvalido)).toBe(false);
+    expect(emisor.validate(objetoEmisorRfcInvalido)).toBe(false);
   });
 
   // Prueba 3: Debería rechazar un objeto con un nombre que excede la longitud máxima
@@ -61,7 +54,7 @@ describe('Emisor', () => {
       RegimenFiscal: '699',
     };
 
-    expect(emisor(objetoEmisorNombreLargo)).toBe(false);
+    expect(emisor.validate(objetoEmisorNombreLargo)).toBe(false);
   });
 
   // Prueba 4: Debería validar un objeto con atributo condicional
@@ -73,7 +66,7 @@ describe('Emisor', () => {
       FacAtrAdquirente: '1234567890',
     };
 
-    expect(emisor(objetoEmisorConAtributoCondicional)).toBe(true);
+    expect(emisor.validate(objetoEmisorConAtributoCondicional)).toBe(true);
   });
 
   // Prueba 5: Debería rechazar un objeto con atributo condicional inválido
@@ -85,6 +78,8 @@ describe('Emisor', () => {
       FacAtrAdquirente: 'ABC', // No cumple con el patrón de 10 dígitos
     };
 
-    expect(emisor(objetoEmisorConAtributoCondicionalInvalido)).toBe(false);
+    expect(emisor.validate(objetoEmisorConAtributoCondicionalInvalido)).toBe(
+      false
+    );
   });
 });

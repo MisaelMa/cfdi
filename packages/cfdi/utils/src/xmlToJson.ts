@@ -1,4 +1,4 @@
-import { XmlCdfi } from '@signati/core';
+import { XmlCdfi } from '@cfdi/xml';
 import { readFileSync } from 'fs';
 import { xml2js } from 'xml-js';
 
