@@ -1,6 +1,11 @@
 # Change Log - @cfdi/utils
 
-This log was last generated on Sun, 27 Nov 2022 17:29:43 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2024 01:56:37 GMT and should not be manually modified.
+
+## 4.0.14
+Fri, 08 Nov 2024 01:56:37 GMT
+
+_Version update only_
 
 ## 0.0.13
 Sun, 27 Nov 2022 17:29:43 GMT

@@ -1,9 +1,9 @@
 # Change Log - @cfdi/xml
 
-This log was last generated on Fri, 08 Nov 2024 00:48:36 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2024 01:56:33 GMT and should not be manually modified.
 
 ## 4.0.14
-Fri, 08 Nov 2024 00:48:36 GMT
+Fri, 08 Nov 2024 01:56:33 GMT
 
 _Version update only_
 

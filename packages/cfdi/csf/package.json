@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/csf",
-  "version": "4.0.13",
+  "version": "4.0.14-0",
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
