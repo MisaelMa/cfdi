@@ -1,6 +1,11 @@
 # Change Log - @saxon-he/cli
 
-This log was last generated on Fri, 08 Nov 2024 01:56:33 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Nov 2024 02:42:08 GMT and should not be manually modified.
+
+## 12.5.1
+Fri, 08 Nov 2024 02:42:08 GMT
+
+_Version update only_
 
 ## 12.4.1
 Fri, 08 Nov 2024 01:56:33 GMT

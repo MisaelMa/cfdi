@@ -2,7 +2,7 @@
   {
     "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "4.0.13",
+    "version": "4.0.14",
     "nextBump": "patch"
   },
   {
@@ -32,7 +32,7 @@
   {
     "policyName": "csf",
     "definitionName": "lockStepVersion",
-    "version": "4.0.13",
+    "version": "4.0.14-0",
     "nextBump": "prerelease"
   },
   {
@@ -68,7 +68,7 @@
   {
     "policyName": "saxon",
     "definitionName": "lockStepVersion",
-    "version": "12.5.0",
+    "version": "12.5.1",
     "nextBump": "patch"
   },
   {
