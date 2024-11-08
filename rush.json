@@ -159,12 +159,6 @@
       "versionPolicyName": "saxon",
       "reviewCategory": "libraries",
       "shouldPublish": true
-    },
-    {
-      "packageName": "@recreando/express",
-      "projectFolder": "packages/express",
-      "reviewCategory": "libraries",
-      "shouldPublish": false
     }
   ]
 }

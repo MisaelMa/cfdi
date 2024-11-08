@@ -33,7 +33,7 @@
     "policyName": "csf",
     "definitionName": "lockStepVersion",
     "version": "4.0.13",
-    "nextBump": "prerelease"
+    "nextBump": "patch"
   },
   {
     "policyName": "pdf",
