@@ -1,2 +1,2 @@
 'use strict'
-module.exports = require('./transform.cjs.production.min.js')
+module.exports = require('./xml2json.cjs.production.min.js')

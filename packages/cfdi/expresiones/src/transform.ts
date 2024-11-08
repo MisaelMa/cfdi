@@ -3,9 +3,6 @@
 import { js2xml, json2xml, xml2js } from 'xml-js';
 import { readFileSync, writeFileSync } from 'fs';
 
-import Ajv from 'ajv';
-// @ts-ignore
-import { Xsd2JsonSchema } from 'xsd2jsonschema';
 
 type XsdElement = {
   name: string;

@@ -54,6 +54,12 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@recreando/vite",
+      "projectFolder": "rigs/vite",
+      "reviewCategory": "libraries",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@recreando/eslint-settings",
       "projectFolder": "rigs/eslint",
       "reviewCategory": "libraries",

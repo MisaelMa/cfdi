@@ -4,7 +4,6 @@ import {
 } from './types/CartaPorte20.xslt';
 
 import { Complemento } from '../../Complemento';
-import { ComplementsReturn } from '../../types/tags';
 import { CtaPrt20Mercancias } from './CtaPrt20Mercancias';
 import { CtaPrt20Ubicacion } from './CtaPrt20Ubicacion';
 import { CtaPrt20FiguraTransporte } from './CtaPrt20FiguraTransporte';

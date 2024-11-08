@@ -1,5 +1,5 @@
 {
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/transform.esm.js"
+  "module": "dist/expresiones.esm.js"
 }

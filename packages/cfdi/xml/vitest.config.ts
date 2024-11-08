@@ -11,12 +11,6 @@ export default defineConfig({
   },
   plugins: [
     tsconfigPaths(),
-    /*  {
-      name: 'vite-plugin-alias',
-      configureServer(server) {
-        server.watcher.add(resolve(__dirname, '../xsd/src'));
-      }
-    } */
   ],
   resolve: {
     alias: {
