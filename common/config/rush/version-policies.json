@@ -2,13 +2,13 @@
   {
     "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "4.0.13",
+    "version": "4.0.15",
     "nextBump": "patch"
   },
   {
     "policyName": "complementos",
     "definitionName": "lockStepVersion",
-    "version": "4.0.14",
+    "version": "4.0.15",
     "nextBump": "patch"
   },
   {
@@ -20,19 +20,19 @@
   {
     "policyName": "catalogs",
     "definitionName": "lockStepVersion",
-    "version": "4.0.14",
+    "version": "4.0.15",
     "nextBump": "patch"
   },
   {
     "policyName": "csd",
     "definitionName": "lockStepVersion",
-    "version": "4.0.14",
+    "version": "4.0.15",
     "nextBump": "patch"
   },
   {
     "policyName": "csf",
     "definitionName": "lockStepVersion",
-    "version": "4.0.13",
+    "version": "4.0.15",
     "nextBump": "patch"
   },
   {
@@ -56,7 +56,7 @@
   {
     "policyName": "utils",
     "definitionName": "lockStepVersion",
-    "version": "4.0.14",
+    "version": "4.0.15",
     "nextBump": "patch"
   },
   {
@@ -74,7 +74,7 @@
   {
     "policyName": "xsd",
     "definitionName": "lockStepVersion",
-    "version": "4.0.14",
+    "version": "4.0.15",
     "nextBump": "patch"
   }
 ]

@@ -1,4 +1,17 @@
 {
   "name": "@cfdi/csf",
-  "entries": []
+  "entries": [
+    {
+      "version": "4.0.15",
+      "tag": "@cfdi/csf_v4.0.15",
+      "date": "Fri, 08 Nov 2024 04:40:54 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.14",
+      "tag": "@cfdi/csf_v4.0.14",
+      "date": "Fri, 08 Nov 2024 04:40:43 GMT",
+      "comments": {}
+    }
+  ]
 }
