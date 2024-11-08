@@ -1,6 +1,5 @@
 import { CliShare } from './cli-share';
 import { existsSync } from 'fs';
-import { platform } from 'os';
 
 /**
  *
@@ -15,9 +14,10 @@ export class Transform extends CliShare {
   /**
    *constructor
    */
-  constructor() {
+  constructor(options?: {binary?: string}) {
     super();
-    this.saxonBin = this.getOS();
+    const { binary } = options || {}
+    this.saxonBin =  binary || this.getOS();
     this.commandline = this.saxonBin;
   }
 
@@ -264,11 +264,7 @@ export class Transform extends CliShare {
   /**
    *string
    */
-  private getOS(): string {
-    if (platform() === 'win32') {
-      return 'transform.exe';
-    }
-    
+  private getOS(): string { 
     return 'transform';
   }
 }

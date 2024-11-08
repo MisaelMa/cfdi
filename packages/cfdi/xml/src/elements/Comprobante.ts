@@ -1,7 +1,7 @@
 import {
   CFDIComprobante,
   ComprobanteAttributes,
-  Options,
+  Config,
   TagComprobante,
   XmlCdfi,
   XmlComprobante,
@@ -34,7 +34,7 @@ export class Comprobante {
   ];
 
   schema = Schema.of();
-  constructor(options?: Options) {
+  constructor(options?: Config) {
     const { debug, schema } = options || { debug: false };
     this.schema.setConfig({
       debug: debug,
@@ -266,20 +266,14 @@ export class Comprobante {
    * @param complements
    * ComlementType
    */
-  public async complemento(complements: ComlementType): Promise<void> {
+  public complemento(complements: ComlementType): void {
     if (!this.xml['cfdi:Comprobante']['cfdi:Complemento']) {
       this.xml['cfdi:Comprobante']['cfdi:Complemento'] = {} as XmlComplements;
     }
-    const complement = await complements.getComplement();
+    const complement = complements.getComplement();
     this.addXmlns(complement.xmlnskey, complement.xmlns);
     this.addSchemaLocation(complement.schemaLocation);
-    if (
-      this.xml['cfdi:Comprobante'] &&
-      this.xml['cfdi:Comprobante']['cfdi:Complemento']
-    ) {
-      this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] =
-        complement.complement;
-    }
+    this.xml['cfdi:Comprobante']['cfdi:Complemento'][complement.key] = complement.complement
   }
 
   public setCertificado(certificado: string): void {
