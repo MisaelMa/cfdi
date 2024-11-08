@@ -2,6 +2,18 @@
   "name": "@cfdi/catalogos",
   "entries": [
     {
+      "version": "4.0.15",
+      "tag": "@cfdi/catalogos_v4.0.15",
+      "date": "Fri, 08 Nov 2024 04:40:23 GMT",
+      "comments": {}
+    },
+    {
+      "version": "4.0.14",
+      "tag": "@cfdi/catalogos_v4.0.14",
+      "date": "Fri, 08 Nov 2024 01:56:40 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.12",
       "tag": "@cfdi/catalogos_v0.0.12",
       "date": "Sun, 27 Nov 2022 17:29:41 GMT",

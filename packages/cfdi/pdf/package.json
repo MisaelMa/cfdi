@@ -1,6 +1,6 @@
 {
   "name": "@cfdi/pdf",
-  "version": "0.0.10-beta.2",
+  "version": "0.0.10-beta.3",
   "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
