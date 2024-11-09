@@ -12,11 +12,10 @@
   </a>
 </li>
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
-  <a href="https://www.npmjs.com/package/@cfdi/types">
-    <code class="css-1ht163b">@cfdi/types</code>
+  <a href="https://www.npmjs.com/package/@cfdi/xsd">
+    <code class="css-1ht163b">@cfdi/xsd</code>
   </a>
 </li>
-
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
   <a href="https://www.npmjs.com/package/@cfdi/transform">
     <code class="css-1ht163b">@cfdi/transform</code>
@@ -24,8 +23,14 @@
 </li>
 
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
-  <a href="https://www.npmjs.com/package/@cfdi/elements">
-    <code class="css-1ht163b">@cfdi/elements</code>
+  <a href="https://www.npmjs.com/package/@cfdi/xml2json">
+    <code class="css-1ht163b">@cfdi/xml2json</code>
+  </a>
+</li>
+
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/expresiones">
+    <code class="css-1ht163b">@cfdi/expresiones</code>
   </a>
 </li>
 
@@ -52,8 +57,15 @@
 </a>
 </li>
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="5">
-<input type="checkbox">
-  <span>@cfdi/pdf</span>
+<input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/pdf">
+  <code class="css-1ht163b">@cfdi/pdf</code>
+</a>
+</li>
+<li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
+  <a href="https://www.npmjs.com/package/@cfdi/types">
+    <code class="css-1ht163b">@cfdi/types</code>
+  </a>
 </li>
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="6">
 <input type="checkbox"><span>@cfdi/curp</span>

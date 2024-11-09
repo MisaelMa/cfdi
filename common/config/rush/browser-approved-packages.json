@@ -403,10 +403,6 @@
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "eslint-plugin-react-hooks",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
       "name": "eslint-plugin-sort-destructure-keys",
       "allowedCategories": [ "libraries" ]
     },

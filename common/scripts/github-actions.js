@@ -71,6 +71,27 @@ function getDependences(scope) {
       xsd: true,
       xml: true,
       complementos: true,
+    },
+    transform: {
+      transform: true,
+      xml: true
+    },
+    types: {
+      types: true,
+      xml: true,
+      complementos: true
+    },
+    elements: {
+      elements: true,
+      xml: true,
+      complementos: true,
+      transform: true
+    },
+    expresiones: {
+      expresiones: true
+    },
+    xml2json: {
+      xml2json: true
     }
   };
   return dependencies[scope] || {};
