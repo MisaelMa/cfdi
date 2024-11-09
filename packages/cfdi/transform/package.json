@@ -69,6 +69,7 @@
   },
   "devDependencies": {
     "rimraf": "^5.0.0",
+    "@saxon-he/cli": "workspace:*",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
