@@ -83,6 +83,12 @@
       ],
       "@saxon-he/cli/*": [
         "./node_modules/@saxon-he/cli/src/*"
+      ],
+      "@cfdi/utils/*": [
+        "./node_modules/@saxon-he/cli/src/*"
+      ],
+      "@cfdi/utils": [
+        "./node_modules/@saxon-he/cli/src/*"
       ]
 
     }
