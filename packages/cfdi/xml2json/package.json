@@ -1,5 +1,5 @@
 {
-  "name": "@cfdi/xml2json",
+  "name": "@cfdi/2json",
   "version": "4.0.13",
   "license": "MIT",
   "source": "./src/index.ts",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/xml2json.cjs.development.* && npm run cp",
+    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/2json.cjs.development.* && npm run cp",
     "cp": "cp ./config/index.js ./dist",
     "test": "vitest",
     "test:ci": "vitest run",
@@ -56,21 +56,23 @@
   },
   "size-limit": [
     {
-      "path": "dist/xml2json.cjs.production.min.js",
+      "path": "dist/2json.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/xml2json.esm.js",
+      "path": "dist/2json.esm.js",
       "limit": "10 KB"
     }
   ],
   "dependencies": {
     "xml-js": "^1.6.11",
     "@cfdi/types": "workspace:*",
-    "@cfdi/utils": "workspace:*"
+    "@cfdi/utils": "workspace:*",
+    "@cfdi/elements": "workspace:*"
   },
   "devDependencies": {
-    "rimraf": "^5.0.0",
+    "rimraf": "^6.0.1",
+    "@recreando/vite": "workspace:*",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",

@@ -183,9 +183,9 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@cfdi/xml2json",
+      "packageName": "@cfdi/2json",
       "projectFolder": "packages/cfdi/xml2json",
-      "versionPolicyName": "xml2json",
+      "versionPolicyName": "2json",
       "reviewCategory": "libraries",
       "shouldPublish": true
     },

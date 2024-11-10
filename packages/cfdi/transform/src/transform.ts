@@ -1,65 +1,12 @@
-// @ts-ignore
-
-import { js2xml, json2xml, xml2js } from 'xml-js';
-import { readFileSync, writeFileSync } from 'fs';
-
-type XsdElement = {
-  name: string;
-  minOccurs?: string;
-  elements?: XsdElement[];
-  attributes?: Record<string, { name: string; use: string }>;
-};
-
-type JsonSchema = {
-  $schema: string;
-  type: string;
-  properties: Record<string, any>;
-  required: string[];
-  additionalProperties: false;
-};
-
-function cleanObjectKeys(obj: any): any {
-  if (typeof obj !== 'object') {
-    return obj;
-  }
-
-  if (Array.isArray(obj)) {
-    return obj.map(cleanObjectKeys);
-  }
-
-  const cleanedObj = {};
-
-  for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      if (key === '_attributes') {
-        const attributes = obj[key];
-        for (const attrKey in attributes) {
-          if (Object.prototype.hasOwnProperty.call(attributes, attrKey)) {
-            if (!attrKey.includes(':')) {
-              // @ts-ignore
-              cleanedObj[`@${attrKey}`] = attributes[attrKey];
-            }
-          }
-        }
-      } else {
-        const cleanedKey = key.split(':').pop();
-        // @ts-ignore
-        cleanedObj[cleanedKey] = cleanObjectKeys(obj[key]);
-      }
-    }
-  }
-
-  return cleanedObj;
-}
-
-//export const CFDIXsd = LoadXsd.getInstance();
-
+import { XmlToJson } from '@cfdi/2json';
 export default class Transform {
   xml: any = {};
   xslPath = '';
   fullPath = '';
-  constructor(xml: any) {
-    this.xml = xml;
+  
+  s(archivo: string) {
+   this.xml = new XmlToJson(archivo).parse();
+    return this;
   }
 
   async run() {

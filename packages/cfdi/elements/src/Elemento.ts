@@ -1,10 +1,11 @@
 
-export class Elemento {
-    _cfdi: string;
-    _prefix: string;
-    _name: string;
+export class Elemento<T> {
+    private _cfdi: string;
+    private _prefix: string;
+    private _name: string;
  
-   constructor(prefijo: string, name: string) {
+   constructor(tag: string){
+    const [prefijo, name] = tag.split(':')
      this._prefix = prefijo
      this._name = name
      this._cfdi = `${prefijo}:${name}`

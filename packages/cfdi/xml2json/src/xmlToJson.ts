@@ -42,22 +42,28 @@ function extractAttributes(element: Element | ElementCompact) {
     return attributes;
 }
 
-export function XmlToJson(xmlPath: string): XmlCdfi {
+export function XmlToJson(xmlPath: string, config?: {original: boolean}): XmlCdfi {
+    const original = Boolean(config?.original);
     const stringXml = isPath(xmlPath) ? readFileSync(xmlPath, 'utf8') : xmlPath;
     const options: Options.XML2JS = {
-        ignoreComment: true,
-        alwaysChildren: true,
-        compact: false,
-        ignoreDeclaration: false, // omite la declaración de XML
-        elementNameFn: (name: string) => name.replace(/^.*:/, ''), // elimina el prefijo en elementos
-        attributesFn: (value, parentElement) => {
-            return value;
-        }
+        ignoreComment: false,
+        alwaysChildren: false,
+        compact: original,
+        ignoreDeclaration: false,
+        elementNameFn: (name: string) => original ? name : name.replace(/^.*:/, '')
     };
     const json = xml2js(stringXml, options);
-    console.log(JSON.stringify(json, null, 2));
-    //const comprobante = json.elements.find((el: any) => el.name === 'cfdi:Comprobante');
-    const comprobante = json.elements.find((el: any) => el.name === 'Comprobante');
-    const result = extractAttributes(comprobante);
+    const onlyJson = () => {
+      const { declaration, elements } = json;
+      const comprobante_element = elements.find((el: any) => el.name ===  'Comprobante');
+      const comprobante = comprobante_element ? extractAttributes(comprobante_element) : {};
+      return {
+        declaration: {
+            ...declaration.attributes
+        },
+        'Comprobante': comprobante
+      }
+    }
+    const result = original ? json : onlyJson();
     return result as XmlCdfi;
 }

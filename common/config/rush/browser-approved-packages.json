@@ -27,6 +27,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/2json",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/catalogos",
       "allowedCategories": [ "libraries" ]
     },
@@ -44,6 +48,10 @@
     },
     {
       "name": "@cfdi/curp",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@cfdi/elements",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -213,6 +221,10 @@
     {
       "name": "@recreando/typescript-settings",
       "allowedCategories": [ "libraries", "private", "production" ]
+    },
+    {
+      "name": "@recreando/vite",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@reduxjs/toolkit",

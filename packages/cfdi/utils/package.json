@@ -13,7 +13,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/utils.cjs.development.* && npm run cp",
+    "build": "tsdx build --env production --minify && rimraf ./dist/index.js ./dist/utils.cjs.development.*",
     "cp": "cp ./config/index.js ./dist",
     "start": "tsdx watch",
     "test": "vitest",
@@ -21,7 +21,6 @@
     "test:coverage": "vitest --coverage run",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -31,6 +30,7 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
+    "rimraf": "^6.0.1",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",

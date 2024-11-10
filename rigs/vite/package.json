@@ -4,6 +4,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+     "build": "",
+    "_phase:build": "",
     "test": "vitest",
     "test:ci": "vitest run",
     "test:coverage": "vitest run --coverage",
