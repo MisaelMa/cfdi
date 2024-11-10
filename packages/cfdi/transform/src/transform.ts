@@ -5,7 +5,7 @@ export default class Transform {
   fullPath = '';
   
   s(archivo: string) {
-   this.xml = new XmlToJson(archivo).parse();
+   //this.xml = new XmlToJson(archivo).parse();
     return this;
   }
 

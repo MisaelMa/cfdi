@@ -4,8 +4,7 @@
   "license": "MIT",
   "source": "./src/index.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"

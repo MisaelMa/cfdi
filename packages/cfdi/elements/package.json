@@ -38,7 +38,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "npm run build",
+    "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },

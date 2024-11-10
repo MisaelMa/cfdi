@@ -94,7 +94,7 @@
         "./node_modules/@cfdi/2json/src/*"
       ],
       "@cfdi/2json": [
-        "./node_modules/@cfdi/2json/src/*"
+        "./node_modules/@cfdi/2json/src"
       ],
 
     }
