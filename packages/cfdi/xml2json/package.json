@@ -2,6 +2,9 @@
   "name": "@cfdi/xml2json",
   "version": "4.0.13",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/2json.esm.js",
   "source": "./src/index.ts",
   "release": {
     "branches": [
@@ -56,11 +59,11 @@
   },
   "size-limit": [
     {
-      "path": "dist/xml2json.cjs.production.min.js",
+      "path": "dist/2json.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/xml2json.esm.js",
+      "path": "dist/2json.esm.js",
       "limit": "10 KB"
     }
   ],
