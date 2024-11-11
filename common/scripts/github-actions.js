@@ -90,8 +90,8 @@ function getDependences(scope) {
     expresiones: {
       expresiones: true
     },
-    xml2json: {
-      xml2json: true
+    '2json': {
+      '2json': true
     }
   };
   return dependencies[scope] || {};

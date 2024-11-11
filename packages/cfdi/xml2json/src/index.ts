@@ -1,1 +1,1 @@
-export { default as Transform } from './transform';
+export { XmlToJson } from './xmlToJson'

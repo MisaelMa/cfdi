@@ -12,8 +12,47 @@
     <cfdi:Conceptos>
         <cfdi:Concepto ClaveProdServ="86121500" Cantidad="1" ClaveUnidad="E48" Unidad="Pieza"
                        Descripcion="Mensualidad - diciembre" ValorUnitario="5000" Importe="5000" Descuento="0"/>
+        <cfdi:Concepto ClaveProdServ="86121500" Cantidad="1" ClaveUnidad="E48" Unidad="Pieza"
+                       Descripcion="Mensualidad - diciembre" ValorUnitario="5000" Importe="5000" Descuento="0"/>
     </cfdi:Conceptos>
+    <cfdi:Impuestos TotalImpuestosTrasladados="0.16">
+        <cfdi:Traslados>
+            <cfdi:Traslado Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="0.16"/>
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
     <cfdi:Complemento>
+         <implocal:ImpuestosLocales version="1.0" TotaldeRetenciones="0.000000" TotaldeTraslados="48.000000">
+      <implocal:TrasladosLocales ImpLocTrasladado="IMPUESTO DE HOSPEDAJE" TasadeTraslado="4" Importe="48.00" />
+    </implocal:ImpuestosLocales>
+
+     <cartaporte31:CartaPorte RegistroISTMO="Sí" UbicacionPoloOrigen="01" UbicacionPoloDestino="01" Version="3.1" IdCCP="CCCBCD94-870A-4332-A52A-A52AA52AA52A" TranspInternac="No" TotalDistRec="1">
+         <cartaporte31:Ubicaciones>
+            <cartaporte31:Ubicacion TipoUbicacion="Origen" IDUbicacion="OR101010" RFCRemitenteDestinatario="URE180429TM6" NombreRemitenteDestinatario="NombreRemitenteDestinatario1" FechaHoraSalidaLlegada="2023-08-01T00:00:00">
+               <cartaporte31:Domicilio Calle="Calle1" NumeroExterior="211" NumeroInterior="212" Colonia="1957" Localidad="13" Referencia="casa blanca" Municipio="011" Estado="CMX" Pais="MEX" CodigoPostal="13250" />
+            </cartaporte31:Ubicacion>
+            <cartaporte31:Ubicacion TipoUbicacion="Destino" IDUbicacion="DE202020" RFCRemitenteDestinatario="URE180429TM6" NombreRemitenteDestinatario="NombreRemitenteDestinatario2" FechaHoraSalidaLlegada="2023-08-01T00:00:01" DistanciaRecorrida="1">
+               <cartaporte31:Domicilio Calle="Calle2" NumeroExterior="214" NumeroInterior="215" Colonia="0347" Localidad="23" Referencia="casa negra" Municipio="004" Estado="COA" Pais="MEX" CodigoPostal="25350" />
+            </cartaporte31:Ubicacion>
+         </cartaporte31:Ubicaciones>
+         <cartaporte31:Mercancias PesoBrutoTotal="1.0" UnidadPeso="XBX" NumTotalMercancias="1" LogisticaInversaRecoleccionDevolucion="Sí">
+            <cartaporte31:Mercancia FraccionArancelaria="6309000100" BienesTransp="11121900" Descripcion="Accesorios de equipo de telefonía" Cantidad="1.0" ClaveUnidad="XBX" MaterialPeligroso="No" PesoEnKg="1" DenominacionGenericaProd="DenominacionGenericaProd1" DenominacionDistintivaProd="DenominacionDistintivaProd1" Fabricante="Fabricante1" FechaCaducidad="2003-04-02" LoteMedicamento="LoteMedic1" FormaFarmaceutica="01" CondicionesEspTransp="01" RegistroSanitarioFolioAutorizacion="RegistroSanita1">
+               <cartaporte31:CantidadTransporta Cantidad="1" IDOrigen="OR101010" IDDestino="DE202020" />
+            </cartaporte31:Mercancia>
+            <cartaporte31:Autotransporte PermSCT="TPAF01" NumPermisoSCT="NumPermisoSCT1">
+               <cartaporte31:IdentificacionVehicular ConfigVehicular="VL" PesoBrutoVehicular="1" PlacaVM="plac892" AnioModeloVM="2020" />
+               <cartaporte31:Seguros AseguraRespCivil="AseguraRespCivil" PolizaRespCivil="123456789" />
+               <cartaporte31:Remolques>
+                  <cartaporte31:Remolque SubTipoRem="CTR004" Placa="VL45K98" />
+               </cartaporte31:Remolques>
+            </cartaporte31:Autotransporte>
+         </cartaporte31:Mercancias>
+         <cartaporte31:FiguraTransporte>
+            <cartaporte31:TiposFigura TipoFigura="01" RFCFigura="URE180429TM6" NumLicencia="NumLicencia1" NombreFigura="NombreFigura1">
+               <cartaporte31:Domicilio Calle="Calle1" NumeroExterior="NumeroExterior1" NumeroInterior="NumeroInterior1" Colonia="Colonia1" Localidad="Localidad1" Referencia="Referencia1" Municipio="Municipio1" Estado="Estado1" Pais="AFG" CodigoPostal="CodigoPosta1" />
+            </cartaporte31:TiposFigura>
+         </cartaporte31:FiguraTransporte>
+      </cartaporte31:CartaPorte>
+        <vehiculousado:VehiculoUsado Version="1.0" montoAdquisicion="10000.00" montoEnajenacion="0.00" claveVehicular="AAAABBB" marca="FORD" tipo="Mustang" modelo="1989" numeroMotor="123123123" numeroSerie="12312323" NIV="1234ASD" valor="5000.00"/>
         <tfd:TimbreFiscalDigital
                 xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd"
                 Version="1.1" UUID="5e2d6aff-2dd7-43d1-83d3-14c1aca396d9" FechaTimbrado="2021-02-17T14:13:10"

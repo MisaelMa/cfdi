@@ -32,7 +32,7 @@ module.exports = {
             'types',
             'elements',
             'expresiones',
-            'xml2json'
+            '2json'
           ]
       ],
       'type-enum': [

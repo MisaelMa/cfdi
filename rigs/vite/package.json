@@ -1,9 +1,14 @@
 {
   "name": "@recreando/vite",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./vite.config.mts",
+  "exports": {
+    ".": "./vite.config.mts"
+  },
   "scripts": {
+     "build": "",
+    "_phase:build": "",
     "test": "vitest",
     "test:ci": "vitest run",
     "test:coverage": "vitest run --coverage",
