@@ -2,6 +2,9 @@
   "name": "@cfdi/curp",
   "version": "0.0.10-beta.2",
   "license": "MIT",
+ "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "module": "./dist/curp.esm.js",
   "source": "./src/index.ts",
   "files": [
     "dist",
