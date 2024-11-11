@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from 'vitest';
-import { XmlToJson } from '../src'
+import { XmlToJson } from '../src/xmlToJson'
 import path from 'path';
 
 const files_path = path.resolve(__dirname, '..', '..', '..', 'files','xml');
