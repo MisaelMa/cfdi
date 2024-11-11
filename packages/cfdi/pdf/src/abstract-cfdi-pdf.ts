@@ -13,7 +13,7 @@ import { TCreatedPdf, createPdf } from 'pdfmake/build/pdfmake';
 
 import { OptionsPdf } from './types';
 import { XmlTfd } from '@cfdi/complementos/types/complements/tfd/tfd.com'
-import { XmlToJson } from '@cfdi/utils';
+import { XmlToJson } from '@cfdi/2json';
 import path from 'path';
 // import PdfPrinter from 'pdfmake';
 // @ts-ignore

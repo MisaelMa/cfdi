@@ -7,8 +7,6 @@ import {
   XmlImpuestos,
   XmlReceptor,
 } from '@cfdi/xml'
-import { XmlToJson } from '@cfdi/utils';
-// import { logo } from '@cfdi/utils';
 import { createPdf, TCreatedPdf } from 'pdfmake/build/pdfmake';
 import { RPDF } from '../../abstract-cfdi-pdf';
 import { A111SKELETON } from './A111.skelton';

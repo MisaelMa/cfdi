@@ -7,8 +7,7 @@
   "module": "./dist/csf.esm.js",
   "source": "./src/index.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -21,7 +20,7 @@
     "test:coverage": "vitest --coverage run",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -64,8 +63,9 @@
     "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
+    "@recreando/vite": "workspace:*",
     "@types/pdf-parse": "^1.1.4",
-    "rimraf": "^5.0.0",
+    "rimraf": "^6.0.1",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^4.0.2",

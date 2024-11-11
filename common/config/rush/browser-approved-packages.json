@@ -27,6 +27,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/2json",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/catalogos",
       "allowedCategories": [ "libraries" ]
     },
@@ -47,6 +51,10 @@
       "allowedCategories": [ "libraries" ]
     },
     {
+      "name": "@cfdi/elements",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@cfdi/openssl",
       "allowedCategories": [ "libraries" ]
     },
@@ -56,6 +64,10 @@
     },
     {
       "name": "@cfdi/schema",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
+      "name": "@cfdi/types",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -72,10 +84,6 @@
     },
     {
       "name": "@clir/openssl",
-      "allowedCategories": [ "libraries" ]
-    },
-    {
-      "name": "@saxon-he/cli",
       "allowedCategories": [ "libraries" ]
     },
     {
@@ -215,6 +223,10 @@
       "allowedCategories": [ "libraries", "private", "production" ]
     },
     {
+      "name": "@recreando/vite",
+      "allowedCategories": [ "libraries", "private" ]
+    },
+    {
       "name": "@reduxjs/toolkit",
       "allowedCategories": [ "libraries" ]
     },
@@ -229,6 +241,10 @@
     {
       "name": "@rushstack/heft-jest-plugin",
       "allowedCategories": [ "libraries", "production" ]
+    },
+    {
+      "name": "@saxon-he/cli",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@size-limit/preset-small-lib",

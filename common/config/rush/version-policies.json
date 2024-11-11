@@ -96,7 +96,7 @@
     "nextBump": "patch"
   },
   {
-    "policyName": "xml2json",
+    "policyName": "2json",
     "definitionName": "lockStepVersion",
     "version": "4.0.13",
     "nextBump": "patch"

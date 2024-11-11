@@ -1,3 +1,5 @@
-import viteConfig from './vitest.config';
+import viteTestConfig from './vitest.config.mts';
 
-export default viteConfig;
+export {
+    viteTestConfig 
+}

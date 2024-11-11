@@ -1,70 +1,19 @@
-// @ts-ignore
-
-import { js2xml, json2xml, xml2js } from 'xml-js';
-import { readFileSync, writeFileSync } from 'fs';
-
-type XsdElement = {
-  name: string;
-  minOccurs?: string;
-  elements?: XsdElement[];
-  attributes?: Record<string, { name: string; use: string }>;
-};
-
-type JsonSchema = {
-  $schema: string;
-  type: string;
-  properties: Record<string, any>;
-  required: string[];
-  additionalProperties: false;
-};
-
-function cleanObjectKeys(obj: any): any {
-  if (typeof obj !== 'object') {
-    return obj;
-  }
-
-  if (Array.isArray(obj)) {
-    return obj.map(cleanObjectKeys);
-  }
-
-  const cleanedObj = {};
-
-  for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      if (key === '_attributes') {
-        const attributes = obj[key];
-        for (const attrKey in attributes) {
-          if (Object.prototype.hasOwnProperty.call(attributes, attrKey)) {
-            if (!attrKey.includes(':')) {
-              // @ts-ignore
-              cleanedObj[`@${attrKey}`] = attributes[attrKey];
-            }
-          }
-        }
-      } else {
-        const cleanedKey = key.split(':').pop();
-        // @ts-ignore
-        cleanedObj[cleanedKey] = cleanObjectKeys(obj[key]);
-      }
-    }
-  }
-
-  return cleanedObj;
-}
-
-//export const CFDIXsd = LoadXsd.getInstance();
-
+import { XmlToJson } from '@cfdi/2json';
 export default class Transform {
   xml: any = {};
   xslPath = '';
   fullPath = '';
-  constructor(xml: any) {
-    this.xml = xml;
+  
+  s(archivo: string) {
+    this.xml =  XmlToJson(archivo, { original: true });
+    console.log(JSON.stringify(this.xml['cfdi:Comprobante']['cfdi:Impuestos'], null, 2));
+    return this;
   }
 
   async run() {
     const rear = await this.obtenerValores(this.xml['cfdi:Comprobante']);
-    return `||${rear.filter((e) => e).join('|')}||`;
+    const clean = rear.filter((e) => Boolean(e));
+    return `||${clean.join('|')}||`;
   }
 
   json(xslPath: string) {
@@ -87,6 +36,7 @@ export default class Transform {
       'xmlns:destruccion',
       'xmlns:iedu',
       'xmlns:pago10',
+      'xmlns:vehiculousado',
     ];
     const miObjeto = {
       comprobante: [
@@ -106,11 +56,10 @@ export default class Transform {
     // @ts-ignore
     const clavesOrdenadas = ignore ? Object.keys(obj) : miObjeto[tagKey];
     for (let key of clavesOrdenadas) {
+
       if (!omitKeys.includes(key)) {
         if (typeof obj[key] === 'object') {
-          valores = valores.concat(
-            this.obtenerValores(obj[key], { ignore: true })
-          );
+          valores = valores.concat(this.obtenerValores(obj[key], { ignore: true }));
         } else {
           if (!ingnore.includes(key)) {
             valores.push(obj[key]);

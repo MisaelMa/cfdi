@@ -7,8 +7,7 @@
   "module": "dist/rfc.esm.js",
   "source": "./src/index.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -21,7 +20,7 @@
     "test:coverage": "vitest --coverage run",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -51,6 +50,7 @@
   "devDependencies": {
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
+    "@recreando/vite": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^4.0.2",
     "@rushstack/heft": "^0.68.6",

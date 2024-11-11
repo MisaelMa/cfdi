@@ -212,7 +212,7 @@ export class CliShare {
    */
   public s(filename: string): this {
     if (!existsSync(filename)) {
-      throw new Error('No se puede encontrar el xml processar.');
+      throw new Error('No se puede encontrar el xml processar. => ' + filename);
     }
     this.commandline += ` -s:${filename}`;
     this.commandlineArray.push(`-s:${filename}`);

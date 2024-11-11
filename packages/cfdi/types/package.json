@@ -72,7 +72,8 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
-    "rimraf": "^5.0.0",
+    "rimraf": "^6.0.1",
+    "@recreando/vite": "workspace:*",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^4.0.2",

@@ -1,5 +1,5 @@
 import { XmlCdfi } from "@cfdi/xml"
-import { XmlToJson } from "@cfdi/utils";
+import { XmlToJson } from "@cfdi/2json";
 import { logo } from '@cfdi/utils';
 import { createPdf, TCreatedPdf } from "pdfmake/build/pdfmake";
 import { TDocumentDefinitions } from "pdfmake/interfaces";
