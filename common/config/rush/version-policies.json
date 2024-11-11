@@ -2,7 +2,7 @@
   {
     "policyName": "xml",
     "definitionName": "lockStepVersion",
-    "version": "4.0.15",
+    "version": "4.0.16",
     "nextBump": "patch"
   },
   {
@@ -32,7 +32,7 @@
   {
     "policyName": "pdf",
     "definitionName": "lockStepVersion",
-    "version": "0.0.10-beta.3",
+    "version": "0.0.10-beta.4",
     "nextBump": "prerelease"
   },
   {
@@ -50,7 +50,7 @@
   {
     "policyName": "utils",
     "definitionName": "lockStepVersion",
-    "version": "4.0.15",
+    "version": "4.0.16",
     "nextBump": "patch"
   },
   {
