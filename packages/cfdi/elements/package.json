@@ -38,7 +38,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -73,6 +73,7 @@
   },
   "devDependencies": {
     "rimraf": "^6.0.1",
+    "@recreando/vite": "workspace:*",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^4.0.2",

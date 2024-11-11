@@ -28,6 +28,7 @@ export default defineConfig({
       '@cfdi/csd': resolve(__dirname, '../csd/src'),
       '@cfdi/2json': resolve(__dirname, '../xml2json/src'),
       '@saxon-he/cli': resolve(__dirname, '../../clir/saxon-he/src'),
+      '@cfdi/utils': resolve(__dirname, '../utils/src'),
     },
   },
 });

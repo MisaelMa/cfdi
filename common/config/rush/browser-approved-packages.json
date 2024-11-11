@@ -224,7 +224,7 @@
     },
     {
       "name": "@recreando/vite",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "private" ]
     },
     {
       "name": "@reduxjs/toolkit",

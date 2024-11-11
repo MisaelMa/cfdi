@@ -31,7 +31,7 @@
     "test:coverage": "vitest --coverage run",
     "test:ui": "vitest --ui",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "npm run build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -58,6 +58,7 @@
     }
   ],
   "devDependencies": {
+    "@recreando/vite": "workspace:*",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",

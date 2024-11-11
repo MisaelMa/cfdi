@@ -21,6 +21,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -103,6 +106,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -200,6 +206,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -288,6 +297,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -352,6 +364,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -446,6 +461,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -504,6 +522,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -619,6 +640,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -700,6 +724,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -794,6 +821,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -982,6 +1012,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -1043,6 +1076,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -1140,6 +1176,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)
@@ -1304,6 +1343,9 @@ importers:
       '@recreando/typescript-settings':
         specifier: workspace:*
         version: link:../../../rigs/typescript
+      '@recreando/vite':
+        specifier: workspace:*
+        version: link:../../../rigs/vite
       '@rushstack/eslint-config':
         specifier: ^4.0.2
         version: 4.0.2(eslint@8.57.1)(typescript@5.6.3)

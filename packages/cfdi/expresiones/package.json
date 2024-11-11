@@ -70,6 +70,7 @@
     "rimraf": "^6.0.1",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
+    "@recreando/vite": "workspace:*",
     "@recreando/typescript-settings": "workspace:*",
     "@rushstack/eslint-config": "^4.0.2",
     "@rushstack/heft": "^0.68.6",
