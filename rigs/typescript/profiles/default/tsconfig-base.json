@@ -96,11 +96,8 @@
       "@cfdi/2json": [
         "./node_modules/@cfdi/2json/src"
       ],
-      "@recreando/vite/*": [
-        "./node_modules/@recreando/vite/src/*"
-      ],
       "@recreando/vite": [
-        "./node_modules/@recreando/vite/src"
+        "./node_modules/@recreando/vite"
       ],
 
     }
