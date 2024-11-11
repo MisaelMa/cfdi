@@ -2,6 +2,9 @@
   "name": "@cfdi/transform",
   "version": "4.0.13",
   "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/transform.esm.js",
   "source": "./src/index.ts",
   "release": {
     "branches": [
@@ -69,6 +72,7 @@
   },
   "devDependencies": {
     "rimraf": "^6.0.1",
+    "@recreando/vite": "workspace:*",
     "@saxon-he/cli": "workspace:*",
     "@recreando/eslint-settings": "workspace:*",
     "@recreando/jest": "workspace:*",
