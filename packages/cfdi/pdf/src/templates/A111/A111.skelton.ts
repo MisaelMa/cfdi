@@ -1,5 +1,4 @@
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
-import { logo } from '@cfdi/utils';
 export const A111SKELETON: TDocumentDefinitions | any = {
   pageSize: 'A4',
   pageMargins: [20, 25, 20, 25],

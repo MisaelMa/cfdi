@@ -26,7 +26,6 @@
   },
  
   "dependencies": {
-    "@cfdi/xml": "workspace:*",
     "xml-js": "^1.6.11"
   },
   "devDependencies": {

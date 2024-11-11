@@ -85,10 +85,10 @@
         "./node_modules/@saxon-he/cli/src"
       ],
       "@cfdi/utils/*": [
-        "./node_modules/@saxon-he/cli/src/*"
+        "./node_modules/@cfdi/utils/src/*"
       ],
       "@cfdi/utils": [
-        "./node_modules/@saxon-he/cli/src"
+        "./node_modules/@cfdi/utils/src"
       ],
       "@cfdi/2json/*": [
         "./node_modules/@cfdi/2json/src/*"

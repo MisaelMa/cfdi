@@ -24,14 +24,16 @@ runs:
 
     - name: Rush CLI
       shell: bash
-      run: npm install -g @microsoft/rush@5.138.0
+      run: | 
+        npm install -g @microsoft/rush@5.140.1
+        rush update
 
     - name: Rush Update
       shell: bash
       run: |
         git config user.name MisaelMa
         git config user.email amisael.amir.misael@gmail.com
-        rush update
+       
         ls -la
     #- name: execa
     #  shell: bash
