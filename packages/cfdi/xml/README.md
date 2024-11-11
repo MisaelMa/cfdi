@@ -23,8 +23,8 @@
 </li>
 
 <li direction="ltr" format="" indent="0" type="listitem" version="1" value="1"><input type="checkbox" checked="">
-  <a href="https://www.npmjs.com/package/@cfdi/xml2json">
-    <code class="css-1ht163b">@cfdi/xml2json</code>
+  <a href="https://www.npmjs.com/package/@cfdi/2json">
+    <code class="css-1ht163b">@cfdi/2json</code>
   </a>
 </li>
 
